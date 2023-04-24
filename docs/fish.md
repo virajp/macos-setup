@@ -27,7 +27,7 @@ We will be using `Tide (IlanCosman/tide)` as the shell prompt and use `Fisher (P
 fisher install IlanCosman/tide@v5
 ```
 
-### Configure `Tide` 
+### Configure `Tide`
 
 > Follow these steps to configure `Tide` shell prompt in case your prompt is not showing up correctly.
 
