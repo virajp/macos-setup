@@ -86,9 +86,9 @@ volta completions fish --force --output ~/.config/fish/completions/volta.fish
 # Install NodeJS, NPM, Yarn, TypeScript, Firebase CLI
 volta install node@lts node@latest npm@latest yarn@latest typescript@latest firebase-cli@latest
 
-# Configure NPM
+# Configure NPM & Yarn
 npm config set fund false
-
+yarn config set --home enableTelemetry 0
 
 ```
 
