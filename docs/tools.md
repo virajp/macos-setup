@@ -95,9 +95,6 @@ npm config set fund false
 ## Archived Tools
 
 ```bash
-# Install alternate to Docker-Desktop (colima)
-# brew install --formulae docker docker-buildx docker-scan kubectl colima minikube
-
 # Lens: Kubernetes IDE
 # brew install --cask lens
 

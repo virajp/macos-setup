@@ -1,4 +1,4 @@
-# Set up Hostname & Diskname
+# Setup Hostname & Diskname
 
 ## Hostname
 
