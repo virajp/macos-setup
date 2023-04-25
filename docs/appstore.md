@@ -32,6 +32,7 @@ mas install 455970963    # Disk Doctor
 mas install 715464874    # Disk Map 
 mas install 686428787    # Duplicate Detective 
 mas install 411643860    # DaisyDisk 
+mas install 425264550    # Blackmagic Disk Speed Test
 mas install 412448059    # ForkLift 
 mas install 1120214373   # Battery Health 2
 mas install 504700302    # PDF Squeezer
@@ -44,7 +45,9 @@ mas install 1441958036   # SideNotes
 mas install 1289197285   # MindNode
 mas install 1290358394   # Cardhop
 
-# mas install 497799835    # Xcode
+mas install 497799835    # Xcode
+mas install 640199958    # Apple Developer
 
 mas install 1494451650   # VN Video Editor
+mas install 1516822341   # Wondershare Filmora 11
 ```

@@ -38,7 +38,6 @@ sudo softwareupdate --install --all --restart --verbose
 - [Docker for Desktop](https://www.docker.com/products/docker-desktop)
 - [SnapDownloader](https://snapdownloader.com/downloads)
 - [Spatial Media Metadata Injector](https://github.com/google/spatial-media/releases)
-- [Wondershare Filmora 11](https://filmora.wondershare.com/filmora-old-version.html)
 - [Wondershare UniConverter 14](https://videoconverter.wondershare.com/buy-uniconverter-14-with-discount.html)
 - [Zoom (user account)](https://zoom.us/support/download)
 - [Adobe Creative Cloud](https://creativecloud.adobe.com/)
