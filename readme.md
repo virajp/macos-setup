@@ -23,6 +23,7 @@ Follow these steps to setup macOS.
 
 ## Final steps: Update tools & macOS
 
+
 ```bash
 # Update everything
 updateall

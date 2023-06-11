@@ -2,143 +2,145 @@
 
 ## Utilities
 
+### Tools that are required for day to day work
+
+- `Git` (Apple) is of older version and the new git path has to be setup in PATH environment variable.
+- `CoreUtils`: this is primarily required to run "sha256sum" cli
+- `Bash`: Upgrade bash on macOS (even if you are not planning to use it directly, you need it for many of your scripts)
+- `Python`: Python3
+- `Wget`: Download files from the internet
+- `ipcalc`: IP Calculator
+- `watch`: Run a command repeatedly, displaying its output and errors (the first screenfull). This allows you to watch the program output change over time. By default, the program is run every 2 seconds; use -n or --interval to specify a different interval.
+- `httping`: Ping-like tool for http-requests 
+- `prettyping`: prettyping is a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read.
+
 ```bash
-# Install Git & CoreUtils. 
-# NOTE: Git (Apple) is of older version and the new git path has to be setup in PATH environment variable.
-# CoreUtils: this is primarily required to run "sha256sum" cli
-# Bash: Upgrade bash on macOS (even if you are not planning to use it directly, you need it for many of your scripts)
-# Python: Python3
-brew install --formulae git gh coreutils bash python wget ipcalc watch httping
+brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping
+```
 
-# Configure bash
+### Configure bash
+
+```bash
 echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+```
 
-# Upgrade pip, setuptools and wheel (python)
+### Upgrade pip, setuptools and wheel (python)
+  
+```bash
 pip3 install --upgrade pip setuptools wheel
 ```
 
 ## Tools
 
+- `iTerm2`: Terminal
+- `Sublime` Text: Text Editor
+- `Authy`: 2FA
+- `Firefox`: Browser
+- `Notion`: Note taking
+- `TaskExplorer`: Task Manager
+- `EasyFind`: File Search
+- `Raycast`: Spotlight alternative
+
 ```bash
-# iTerm2: Terminal
-# Sublime Text: Text Editor
-# Alfred: Spotlight replacement
-# Spectacle: Window Manager
-# Bartender: Menu Bar Manager
-# Authy: 2FA
-# Firefox: Browser
-# Notion: Note taking
-# TaskExplorer: Task Manager
-# EasyFind: File Search
-brew install --cask iterm2 sublime-text alfred spectacle bartender authy firefox notion taskexplorer easyfind
+brew install --cask iterm2 sublime-text authy firefox notion taskexplorer easyfind raycast
+```
 
-# 1Password: Password Manager
-brew install --appdir=/Applications --cask 1password
+- `1Password`: Password Manager
 
-# Spotify: Music
-# MKVToolNix: MKV Tools
-# VLC: Video Player
-# Folx: Download Manager
-# Handbrake: Video Converter
-brew install --cask spotify mkvtoolnix vlc folx handbrake
+```bash
+brew install --appdir=/Applications --cask "1password"
+```
+
+- `MKVToolNix`: MKV Tools
+- `VLC`: Video Player
+- `Folx`: Download Manager
+- `Handbrake`: Video Converter
+
+```bash
+brew install --cask mkvtoolnix vlc folx handbrake
 ```
 
 ## Developer Tools
 
+- `Dive`: Docker Image Analyzer
+- `mkcert`: A simple zero-config tool to make locally trusted development certificates with any names you'd like.
+- `skaffold`: Easy and Repeatable Kubernetes Development
+- `helm`: The Kubernetes Package Manager
+- `terraform`: Infrastructure as Code
+- `d2`: Modern diagram scripting language that turns text to diagrams
+
 ```bash
-# Dive: Docker Image Analyzer
-# mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.
-# skaffold: Easy and Repeatable Kubernetes Development
-# helm: The Kubernetes Package Manager
-brew install --formulae dive mkcert skaffold helm
+brew install --formulae dive mkcert skaffold helm terraform d2
+```
 
-# Google Cloud SDK (gcloud, gsutil, etc.); Firebase-Cli is installed via Volta (NodeJS)
-brew install --cask google-cloud-sdk
+- `GitHub Desktop`: Git GUI
+- `Google Cloud SDK` (gcloud, gsutil, etc.); Firebase-Cli is installed via Volta (NodeJS)
+- `Visual Studio Code`: Code Editor
 
-# Terraform: Infrastructure as Code
-brew install --cask terraform
-
-# Visual Studio Code: IDE
-brew install --cask  visual-studio-code
-
-# Github: Github Desktop App
-brew install --cask github 
-
-# Codux: Visual IDE
-brew install --cask codux
-
-# Steampipe: SQL for Cloud resources
-brew install --formulae turbot/tap/steampipe
+```bash
+brew install --cask github google-cloud-sdk  visual-studio-code
 ```
 
 ## NodeJS & tools
 
-> We will be using `Volta` to manage NodeJS versions and packages.
+- `NodeJS`: NodeJS
+- `NPM`: Node Package Manager
+- `Yarn`: Package Manager
+- `TypeScript`: TypeScript
+- `Deno`: Secure runtime for JavaScript and TypeScript
 
 ```bash
-# Install Volta
-brew install --formulae volta
+brew install --formulae node npm yarn typescript deno
+```
 
-# Configure Volta for fish shell
-volta setup --verbose
-volta completions fish --force --output ~/.config/fish/completions/volta.fish
+- Configure NodeJS & tools
 
-# Install NodeJS, NPM, Yarn, TypeScript, Firebase CLI
-volta install node@lts node@latest npm@latest yarn@latest typescript@latest firebase-cli@latest
-
-# Configure NPM & Yarn
+```bash
 npm config set fund false
 yarn config set --home enableTelemetry 0
-
 ```
 
-## Archived Tools
+## Flutter & tools
+
+> Refer to this document for Flutter installation: [Flutter](https://github.com/95octane/wiki/blob/main/engineering/sdlc/flutter.md)
+
+## Miscellaneous tools
+
+`Logitech-Options+`: Logitech Mouse Driver & Configuration. Note that the new tool (Options+) is only available for download from Logitech website.
+
+[Download Logitech Options+](https://support.logi.com/hc/en-gb/articles/4418699283607)
+
+## SetApp
+
+First install SetApp using Homebrew
 
 ```bash
-# Lens: Kubernetes IDE
-# brew install --cask lens
-
-# Install packer
-# brew install --formulae packer 
-
-# CNCF BuildPacks (buildpacks.io)
-# brew install --formulae buildpacks/tap/pack
-
-# Dash: API Documentation Browser and Code Snippet Manager
-# brew install --cask dash
-
-# Postman: API Development Environment
-# brew install --cask postman
-
-# dotNET SDK
-# brew install --cask dotnet-sdk
-
-# Install Flutter (requires Rosetta)
-# brew install --cask flutter android-studio
-# brew install --formulae cocoapods openjdk
-# Start android studio and install android-sdk
-# flutter config --android-sdk="/Users/virajpatel/Library/Android/sdk"
-# Install Android SDK Command Line tools from Preferences/System Settings/Android SDK/SDK Tools
-# mas install 497799835 # Install XCode
-# sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-# sudo xcodebuild -runFirstLaunch
-# flutter doctor --android-licenses
-# flutter config --no-analytics --enable-web --enable-ios --enable-android --no-enable-linux-desktop --no-enable-macos-desktop --no-enable-windows-desktop --no-enable-fuchsia --no-enable-custom-devices
-
-# Install drivers (if needed)
-# brew install --cask homebrew/cask-drivers/logitech-options
+brew install --cask setapp
 ```
+
+Then install the following apps from SetApp
+
+- `CleanMyMac X`: System Cleaner
+- `Bartender`: Menu Bar Manager
+- `BusyContacts`: Contacts Manager
+- `Dash`: Documentation Browser
+- `DevUtils`: Developer Utilities
+- `Downie`: Video Downloader
+- `Folx`: Download Manager
+- `Flinto`: Prototyping Tool
+- `Flow`: Animation Tool
+- `ForkLift`: File Manager
+- `Marked`: Markdown Previewer
+- `Mockuuups Studio`: Mockup Tool
+- `NotePlan`: Note Taking
+- `One Switch`: System Utility
+- `Permute`: Media Converter
+- `RapidAPI`: API Manager
+- `Typeface`: Font Manager
 
 ## Configure tools
 
 ```bash
-# Configure Spectacle
-open "$HOME/Applications/Spectacle.app"
-
-# Configure Alfred
-open "$HOME/Applications/Alfred 5.app"
-# Copy license from 1Password and paste it when asked
-
 # Configure Sublime-Text
 open "$HOME/Applications/Sublime Text.app"
 # Copy license from 1Password and apply
