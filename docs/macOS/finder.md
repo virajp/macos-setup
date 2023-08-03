@@ -2,8 +2,16 @@
 
 ## Finder
 
+> Hide items on Desktop
+
 ```bash
-# Finder View Style (set as default)
+defaults write com.apple.finder CreateDesktop false
+killall Finder
+```
+
+> Finder View Style (set as default)
+
+```bash
 
 sudo find / -name .DS_Store -delete
 
