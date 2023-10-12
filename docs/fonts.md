@@ -9,7 +9,7 @@ cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts
 
 # Install fonts
 # https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
-brew install --cask font-hack-nerd-font
+brew install --cask font-hack-nerd-font font-iosevka-nerd-font font-iosevka-term-nerd-font
 ```
 
 ## Reference
