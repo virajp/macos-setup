@@ -1,11 +1,27 @@
 # Shell
 
-## Default macOS shell (ZSH)
+## Change the default shell
 
-Symlink the `.zprofile` file to the home directory.
+> List available shells
 
 ```bash
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh_profile.sh" "$HOME/.zprofile" && source "$HOME/.zprofile"
+cat /etc/shells
+```
+
+> Change shell
+
+```bash
+chsh -s /opt/homebrew/bin/zsh
+```
+
+## Default macOS shell (ZSH)
+
+Symlink the `.p10k.zsh`, `.zprofile` & `.zshrc` files to the home directory.
+
+```bash
+ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh/p10k.zsh" "$HOME/.p10k.zsh"
+ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh/zsh_profile.zsh" "$HOME/.zprofile" && source "$HOME/.zprofile"
+ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh/zsh_rc.zsh" "$HOME/.zshrc" && source "$HOME/.zshrc"
 ```
 
 ## Bash shell
@@ -23,9 +39,6 @@ Symlink the `.config/fish` folder to the home directory.
 ```bash
 # Personal setup
 mkdir -p "$HOME/.config" && ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/fish-personal" "$HOME/.config/fish"
-
-# Flipkart
-mkdir -p "$HOME/.config" && ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/fish-fk" "$HOME/.config/fish"
 ```
 
 ## Symlink other tool configuration
@@ -41,8 +54,6 @@ chmod 0700 $HOME/.gnupg
 
 # Setup global gitignore
 ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/gitignore_global" "$HOME/.gitignore_global"
-# For Flipkart
-# ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/fk-gitconfig" "$HOME/.gitconfig"
 # For Personal
 ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/gitconfig" "$HOME/.gitconfig"
 

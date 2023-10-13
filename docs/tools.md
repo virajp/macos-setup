@@ -13,9 +13,14 @@
 - `watch`: Run a command repeatedly, displaying its output and errors (the first screenfull). This allows you to watch the program output change over time. By default, the program is run every 2 seconds; use -n or --interval to specify a different interval.
 - `httping`: Ping-like tool for http-requests 
 - `prettyping`: prettyping is a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read.
+- `bat`: A cat clone with wings.
+- `fzf`: A command-line fuzzy finder.
+- `exa`: A modern replacement for ls.
+- `diff-so-fancy`: Good looking diffs. Actually… nah… The best-lookin' diffs. :tada:
+- `tree`: A recursive directory listing command that produces a depth indented listing of files.
 
 ```bash
-brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping
+brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping bat fzf exa diff-so-fancy tree
 ```
 
 ### Configure bash
