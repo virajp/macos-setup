@@ -137,7 +137,6 @@ Then install the following apps from SetApp
 - `ForkLift`: File Manager
 - `Marked`: Markdown Previewer
 - `Mockuuups Studio`: Mockup Tool
-- `NotePlan`: Note Taking
 - `One Switch`: System Utility
 - `Permute`: Media Converter
 - `RapidAPI`: API Manager
