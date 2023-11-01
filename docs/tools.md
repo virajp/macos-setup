@@ -18,9 +18,10 @@
 - `exa`: A modern replacement for ls.
 - `diff-so-fancy`: Good looking diffs. Actually… nah… The best-lookin' diffs. :tada:
 - `tree`: A recursive directory listing command that produces a depth indented listing of files.
+- `pre-commit`: A framework for managing and maintaining multi-language pre-commit hooks.
 
 ```bash
-brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping bat fzf exa diff-so-fancy tree
+brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping bat fzf exa diff-so-fancy tree pre-commit
 ```
 
 ### Configure bash
@@ -79,7 +80,7 @@ brew install --formulae dive mkcert skaffold helm terraform d2
 ```
 
 - `GitHub Desktop`: Git GUI
-- `Google Cloud SDK` (gcloud, gsutil, etc.); Firebase-Cli is installed via Volta (NodeJS)
+- `Google Cloud SDK` (gcloud, gsutil, etc.); Firebase-Cli is installed via npm (NodeJS)
 - `Visual Studio Code`: Code Editor
 
 ```bash
@@ -90,19 +91,34 @@ brew install --cask github google-cloud-sdk  visual-studio-code
 
 - `NodeJS`: NodeJS
 - `NPM`: Node Package Manager
-- `Yarn`: Package Manager
+- `bun`: A new javascript runtime, much faster than nodejs
 - `TypeScript`: TypeScript
-- `Deno`: Secure runtime for JavaScript and TypeScript
+
+### Install nvm first (Node Version Manager) & bun
 
 ```bash
-brew install --formulae node npm yarn typescript deno
+mkdir -p ~/.nvm
+brew install --formulae nvm bun
 ```
 
-- Configure NodeJS & tools
+### Install NodeJS & npm
+
+```bash
+nvm install node
+```
+
+## Configure npm
 
 ```bash
 npm config set fund false
-yarn config set --home enableTelemetry 0
+```
+
+### Install TypeScript & Firebase-Tools
+
+> Note that the side effect of installing typescript like this is that it will be only available for the specific version of node. When you switch to another version of node, you will have to install typescript again.
+
+```bash
+npm install --global typescript firebase-tools
 ```
 
 ## Flutter & tools
