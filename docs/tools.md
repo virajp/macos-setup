@@ -38,7 +38,7 @@ pip3 install --upgrade pip setuptools wheel
 
 ## Tools
 
-- `iTerm2`: Terminal
+- `Warp`: Terminal
 - `Sublime` Text: Text Editor
 - `Authy`: 2FA
 - `Firefox`: Browser
@@ -48,7 +48,7 @@ pip3 install --upgrade pip setuptools wheel
 - `Raycast`: Spotlight alternative
 
 ```bash
-brew install --cask iterm2 sublime-text authy firefox notion taskexplorer easyfind raycast
+brew install --cask warp sublime-text authy firefox notion taskexplorer easyfind raycast
 ```
 
 - `1Password`: Password Manager
