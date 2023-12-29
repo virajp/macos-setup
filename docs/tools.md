@@ -104,7 +104,7 @@ brew install --formulae nvm bun
 ### Install NodeJS & npm
 
 ```bash
-nvm install node
+nvm install node --latest-npm --default -b
 ```
 
 ## Configure npm
