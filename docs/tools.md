@@ -1,105 +1,22 @@
 # Install Tools via Homebrew
 
-## Utilities
-
-### Tools that are required for day to day work
-
-- `Git` (Apple) is of older version and the new git path has to be setup in PATH environment variable.
-- `CoreUtils`: this is primarily required to run "sha256sum" cli
-- `Bash`: Upgrade bash on macOS (even if you are not planning to use it directly, you need it for many of your scripts)
-- `Python`: Python3
-- `Wget`: Download files from the internet
-- `ipcalc`: IP Calculator
-- `watch`: Run a command repeatedly, displaying its output and errors (the first screenfull). This allows you to watch the program output change over time. By default, the program is run every 2 seconds; use -n or --interval to specify a different interval.
-- `httping`: Ping-like tool for http-requests 
-- `prettyping`: prettyping is a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read.
-- `bat`: A cat clone with wings.
-- `fzf`: A command-line fuzzy finder.
-- `exa`: A modern replacement for ls.
-- `diff-so-fancy`: Good looking diffs. Actually… nah… The best-lookin' diffs. :tada:
-- `tree`: A recursive directory listing command that produces a depth indented listing of files.
-- `pre-commit`: A framework for managing and maintaining multi-language pre-commit hooks.
-
-```bash
-brew install --formulae git gh coreutils bash python wget ipcalc watch httping prettyping bat fzf exa diff-so-fancy tree pre-commit
-```
-
-### Configure bash
+## Configure bash
 
 ```bash
 echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
 ```
 
-### Upgrade pip, setuptools and wheel (python)
-  
+## Upgrade pip, setuptools and wheel (python)
+
 ```bash
 pip3 install --upgrade pip setuptools wheel
-```
-
-## Tools
-
-- `Warp`: Terminal
-- `Sublime` Text: Text Editor
-- `Authy`: 2FA
-- `Firefox`: Browser
-- `Notion`: Note taking
-- `TaskExplorer`: Task Manager
-- `EasyFind`: File Search
-- `Raycast`: Spotlight alternative
-
-```bash
-brew install --cask warp sublime-text authy firefox notion taskexplorer easyfind raycast
-```
-
-- `1Password`: Password Manager
-
-```bash
-brew install --appdir=/Applications --cask "1password"
-```
-
-- `MKVToolNix`: MKV Tools
-- `VLC`: Video Player
-- `Folx`: Download Manager
-- `Handbrake`: Video Converter
-
-```bash
-brew install --cask mkvtoolnix vlc folx handbrake
-```
-
-## Developer Tools
-
-- `Dive`: Docker Image Analyzer
-- `mkcert`: A simple zero-config tool to make locally trusted development certificates with any names you'd like.
-- `skaffold`: Easy and Repeatable Kubernetes Development
-- `helm`: The Kubernetes Package Manager
-- `terraform`: Infrastructure as Code
-- `d2`: Modern diagram scripting language that turns text to diagrams
-
-```bash
-brew install --formulae dive mkcert skaffold helm terraform d2
-```
-
-- `GitHub Desktop`: Git GUI
-- `Google Cloud SDK` (gcloud, gsutil, etc.); Firebase-Cli is installed via npm (NodeJS)
-- `Visual Studio Code`: Code Editor
-
-```bash
-brew install --cask github google-cloud-sdk  visual-studio-code
 ```
 
 ## NodeJS & tools
 
 - `NodeJS`: NodeJS
 - `NPM`: Node Package Manager
-- `bun`: A new javascript runtime, much faster than nodejs
 - `TypeScript`: TypeScript
-
-### Install nvm first (Node Version Manager) & bun
-
-```bash
-mkdir -p ~/.nvm
-brew install --formulae nvm bun
-```
 
 ### Install NodeJS & npm
 
@@ -133,30 +50,7 @@ npm install --global typescript firebase-tools
 
 ## SetApp
 
-First install SetApp using Homebrew
-
-```bash
-brew install --cask setapp
-```
-
-Then install the following apps from SetApp
-
-- `CleanMyMac X`: System Cleaner
-- `Bartender`: Menu Bar Manager
-- `BusyContacts`: Contacts Manager
-- `Dash`: Documentation Browser
-- `DevUtils`: Developer Utilities
-- `Downie`: Video Downloader
-- `Folx`: Download Manager
-- `Flinto`: Prototyping Tool
-- `Flow`: Animation Tool
-- `ForkLift`: File Manager
-- `Marked`: Markdown Previewer
-- `Mockuuups Studio`: Mockup Tool
-- `One Switch`: System Utility
-- `Permute`: Media Converter
-- `RapidAPI`: API Manager
-- `Typeface`: Font Manager
+SetApp will be installed via Homebrew. To install apps from SetApp, simply go into `Favorites` and click on `Install All` button to install all the apps from the section.
 
 ## Configure tools
 

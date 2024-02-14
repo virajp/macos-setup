@@ -5,16 +5,34 @@ Homebrew is a package manager for macOS. Most of the tools and applications will
 ## Install homebrew
 
 ```bash
-# Install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-# Configure
+## Configure
+
+```bash
 brew analytics off
-brew tap homebrew/cask
-brew tap homebrew/cask-fonts
+```
 
-# Health check
+## Health check
+
+```bash
 brew doctor --verbose
+```
+
+## Install tools & applications
+
+### Clone the macos-setup repo
+
+```bash
+mkdir -p ~/Projects/github.com/virajp && cd ~/Projects/github.com/virajp
+git clone git@github.com:virajp/macos-setup.git
+```
+
+### Install from Brewfile
+
+```bash
+brew bundle --file="$HOME/Projects/github.com/virajp/macos-setup/Brewfile --verbose --no-lock"
 ```
 
 ## Reference

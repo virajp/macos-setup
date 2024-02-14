@@ -2,16 +2,17 @@
 
 ## Install fonts
 
-```bash
-# Install fonts downloaded to iCloud
-cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.ttf $HOME/Library/Fonts/
-cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.otf $HOME/Library/Fonts/
+### Fonts from iCloud Drive
 
-# Install fonts
-# https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
-brew install --cask font-hack-nerd-font font-iosevka-nerd-font font-iosevka-term-nerd-font
+```bash
+cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.ttf $HOME/Library/Fonts/
+```
+
+```bash
+cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.otf $HOME/Library/Fonts/
 ```
 
 ## Reference
 
 - [Nerd Fonts](https://www.nerdfonts.com/)
+- [GitHub: Nerd Fonts](https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts)

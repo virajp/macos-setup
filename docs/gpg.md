@@ -1,9 +1,12 @@
 # GPG setup
 
-## Install GPG
+## Install GPG via Homebrew
+
+`brew bundle` will install the gpg related tools
+
+## Setup GPG
 
 ```bash
-brew install --formulae gpg gpg2 pinentry-mac
 chmod 0700 $HOME/.gnupg
 ```
 
@@ -11,22 +14,23 @@ chmod 0700 $HOME/.gnupg
 
 ```bash
 gpg --full-generate-key
-
-# Select "(1) RSA and RSA" for kind of key
-# Specify "4096" as the key size
-# Select "4y" for expiry period
-# Enter the following for name & email
-# Name: Viraj Patel
-# email: 3125954+virajp@users.noreply.github.com
-# Leave "comment" empty
 ```
+
+> - Select "(1) RSA and RSA" for kind of key
+> - Specify "4096" as the key size
+> - Select "4y" for expiry period
+> - Enter the following for name & email
+> - Name: Viraj Patel
+> - email: <3125954+virajp@users.noreply.github.com>
+> - Leave "comment" empty
 
 ## Check the GPG Key
 
 ```bash
 gpg --list-secret-keys --keyid-format=long
-# Copy the key id from "sec", e.g:"9B2F2A3AAA8409F0"
 ```
+
+> - Copy the key id from "sec", e.g:"9B2F2A3AAA8409F0"
 
 ## Configure GPG in gitconfig
 
@@ -41,8 +45,9 @@ git config --global user.signingkey 9B2F2A3AAA8409F0
 
 ```bash
 gpg --armor --export 9B2F2A3AAA8409F0
-# Copy the response & add it to GitHub account
 ```
+
+> - Copy the response & add it to GitHub account
 
 ## Use macOS Keychain to enter GPG Passphrase
 
@@ -50,7 +55,9 @@ gpg --armor --export 9B2F2A3AAA8409F0
 # brew info --formulae keychain
 echo "pinentry-program $HOMEBREW_PREFIX/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
 pkill -TERM gpg-agent
+```
 
+```bash
 # Test if it's working
 gpg --list-keys
 echo test | gpg -e -r 3125954+virajp@users.noreply.github.com | gpg -d

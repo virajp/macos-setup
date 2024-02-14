@@ -9,14 +9,11 @@ Follow these steps to setup macOS.
 - [Install Homebrew](./docs/homebrew.md)
 - [Install fonts](./docs/fonts.md)
 - [ZSH Shell](./docs/zsh.md)
-- [Setup Hostname & Diskname](./docs/macOS/host.md)
-- [Install Rosetta](./docs/macOS/rosetta.md)
-- [Finder: Settings](./docs/macOS/finder.md)
-- [Setup TouchID for sudo](./docs/macOS/touchid-sudo.md)
-- [macOS: Settings](./docs/macOS/settings.md)
+- [Setup Hostname & Diskname](./docs/host.md)
+- [Install Rosetta](./docs/rosetta.md)
+- [macOS: Settings](./docs/settings.md)
+- [Setup TouchID for sudo](./docs/touchid-sudo.md)
 - [Install tools](./docs/tools.md)
-- [Warp: Settings](./docs/warp.md)
-- [Install from AppStore](./docs/appstore.md)
 - [Setup GPG](./docs/gpg.md)
 
 ## Final steps: Update tools & macOS

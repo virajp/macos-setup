@@ -18,7 +18,7 @@ First, create a standard user account. You can do this by going to System Prefer
 
 Next, create an admin user account with name as "admin".
 
-### Step 3: Add standard user to sudoer
+### Step 3: Add standard user to sudoer (ONLY FOR ADVANCE USERS)
 
 Go to terminal and run the following command:
 
