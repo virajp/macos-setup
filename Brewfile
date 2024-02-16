@@ -52,6 +52,8 @@ brew "mkcert"
 brew "nvm"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Draw UML diagrams
+brew "plantuml"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Wrapper to colorize and simplify ping's output
@@ -64,6 +66,8 @@ brew "ruby@3.1"
 brew "skaffold"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
 # Temporal CLI (tctl)
 brew "tctl"
 # Command-line interface for running and interacting with Temporal Server and UI
@@ -93,27 +97,27 @@ brew "redpanda-data/tap/redpanda"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
-cask "alfred", args: { appdir: "~/Applications" }
+cask "alfred"
 # Tools for building Android applications
 cask "android-studio"
 # Two-factor authentication software
-cask "authy", args: { appdir: "~/Applications" }
+cask "authy"
 # Web browser focusing on privacy
-cask "brave-browser", args: { appdir: "~/Applications" }
+cask "brave-browser"
 # Design tool
-cask "canva", args: { appdir: "~/Applications" }
+cask "canva"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
-# App to build and share containerized applications and microservices
-cask "docker", args: { appdir: "~/Applications" }
+# App to build and share containerised applications and microservices
+cask "docker"
 # Find files, folders, or contents in any file
-cask "easyfind", args: { appdir: "~/Applications" }
+cask "easyfind"
 # Web browser
-cask "firefox", args: { appdir: "~/Applications" }
+cask "firefox"
 # UI toolkit for building applications for mobile, web and desktop
 cask "flutter"
 # Download manager with a torrent client
-cask "folx", args: { appdir: "~/Applications" }
+cask "folx"
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
 # Developer targeted fonts with a high number of glyphs
@@ -121,37 +125,37 @@ cask "font-iosevka-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-term-nerd-font"
 # Desktop client for GitHub repositories
-cask "github", args: { appdir: "~/Applications" }
+cask "github"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Open-source video transcoder
-cask "handbrake", args: { appdir: "~/Applications" }
+cask "handbrake"
 # Set of tools to create, alter and inspect Matroska files (MKV)
-cask "mkvtoolnix", args: { appdir: "~/Applications" }
+cask "mkvtoolnix"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
-# App to write, plan, collaborate, and get organized
-cask "notion", args: { appdir: "~/Applications" }
+# App to write, plan, collaborate, and get organised
+cask "notion"
 # Calendar for professionals and teams
-cask "notion-calendar", args: { appdir: "~/Applications" }
+cask "notion-calendar"
 # Collection of apps available by subscription
 cask "setapp"
 # Text editor for code, markup and prose
-cask "sublime-text", args: { appdir: "~/Applications" }
+cask "sublime-text"
 # Tool to explore all the running tasks (processes)
-cask "taskexplorer", args: { appdir: "~/Applications" }
+cask "taskexplorer"
 # Disposable email client
-cask "tempbox", args: { appdir: "~/Applications" }
+cask "tempbox"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
 # Open-source code editor
-cask "visual-studio-code", args: { appdir: "~/Applications" }
+cask "visual-studio-code"
 # Multimedia player
-cask "vlc", args: { appdir: "~/Applications" }
+cask "vlc"
 # Rust-based terminal
-cask "warp", args: { appdir: "~/Applications" }
+cask "warp"
 # Image viewer and file browser
-cask "xee", args: { appdir: "~/Applications" }
+cask "xee"
 # Video communication and virtual meeting platform
 cask "zoom", args: { appdir: "~/Applications" }
 mas "1Password for Safari", id: 1569813296
@@ -199,6 +203,7 @@ vscode "github.vscode-github-actions"
 vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
 vscode "helixquar.randomeverything"
+vscode "jebbs.plantuml"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
