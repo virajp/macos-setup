@@ -37,3 +37,11 @@ sudo softwareupdate --install --all --restart --verbose
 - [Zoom (user account)](https://zoom.us/support/download)
 - [Adobe Creative Cloud](https://creativecloud.adobe.com/)
 - [Insta360 Studio 2023](https://www.insta360.com/download/insta360-oners)
+
+## Brew commands
+
+> To update the `Brewfile` with latest installed packages
+
+```bash
+brew bundle dump --all --force --describe --file=./Brewfile
+```
