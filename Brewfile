@@ -20,6 +20,8 @@ brew "coreutils"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Command-line tool for DigitalOcean
@@ -188,7 +190,7 @@ mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
 mas "WhatsApp", id: 1147396723
-mas "Wondershare Filmora 12", id: 1516822341
+mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
 vscode "britesnow.vscode-toggle-quotes"
 vscode "dart-code.dart-code"
