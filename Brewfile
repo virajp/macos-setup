@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "redpanda-data/tap"
 # ARP scanning and fingerprinting tool
@@ -26,8 +25,8 @@ brew "direnv"
 brew "dive"
 # Command-line tool for DigitalOcean
 brew "doctl"
-# Modern replacement for 'ls'
-brew "exa"
+# Modern, maintained replacement for ls
+brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -126,6 +125,8 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-term-nerd-font"
+# Git client for simultaneous branches on top of your existing workflow
+cask "gitbutler"
 # Desktop client for GitHub repositories
 cask "github"
 # Set of tools to manage resources and applications hosted on Google Cloud
