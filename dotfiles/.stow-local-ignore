@@ -1,0 +1,7 @@
+# This file is used to ignore files in the stow command
+
+\.git
+\.gitignore
+^/readme.md
+\.DS_Store
+\.stow-local-ignore

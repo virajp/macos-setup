@@ -1,0 +1,73 @@
+[user]
+	email = 3125954+virajp@users.noreply.github.com
+	name = Viraj Patel
+	signingkey = 9B2F2A3AAA8409F0
+	# signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7uoxAdb66raFvHDEvycFxzF4B63ayDPH+ENfq+z5zE
+[core]
+	autocrlf = input
+	editor = $HOMEBREW_PREFIX/bin/code
+	excludesfile = ~/.gitignore_global
+	filemode = false
+[push]
+	default = matching
+[pull]
+	rebase = false
+[color]
+	ui = true
+	[color "branch"]
+		current = yellow reverse
+		local = yellow
+		remote = green
+	[color "diff"]
+		meta = yellow bold
+		frag = magenta bold
+		old = red bold
+		new = green bold
+		whitespace = red reverse
+	[color "status"]
+		added = yellow
+		changed = green
+		untracked = cyan
+[bash]
+	showInformativeStatus = false
+	showDirtyState = true
+	showUntrackedFiles = true
+[credential]
+	helper = osxkeychain
+[http]
+	postBuffer = 524288000
+	cookiefile = ~/.gitcookies
+[advice]
+	addIgnoredFile = false
+[alias]
+	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	lg3 = log --graph --decorate --pretty=oneline --abbrev-commit
+	lo3a = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lga = log --stat --abbrev-commit
+	lg = !git lg2
+	ign = ls-files -o -i --exclude-standard
+	dw = diff --word-diff
+	dt = difftool
+	s = status --short --branch
+	c = checkout
+	b = branch
+	rb = rebase
+	p = push --all --atomic --verbose
+[commit]
+	template = ~/.stCommitMsg
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[gpg]
+	program = /opt/homebrew/bin/gpg
+	format = openpgp
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[gitbutler]
+	signCommits = true
