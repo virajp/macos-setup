@@ -105,8 +105,6 @@ cask "android-studio"
 cask "authy"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Design tool
-cask "canva"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
 # App to build and share containerised applications and microservices
@@ -139,8 +137,6 @@ cask "mkvtoolnix"
 cask "nordvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Calendar for professionals and teams
-cask "notion-calendar"
 # Collection of apps available by subscription
 cask "setapp"
 # Text editor for code, markup and prose
@@ -157,6 +153,8 @@ cask "visual-studio-code"
 cask "vlc"
 # Rust-based terminal
 cask "warp"
+# Native desktop client for WhatsApp
+cask "whatsapp"
 # Image viewer and file browser
 cask "xee"
 # Video communication and virtual meeting platform
@@ -190,7 +188,6 @@ mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
-mas "WhatsApp", id: 1147396723
 mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
 vscode "britesnow.vscode-toggle-quotes"
