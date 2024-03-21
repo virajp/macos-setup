@@ -338,3 +338,6 @@ eval "$(starship init zsh)"
 
 # Created by `pipx` on 2024-03-15 06:20:45
 export PATH="$PATH:/Users/virajpatel/.local/bin"
+
+# GitHub Copilot CLI integration
+eval "$(gh copilot alias -- zsh)"
