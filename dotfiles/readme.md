@@ -6,6 +6,8 @@ This is a collection of my dotfiles. I use these to configure my system to my li
 
 I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles. To install these dotfiles, clone this repository and use stow to symlink the files to your home directory.
 
+> NOTE: Run the `stow` cli from `dotfiles` directory
+
 ```bash
 stow --dir=. --target=$HOME --verbose */
 ```
@@ -21,7 +23,7 @@ stow --delete --dir=. --target=$HOME --verbose */
 ## Simulate
 
 ```bash
-stow --dir=. --target=$HOME --verbose=5 --simulate */
+stow --dir=. --target=$HOME --verbose --simulate */
 ```
 
 ## Reference
