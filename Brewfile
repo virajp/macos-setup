@@ -27,8 +27,6 @@ brew "dive"
 brew "doctl"
 # Modern, maintained replacement for ls
 brew "eza"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -53,6 +51,8 @@ brew "mkcert"
 brew "nvm"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # Draw UML diagrams
 brew "plantuml"
 # Framework for managing multi-language pre-commit hooks
@@ -206,12 +206,16 @@ vscode "helixquar.randomeverything"
 vscode "jebbs.plantuml"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-containers"
 vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
 vscode "visualstudioexptteam.intellicode-api-usage-examples"
 vscode "visualstudioexptteam.vscodeintellicode"
 vscode "wix.vscode-import-cost"
