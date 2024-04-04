@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "redpanda-data/tap"
+# Build OCI images from APK packages directly without Dockerfile
+brew "apko"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -15,6 +17,8 @@ brew "ruby"
 brew "cocoapods"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Container Signing
+brew "cosign"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -27,6 +31,8 @@ brew "dive"
 brew "doctl"
 # Modern, maintained replacement for ls
 brew "eza"
+# Command-line tools for fly.io services
+brew "flyctl"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -45,6 +51,8 @@ brew "httping"
 brew "ipcalc"
 # Mac App Store command-line interface
 brew "mas"
+# Build APKs from source code
+brew "melange"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Manage multiple Node.js versions
@@ -59,6 +67,8 @@ brew "plantuml"
 brew "pre-commit"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Show ps output as a tree
+brew "pstree"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Powerful, clean, object-oriented scripting language
@@ -69,6 +79,8 @@ brew "skaffold"
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# CLI for generating a Software Bill of Materials from container images
+brew "syft"
 # Temporal CLI (tctl)
 brew "tctl"
 # Command-line interface for running and interacting with Temporal Server and UI
@@ -79,6 +91,8 @@ brew "terraform"
 brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Vulnerability scanner for container images, file systems, and Git repos
+brew "trivy"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
