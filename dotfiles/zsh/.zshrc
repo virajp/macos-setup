@@ -201,7 +201,7 @@ function bf() {
   echo "Upgrading all casks ..."
   # EXCLUDE=("google-cloud-sdk" "flutter")
   EXCLUDE=("some-fake-name")
-  LIST=($(brew list --cask -1 2> /dev/null))
+  LIST=($(brew outdated --cask --json=v2 | jq --raw-output '.casks[].name'))
   for package in $LIST; do
     process=true
     for exPackage in $EXCLUDE; do
