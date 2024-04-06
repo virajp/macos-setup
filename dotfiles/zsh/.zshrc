@@ -191,14 +191,14 @@ function bf() {
   brew update --auto-update --verbose --force
   
   string '='
-  echo "Upgrading brew formulaes ..."
+  echo "Upgrading outdated formulaes ..."
   OUTDATED=($(brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name'))
   for formulae in $OUTDATED; do
     brew upgrade --formulae --verbose --display-times $formulae
   done
 
   string '='
-  echo "Upgrading all casks ..."
+  echo "Upgrading outdated casks ..."
   # EXCLUDE=("google-cloud-sdk" "flutter")
   EXCLUDE=("some-fake-name")
   LIST=($(brew outdated --cask --json=v2 | jq --raw-output '.casks[].name'))
@@ -218,11 +218,11 @@ function bf() {
 
   string '='
   echo "Upgrading pip, setuptools & wheel ..."
-  type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages
+  type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
 
   string '='
   echo "Upgrading gem (requires sudo) ..."
-  type gem >/dev/null && sudo gem update
+  type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
 
   string '='
   echo "Autoremoving dangling formulaes ..."
