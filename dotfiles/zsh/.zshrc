@@ -188,11 +188,14 @@ function string(){
 function bf() {
   string '='
   echo "Updating brew ..."
-  brew update --verbose --force
+  brew update --auto-update --verbose --force
   
   string '='
   echo "Upgrading brew formulaes ..."
-  brew upgrade --formulae --verbose --display-times
+  OUTDATED=($(brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name'))
+  for formulae in $OUTDATED; do
+    brew upgrade --formulae --verbose --display-times $formulae
+  done
 
   string '='
   echo "Upgrading all casks ..."
