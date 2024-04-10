@@ -252,8 +252,8 @@ function osx-update() {
 # Update nodejs & tools
 function node-update() {
   echo "Updating nodejs ..."
-  nvm install node --reinstall-packages-from=node
-  echo "Updating npm ..."
+  nvm install "lts/*" -b --lts="lts/*" --latest-npm --reinstall-packages-from="lts/*"
+  echo "Update npm ..."
   nvm install-latest-npm
   echo "Updating global npm packages ..."
   npm update --global
