@@ -344,3 +344,7 @@ export PATH="$PATH:/Users/virajpatel/.local/bin"
 
 # GitHub Copilot CLI integration
 eval "$(gh copilot alias -- zsh)"
+
+# Setup zoxide
+eval "$(zoxide init zsh)"
+alias cd='z'

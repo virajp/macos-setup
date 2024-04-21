@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "oven-sh/bun"
 tap "redpanda-data/tap"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
@@ -43,12 +44,16 @@ brew "git"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Vulnerability scanner for container images and filesystems
+brew "grype"
 # Kubernetes package manager
 brew "helm"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Mac App Store command-line interface
 brew "mas"
 # Build APKs from source code
@@ -97,6 +102,12 @@ brew "trivy"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Real-time type-ahead completion for Zsh
@@ -107,6 +118,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # Redpanda CLI & toolbox
 brew "redpanda-data/tap/redpanda"
 # Password manager that keeps all passwords secure behind one password
@@ -202,6 +215,7 @@ mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
+mas "WireGuard", id: 1451685025
 mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
 vscode "britesnow.vscode-toggle-quotes"
@@ -214,6 +228,7 @@ vscode "github.codespaces"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
+vscode "golang.go"
 vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
 vscode "helixquar.randomeverything"
