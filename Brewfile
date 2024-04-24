@@ -1,25 +1,44 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "kcl-lang/tap"
 tap "oven-sh/bun"
 tap "redpanda-data/tap"
+# Library and utilities for processing GIFs
+brew "giflib"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# X.Org: Interface to the X Window System protocol
+brew "libxcb"
+# X.Org: Core X11 protocol client library
+brew "libx11"
 # Console Matrix
 brew "cmatrix"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
+# Diff your Docker containers
+brew "container-diff"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Container Signing
 brew "cosign"
+# HTTP/2 C Library
+brew "libnghttp2"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -32,10 +51,10 @@ brew "dive"
 brew "doctl"
 # Modern, maintained replacement for ls
 brew "eza"
-# Command-line tools for fly.io services
-brew "flyctl"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -44,6 +63,8 @@ brew "git"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Image manipulation
+brew "netpbm"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
 # Kubernetes package manager
@@ -76,6 +97,8 @@ brew "prettyping"
 brew "pstree"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Generic machine emulator and virtualizer
+brew "qemu"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.1"
 # Easy and Repeatable Kubernetes Development
@@ -102,8 +125,6 @@ brew "trivy"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Tools for the WireGuard secure network tunnel
-brew "wireguard-tools"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster
@@ -118,6 +139,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# KCL Command Line Interface
+brew "kcl-lang/tap/kcl"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Redpanda CLI & toolbox
@@ -150,8 +173,6 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-term-nerd-font"
-# Git client for simultaneous branches on top of your existing workflow
-cask "gitbutler"
 # Desktop client for GitHub repositories
 cask "github"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -218,34 +239,19 @@ mas "VN", id: 1494451650
 mas "WireGuard", id: 1451685025
 mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
-vscode "britesnow.vscode-toggle-quotes"
-vscode "dart-code.dart-code"
-vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
 vscode "foxundermoon.shell-format"
-vscode "github.codespaces"
-vscode "github.copilot"
-vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
-vscode "golang.go"
 vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
 vscode "helixquar.randomeverything"
-vscode "jebbs.plantuml"
+vscode "kcl.kcl-vscode-extension"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-vscode-remote.remote-containers"
 vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
-vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
 vscode "tamasfe.even-better-toml"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
 vscode "wix.vscode-import-cost"
-vscode "yzhang.markdown-all-in-one"
