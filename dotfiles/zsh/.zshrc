@@ -220,9 +220,9 @@ function bf() {
   echo "Upgrading pip, setuptools & wheel ..."
   type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
 
-  string '='
-  echo "Upgrading gem (requires sudo) ..."
-  type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
+  # string '='
+  # echo "Upgrading gem (requires sudo) ..."
+  # type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
 
   string '='
   echo "Autoremoving dangling formulaes ..."
