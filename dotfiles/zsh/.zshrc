@@ -158,6 +158,11 @@ function kubectx() {
   fi
 }
 
+# Function to update grype database
+function grypeupdate() {
+  grype db update
+}
+
 # Function to check whether gcloud cli is installed and then run the component upgrade command
 function gcloudupdate() {
   if type gcloud &>/dev/null; then
@@ -268,6 +273,8 @@ function updateall() {
   bf
   string '='
   node-update
+  string '='
+  grypeupdate
   string '='
   osx-download
   string '='
