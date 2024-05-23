@@ -289,9 +289,6 @@ function listStartupItems() {
   # sudo sfltool dumpbtm
 }
 
-# Temurin Java home
-export JAVA_HOME=$(/usr/libexec/java_home)
-
 # NVM configuration
 export NVM_DIR="$HOME/.nvm"
 # Load nvm
