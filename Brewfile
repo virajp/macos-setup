@@ -1,12 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "kcl-lang/tap"
-tap "oven-sh/bun"
-tap "redpanda-data/tap"
-# Library and utilities for processing GIFs
-brew "giflib"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # ARP scanning and fingerprinting tool
@@ -21,6 +14,8 @@ brew "bat"
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Core application library for C
+brew "glib"
 # X.Org: Interface to the X Window System protocol
 brew "libxcb"
 # X.Org: Core X11 protocol client library
@@ -39,6 +34,8 @@ brew "coreutils"
 brew "cosign"
 # HTTP/2 C Library
 brew "libnghttp2"
+# Open source suite of directory software
+brew "openldap"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -53,18 +50,24 @@ brew "doctl"
 brew "eza"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# JPEG image codec that aids compression and decompression
+brew "jpeg-turbo"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
+# Library and utilities for processing GIFs
+brew "giflib"
 # Distributed revision control system
 brew "git"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# Common error values for all GnuPG components
+brew "libgpg-error"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Image manipulation
-brew "netpbm"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
 # Kubernetes package manager
@@ -75,20 +78,24 @@ brew "httping"
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# General purpose TCP-IP emulator
+brew "libslirp"
 # Mac App Store command-line interface
 brew "mas"
 # Build APKs from source code
 brew "melange"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
+# Text-based UI library
+brew "ncurses"
 # Manage multiple Node.js versions
 brew "nvm"
+# Development kit for the Java programming language
+brew "openjdk"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Draw UML diagrams
-brew "plantuml"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Wrapper to colorize and simplify ping's output
@@ -97,8 +104,6 @@ brew "prettyping"
 brew "pstree"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Generic machine emulator and virtualizer
-brew "qemu"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.1"
 # Easy and Repeatable Kubernetes Development
@@ -109,18 +114,12 @@ brew "starship"
 brew "stow"
 # CLI for generating a Software Bill of Materials from container images
 brew "syft"
-# Temporal CLI (tctl)
-brew "tctl"
-# Command-line interface for running and interacting with Temporal Server and UI
-brew "temporal"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Vulnerability scanner for container images, file systems, and Git repos
-brew "trivy"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -139,12 +138,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# KCL Command Line Interface
-brew "kcl-lang/tap/kcl"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
-# Redpanda CLI & toolbox
-brew "redpanda-data/tap/redpanda"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -193,8 +186,6 @@ cask "sublime-text"
 cask "taskexplorer"
 # Disposable email client
 cask "tempbox"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -220,6 +211,7 @@ mas "Disk Doctor", id: 455970963
 mas "Disk Map", id: 715464874
 mas "Duplicate Detective", id: 686428787
 mas "Final Cut Pro", id: 424389933
+mas "HP Smart", id: 1474276998
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
@@ -230,13 +222,11 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
-mas "PDF Text Includer", id: 6443781970
-mas "Pocket", id: 568494494
+mas "PDF Text Include", id: 6443781970
 mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
-mas "WireGuard", id: 1451685025
 mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
 vscode "davidanson.vscode-markdownlint"
@@ -252,6 +242,7 @@ vscode "ms-azuretools.vscode-docker"
 vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
+vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
 vscode "tamasfe.even-better-toml"
 vscode "wix.vscode-import-cost"
