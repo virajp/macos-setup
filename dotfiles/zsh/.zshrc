@@ -39,8 +39,6 @@ alias tf='terraform'
 alias edit='subl'
 alias f='open -a Finder ./'
 alias reload='source ~/.zshrc'
-alias cdosf='cd $HOME/Projects/github.com/OpenServiceFramework'
-alias cd95='cd $HOME/Projects/github.com/95octane'
 alias hping='httping --ts -GBbXsSYaWZvv'
 alias dns='scutil --dns'
 alias findPid='lsof -t -c'
@@ -49,7 +47,6 @@ alias flushdns='dscacheutil -flushcache'
 alias ipInfo0='ipconfig getpacket en0'
 alias routes='netstat -nr -f inet'
 alias emulator="~/Library/Android/sdk/emulator/emulator"
-alias codeosf="code ~/Projects/github.com/OpenServiceFramework/OpenServiceFramework.code-workspace"
 alias ping='prettyping -i 2 --nolegend'
 alias cancelPrintJobs='sudo cancel -a -x'
 alias plist='plutil -p'
@@ -91,10 +88,6 @@ function code() {
     ARGS="."
   fi
   $HOMEBREW_PREFIX/bin/code $ARGS
-}
-
-function code95() {
-  code ~/Projects/github.com/95octane/95octane.code-workspace
 }
 
 function zipf() {
@@ -296,20 +289,6 @@ function listStartupItems() {
   # sudo sfltool dumpbtm
 }
 
-function dev-95octane() {
-  # Google Play Store (Firebase Distribution: prod-95octane-app)
-  export FIREBASE_APP_ID=""
-  # export FIREBASE_TOKEN="1//0gzAGhopzv39wCgYIARAAGBASNwF-L9IrwYhhYclMLX7Ec5GfNC7dRrUOx8Ls6vxQ2JhVrAb8MkW4mbOJCKW90_8_4OPJuzK-P94"
-  export GOOGLE_APPLICATION_CREDENTIALS=""
-}
-
-function prod-95octane() {
-  # Google Play Store (Firebase Distribution: prod-95octane-app)
-  export FIREBASE_APP_ID="1:698014237924:android:0232ae4cd416b3b25098f1"
-  # export FIREBASE_TOKEN="1//0gzAGhopzv39wCgYIARAAGBASNwF-L9IrwYhhYclMLX7Ec5GfNC7dRrUOx8Ls6vxQ2JhVrAb8MkW4mbOJCKW90_8_4OPJuzK-P94"
-  export GOOGLE_APPLICATION_CREDENTIALS="/Users/virajpatel/Library/Mobile Documents/com~apple~CloudDocs/95octane/firebase/prod-95octane-app/service-accounts/firebase-adminsdk.json"
-}
-
 # Temurin Java home
 export JAVA_HOME=$(/usr/libexec/java_home)
 
@@ -348,12 +327,27 @@ eval "$(direnv hook zsh)"
 # Initialize Starship
 eval "$(starship init zsh)"
 
-# Created by `pipx` on 2024-03-15 06:20:45
-export PATH="$PATH:/Users/virajpatel/.local/bin"
-
 # GitHub Copilot CLI integration
 eval "$(gh copilot alias -- zsh)"
 
 # Setup zoxide
 eval "$(zoxide init zsh)"
 alias cd='z'
+
+# 95octane related customisations
+alias cd95='cd $HOME/Projects/github.com/95octane'
+function code95() {
+  code ~/Projects/github.com/95octane/95octane.code-workspace
+}
+function dev-95octane() {
+  # Google Play Store (Firebase Distribution: prod-95octane-app)
+  export FIREBASE_APP_ID=""
+  # export FIREBASE_TOKEN="1//0gzAGhopzv39wCgYIARAAGBASNwF-L9IrwYhhYclMLX7Ec5GfNC7dRrUOx8Ls6vxQ2JhVrAb8MkW4mbOJCKW90_8_4OPJuzK-P94"
+  export GOOGLE_APPLICATION_CREDENTIALS=""
+}
+function prod-95octane() {
+  # Google Play Store (Firebase Distribution: prod-95octane-app)
+  export FIREBASE_APP_ID="1:698014237924:android:0232ae4cd416b3b25098f1"
+  # export FIREBASE_TOKEN="1//0gzAGhopzv39wCgYIARAAGBASNwF-L9IrwYhhYclMLX7Ec5GfNC7dRrUOx8Ls6vxQ2JhVrAb8MkW4mbOJCKW90_8_4OPJuzK-P94"
+  export GOOGLE_APPLICATION_CREDENTIALS="/Users/virajpatel/Library/Mobile Documents/com~apple~CloudDocs/95octane/firebase/prod-95octane-app/service-accounts/firebase-adminsdk.json"
+}
