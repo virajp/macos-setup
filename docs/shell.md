@@ -51,12 +51,6 @@ mkdir -p ~/.config/gh; ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDoc
 mkdir -p "$HOME/.docker" && yes | cp -v "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/docker-daemon.json" "$HOME/.docker/daemon.json"
 ```
 
-### Setup kubectl (k8s client / kubernetes client)
-
-```bash
-mkdir -p "$HOME/.kube" && ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/kube_config" "$HOME/.kube/config"
-```
-
 ### Setup datree
 
 ```bash
