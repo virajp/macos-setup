@@ -40,7 +40,7 @@ npm install --global typescript firebase-tools
 
 ## Flutter & tools
 
-> Refer to this document for Flutter installation: [Flutter](https://github.com/95octane/wiki/blob/main/engineering/sdlc/flutter.md)
+> Refer to this document for Flutter installation: [Flutter](https://github.com/95octane/wiki/blob/main/engineering/setup/flutter.md)
 
 ## Miscellaneous tools
 
