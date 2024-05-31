@@ -142,6 +142,8 @@ brew "zsh-syntax-highlighting"
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
 cask "alfred"
+# Command-line tools for building and debugging Android apps
+cask "android-commandlinetools"
 # Tools for building Android applications
 cask "android-studio"
 # Two-factor authentication software
@@ -229,6 +231,8 @@ mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
 mas "Wondershare Filmora 13", id: 1516822341
 mas "Xcode", id: 497799835
+vscode "dart-code.dart-code"
+vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
 vscode "foxundermoon.shell-format"
@@ -239,6 +243,7 @@ vscode "helixquar.randomeverything"
 vscode "kcl.kcl-vscode-extension"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"

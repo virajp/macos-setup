@@ -189,7 +189,8 @@ function bf() {
   string '='
   echo "Updating brew ..."
   brew update --auto-update --verbose --force
-  
+  brew outdated --formulae
+
   string '='
   echo "Upgrading outdated formulaes ..."
   OUTDATED=($(brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name'))
@@ -252,7 +253,7 @@ function osx-update() {
 # Update nodejs & tools
 function node-update() {
   echo "Updating nodejs ..."
-  nvm install "lts/*" -b --lts="lts/*" --latest-npm --reinstall-packages-from="lts/*"
+  nvm install "lts/*" -b --lts="lts/*" --latest-npm
   echo "Update npm ..."
   nvm install-latest-npm
   echo "Updating global npm packages ..."
