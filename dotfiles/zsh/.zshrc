@@ -60,7 +60,8 @@ alias k='kubectl'
 alias kgc='kubectl config current-context'
 alias kc-local='kubectl config use-context docker-desktop'
 alias tree='tree --du -hC'
-alias dck-run='docker run --rm -it'
+alias drun='docker run --rm -it'
+alias dlist='docker image list'
 
 # Customizations
 
