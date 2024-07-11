@@ -331,7 +331,13 @@ eval "$(gh copilot alias -- zsh)"
 
 # Setup zoxide
 eval "$(zoxide init zsh)"
-alias cd='z'
+function cd() {
+  z "$@"
+  if [[ -f "./bin/activate" ]] ; then
+      echo "Loading python venv ..."
+      source ./bin/activate
+  fi
+}
 
 # 95octane related customisations
 alias cd95='cd $HOME/Projects/github.com/95octane'
