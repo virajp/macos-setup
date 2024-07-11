@@ -1,15 +1,20 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-# Build OCI images from APK packages directly without Dockerfile
-brew "apko"
+tap "stacklok/tap"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Mozilla CA certificate store
+brew "ca-certificates"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Asynchronous DNS library
+brew "c-ares"
+# Perl compatible regular expressions library with a new API
+brew "pcre2"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
@@ -60,16 +65,28 @@ brew "gh"
 brew "giflib"
 # Distributed revision control system
 brew "git"
+# Low-level cryptographic library
+brew "nettle"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
 # Common error values for all GnuPG components
 brew "libgpg-error"
+# X.509 and CMS library
+brew "libksba"
+# Passphrase entry dialog utilizing the Assuan protocol
+brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Task is a task runner/build tool that aims to be simpler and easier to use
+brew "go-task"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
+# OpenType text shaping engine
+brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
 # Ping-like tool for HTTP requests
@@ -88,6 +105,8 @@ brew "melange"
 brew "mkcert"
 # Text-based UI library
 brew "ncurses"
+# Platform built on V8 to build network applications
+brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
@@ -102,12 +121,16 @@ brew "pre-commit"
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
+# Python version management
+brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.1"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
+# Scans and monitors projects for security vulnerabilities
+brew "snyk-cli"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -138,6 +161,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# frizbee is a tool you may throw a tag at and it comes back with a checksum.
+brew "stacklok/tap/frizbee"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -162,11 +187,8 @@ cask "firefox"
 cask "flutter"
 # Download manager with a torrent client
 cask "folx"
-# Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-term-nerd-font"
 # Desktop client for GitHub repositories
 cask "github"
@@ -182,6 +204,8 @@ cask "nordvpn"
 cask "notion"
 # Collection of apps available by subscription
 cask "setapp"
+# Team communication and collaboration software
+cask "slack"
 # Text editor for code, markup and prose
 cask "sublime-text"
 # Tool to explore all the running tasks (processes)
@@ -240,10 +264,12 @@ vscode "github.vscode-github-actions"
 vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
 vscode "helixquar.randomeverything"
-vscode "kcl.kcl-vscode-extension"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
 vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
