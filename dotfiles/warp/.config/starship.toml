@@ -28,7 +28,6 @@ $python\
 [\uE0B2](bg:color_blue fg:color_aqua)\
 $docker_context\
 [\uE0B2](bg:color_aqua fg:color_red)\
-$gcloud\
 [\uE0B2](bg:color_red fg:color_grey)\
 $time\
 [\uE0B4](color_grey)\
@@ -37,7 +36,7 @@ $time\
 palette = 'viraj_dark'
 continuation_prompt = ' '
 command_timeout = 500
-add_newline = false
+add_newline = true
 
 [palettes.viraj_dark]
 color_white = '#fbf1c7'
