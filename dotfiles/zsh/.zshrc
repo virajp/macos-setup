@@ -333,9 +333,9 @@ eval "$(gh copilot alias -- zsh)"
 eval "$(zoxide init zsh)"
 function cd() {
   z "$@"
-  if [[ -f "./bin/activate" ]] ; then
+  if [[ -f "./pyvenv/bin/activate" ]] ; then
       echo "Loading python venv ..."
-      source ./bin/activate
+      source ./pyvenv/bin/activate
   fi
 }
 
