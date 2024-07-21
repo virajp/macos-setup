@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "stacklok/tap"
+# Build OCI images from APK packages directly without Dockerfile
+brew "apko"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -17,6 +19,8 @@ brew "c-ares"
 brew "pcre2"
 # Command-line interface for SQLite
 brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Core application library for C
@@ -31,8 +35,6 @@ brew "cmatrix"
 brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-# Diff your Docker containers
-brew "container-diff"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Container Signing
@@ -45,6 +47,8 @@ brew "openldap"
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Diff for Docker and OCI container images
+brew "diffoci"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Tool for exploring each layer in a docker image
@@ -254,7 +258,6 @@ mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
 mas "Wondershare Filmora 13", id: 1516822341
-mas "Xcode", id: 497799835
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
