@@ -10,6 +10,8 @@ $git_status\
 $directory\
 [ ](fg:color_yellow)\
 $character\
+$line_break\
+[ ](bold green)\
 """
 
 right_format="""
@@ -163,6 +165,7 @@ style = "bg:color_white fg:color_aqua"
 format = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
 
 [gcloud]
+disabled = true
 symbol = "☁️"
 # symbol = "🇬️"
 style = "bg:color_red"

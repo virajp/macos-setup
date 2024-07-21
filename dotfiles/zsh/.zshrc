@@ -356,3 +356,7 @@ function prod-95octane() {
   # export FIREBASE_TOKEN="1//0gzAGhopzv39wCgYIARAAGBASNwF-L9IrwYhhYclMLX7Ec5GfNC7dRrUOx8Ls6vxQ2JhVrAb8MkW4mbOJCKW90_8_4OPJuzK-P94"
   export GOOGLE_APPLICATION_CREDENTIALS="/Users/virajpatel/Library/Mobile Documents/com~apple~CloudDocs/95octane/firebase/prod-95octane-app/service-accounts/firebase-adminsdk.json"
 }
+
+# THIS SHOULD BE THE LAST LINE TO WORK
+# Prompt (multi-line)
+# PROMPT="${PROMPT}"$'\n '
