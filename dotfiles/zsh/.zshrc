@@ -60,8 +60,10 @@ alias k='kubectl'
 alias kgc='kubectl config current-context'
 alias kc-local='kubectl config use-context docker-desktop'
 alias tree='tree --du -hC'
-alias drun='docker run --rm -it'
+alias dpull='docker image pull --platform="linux/amd64"'
+alias drun='docker run --platform="linux/amd64" --rm -it'
 alias dlist='docker image list'
+alias dclean='docker system prune --all --volumes --force'
 
 # Customizations
 
