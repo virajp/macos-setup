@@ -50,20 +50,26 @@ alias emulator="~/Library/Android/sdk/emulator/emulator"
 alias ping='prettyping -i 2 --nolegend'
 alias cancelPrintJobs='sudo cancel -a -x'
 alias plist='plutil -p'
-alias dclean='docker system prune --force --volumes'
 alias f="flutter"
+alias tree='tree --du -hC'
+
+# Git related aliases
 alias gpull='git pull --all --verbose --progress'
 alias gs='git status -sb'
 alias gc='git commit -a -m'
 alias gp='git push --all --atomic --verbose'
+
+# Docker/Podman related aliases
+alias docker='podman'
+alias dpull='docker image pull --platform="linux/amd64"'
+alias drun='docker run --platform="linux/amd64" --rm --interactive --tty --tz="Asia/Calcutta"'
+alias dlist='docker image list'
+alias dclean='docker system prune --all --volumes --force'
+
+# Kubernetes (k8s) related aliases
 alias k='kubectl'
 alias kgc='kubectl config current-context'
 alias kc-local='kubectl config use-context docker-desktop'
-alias tree='tree --du -hC'
-alias dpull='docker image pull --platform="linux/amd64"'
-alias drun='docker run --platform="linux/amd64" --rm -it'
-alias dlist='docker image list'
-alias dclean='docker system prune --all --volumes --force'
 
 # Customizations
 
