@@ -2,22 +2,13 @@
 
 format = """
 [](color_orange)\
-$os\
+$os$time\
 [](fg:color_orange bg:color_aqua)\
 $git_branch\
 $git_status\
 [](bg:color_yellow fg:color_aqua)\
 $directory\
-[ ](fg:color_yellow)\
-$character\
-$line_break\
-[ ](bold green)\
-"""
-
-right_format="""
-[\uE0B2](fg:color_red)\
-$cmd_duration\
-[\uE0B2](bg:color_red fg:color_blue)\
+[](fg:color_yellow bg:color_blue)\
 $c\
 $rust\
 $golang\
@@ -27,12 +18,18 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[\uE0B2](bg:color_blue fg:color_aqua)\
-$docker_context\
-[\uE0B2](bg:color_aqua fg:color_red)\
-[\uE0B2](bg:color_red fg:color_grey)\
-$time\
-[\uE0B4](color_grey)\
+[](bg:color_aqua fg:color_blue)\
+$kubernetes\
+[](bg:color_red fg:color_aqua)\
+$cmd_duration\
+[](fg:color_red)\
+
+$character\
+$line_break\
+[ ](bold green)\
+"""
+
+right_format="""
 """
 
 palette = 'viraj_dark'
@@ -62,7 +59,7 @@ Ubuntu = "󰕈"
 SUSE = ""
 Raspbian = "󰐿"
 Mint = "󰣭"
-Macos = " 󰀵 "
+Macos = "󰀵"
 Manjaro = ""
 Linux = "󰌽"
 Gentoo = "󰣨"
@@ -160,9 +157,17 @@ style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
 
 [docker_context]
+disabled = true
 symbol = ""
 style = "bg:color_white fg:color_aqua"
 format = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+
+[kubernetes]
+disabled = false
+symbol = "☸"
+style = "bg:color_white fg:color_aqua"
+format = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+# namespaces = ["default", "kube-system", "kube-public", "kube-node-lease"]
 
 [gcloud]
 disabled = true
@@ -174,17 +179,19 @@ format = '[[ $symbol $project ](fg:color_white bg:color_red)]($style)'
 
 [time]
 disabled = false
-time_format = "%R"
-style = "bg:color_grey"
-format = '[[  $time ](fg:color_white bg:color_grey)]($style)'
+# time_format = "%a, %e %b, %l:%M%P"
+time_format = "%l:%M%P"
+use_12hr = true
+style = "bg:color_orange"
+format = '[[ $time ](fg:color_white bg:color_orange)]($style)'
 
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[✓ ](bold fg:color_green)'
-error_symbol = '[✗ ](bold fg:color_red)'
+success_symbol = '[ ✓ ](bold fg:color_green)'
+error_symbol = '[ ✗ ](bold fg:color_red)'
 vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
