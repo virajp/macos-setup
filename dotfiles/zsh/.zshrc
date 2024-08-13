@@ -38,7 +38,7 @@ alias cdgh='cd "$HOME"/Projects/github.com'
 alias tf='terraform'
 alias edit='subl'
 alias f='open -a Finder ./'
-alias reload='source ~/.zshrc'
+alias reload='source ~/.zprofile; source ~/.zshrc'
 alias hping='httping --ts -GBbXsSYaWZvv'
 alias dns='scutil --dns'
 alias findPid='lsof -t -c'
@@ -60,7 +60,7 @@ alias gc='git commit -a -m'
 alias gp='git push --all --atomic --verbose'
 
 # Docker/Podman related aliases
-alias docker='podman'
+# alias docker='podman'
 alias dpull='docker image pull --platform="linux/amd64"'
 alias drun='docker run --platform="linux/amd64" --rm --interactive --tty --tz="Asia/Calcutta"'
 alias dlist='docker image list'
@@ -368,3 +368,4 @@ function prod-95octane() {
 # THIS SHOULD BE THE LAST LINE TO WORK
 # Prompt (multi-line)
 # PROMPT="${PROMPT}"$'\n '
+
