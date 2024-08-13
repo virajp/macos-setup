@@ -1,3 +1,4 @@
+tap "dapr/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "stacklok/tap"
@@ -39,10 +40,10 @@ brew "cocoapods"
 brew "coreutils"
 # Container Signing
 brew "cosign"
+# Tool for interacting with remote images and registries
+brew "crane"
 # HTTP/2 C Library
 brew "libnghttp2"
-# Open source suite of directory software
-brew "openldap"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -141,6 +142,8 @@ brew "starship"
 brew "stow"
 # CLI for generating a Software Bill of Materials from container images
 brew "syft"
+# Secrets management tool for developers
+brew "teller"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Static analysis security scanner for your terraform code
@@ -165,6 +168,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Client for Dapr.
+brew "dapr/tap/dapr-cli"
 # frizbee is a tool you may throw a tag at and it comes back with a checksum.
 brew "stacklok/tap/frizbee"
 # Password manager that keeps all passwords secure behind one password
@@ -183,6 +188,8 @@ cask "brave-browser"
 cask "cloudflare-warp"
 # App to build and share containerised applications and microservices
 cask "docker"
+# Developer platform
+cask "dotnet-sdk"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # Web browser
@@ -200,6 +207,8 @@ cask "github"
 cask "google-cloud-sdk"
 # Open-source video transcoder
 cask "handbrake"
+# End-to-end encryption software
+cask "keybase"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix"
 # VPN client for secure internet access and private browsing
@@ -263,20 +272,23 @@ vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
 vscode "foxundermoon.shell-format"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
 vscode "helixquar.randomeverything"
 vscode "mhutchie.git-graph"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-dotnettools.csdevkit"
+vscode "ms-dotnettools.csharp"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
-vscode "mtxr.sqltools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
-vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
 vscode "tamasfe.even-better-toml"
 vscode "wix.vscode-import-cost"
