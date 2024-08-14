@@ -168,7 +168,8 @@ function grypeupdate() {
 
 # Function to check whether gcloud cli is installed and then run the component upgrade command
 function gcloudupdate() {
-  if type gcloud &>/dev/null; then
+  if which gcloud &>/dev/null; then
+    echo -n "Updating gcloud components ... "
     gcloud components update --verbosity=info --quiet
   fi
 }
@@ -190,7 +191,8 @@ function check-touch-id() {
 }
 
 function string(){
-	for i in {1..$COLUMNS}; do echo -n "$1"; done
+	for i in {2..$COLUMNS}; do echo -n "$1"; done
+  echo ""
 }
 
 # Function to upgrade brew packages
@@ -227,20 +229,20 @@ function bf() {
   done
 
   string '='
-  echo "Upgrading pip, setuptools & wheel ..."
-  type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
-
-  # string '='
-  # echo "Upgrading gem (requires sudo) ..."
-  # type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
-
-  string '='
   echo "Autoremoving dangling formulaes ..."
   brew autoremove --verbose
 
   string '='
   echo "Cleaning up ..."
   brew cleanup --prune=all
+
+  string '='
+  echo "Upgrading pip, setuptools & wheel ..."
+  type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
+
+  # string '='
+  # echo "Upgrading gem (requires sudo) ..."
+  # type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
 
 }
 
@@ -275,6 +277,8 @@ function node-update() {
 function updateall() {
   check-touch-id || return 1
   bf
+  string '='
+  gcloudupdate()
   string '='
   node-update
   string '='
