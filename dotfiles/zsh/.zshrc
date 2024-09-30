@@ -291,6 +291,16 @@ function updateall() {
   string '='
 }
 
+# Function to clean Telegram cache
+function cleanupTelegram() {
+  echo "Quitting Telegram ..."
+  osascript -e 'quit app "Telegram"'
+  echo "Cleaning Telegram cache ..."
+  find "/Users/virajpatel/Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/appstore" -type f -name "telegram-*" -size +1024k -delete
+  echo "Starting Telegram ..."
+  open -a Telegram
+}
+
 function listStartupItems() {
   echo "LaunchAgents @ /Library/LaunchAgents ..."
   ls -1 /Library/LaunchAgents
