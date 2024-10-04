@@ -1,9 +1,12 @@
 tap "dapr/tap"
+tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "stacklok/tap"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
+# Portable library for network traffic capture
+brew "libpcap"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -16,8 +19,14 @@ brew "openssl@3"
 brew "bat"
 # Asynchronous DNS library
 brew "c-ares"
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
+# Library for command-line editing
+brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # General-purpose data compression with high compression ratio
@@ -30,6 +39,8 @@ brew "glib"
 brew "libxcb"
 # X.Org: Core X11 protocol client library
 brew "libx11"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # Console Matrix
 brew "cmatrix"
 # Powerful, clean, object-oriented scripting language
@@ -44,8 +55,12 @@ brew "cosign"
 brew "crane"
 # HTTP/2 C Library
 brew "libnghttp2"
+# Extremely Fast Compression algorithm
+brew "lz4"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Modern diagram scripting language that turns text to diagrams
+brew "d2"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -62,6 +77,8 @@ brew "eza"
 brew "fzf"
 # JPEG image codec that aids compression and decompression
 brew "jpeg-turbo"
+# TIFF library and utilities
+brew "libtiff"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -102,6 +119,8 @@ brew "ipcalc"
 brew "jq"
 # General purpose TCP-IP emulator
 brew "libslirp"
+# Multi-platform support library with a focus on asynchronous I/O
+brew "libuv"
 # Mac App Store command-line interface
 brew "mas"
 # Build APKs from source code
@@ -170,6 +189,8 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Client for Dapr.
 brew "dapr/tap/dapr-cli"
+# HCP CLI
+brew "hashicorp/tap/hcp"
 # frizbee is a tool you may throw a tag at and it comes back with a checksum.
 brew "stacklok/tap/frizbee"
 # Password manager that keeps all passwords secure behind one password
@@ -184,6 +205,8 @@ cask "android-studio"
 cask "authy"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Design tool
+cask "canva"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
 # App to build and share containerised applications and microservices
@@ -209,16 +232,20 @@ cask "google-cloud-sdk"
 cask "handbrake"
 # End-to-end encryption software
 cask "keybase"
-# Set of tools to create, alter and inspect Matroska files (MKV)
-cask "mkvtoolnix"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Collection of apps available by subscription
 cask "setapp"
+# Digital design and prototyping platform
+cask "sketch"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
+# Mux and tag mp4 files
+cask "subler"
 # Text editor for code, markup and prose
 cask "sublime-text"
 # Tool to explore all the running tasks (processes)
@@ -235,10 +262,11 @@ cask "warp"
 cask "whatsapp"
 # Image viewer and file browser
 cask "xee"
+# Multiplayer code editor
+cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom", args: { appdir: "~/Applications" }
 mas "1Password for Safari", id: 1569813296
-mas "Affinity Designer 2", id: 1616831348
 mas "Affinity Photo 2", id: 1616822987
 mas "Apple Configurator", id: 1037126344
 mas "Battery Health 2", id: 1120214373
@@ -266,11 +294,12 @@ mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
-mas "Wondershare Filmora 13", id: 1516822341
+mas "Xcode", id: 497799835
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
+vscode "felixangelov.bloc"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
@@ -287,8 +316,10 @@ vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-vscode.makefile-tools"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "tamasfe.even-better-toml"
+vscode "terrastruct.d2"
 vscode "wix.vscode-import-cost"

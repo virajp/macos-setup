@@ -78,6 +78,11 @@ alias kc-local='kubectl config use-context docker-desktop'
 
 # Functions
 
+function string(){
+	for i in {2..$COLUMNS}; do echo -n "$1"; done
+  echo ""
+}
+
 function cleanupDS() {
   local ARGS=$@
   if [ -z "$ARGS" ]; then
@@ -162,16 +167,16 @@ function kubectx() {
 }
 
 # Function to update grype database
-function grypeupdate() {
+function grype-update() {
+  string '='
   grype db update
 }
 
 # Function to check whether gcloud cli is installed and then run the component upgrade command
-function gcloudupdate() {
-  if which gcloud &>/dev/null; then
-    echo -n "Updating gcloud components ... "
-    gcloud components update --verbosity=info --quiet
-  fi
+function gcloud-upgrade() {
+  string '='
+  echo -n "Updating gcloud components ... "
+  type gcloud >/dev/null && gcloud components update --verbosity=info --quiet
 }
 
 # Function to check whether touch-id is setup for sudo 
@@ -188,11 +193,6 @@ function check-touch-id() {
     echo -e "'auth       sufficient     pam_tid.so'\e[0m"
     return 1
   fi
-}
-
-function string(){
-	for i in {2..$COLUMNS}; do echo -n "$1"; done
-  echo ""
 }
 
 # Function to upgrade brew packages
@@ -236,33 +236,45 @@ function bf() {
   echo "Cleaning up ..."
   brew cleanup --prune=all
 
+}
+
+function pip-upgrade() {
   string '='
   echo "Upgrading pip, setuptools & wheel ..."
   type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
+}
 
-  # string '='
-  # echo "Upgrading gem (requires sudo) ..."
-  # type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
+function gem-upgrade() {
+  string '='
+  echo "Upgrading gem for cocoapods (requires sudo) ..."
+  type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
+}
 
+function flutter-upgrade() {
+  string '='
+  echo "Upgrading Flutter ..."
+  type flutter >/dev/null && flutter upgrade
 }
 
 # macOS & AppStore downloads
 function osx-download() {
+  string '='
   echo "Checking for macOS updates ..."
   softwareupdate --download --all --verbose
-  string '='
+  string '-'
   echo "Checking for update from AppStore ..."
   mas outdated
 }
 
 # macOS update
-function osx-update() {
+function osx-upgrade() {
   echo "Checking for macOS updates ..."
   sudo softwareupdate --verbose --install --all --restart
 }
 
 # Update nodejs & tools
-function node-update() {
+function node-upgrade() {
+  string '='
   echo "Updating nodejs ..."
   nvm install "lts/*" -b --lts="lts/*" --latest-npm
   echo "Update npm ..."
@@ -277,18 +289,20 @@ function node-update() {
 function updateall() {
   check-touch-id || return 1
   bf
-  string '='
-  gcloudupdate()
-  string '='
-  node-update
-  string '='
-  grypeupdate
-  string '='
+  gcloud-upgrade
+  node-upgrade
+  grype-update
   osx-download
+  cleanupDS-Projects
+  pip-upgrade
+  gem-upgrade
+  flutter-upgrade
+}
+
+function cleanupDS-Projects() {
   string '='
   echo "Cleaning up .DS_Store files ..."
   cleanupDS ~/Projects
-  string '='
 }
 
 # Function to clean Telegram cache
