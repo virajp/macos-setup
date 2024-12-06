@@ -47,6 +47,7 @@ alias flushdns='dscacheutil -flushcache'
 alias ipInfo0='ipconfig getpacket en0'
 alias routes='netstat -nr -f inet'
 alias emulator="/opt/homebrew/share/android-commandlinetools/emulator/emulator"
+alias adb='/opt/homebrew/share/android-commandlinetools/platform-tools/adb'
 alias ping='prettyping -i 2 --nolegend'
 alias cancelPrintJobs='sudo cancel -a -x'
 alias plist='plutil -p'
