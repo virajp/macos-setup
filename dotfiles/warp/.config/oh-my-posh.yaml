@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+# Reference: https://www.nerdfonts.com/cheat-sheet
+
+version: 3
+
+final_space: true
+enable_cursor_positioning: true
+
+upgrade:
+  source: cdn
+  interval: 24h
+  auto: true
+  notice: true
+
+palette:
+  white: "#ffffff"
+  grey: "#3C3836"
+  bg3: "#665C54"
+  blue: "#458588"
+  aqua: "#689d6a"
+  green: "#98971A"
+  orange: "#D65D0E"
+  purple: "#C678DD"
+  red: "#CC241D"
+  yellow: "#D79921"
+
+blocks:
+  - type: prompt
+    alignment: left
+    newline: true
+    # leading_diamond: 
+    # trailing_diamond: 
+
+    segments:
+      - type: time
+        template: " \uf43a {{ .Format }} "
+        style: diamond
+        trailing_diamond: 
+        background: p:orange
+        foreground: p:white
+        properties:
+          time_format: "15:04:05"
+
+      - type: git
+        style: diamond
+        trailing_diamond: 
+        background: p:aqua
+        foreground: p:white
+
+      - type: path
+        template: " {{ .Path }} "
+        properties:
+          style: full
+          home_icon: "  "
+          folder_separator_icon: "  "
+          mapped_locations_enabled: true
+          mapped_locations:
+            ~/Projects/github.com: 
+        style: diamond
+        trailing_diamond: 
+        background: p:purple
+        foreground: p:white
+
+      - type: project
+        template: " {{ .Version }} "
+        style: diamond
+        trailing_diamond: 
+        background: p:blue
+        foreground: p:white
+
+      - type: executiontime
+        template: " {{ .FormattedMs }} "
+        properties:
+          threshold: 500
+          style: round
+          always_enabled: true
+        style: diamond
+        trailing_diamond: 
+        background: p:grey
+        foreground: p:white
+
+      - type: status
+        template: " {{ if eq .Code 0 }}\uf00c{{ else }}\uf071{{ end }} "
+        foreground: p:white
+        background: p:green
+        background_templates:
+          - "{{ if .Error }}#e91e63{{ end }}"
+        style: diamond
+        trailing_diamond: 
+        properties:
+          always_enabled: true
+
+  - type: prompt
+    alignment: left
+    newline: true
+
+    segments:
+      - type: text
+        style: plain
+        background: transparent
+        foreground: p:white
+        template: "\uf460"

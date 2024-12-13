@@ -38,7 +38,7 @@ alias cdgh='cd "$HOME"/Projects/github.com'
 alias tf='terraform'
 alias edit='subl'
 alias f='open -a Finder ./'
-alias reload='source ~/.zshrc'
+alias reload='exec zsh'
 alias hping='httping --ts -GBbXsSYaWZvv'
 alias dns='scutil --dns'
 alias findPid='lsof -t -c'
@@ -360,8 +360,13 @@ load-nvmrc
 # Initialize direnv
 eval "$(direnv hook zsh)"
 
-# Initialize Starship
-eval "$(starship init zsh)"
+# # Initialize Starship
+# eval "$(starship init zsh)"
+
+# Initialize oh-my-posh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.yaml)"
+fi
 
 # GitHub Copilot CLI integration
 eval "$(gh copilot alias -- zsh)"
