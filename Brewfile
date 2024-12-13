@@ -1,7 +1,8 @@
-tap "dapr/tap"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "jandedobbeleer/oh-my-posh"
+tap "nats-io/nats-tools"
 tap "stacklok/tap"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
@@ -25,20 +26,24 @@ brew "libpng"
 brew "freetype"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
+# Core utilities for Python packages
+brew "python-packaging"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Core application library for C
 brew "glib"
 # X.Org: Interface to the X Window System protocol
 brew "libxcb"
 # X.Org: Core X11 protocol client library
 brew "libx11"
+# Low-level library for pixel manipulation
+brew "pixman"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Console Matrix
@@ -61,6 +66,8 @@ brew "lz4"
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -71,6 +78,8 @@ brew "direnv"
 brew "dive"
 # Command-line tool for DigitalOcean
 brew "doctl"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
 # Modern, maintained replacement for ls
 brew "eza"
 # Command-line fuzzy finder written in Go
@@ -107,16 +116,22 @@ brew "go"
 brew "go-task"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # OpenType text shaping engine
 brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
 # Ping-like tool for HTTP requests
 brew "httping"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@75"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
 # General purpose TCP-IP emulator
 brew "libslirp"
 # Multi-platform support library with a focus on asynchronous I/O
@@ -134,11 +149,13 @@ brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
-brew "openjdk"
+brew "openjdk@21"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Wrapper to colorize and simplify ping's output
@@ -187,10 +204,12 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Client for Dapr.
-brew "dapr/tap/dapr-cli"
 # HCP CLI
 brew "hashicorp/tap/hcp"
+# Prompt theme engine for any shell
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+# NATS utility
+brew "nats-io/nats-tools/nats"
 # frizbee is a tool you may throw a tag at and it comes back with a checksum.
 brew "stacklok/tap/frizbee"
 # Password manager that keeps all passwords secure behind one password
@@ -209,6 +228,8 @@ cask "brave-browser"
 cask "canva"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Developer platform
@@ -221,6 +242,7 @@ cask "firefox"
 cask "flutter"
 # Download manager with a torrent client
 cask "folx"
+cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
@@ -230,6 +252,8 @@ cask "github"
 cask "google-cloud-sdk"
 # Open-source video transcoder
 cask "handbrake"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # End-to-end encryption software
 cask "keybase"
 # VPN client for secure internet access and private browsing
@@ -267,6 +291,7 @@ cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom", args: { appdir: "~/Applications" }
 mas "1Password for Safari", id: 1569813296
+mas "Affinity Designer 2", id: 1616831348
 mas "Affinity Photo 2", id: 1616822987
 mas "Apple Configurator", id: 1037126344
 mas "Battery Health 2", id: 1120214373
@@ -291,6 +316,7 @@ mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
 mas "PDF Text Include", id: 6443781970
 mas "Telegram", id: 747648890
+mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
@@ -298,28 +324,10 @@ mas "Xcode", id: 497799835
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
-vscode "dbaeumer.vscode-eslint"
-vscode "felixangelov.bloc"
 vscode "foxundermoon.shell-format"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "github.vscode-github-actions"
-vscode "googlecloudtools.cloudcode"
 vscode "gruntfuggly.todo-tree"
-vscode "helixquar.randomeverything"
-vscode "mhutchie.git-graph"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-dotnettools.csdevkit"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
-vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-vscode.makefile-tools"
+vscode "localizely.flutter-intl"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
-vscode "redhat.vscode-yaml"
-vscode "tamasfe.even-better-toml"
-vscode "terrastruct.d2"
-vscode "wix.vscode-import-cost"
+vscode "skellock.just"
+vscode "sourcegraph.cody-ai"
