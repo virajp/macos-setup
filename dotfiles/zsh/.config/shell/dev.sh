@@ -14,8 +14,8 @@ export HELM_EXPERIMENTAL_OCI=1
 export NODE_ENV="development"
 
 # Java environment variables
-export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk@21"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openjdk@21/include"
+export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openjdk/include"
 
 # Android SDK Path
 export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
