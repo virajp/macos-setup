@@ -1,3 +1,4 @@
+tap "encoredev/tap"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -48,8 +49,6 @@ brew "python@3.12"
 brew "cairo"
 # Console Matrix
 brew "cmatrix"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # GNU File, Shell, and Text utilities
@@ -149,15 +148,13 @@ brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
-brew "openjdk@21"
+brew "openjdk"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Show ps output as a tree
@@ -206,10 +203,12 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# The static analysis-powered Go framework for building backend applications
+brew "encoredev/tap/encore"
 # HCP CLI
 brew "hashicorp/tap/hcp"
 # Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+brew "jandedobbeleer/oh-my-posh/oh-my-posh", link: false
 # NATS utility
 brew "nats-io/nats-tools/nats"
 # frizbee is a tool you may throw a tag at and it comes back with a checksum.
@@ -232,6 +231,8 @@ cask "canva"
 cask "cloudflare-warp"
 # Write, edit, and chat about your code with AI
 cask "cursor"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Developer platform
@@ -248,6 +249,8 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -323,13 +326,17 @@ mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
+vscode "astro-build.astro-vscode"
+vscode "bradlc.vscode-tailwindcss"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
+vscode "denoland.vscode-deno"
 vscode "foxundermoon.shell-format"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
 vscode "localizely.flutter-intl"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "skellock.just"
-vscode "sourcegraph.cody-ai"
