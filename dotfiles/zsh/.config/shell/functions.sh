@@ -23,7 +23,7 @@ function code() {
   if [ -z "$ARGS" ]; then
     ARGS="."
   fi
-  $HOMEBREW_PREFIX/bin/code $ARGS
+  $HOMEBREW_PREFIX/bin/cursor $ARGS
 }
 
 function zipf() {
