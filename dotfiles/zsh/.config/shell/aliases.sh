@@ -25,6 +25,7 @@ alias cancelPrintJobs='sudo cancel -a -x'
 alias plist='plutil -p'
 alias f="flutter"
 alias tree='tree --du -hC'
+alias cat='bat'
 
 # Git related aliases
 alias gpull='git pull --all --verbose --progress'
