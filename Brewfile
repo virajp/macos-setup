@@ -17,6 +17,8 @@ brew "bash"
 brew "ca-certificates"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Asynchronous DNS library
@@ -65,8 +67,6 @@ brew "lz4"
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -75,10 +75,6 @@ brew "diffoci"
 brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
-# Command-line tool for DigitalOcean
-brew "doctl"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
 # Modern, maintained replacement for ls
 brew "eza"
 # Command-line fuzzy finder written in Go
@@ -143,8 +139,6 @@ brew "melange"
 brew "mkcert"
 # Text-based UI library
 brew "ncurses"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
@@ -167,10 +161,6 @@ brew "python@3.11"
 brew "ruby@3.1"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
-# Scans and monitors projects for security vulnerabilities
-brew "snyk-cli"
-# Cross-shell prompt for astronauts
-brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # CLI for generating a Software Bill of Materials from container images
@@ -331,7 +321,7 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
-vscode "denoland.vscode-deno"
+vscode "dbaeumer.vscode-eslint"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
@@ -339,4 +329,5 @@ vscode "gruntfuggly.todo-tree"
 vscode "localizely.flutter-intl"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
+vscode "rvest.vs-code-prettier-eslint"
 vscode "skellock.just"
