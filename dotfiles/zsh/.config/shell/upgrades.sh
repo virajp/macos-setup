@@ -108,7 +108,7 @@ function osx-upgrade() {
 function node-upgrade() {
   string '='
   echo "Updating nodejs ..."
-  nvm install "lts/*" -b --lts="lts/*" --latest-npm
+  nvm install "node" -b --latest-npm
   echo "Update npm ..."
   nvm install-latest-npm
   echo "Updating global npm packages ..."
