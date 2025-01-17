@@ -34,14 +34,14 @@ function bf() {
   brew update --auto-update --verbose --force
   brew outdated --formulae
 
-  string '='
+  string '--'
   echo "Upgrading outdated formulaes ..."
   OUTDATED=($(brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name'))
   for formulae in $OUTDATED; do
     brew upgrade --formulae --verbose --display-times $formulae
   done
 
-  string '='
+  string '--'
   echo "Upgrading outdated casks ..."
   # EXCLUDE=("google-cloud-sdk" "flutter")
   EXCLUDE=("some-fake-name")
@@ -60,11 +60,11 @@ function bf() {
     fi
   done
 
-  string '='
+  string '--'
   echo "Autoremoving dangling formulaes ..."
   brew autoremove --verbose
 
-  string '='
+  string '--'
   echo "Cleaning up ..."
   brew cleanup --prune=all
 
@@ -93,13 +93,21 @@ function osx-download() {
   string '='
   echo "Checking for macOS updates ..."
   softwareupdate --download --all --verbose
-  string '-'
+}
+
+# macOS update list
+function osx-list() {
+  string '='
+  echo "Checking for macOS updates ..."
+  softwareupdate --list
+  string '--'
   echo "Checking for update from AppStore ..."
   mas outdated
 }
 
 # macOS update
 function osx-upgrade() {
+  string '='
   echo "Checking for macOS updates ..."
   sudo softwareupdate --verbose --install --all --restart
 }
@@ -108,11 +116,15 @@ function osx-upgrade() {
 function node-upgrade() {
   string '='
   echo "Updating nodejs ..."
-  nvm install "node" -b --latest-npm
+  nvm install "node" -b
   echo "Update npm ..."
   nvm install-latest-npm
+  string '--'
+  echo "Install global npm packages ..."
+  npm install -g firebase-tools@latest prettier@latest
   echo "Updating global npm packages ..."
   npm update --global
+  string '--'
   echo "Removing old version of nodejs ..."
   nvm ls --no-colors | tr -d ' *' | egrep -o '^v[0-9.]+' | xargs -n 1 -I {} zsh -c '. ~/.zshrc && nvm uninstall "{}"'
 }
@@ -124,9 +136,9 @@ function updateall() {
   gcloud-upgrade
   node-upgrade
   grype-update
-  osx-download
   cleanupDS-Projects
   pip-upgrade
   gem-upgrade
   flutter-upgrade
+  osx-list
 }

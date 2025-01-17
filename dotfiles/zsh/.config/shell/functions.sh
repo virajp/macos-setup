@@ -1,7 +1,8 @@
 # Functions
 
 function string(){
-	for i in {2..$COLUMNS}; do echo -n "$1"; done
+  local LENGTH=$(($COLUMNS/${#1}))
+	for i in {2..$LENGTH}; do echo -en "$1"; done
   echo ""
 }
 
