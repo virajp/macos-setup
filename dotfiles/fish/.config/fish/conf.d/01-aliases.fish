@@ -45,4 +45,4 @@ alias kgc='kubectl config current-context'
 alias kc-local='kubectl config use-context docker-desktop'
 
 # 95octane related customisations
-alias cd95 cd $HOME/Projects/github.com/95octane
+alias cd95='cd $HOME/Projects/github.com/95octane'
