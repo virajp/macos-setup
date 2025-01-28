@@ -11,6 +11,12 @@ set quiet := true
   cd dotfiles && stow --dir=. --target=$HOME --verbose */
 
 [group('dotfiles')]
+[doc('Re-install dotfiles using stow')]
+@stow-reinstall:
+  echo "Re-installing dotfiles ..."
+  cd dotfiles && stow --restow --dir=. --target=$HOME --verbose */
+
+[group('dotfiles')]
 [doc('Cleanup dotfiles using stow')]
 @stow-cleanup:
   echo "Cleaning up dotfiles ..."
