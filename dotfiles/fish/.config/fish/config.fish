@@ -7,3 +7,6 @@ zoxide init fish | source
 # Initialize nvm
 source ~/.config/fish/functions/nvm.fish
 load_nvm > /dev/stderr
+
+# Initialize direnv
+direnv hook fish | source
