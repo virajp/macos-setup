@@ -1,3 +1,4 @@
+tap "derailed/k9s"
 tap "encoredev/tap"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
@@ -77,6 +78,12 @@ brew "direnv"
 brew "dive"
 # Modern, maintained replacement for ls
 brew "eza"
+# Text-based UI library
+brew "ncurses"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Plugin manager for the Fish shell
+brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # JPEG image codec that aids compression and decompression
@@ -137,8 +144,6 @@ brew "mas"
 brew "melange"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
-# Text-based UI library
-brew "ncurses"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
@@ -193,6 +198,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "derailed/k9s/k9s"
 # The static analysis-powered Go framework for building backend applications
 brew "encoredev/tap/encore"
 # HCP CLI
@@ -288,7 +295,6 @@ cask "zoom", args: { appdir: "~/Applications" }
 mas "1Password for Safari", id: 1569813296
 mas "Affinity Designer 2", id: 1616831348
 mas "Affinity Photo 2", id: 1616822987
-mas "Apple Configurator", id: 1037126344
 mas "Battery Health 2", id: 1120214373
 mas "Cardhop", id: 1290358394
 mas "Compressor", id: 424390742
@@ -309,7 +315,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
-mas "PDF Text Include", id: 6443781970
 mas "Telegram", id: 747648890
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
