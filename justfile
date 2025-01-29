@@ -30,7 +30,7 @@ set quiet := true
 
 [group('brewfile')]
 [doc('Generate brewfile ... ')]
-@brewfile-generate:
+@brew:
   echo "Generating brewfile ..."
   brew bundle dump --all --force --describe --file=./Brewfile
   echo "Printing the diff ... "
