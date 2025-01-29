@@ -15,15 +15,17 @@ end
 # Function to check whether touch-id is setup for sudo 
 function check-touch-id
   set_color --bold green; echo -n "Checking Touch ID setup for shell ..."; set_color normal
-  if test -n (cat /etc/pam.d/sudo | grep pam_tid.so)
+  if grep -q "pam_tid.so" /etc/pam.d/sudo
     set_color --bold green; echo "OK"; set_color normal
     return 0
   else
     set_color --bold red; echo "NOT OK"; set_color normal
     echo "Please run the following commands to setup Touch ID for sudo:"
-    echo "subl /etc/pam.d/sudo"
-    echo "\nAdd the following line to the top of the file:"
-    echo "'auth       sufficient     pam_tid.so'"
+    set_color --bold green; echo "subl /etc/pam.d/sudo"; set_color normal
+    echo ""
+    echo "Add the following line to the top of the file:"
+    set_color --bold green; echo "'auth       sufficient     pam_tid.so'"; set_color normal 
+    echo ""
     return 1
   end
 end
