@@ -119,16 +119,17 @@ function node-upgrade
   repchar '='
   set_color --bold green; echo "Updating nodejs ..."; set_color normal  
   nvm install "node" -b
+  repchar '-'
   set_color --bold green; echo "Update npm ..."; set_color normal
   nvm install-latest-npm
   repchar '-'
   set_color --bold green; echo "Install global npm packages ..."; set_color normal
   npm install -g firebase-tools@latest prettier@latest
+  repchar '-'
   set_color --bold green; echo "Updating global npm packages ..."; set_color normal
   npm update --global
   repchar '-'
-  set_color --bold green; echo "Removing old version of nodejs ..."; set_color normal
-  nvm ls --no-colors | tr -d ' *' | grep -E '^v[0-9.]+' | string split \n | while read -l version; source ~/.config/fish/config.fish && nvm uninstall "$version"; end
+  nvm-cleanup
 end
 
 # Function to upgrade all brew packages

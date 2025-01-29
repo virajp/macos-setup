@@ -22,3 +22,14 @@ end
 function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
+
+function nvm-cleanup
+  set_color --bold green; echo "Setting node as default"; set_color normal
+  nvm use node
+  set_color --bold green; echo "Removing old version of nodejs ..."; set_color normal
+  nvm ls --no-colors \
+    | tr -d ' *' \
+    | grep -E '^v[0-9.]+' \
+    | string split \n \
+    | while read -l line; nvm uninstall "$line"; end
+end
