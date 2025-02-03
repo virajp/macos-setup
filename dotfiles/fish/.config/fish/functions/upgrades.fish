@@ -40,7 +40,7 @@ function bf
   repchar '-'
   set_color --bold green; echo "Upgrading outdated formulaes ..."; set_color normal
   set OUTDATED (brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name')
-  for formulae in $OUTDATED; do
+  for formulae in $OUTDATED;
     brew upgrade --formulae --verbose --display-times $formulae
   end
 
@@ -49,9 +49,9 @@ function bf
   # EXCLUDE=("google-cloud-sdk" "flutter")
   set EXCLUDE "some-fake-name"
   set LIST (brew outdated --cask --json=v2 | jq --raw-output '.casks[].name')
-  for package in $LIST; do
+  for package in $LIST;
     set process true
-    for exPackage in $EXCLUDE; do
+    for exPackage in $EXCLUDE;
       if test "$package" = "$exPackage"
         set process false
         break
