@@ -1,11 +1,7 @@
 tap "derailed/k9s"
-tap "encoredev/tap"
-tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "jandedobbeleer/oh-my-posh"
-tap "nats-io/nats-tools"
-tap "stacklok/tap"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # Portable library for network traffic capture
@@ -200,16 +196,8 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
-# The static analysis-powered Go framework for building backend applications
-brew "encoredev/tap/encore"
-# HCP CLI
-brew "hashicorp/tap/hcp"
 # Prompt theme engine for any shell
 brew "jandedobbeleer/oh-my-posh/oh-my-posh", link: false
-# NATS utility
-brew "nats-io/nats-tools/nats"
-# frizbee is a tool you may throw a tag at and it comes back with a checksum.
-brew "stacklok/tap/frizbee"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
