@@ -2,12 +2,15 @@ tap "derailed/k9s"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "jandedobbeleer/oh-my-posh"
+tap "julien-cpsn/atac"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # Portable library for network traffic capture
 brew "libpcap"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
+# Simple API client (Postman-like) in your terminal
+brew "atac"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -18,6 +21,8 @@ brew "openssl@3"
 brew "libgit2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Asynchronous DNS library
 brew "c-ares"
 # Library for manipulating PNG images
@@ -72,6 +77,8 @@ brew "diffoci"
 brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
+# Command-line DNS Client for Humans
+brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
 # Text-based UI library
@@ -112,6 +119,8 @@ brew "gnupg"
 brew "go"
 # Task is a task runner/build tool that aims to be simpler and easier to use
 brew "go-task"
+# Ping, but with a graph
+brew "gping"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
 # C/C++ and Java libraries for Unicode and globalization
@@ -120,6 +129,8 @@ brew "icu4c@76"
 brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
 # C/C++ and Java libraries for Unicode and globalization
@@ -130,6 +141,10 @@ brew "ipcalc"
 brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
 # General purpose TCP-IP emulator
 brew "libslirp"
 # Multi-platform support library with a focus on asynchronous I/O
