@@ -168,6 +168,8 @@ brew "stow"
 brew "syft"
 # Secrets management tool for developers
 brew "teller"
+# Command-line interface for running and interacting with Temporal Server and UI
+brew "temporal"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Static analysis security scanner for your terraform code
@@ -212,8 +214,6 @@ cask "authy"
 cask "brave-browser"
 # Design tool
 cask "canva"
-# Free app that makes your Internet safer
-cask "cloudflare-warp"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Voice and text chat software
