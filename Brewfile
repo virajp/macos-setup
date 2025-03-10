@@ -89,7 +89,7 @@ brew "jpeg-turbo"
 # TIFF library and utilities
 brew "libtiff"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
+brew "python3"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
