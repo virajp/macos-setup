@@ -1,16 +1,13 @@
+tap "dagger/tap"
 tap "derailed/k9s"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "jandedobbeleer/oh-my-posh"
-tap "julien-cpsn/atac"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # Portable library for network traffic capture
 brew "libpcap"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
-# Simple API client (Postman-like) in your terminal
-brew "atac"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -31,14 +28,6 @@ brew "libpng"
 brew "freetype"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
-# Core utilities for Python packages
-brew "python-packaging"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Core application library for C
 brew "glib"
 # X.Org: Interface to the X Window System protocol
@@ -47,8 +36,6 @@ brew "libxcb"
 brew "libx11"
 # Low-level library for pixel manipulation
 brew "pixman"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Console Matrix
@@ -65,10 +52,18 @@ brew "crane"
 brew "libnghttp2"
 # Extremely Fast Compression algorithm
 brew "lz4"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -93,6 +88,8 @@ brew "fzf"
 brew "jpeg-turbo"
 # TIFF library and utilities
 brew "libtiff"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -133,8 +130,6 @@ brew "helm"
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@75"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
@@ -145,6 +140,8 @@ brew "just"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Core utilities for Python packages
+brew "python-packaging"
 # General purpose TCP-IP emulator
 brew "libslirp"
 # Multi-platform support library with a focus on asynchronous I/O
@@ -171,10 +168,8 @@ brew "prettyping"
 brew "pstree"
 # Python version management
 brew "pyenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Powerful, clean, object-oriented scripting language
-brew "ruby@3.1"
+brew "ruby"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -197,20 +192,12 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Flexible and fast Zsh plugin manager
-brew "zinit"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Real-time type-ahead completion for Zsh
-brew "zsh-autocomplete"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
-# Additional completion definitions for zsh
-brew "zsh-completions"
-# Fish shell like syntax highlighting for zsh
-brew "zsh-syntax-highlighting"
+# Dagger is an integrated platform to orchestrate the delivery of applications
+brew "dagger/tap/dagger"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
 # Prompt theme engine for any shell
@@ -223,8 +210,6 @@ cask "alfred"
 cask "android-commandlinetools"
 # Tools for building Android applications
 cask "android-studio"
-# Two-factor authentication software
-cask "authy"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Design tool
@@ -233,14 +218,8 @@ cask "canva"
 cask "cursor"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker"
-# Developer platform
-cask "dotnet-sdk"
 # Find files, folders, or contents in any file
 cask "easyfind"
-# Web browser
-cask "firefox"
 # UI toolkit for building applications for mobile, web and desktop
 cask "flutter"
 # Download manager with a torrent client
@@ -249,8 +228,6 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -265,10 +242,10 @@ cask "keybase"
 cask "nordvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Collection of apps available by subscription
 cask "setapp"
-# Digital design and prototyping platform
-cask "sketch"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
@@ -289,10 +266,6 @@ cask "vlc"
 cask "warp"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-# Image viewer and file browser
-cask "xee"
-# Multiplayer code editor
-cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom", args: { appdir: "~/Applications" }
 mas "1Password for Safari", id: 1569813296
