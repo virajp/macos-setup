@@ -89,7 +89,7 @@ brew "jpeg-turbo"
 # TIFF library and utilities
 brew "libtiff"
 # Interpreted, interactive, object-oriented programming language
-brew "python3"
+brew "python@3.12"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -168,8 +168,8 @@ brew "prettyping"
 brew "pstree"
 # Python version management
 brew "pyenv"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
