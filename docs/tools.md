@@ -21,7 +21,7 @@ pip3 install --upgrade pip setuptools wheel
 ### Install NodeJS & npm
 
 ```bash
-nvm install node --latest-npm --default -b
+brew install --formulae node
 ```
 
 ## Configure npm

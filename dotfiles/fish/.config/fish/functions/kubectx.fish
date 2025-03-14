@@ -7,3 +7,5 @@ function kubectx
     kubectl config get-contexts
   end
 end
+
+alias ktx='kubectx'

@@ -10,10 +10,6 @@ function code
   $HOMEBREW_PREFIX/bin/code $ARGS
 end
 
-function code95
-  code ~/Projects/github.com/95octane/95octane.code-workspace
-end
-
 function cursor
   set ARGS $argv
   if test -z "$ARGS"
@@ -24,8 +20,4 @@ function cursor
     set ARGS "."
   end
   $HOMEBREW_PREFIX/bin/cursor $ARGS
-end
-
-function cursor95
-  cursor ~/Projects/github.com/95octane/95octane.code-workspace
 end

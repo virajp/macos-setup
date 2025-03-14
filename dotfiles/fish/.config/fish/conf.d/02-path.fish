@@ -1,6 +1,3 @@
-# Import secrets (environment variables)
-source "$CLOUD_PATH/Secure/secrets.fish"
-
 # Path
 fish_add_path "$HOMEBREW_PREFIX/opt/curl/bin"
 fish_add_path "$HOMEBREW_PREFIX/opt/ruby/bin"

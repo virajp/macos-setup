@@ -117,19 +117,9 @@ end
 # Update nodejs & tools
 function node-upgrade
   repchar '='
-  set_color --bold green; echo "Updating nodejs ..."; set_color normal  
-  nvm install "node" -b
-  repchar '-'
-  set_color --bold green; echo "Update npm ..."; set_color normal
-  nvm install-latest-npm
-  repchar '-'
   set_color --bold green; echo "Install global npm packages ..."; set_color normal
-  npm install -g firebase-tools@latest prettier@latest
+  npm install --global npm@latest firebase-tools@latest prettier@latest
   repchar '-'
-  set_color --bold green; echo "Updating global npm packages ..."; set_color normal
-  npm update --global
-  repchar '-'
-  nvm-cleanup
 end
 
 # Function to upgrade all brew packages

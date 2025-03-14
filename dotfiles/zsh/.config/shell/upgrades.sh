@@ -115,18 +115,8 @@ function osx-upgrade() {
 # Update nodejs & tools
 function node-upgrade() {
   string '='
-  echo "Updating nodejs ..."
-  nvm install "node" -b
-  echo "Update npm ..."
-  nvm install-latest-npm
-  string '--'
   echo "Install global npm packages ..."
-  npm install -g firebase-tools@latest prettier@latest
-  echo "Updating global npm packages ..."
-  npm update --global
-  string '--'
-  echo "Removing old version of nodejs ..."
-  nvm ls --no-colors | tr -d ' *' | egrep -o '^v[0-9.]+' | xargs -n 1 -I {} zsh -c '. ~/.zshrc && nvm uninstall "{}"'
+  npm install --global npm@latest firebase-tools@latest prettier@latest
 }
 
 # Function to upgrade all brew packages

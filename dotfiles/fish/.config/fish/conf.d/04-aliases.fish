@@ -2,9 +2,7 @@
 alias cls='clear'
 alias ls='eza --icons --color=always --color-scale --group-directories-first --classify'
 alias ll='ls --long --all'
-alias la='ll'
 alias cdcd='cd "$CLOUD_PATH"'
-# alias cdgd='cd "/Volumes/GoogleDrive/My Drive"'
 alias diff='diff-so-fancy'
 alias cdgh='cd "$HOME"/Projects/github.com'
 alias tf='terraform'
@@ -42,7 +40,7 @@ alias dclean='docker system prune --all --volumes --force'
 # Kubernetes (k8s) related aliases
 alias k='kubectl'
 alias kgc='kubectl config current-context'
-alias kc-local='kubectl config use-context docker-desktop'
+alias kc-local='kubectl config use-context orbstack'
 
 # 95octane related customisations
 alias cd95='cd $HOME/Projects/github.com/95octane'

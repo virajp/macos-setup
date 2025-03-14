@@ -35,3 +35,21 @@ set quiet := true
   brew bundle dump --all --force --describe --file=./Brewfile
   echo "Printing the diff ... "
   git diff --color=always | diff-so-fancy
+
+[group('brewfile')]
+[doc('Generate nushell init scripts for oh-my-posh & zoxide ... ')]
+@nu-init:
+  echo "Generating init script for oh-my-posh ..."
+  oh-my-posh init nu --print --config ~/.config/oh-my-posh.yaml > "./dotfiles/nushell/Library/Application Support/nushell/vendor/autoload/99-oh-my-posh.nu"
+  echo "Generating init script for zoxide ..."
+  zoxide init nushell > "./dotfiles/nushell/Library/Application Support/nushell/vendor/autoload/99-zoxide.nu"
+
+[group('brewfile')]
+[doc('Generate fish init scripts for oh-my-posh, direnv & zoxide ... ')]
+@fish-init:
+  echo "Generating init script for oh-my-posh ..."
+  oh-my-posh init fish --print --config ~/.config/oh-my-posh.yaml > "./dotfiles/fish/.config/fish/conf.d/99-oh-my-posh.fish"
+  echo "Generating init script for direnv ..."
+  direnv hook fish > "./dotfiles/fish/.config/fish/conf.d/99-direnv.fish"
+  echo "Generating init script for zoxide ..."
+  zoxide init fish > "./dotfiles/fish/.config/fish/conf.d/99-zoxide.fish"
