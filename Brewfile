@@ -152,8 +152,10 @@ brew "mas"
 brew "melange"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
-# Manage multiple Node.js versions
-brew "nvm"
+# Platform built on V8 to build network applications
+brew "node"
+# Modern shell for the GitHub era
+brew "nushell"
 # Development kit for the Java programming language
 brew "openjdk"
 # Pinentry for GPG on Mac
@@ -288,6 +290,7 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
+mas "Okta Verify", id: 490179405
 mas "Pages", id: 409201541
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
@@ -298,6 +301,7 @@ mas "Transporter", id: 1450874784
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
 vscode "astro-build.astro-vscode"
+vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
