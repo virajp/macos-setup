@@ -6,11 +6,11 @@
 # echo "Start: $(date)"
 
 # Setup all environment variables
-source ~/.config/shell/misc.sh
-source ~/.config/shell/homebrew.sh
-source ~/.config/shell/zinit.sh
-source ~/.config/shell/dev.sh
-source ~/.config/shell/gcp.sh
+source ~/.config/zsh/misc.sh
+source ~/.config/zsh/homebrew.sh
+source ~/.config/zsh/zinit.sh
+source ~/.config/zsh/dev.sh
+source ~/.config/zsh/gcp.sh
 
 # Import secrets (environment variables)
 source "${CLOUD_PATH}/Secure/secrets.sh"
@@ -29,14 +29,14 @@ export PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${PATH}"
 export PATH="${PATH}:/Users/virajpatel/.local/bin"
 
 # Initialisers
-source ~/.config/shell/initialisers.sh
+source ~/.config/zsh/initialisers.sh
 
 # echo "Initialisers: $(date)"
 
 # Aliases and functions
-source ~/.config/shell/aliases.sh
-source ~/.config/shell/functions.sh
-source ~/.config/shell/upgrades.sh
-source ~/.config/shell/95octane.sh
+source ~/.config/zsh/aliases.sh
+source ~/.config/zsh/functions.sh
+source ~/.config/zsh/upgrades.sh
+source ~/.config/zsh/95octane.sh
 
 # echo "Aliases, Functions, Upgrades, 95octane: $(date)"
