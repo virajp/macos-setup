@@ -36,6 +36,7 @@ alias dpull='docker image pull --platform="linux/amd64"'
 alias drun='docker run --platform="linux/amd64" --rm --interactive --tty --tz="Asia/Calcutta"'
 alias dlist='docker image list'
 alias dclean='docker system prune --all --volumes --force'
+alias dprune='docker system prune --volumes --force'
 
 # Kubernetes (k8s) related aliases
 alias k='kubectl'
