@@ -88,8 +88,6 @@ brew "fzf"
 brew "jpeg-turbo"
 # TIFF library and utilities
 brew "libtiff"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -98,6 +96,8 @@ brew "gh"
 brew "giflib"
 # Distributed revision control system
 brew "git"
+# Audit git repos for secrets
+brew "gitleaks"
 # Low-level cryptographic library
 brew "nettle"
 # Library to load and enumerate PKCS#11 modules
@@ -120,8 +120,6 @@ brew "go-task"
 brew "gping"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # OpenType text shaping engine
 brew "harfbuzz"
 # Kubernetes package manager
@@ -130,6 +128,8 @@ brew "helm"
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
@@ -172,6 +172,8 @@ brew "pstree"
 brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -205,7 +207,7 @@ brew "dagger/tap/dagger"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
 # Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh", link: false
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -218,6 +220,8 @@ cask "android-studio"
 cask "brave-browser"
 # Design tool
 cask "canva"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Voice and text chat software
@@ -309,6 +313,7 @@ vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
+vscode "esbenp.prettier-vscode"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
@@ -316,5 +321,4 @@ vscode "gruntfuggly.todo-tree"
 vscode "localizely.flutter-intl"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
-vscode "rvest.vs-code-prettier-eslint"
 vscode "skellock.just"
