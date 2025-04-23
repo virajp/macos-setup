@@ -1,7 +1,7 @@
 [user]
 	email = 3125954+virajp@users.noreply.github.com
 	name = Viraj Patel
-	signingkey = 9B2F2A3AAA8409F0
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo
 	# signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7uoxAdb66raFvHDEvycFxzF4B63ayDPH+ENfq+z5zE
 [core]
 	autocrlf = input
@@ -66,8 +66,14 @@
 	defaultBranch = main
 [gpg]
 	program = /opt/homebrew/bin/gpg
-	format = openpgp
+	format = ssh
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [tag]
 	forceSignAnnotated = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/virajpatel/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
