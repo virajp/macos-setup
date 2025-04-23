@@ -58,6 +58,10 @@ brew "xz"
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
+# JPEG image codec that aids compression and decompression
+brew "jpeg-turbo"
+# TIFF library and utilities
+brew "libtiff"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -68,6 +72,8 @@ brew "deno"
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
 brew "diffoci"
+# Text-based UI library
+brew "ncurses"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Tool for exploring each layer in a docker image
@@ -76,18 +82,12 @@ brew "dive"
 brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
-# Text-based UI library
-brew "ncurses"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# JPEG image codec that aids compression and decompression
-brew "jpeg-turbo"
-# TIFF library and utilities
-brew "libtiff"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -98,20 +98,6 @@ brew "giflib"
 brew "git"
 # Audit git repos for secrets
 brew "gitleaks"
-# Low-level cryptographic library
-brew "nettle"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# Common error values for all GnuPG components
-brew "libgpg-error"
-# X.509 and CMS library
-brew "libksba"
-# Passphrase entry dialog utilizing the Assuan protocol
-brew "pinentry"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Task is a task runner/build tool that aims to be simpler and easier to use
@@ -140,6 +126,10 @@ brew "just"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Common error values for all GnuPG components
+brew "libgpg-error"
+# X.509 and CMS library
+brew "libksba"
 # Core utilities for Python packages
 brew "python-packaging"
 # General purpose TCP-IP emulator
@@ -152,18 +142,26 @@ brew "mas"
 brew "melange"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
+# Low-level cryptographic library
+brew "nettle"
 # Platform built on V8 to build network applications
 brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
 # Development kit for the Java programming language
 brew "openjdk"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# Passphrase entry dialog utilizing the Assuan protocol
+brew "pinentry"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Open source backend for your next project in 1 file
+brew "pocketbase"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Show ps output as a tree
@@ -186,10 +184,14 @@ brew "teller"
 brew "temporal"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# CLI tool to generate terraform files from existing infrastructure
+brew "terraformer"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -236,8 +238,8 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
-# Desktop client for GitHub repositories
-cask "github"
+# Git client focusing on productivity
+cask "gitkraken"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Open-source video transcoder
@@ -256,6 +258,8 @@ cask "orbstack"
 cask "setapp"
 # Team communication and collaboration software
 cask "slack"
+# Graphical client for Git version control
+cask "sourcetree"
 # Music streaming service
 cask "spotify"
 # Mux and tag mp4 files
@@ -304,21 +308,28 @@ mas "Telegram", id: 747648890
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
+mas "UTM", id: 1538878817
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
 vscode "astro-build.astro-vscode"
 vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
+vscode "christian-kohler.npm-intellisense"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
+vscode "donjayamanne.githistory"
 vscode "esbenp.prettier-vscode"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
 vscode "localizely.flutter-intl"
+vscode "ms-azuretools.vscode-docker"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
+vscode "redhat.vscode-yaml"
 vscode "skellock.just"
+vscode "usernamehw.errorlens"
