@@ -172,7 +172,6 @@ function node-upgrade
     echo "Install global npm packages ..."
     set_color normal
     npm install --global npm@latest firebase-tools@latest prettier@latest
-    repchar -
 end
 
 # Function to upgrade all brew packages
