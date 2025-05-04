@@ -33,7 +33,7 @@ alias gp='git push --all --atomic --verbose'
 
 # Docker related aliases
 alias dpull='docker image pull --platform="linux/amd64"'
-alias drun='docker run --platform="linux/amd64" --rm --interactive --tty --tz="Asia/Calcutta"'
+alias drun='docker run --platform="linux/amd64" --rm --interactive --tty'
 alias dlist='docker image list'
 alias dclean='docker system prune --all --volumes --force'
 alias dprune='docker system prune --volumes --force'
