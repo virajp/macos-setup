@@ -1,8 +1,8 @@
 # Functions
 
-function string(){
-  local LENGTH=$(($COLUMNS/${#1}))
-	for i in {2..$LENGTH}; do echo -en "$1"; done
+function string() {
+  local LENGTH=$(($COLUMNS / ${#1}))
+  for i in {2..$LENGTH}; do echo -en "$1"; done
   echo ""
 }
 
@@ -12,7 +12,7 @@ function cleanupDS() {
     ARGS="."
   fi
   echo "Deleting .DS_Store files: $ARGS"
-  find $ARGS -type f -name '.DS_Store' -not -path './Library/*'  -ls -delete
+  find $ARGS -type f -name '.DS_Store' -not -path './Library/*' -ls -delete
 }
 
 function code() {
@@ -69,16 +69,24 @@ function gateway() {
 }
 
 function ii() {
-    echo -e "\nYou are logged on $HOST"
-    echo -e "$NC " ; system_profiler SPSoftwareDataType
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\nUsers logged on:$NC " ; w -h
-    echo -e "\nCurrent date :$NC " ; date
-    echo -e "\nMachine stats :$NC " ; uptime
-    echo -e "\nCurrent network location :$NC " ; scselect
-    echo -e "\nPublic facing IP Address :$NC " ; remoteip
-    echo -e "\nDNS Configuration:$NC " ; scutil --dns
-    echo
+  echo -e "\nYou are logged on $HOST"
+  echo -e "$NC "
+  system_profiler SPSoftwareDataType
+  echo -e "\nAdditionnal information:$NC "
+  uname -a
+  echo -e "\nUsers logged on:$NC "
+  w -h
+  echo -e "\nCurrent date :$NC "
+  date
+  echo -e "\nMachine stats :$NC "
+  uptime
+  echo -e "\nCurrent network location :$NC "
+  scselect
+  echo -e "\nPublic facing IP Address :$NC "
+  remoteip
+  echo -e "\nDNS Configuration:$NC "
+  scutil --dns
+  echo
 }
 
 function kubectx() {
@@ -115,21 +123,4 @@ function listStartupItems() {
   echo "User LaunchAgents @ ~/Library/LaunchAgents ..."
   ls -1 ~/Library/LaunchAgents
   # sudo sfltool dumpbtm
-}
-
-# Function to setup python virtual environment in current directory
-function python-venv-setup() {
-  echo "Setting up python virtual environment ..."
-  python3 -m venv pyvenv
-  source pyvenv/bin/activate
-}
-
-# Function to replace cd command with zoxide
-function cd() {
-  z "$@"
-  # Load python venv if present
-  if [[ -f "./pyvenv/bin/activate" ]] ; then
-      echo "Loading python venv ..."
-      source ./pyvenv/bin/activate
-  fi
 }
