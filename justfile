@@ -29,12 +29,20 @@ set quiet := true
   cd dotfiles && stow --dir=. --target=$HOME --verbose --simulate */
 
 [group('brewfile')]
-[doc('Generate brewfile ... ')]
+[doc('Generate brewfile for all installed packages')]
 @brew:
   echo "Generating brewfile ..."
   brew bundle dump --all --force --describe --file=./Brewfile
   echo "Printing the diff ... "
   git diff --color=always | diff-so-fancy
+
+[group('brewfile')]
+[doc('Remove packages not in brewfile')]
+@brew-cleanup:
+  echo "Removing packages not in Brewfile ..."
+  brew bundle cleanup --force --describe --file=./Brewfile
+  echo "Autoremoving packages ..."
+  brew autoremove --verbose
 
 [group('brewfile')]
 [doc('Generate nushell init scripts for oh-my-posh & zoxide ... ')]
