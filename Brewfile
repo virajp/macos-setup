@@ -1,4 +1,3 @@
-tap "dagger/tap"
 tap "derailed/k9s"
 tap "homebrew/bundle"
 tap "jandedobbeleer/oh-my-posh"
@@ -86,6 +85,8 @@ brew "eza"
 brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
+# Fast and simple Node.js version manager
+brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Toolkit for image loading and pixel buffer manipulation
@@ -110,10 +111,14 @@ brew "grype"
 brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
+# Docker Hub experimental CLI tool
+brew "hub-tool"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
 # Calculate various network masks, etc. from a given IP address
@@ -140,12 +145,12 @@ brew "libuv"
 brew "mas"
 # Build APKs from source code
 brew "melange"
+# Minify and secure Docker images
+brew "mintoolkit"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Low-level cryptographic library
 brew "nettle"
-# Platform built on V8 to build network applications
-brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
 # Development kit for the Java programming language
@@ -168,10 +173,6 @@ brew "prettyping"
 brew "pstree"
 # Python version management
 brew "pyenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -204,12 +205,10 @@ brew "zinit"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Dagger is an integrated platform to orchestrate the delivery of applications
-brew "dagger/tap/dagger"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
 # Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+brew "jandedobbeleer/oh-my-posh/oh-my-posh", link: false
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -238,8 +237,6 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
-# Git client focusing on productivity
-cask "gitkraken"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Open-source video transcoder
@@ -248,8 +245,6 @@ cask "handbrake"
 cask "iterm2"
 # End-to-end encryption software
 cask "keybase"
-# VPN client for secure internet access and private browsing
-cask "nordvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Replacement for Docker Desktop
@@ -321,15 +316,19 @@ vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
 vscode "docker.docker"
 vscode "donjayamanne.githistory"
-vscode "esbenp.prettier-vscode"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
+vscode "inferrinizzard.prettier-sql-vscode"
 vscode "localizely.flutter-intl"
-vscode "ms-azuretools.vscode-docker"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "skellock.just"
+vscode "terrastruct.d2"
 vscode "usernamehw.errorlens"
