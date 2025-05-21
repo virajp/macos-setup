@@ -1,8 +1,7 @@
 # Function to setup python virtual environment in current directory
 function python-setup
     set_color --bold green
-    echo "Setting up python virtual environment ..."
+    echo "Initialize python using `uv` ..."
     set_color normal
-    python3 -m venv .pyvenv
-    source .pyvenv/bin/activate.fish
+    uv init
 end

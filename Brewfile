@@ -112,7 +112,7 @@ brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
+brew "python@3.13", link: false
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
@@ -173,6 +173,8 @@ brew "prettyping"
 brew "pstree"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -193,6 +195,8 @@ brew "tfsec"
 brew "tree"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -306,22 +310,12 @@ mas "Transporter", id: 1450874784
 mas "UTM", id: 1538878817
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
-vscode "astro-build.astro-vscode"
+vscode "bierner.markdown-mermaid"
 vscode "bmalehorn.vscode-fish"
-vscode "bradlc.vscode-tailwindcss"
-vscode "christian-kohler.npm-intellisense"
-vscode "dart-code.dart-code"
-vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
 vscode "donjayamanne.githistory"
 vscode "foxundermoon.shell-format"
-vscode "github.copilot"
-vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
-vscode "inferrinizzard.prettier-sql-vscode"
-vscode "localizely.flutter-intl"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
@@ -330,5 +324,4 @@ vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "skellock.just"
-vscode "terrastruct.d2"
 vscode "usernamehw.errorlens"
