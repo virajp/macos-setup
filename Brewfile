@@ -1,6 +1,5 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
-tap "jandedobbeleer/oh-my-posh"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # Portable library for network traffic capture
@@ -83,8 +82,6 @@ brew "doggo"
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# Plugin manager for the Fish shell
-brew "fisher"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Command-line fuzzy finder written in Go
@@ -135,8 +132,6 @@ brew "lazygit"
 brew "libgpg-error"
 # X.509 and CMS library
 brew "libksba"
-# Core utilities for Python packages
-brew "python-packaging"
 # General purpose TCP-IP emulator
 brew "libslirp"
 # Multi-platform support library with a focus on asynchronous I/O
@@ -145,14 +140,14 @@ brew "libuv"
 brew "mas"
 # Build APKs from source code
 brew "melange"
-# Minify and secure Docker images
-brew "mintoolkit"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Low-level cryptographic library
 brew "nettle"
 # Modern shell for the GitHub era
 brew "nushell"
+# Core utilities for Python packages
+brew "python-packaging"
 # Development kit for the Java programming language
 brew "openjdk"
 # Library to load and enumerate PKCS#11 modules
@@ -165,26 +160,22 @@ brew "pinentry-mac"
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Open source backend for your next project in 1 file
-brew "pocketbase"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
-# Python version management
-brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # CLI for generating a Software Bill of Materials from container images
 brew "syft"
 # Secrets management tool for developers
 brew "teller"
-# Command-line interface for running and interacting with Temporal Server and UI
-brew "temporal"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # CLI tool to generate terraform files from existing infrastructure
@@ -203,16 +194,12 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Flexible and fast Zsh plugin manager
-brew "zinit"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
-# Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh", link: false
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -223,8 +210,6 @@ cask "android-commandlinetools"
 cask "android-studio"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Design tool
-cask "canva"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Write, edit, and chat about your code with AI

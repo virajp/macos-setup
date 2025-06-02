@@ -13,7 +13,7 @@ source ~/.config/zsh/dev.sh
 source ~/.config/zsh/gcp.sh
 
 # Import secrets (environment variables)
-source "${CLOUD_PATH}/Secure/secrets.sh"
+# source "${CLOUD_PATH}/Secure/secrets.sh"
 
 # echo "Setup environment variables: $(date)"
 

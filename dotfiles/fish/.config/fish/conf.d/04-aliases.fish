@@ -24,6 +24,7 @@ alias plist='plutil -p'
 alias f='flutter'
 alias tree='tree --du -hC'
 alias cat='bat'
+alias dig='doggo'
 
 # Git related aliases
 alias gpull='git pull --all --verbose --progress'
