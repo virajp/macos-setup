@@ -26,6 +26,7 @@ alias plist='plutil -p'
 alias f="flutter"
 alias tree='tree --du -hC'
 alias cat='bat'
+alias dig='doggo'
 
 # Git related aliases
 alias gpull='git pull --all --verbose --progress'
@@ -33,14 +34,17 @@ alias gs='git status -sb'
 alias gc='git commit -a -m'
 alias gp='git push --all --atomic --verbose'
 
-# Docker/Podman related aliases
-# alias docker='podman'
+# Docker related aliases
 alias dpull='docker image pull --platform="linux/amd64"'
-alias drun='docker run --platform="linux/amd64" --rm --interactive --tty --tz="Asia/Calcutta"'
+alias drun='docker run --platform="linux/amd64" --rm --interactive --tty'
 alias dlist='docker image list'
 alias dclean='docker system prune --all --volumes --force'
+alias dprune='docker system prune --volumes --force'
 
 # Kubernetes (k8s) related aliases
 alias k='kubectl'
 alias kgc='kubectl config current-context'
-alias kc-local='kubectl config use-context docker-desktop'
+alias kc-local='kubectl config use-context orbstack'
+
+# 95octane related customisations
+alias cd95='cd $HOME/Projects/github.com/95octane'
