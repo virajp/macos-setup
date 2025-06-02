@@ -194,6 +194,8 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Flexible and fast Zsh plugin manager
+brew "zinit"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
