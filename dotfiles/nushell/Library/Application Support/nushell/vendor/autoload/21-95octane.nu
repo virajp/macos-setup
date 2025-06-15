@@ -1,5 +1,5 @@
 # 95octane related customisations
-export alias cd95 = cd ($env.HOME | path join "Projects/github.com/95octane")
+export alias cd95 = cd ($env.HOME | path join "Projects/gitlab.com/95octane")
 
 # function dev-95octane
 #   # Google Play Store (Firebase Distribution: prod-95octane-app)

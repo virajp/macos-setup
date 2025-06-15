@@ -10,9 +10,9 @@ function prod-95octane
 end
 
 function code95
-    code ~/Projects/github.com/95octane/95octane.code-workspace
+    code ~/Projects/gitlab.com/95octane/95octane.code-workspace
 end
 
 function cursor95
-    cursor ~/Projects/github.com/95octane/95octane.code-workspace
+    cursor ~/Projects/gitlab.com/95octane/95octane.code-workspace
 end

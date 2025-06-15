@@ -3,4 +3,4 @@ disable_stdin = true
 strict_env = true
 
 [whitelist]
-prefix = [ "/Users/virajpatel/Projects/github.com/95octane" ]
+prefix = [ "/Users/virajpatel/Projects/gitlab.com/95octane" ]

@@ -1,7 +1,7 @@
 # 95octane related customisations
-alias cd95='cd $HOME/Projects/github.com/95octane'
+alias cd95='cd $HOME/Projects/gitlab.com/95octane'
 function code95() {
-  code ~/Projects/github.com/95octane/95octane.code-workspace
+  code ~/Projects/gitlab.com/95octane/95octane.code-workspace
 }
 function dev-95octane() {
   # Google Play Store (Firebase Distribution: prod-95octane-app)
