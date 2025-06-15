@@ -24,9 +24,8 @@ $kubernetes\
 $cmd_duration\
 [](fg:color_red)\
 
-$character\
 $line_break\
-[ ](bold green)\
+$character\
 """
 
 right_format="""
@@ -88,19 +87,28 @@ truncate_to_repo = false
 truncation_length = 4
 truncation_symbol = "… /"
 use_os_path_sep = true
+read_only = " 󰌾"
+read_only_style = "red"
 
 [directory.substitutions]
 "Documents" = " 󰈙 "
 "Downloads" = "  "
 "Music" = " 󰝚 "
 "Pictures" = "  "
-"Developer" = " 󰲋 "
-"github.com" = " 󰲋 "
+"Developer" = " 󰨞 "
+"github.com" = " 󰊤 "
+"Projects" = " 󰉋 "
+"gitlab.com" = " 󰮠 "
+"bitbucket.org" = " 󰂨 "
+"cloudflare.com" = " 󰅟 "
+"google.com" = " 󰊭 "
+"microsoft.com" = " 󰍲 "
+"apple.com" = " 󰀵 "
 
 [cmd_duration]
 style = "bg:color_red"
 min_time = 0
-format = '[[ $duration ](fg:color_white bg:color_red)]($style)'
+format = '[[ $duration ](fg:color_white $style)]($style)'
 
 [git_branch]
 symbol = ""
@@ -190,9 +198,8 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[ ✓ ](bold fg:color_green)'
-error_symbol = '[ ✗ ](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+format = '$symbol '
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+# success_symbol = '[](bold fg:color_green)'
+# error_symbol = '[✗](bold fg:color_red)'
