@@ -18,12 +18,12 @@ source ~/.config/zsh/gcp.sh
 # echo "Setup environment variables: $(date)"
 
 # Path
-export PATH="${HOMEBREW_PREFIX}/opt/curl/bin:${PATH}"
-export PATH="${HOMEBREW_PREFIX}/opt/ruby/bin:${PATH}"
 export PATH="${HOME}/.pub-cache/bin:${PATH}"
 export PATH="${GEM_HOME}/bin:${PATH}"
-export PATH="${HOMEBREW_PREFIX}/opt/openjdk/bin:${PATH}"
 export PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/openjdk/bin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/curl/bin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/ruby/bin:${PATH}"
 
 # Created by `pipx` on 2024-03-15 06:20:45
 export PATH="${PATH}:/Users/virajpatel/.local/bin"
