@@ -3,14 +3,14 @@
 # WHY: Custom multi-segment format with gruvbox-inspired colors
 # Features: OS icon, time, git status, directory with substitutions, language versions, k8s context
 format = """
-[](color_orange)\
+[](color_orange)\
 $os$time\
-[](fg:color_orange bg:color_aqua)\
+[](fg:color_orange bg:color_aqua)\
 $git_branch\
 $git_status\
-[](bg:color_yellow fg:color_aqua)\
+[](bg:color_yellow fg:color_aqua)\
 $directory\
-[](fg:color_yellow bg:color_blue)\
+[](fg:color_yellow bg:color_blue)\
 $c\
 $rust\
 $golang\
@@ -20,11 +20,11 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](bg:color_aqua fg:color_blue)\
+[](bg:color_aqua fg:color_blue)\
 $kubernetes\
-[](bg:color_red fg:color_aqua)\
+[](bg:color_red fg:color_aqua)\
 $cmd_duration\
-[](fg:color_red)\
+[](fg:color_red)\
 
 $line_break\
 $character\
@@ -36,7 +36,7 @@ right_format="""
 
 # WHY: Custom color palette inspired by gruvbox theme
 palette = 'viraj_dark'
-continuation_prompt = ' '
+continuation_prompt = ' '
 # WHY: Higher timeout for slow git operations
 command_timeout = 500
 add_newline = true
