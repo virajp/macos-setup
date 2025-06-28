@@ -1,12 +1,20 @@
 use std/util "path add"
 
 # For a full list of active aliases, run `alias`.
+
+# Basic system aliases
 export alias cls = clear
 export alias la = ls --long --all
+# WHY: Uses 'eza' instead of default 'ls' for better colors and icons
 export alias ll = eza --icons --color=always --color-scale --group-directories-first --classify --long --all
+
+# Navigation shortcuts
 export alias cdcd = cd $env.CLOUD_PATH
-export alias diff = diff-so-fancy
 export alias cdgh = cd ($env.HOME | path join "Projects/github.com")
+
+# Enhanced tools (replacements for standard utilities)
+# WHY: diff-so-fancy provides better diff formatting with syntax highlighting
+export alias diff = diff-so-fancy
 export alias tf = terraform
 export alias edit = subl
 # export alias reload = exec fish

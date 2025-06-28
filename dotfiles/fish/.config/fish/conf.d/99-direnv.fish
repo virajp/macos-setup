@@ -1,3 +1,16 @@
+#!/usr/bin/env fish
+# =============================================================================
+# Fish Configuration: Direnv Integration
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
+#
+# Direnv configuration:
+# - Auto-load environment variables from .envrc files
+# - Hook into Fish shell prompt and command execution events
+# - Support for different direnv modes (disable_arrow, eval_after_arrow)
+# - Uses Homebrew-installed direnv at /opt/homebrew/bin/direnv
+# =============================================================================
 
     function __direnv_export_eval --on-event fish_prompt;
         "/opt/homebrew/bin/direnv" export fish | source;

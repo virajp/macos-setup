@@ -1,7 +1,16 @@
+#!/usr/bin/env fish
 # =============================================================================
+# Fish Configuration: Zoxide Integration
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
 #
+# Zoxide: A smarter cd command
+# - Provides intelligent directory jumping based on frequency and recency
+# - Aliases 'z' and 'zi' commands for quick navigation
+# - Hooks into PWD changes to track directory usage
+# =============================================================================
 # Utility functions for zoxide.
-#
 
 # pwd based on the value of _ZO_RESOLVE_SYMLINKS.
 function __zoxide_pwd

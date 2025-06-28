@@ -1,6 +1,10 @@
 [global]
+# WHY: Disable stdin to prevent direnv from blocking in automated scripts
 disable_stdin = true
+# WHY: Enable strict_env to prevent environment pollution from parent dirs
 strict_env = true
 
 [whitelist]
+# WHY: Whitelist specific project directory for security
+# Only allows .envrc files in trusted 95octane project directory
 prefix = [ "/Users/virajpatel/Projects/gitlab.com/95octane" ]

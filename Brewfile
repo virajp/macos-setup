@@ -94,6 +94,8 @@ brew "gh"
 brew "giflib"
 # Distributed revision control system
 brew "git"
+# Assorted git-related scripts and tools
+brew "git-tools"
 # Audit git repos for secrets
 brew "gitleaks"
 # Open source programming language to build simple/reliable/efficient software
@@ -146,8 +148,6 @@ brew "mkcert"
 brew "nettle"
 # Modern shell for the GitHub era
 brew "nushell"
-# Core utilities for Python packages
-brew "python-packaging"
 # Development kit for the Java programming language
 brew "openjdk"
 # Library to load and enumerate PKCS#11 modules
@@ -164,8 +164,12 @@ brew "pkgconf"
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
+# Core utilities for Python packages
+brew "python-packaging"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Cross-shell prompt for astronauts
@@ -231,7 +235,7 @@ cask "font-iosevka-term-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Open-source video transcoder
-cask "handbrake"
+cask "handbrake-app"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # End-to-end encryption software
