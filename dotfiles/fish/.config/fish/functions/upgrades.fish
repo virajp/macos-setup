@@ -169,9 +169,38 @@ end
 function node-upgrade
     repchar '='
     set_color --bold green
+    echo "Upgrade node using fnm ..."
+    # Get the latest version number and install it
+    set latest_version (fnm list-remote | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | sed 's/^v//')
+    fnm install $latest_version
+    fnm use $latest_version
+    fnm default $latest_version
+    set_color normal
+    node-cleanup
+    repchar '-'
+    set_color --bold green
     echo "Install global npm packages ..."
     set_color normal
-    npm install --global npm@latest firebase-tools@latest prettier@latest
+    npm install --global --force npm@latest pnpm@latest firebase-tools@latest prettier@latest
+end
+
+# Cleanup older versions of node installed by fnm
+function node-cleanup
+    repchar '-'
+    set_color --bold green
+    echo "Cleaning up older versions of node ..."
+    set_color normal
+    
+    # Get the default version
+    set default_version (fnm list | grep "default" | awk '{print $2}')
+    
+    # Remove all versions except default and system
+    for node_version in (fnm list | grep -v "default" | grep -v "system" | sed 's/^\* //' | sed 's/^  //')
+        if test "$node_version" != "$default_version"
+            echo "Removing $node_version..."
+            fnm uninstall $node_version
+        end
+    end
 end
 
 # Function to upgrade all brew packages
