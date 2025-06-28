@@ -1,12 +1,16 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
 # Reference: https://www.nerdfonts.com/cheat-sheet
+# WHY: Custom oh-my-posh theme inspired by gruvbox colors
+# Features: time display, git status, path with icons, language versions, execution time
 
 version: 3
 
+# WHY: Add final space for better terminal appearance
 final_space: true
 enable_cursor_positioning: true
 
+# WHY: Auto-update enabled to get latest features and fixes
 upgrade:
   source: cdn
   interval: 24h

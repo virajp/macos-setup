@@ -1,3 +1,18 @@
+#!/usr/bin/env fish
+# =============================================================================
+# Fish Configuration: Environment Variables
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
+#
+# Environment variables defined:
+# - GPG_TTY: TTY for GPG operations
+# - HOMEBREW_PREFIX: Homebrew installation prefix (/opt/homebrew)
+# - CLOUD_PATH: iCloud Drive path for synced documents
+# - DOCKER_*: Docker environment configuration
+# - BUILDKIT_*: Docker BuildKit configuration
+# =============================================================================
+
 # GPG
 set --global --export GPG_TTY (tty)
 

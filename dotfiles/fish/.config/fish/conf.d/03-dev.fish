@@ -1,3 +1,27 @@
+#!/usr/bin/env fish
+# =============================================================================
+# Fish Configuration: Development Environment Variables
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
+#
+# Environment variables referenced:
+# - HOMEBREW_PREFIX: Homebrew installation prefix (defined in 01-env.fish)
+# - HOME: User home directory (system variable)
+#
+# Development environment variables defined:
+# - DOTNET_CLI_TELEMETRY_OPTOUT: Disable .NET telemetry
+# - GEM_HOME: Ruby gems installation directory
+# - GOPATH: Go workspace directory
+# - HELM_EXPERIMENTAL_OCI: Enable Helm OCI support
+# - NODE_ENV: Node.js environment (development)
+# - JAVA_HOME: Java installation path
+# - CPPFLAGS: C++ compiler flags for Java
+# - ANDROID_HOME: Android SDK installation path
+# - CHROME_EXECUTABLE: Chrome executable path (using Brave Browser)
+# - RUNTIME_ENV: Runtime environment identifier
+# =============================================================================
+
 # DotNet environment variables
 set --global --export DOTNET_CLI_TELEMETRY_OPTOUT true
 

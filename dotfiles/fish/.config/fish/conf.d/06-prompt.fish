@@ -1,4 +1,14 @@
-# This file will load the shell prompt
+#!/usr/bin/env fish
+# =============================================================================
+# Fish Configuration: Shell Prompt
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
+#
+# Shell prompt configuration:
+# - Initializes starship prompt (preferred)
+# - Alternative oh-my-posh configuration (commented out)
+# =============================================================================
 
 # Using starship prompt
 if type -q starship

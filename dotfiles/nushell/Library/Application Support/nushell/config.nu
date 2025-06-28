@@ -4,6 +4,8 @@
 # 3. All files from "vendor/autoload" directory
 # 4. login.nu
 
+# WHY: Hardcoded to Apple Silicon path instead of dynamic detection
+# This ensures consistent path resolution across all nushell sessions
 # Set HOMEBREW_PREFIX environment variable
 $env.HOMEBREW_PREFIX = "/opt/homebrew"
 
@@ -27,6 +29,7 @@ path add ($env.HOME | path join ".local/bin")
 path add ($env.GEM_HOME | path join "bin")
 path add ($env.ANDROID_HOME | path join "cmdline-tools/latest/bin")
 
+# WHY: Custom direnv hook for automatic environment variable loading
 # Setup direnv hook
 $env.config.hooks.env_change.PWD = [
   { ||
@@ -37,9 +40,11 @@ $env.config.hooks.env_change.PWD = [
   }
 ]
 
+# WHY: Clean startup without nushell version banner
 # Disable banner at startup
 $env.config.show_banner = false
 
+# WHY: SQLite for better performance and larger history size
 # History configuration
 $env.config.history = {
   file_format: sqlite
@@ -48,12 +53,15 @@ $env.config.history = {
   isolation: true
 }
 
+# WHY: Safety feature - use macOS Trash instead of permanent deletion
 # Always use Trash for rm
 $env.config.rm.always_trash = true
 
+# WHY: Sublime Text for quick file editing from terminal
 # Set sublime as editor
 $env.config.buffer_editor = "/opt/homebrew/bin/subl"
 
+# WHY: Custom datetime format for consistency across tools
 # Datetime format
 $env.config.datetime_format.normal = "%d/%m/%y %I:%M:%S%p"
 

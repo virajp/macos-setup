@@ -1,26 +1,64 @@
-# Function to update grype database
+#!/usr/bin/env fish
+# =============================================================================
+# File: upgrades.fish
+# Description: System and package upgrade utilities for macOS development
+# Author: Viraj Patel
+# Created: 2024
+# =============================================================================
+
+# =============================================================================
+# SECURITY & VULNERABILITY SCANNER FUNCTIONS
+# =============================================================================
+
+##
+# Updates the grype vulnerability scanner database
+#
+# @return 0 on success, non-zero on failure
+# @example grype-update
+##
 function grype-update
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Updating grype database ..."
     set_color normal
     grype db update
 end
 
-# Function to check whether gcloud cli is installed and then run the component upgrade command
+# =============================================================================
+# GOOGLE CLOUD FUNCTIONS
+# =============================================================================
+
+##
+# Updates Google Cloud CLI components if gcloud is installed
+#
+# @return 0 on success, non-zero on failure
+# @example gcloud-upgrade
+##
 function gcloud-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Updating gcloud components ..."
     set_color normal
-    type gcloud >/dev/null && gcloud components update --verbosity=info --quiet
+    # Check if gcloud is available before attempting update
+    type gcloud > /dev/null && gcloud components update --verbosity=info --quiet
 end
 
-# Function to check whether touch-id is setup for sudo 
+# =============================================================================
+# MACOS SECURITY & AUTHENTICATION FUNCTIONS
+# =============================================================================
+
+##
+# Checks if Touch ID is configured for sudo authentication
+#
+# @return 0 if configured, 1 if not configured
+# @example check-touch-id
+##
 function check-touch-id
     set_color --bold green
     echo -n "Checking Touch ID setup for shell ..."
     set_color normal
+    
+    # Check if pam_tid.so module is configured in sudo PAM config
     if grep -q "pam_tid.so" /etc/pam.d/sudo
         set_color --bold green
         echo OK
@@ -44,158 +82,261 @@ function check-touch-id
     end
 end
 
-# Function to upgrade brew packages
+# =============================================================================
+# HOMEBREW PACKAGE MANAGEMENT FUNCTIONS
+# =============================================================================
+
+##
+# Comprehensive Homebrew package upgrade function (brew formulae)
+# Updates, upgrades formulae/casks, and cleans up unused packages
+#
+# @return 0 on success, non-zero on failure
+# @example bf
+##
 function bf
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Updating brew ..."
     set_color normal
+    # Force update brew with verbose output
     brew update --auto-update --verbose --force
+    # Show outdated formulae
     brew outdated --formulae
 
-    repchar -
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Upgrading outdated formulaes ..."
     set_color normal
+    # Use jq to parse JSON output and extract formula names
     set OUTDATED (brew outdated --formulae --json=v2 | jq --raw-output '.formulae[].name')
+    # Loop through each outdated formula and upgrade individually
     for formulae in $OUTDATED
-
         brew upgrade --formulae --verbose --display-times $formulae
     end
 
-    repchar -
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Upgrading outdated casks ..."
     set_color normal
-    # EXCLUDE=("google-cloud-sdk" "flutter")
+    # Define exclusion list for packages that shouldn't be auto-upgraded
+    # Note: google-cloud-sdk and flutter are commented out but could be excluded
     set EXCLUDE some-fake-name
+    # Get list of outdated casks using jq JSON parsing
     set LIST (brew outdated --cask --json=v2 | jq --raw-output '.casks[].name')
+    # Process each outdated cask
     for package in $LIST
-
         set process true
+        # Check if package is in exclusion list
         for exPackage in $EXCLUDE
-
             if test "$package" = "$exPackage"
                 set process false
                 break
             end
         end
+        # Only upgrade if not excluded
         if test "$process" = true
             echo "Checking upgrade: $package"
             brew upgrade --cask --verbose "$package"
         end
     end
 
-    repchar -
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Autoremoving dangling formulaes ..."
     set_color normal
+    # Remove unused dependencies
     brew autoremove --verbose
 
-    repchar -
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Cleaning up ..."
     set_color normal
+    # Clean up old versions and cache files
     brew cleanup --prune=all
 end
 
+# =============================================================================
+# PYTHON PACKAGE MANAGEMENT FUNCTIONS
+# =============================================================================
+
+##
+# Upgrades core Python packaging tools (pip, setuptools, wheel)
+#
+# @return 0 on success, non-zero on failure
+# @example pip-upgrade
+##
 function pip-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Upgrading pip, setuptools & wheel ..."
     set_color normal
+    # Check if pip3 is available and upgrade core packages
+    # --break-system-packages allows upgrading in newer Python environments
     type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
 end
 
+# =============================================================================
+# RUBY GEM MANAGEMENT FUNCTIONS
+# =============================================================================
+
+##
+# Updates Ruby gem system (requires sudo for system-wide installation)
+#
+# @return 0 on success, non-zero on failure
+# @example gem-upgrade
+##
 function gem-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Upgrading gem for cocoapods (requires sudo) ..."
     set_color normal
+    # Check if gem is available and update system with conservative options
     type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
 end
 
+# =============================================================================
+# FLUTTER DEVELOPMENT FUNCTIONS
+# =============================================================================
+
+##
+# Upgrades Flutter SDK to the latest stable version
+#
+# @return 0 on success, non-zero on failure
+# @example flutter-upgrade
+##
 function flutter-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Upgrading Flutter ..."
     set_color normal
+    # Check if flutter is available and upgrade to latest
     type flutter >/dev/null && flutter upgrade
 end
 
-# macOS & AppStore downloads
+# =============================================================================
+# MACOS SYSTEM UPDATE FUNCTIONS
+# =============================================================================
+
+##
+# Downloads macOS updates, installs Rosetta, and upgrades App Store apps
+#
+# @return 0 on success, non-zero on failure
+# @example osx-download
+##
 function osx-download
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Install Rosetta ..."
     set_color normal
+    # Install Rosetta 2 for Intel app compatibility on Apple Silicon
     softwareupdate --install-rosetta --agree-to-license
-    repchar -
+    
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Download macOS updates ..."
     set_color normal
+    # Download all available macOS system updates
     softwareupdate --download --all --verbose
-    repchar -
+    
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Upgrades from AppStore ..."
     set_color normal
+    # Upgrade all App Store applications using mas CLI
     mas upgrade
 end
 
-# macOS update list
+##
+# Lists available macOS system updates and App Store updates
+#
+# @return 0 on success, non-zero on failure
+# @example osx-list
+##
 function osx-list
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Checking for macOS updates ..."
     set_color normal
+    # List available macOS system updates
     softwareupdate --list
-    repchar -
+    
+    repchar -  # Display sub-separator
     set_color --bold green
     echo "Checking for update from AppStore ..."
     set_color normal
+    # List outdated App Store applications
     mas outdated
 end
 
-# macOS update
+##
+# Installs all available macOS system updates (requires restart)
+#
+# @return 0 on success, non-zero on failure
+# @example osx-upgrade
+##
 function osx-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Checking for macOS updates ..."
     set_color normal
+    # Install all available system updates with automatic restart
     sudo softwareupdate --verbose --install --all --restart
 end
 
-# Update nodejs & tools
+# =============================================================================
+# NODE.JS VERSION MANAGEMENT FUNCTIONS
+# =============================================================================
+
+##
+# Updates Node.js to latest version using fnm and installs global packages
+#
+# @return 0 on success, non-zero on failure
+# @example node-upgrade
+##
 function node-upgrade
-    repchar '='
+    repchar '='  # Display separator line
     set_color --bold green
     echo "Upgrade node using fnm ..."
-    # Get the latest version number and install it
+    set_color normal
+    
+    # Use fnm to get latest stable Node.js version
+    # Regex matches semantic versions (e.g., v18.17.0)
     set latest_version (fnm list-remote | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | sed 's/^v//')
+    # Install, use, and set as default the latest version
     fnm install $latest_version
     fnm use $latest_version
     fnm default $latest_version
-    set_color normal
+    
+    # Clean up old versions
     node-cleanup
-    repchar '-'
+    
+    repchar '-'  # Display sub-separator
     set_color --bold green
     echo "Install global npm packages ..."
     set_color normal
+    # Install essential global packages with force flag to ensure latest versions
     npm install --global --force npm@latest pnpm@latest firebase-tools@latest prettier@latest
 end
 
-# Cleanup older versions of node installed by fnm
+##
+# Removes old Node.js versions managed by fnm, keeping only default and system
+#
+# @return 0 on success, non-zero on failure
+# @example node-cleanup
+##
 function node-cleanup
-    repchar '-'
+    repchar '-'  # Display sub-separator
     set_color --bold green
     echo "Cleaning up older versions of node ..."
     set_color normal
     
-    # Get the default version
+    # Extract the default version from fnm list output
     set default_version (fnm list | grep "default" | awk '{print $2}')
     
-    # Remove all versions except default and system
+    # Iterate through all installed versions and remove non-default ones
+    # Exclude "default" and "system" entries, clean up formatting
     for node_version in (fnm list | grep -v "default" | grep -v "system" | sed 's/^\* //' | sed 's/^  //')
+        # Only remove if it's not the current default version
         if test "$node_version" != "$default_version"
             echo "Removing $node_version..."
             fnm uninstall $node_version
@@ -203,16 +344,29 @@ function node-cleanup
     end
 end
 
-# Function to upgrade all brew packages
+# =============================================================================
+# COMPREHENSIVE UPDATE FUNCTION
+# =============================================================================
+
+##
+# Master update function that runs all upgrade routines in sequence
+# Requires Touch ID to be configured for sudo operations
+#
+# @return 0 on success, 1 if Touch ID not configured
+# @example updateall
+##
 function updateall
+    # Verify Touch ID is configured before proceeding with operations requiring sudo
     check-touch-id || return 1
-    bf
-    gcloud-upgrade
-    node-upgrade
-    grype-update
-    cleanupDS-Projects
-    pip-upgrade
-    gem-upgrade
-    flutter-upgrade
-    osx-download
+    
+    # Execute all upgrade functions in logical order
+    bf                    # Homebrew packages (formulae and casks)
+    gcloud-upgrade        # Google Cloud CLI components
+    node-upgrade          # Node.js and global npm packages
+    grype-update          # Security vulnerability database
+    cleanupDS-Projects    # Clean .DS_Store files from Projects directory
+    pip-upgrade           # Python packaging tools
+    gem-upgrade           # Ruby gem system
+    flutter-upgrade       # Flutter SDK
+    osx-download          # macOS updates and App Store apps
 end

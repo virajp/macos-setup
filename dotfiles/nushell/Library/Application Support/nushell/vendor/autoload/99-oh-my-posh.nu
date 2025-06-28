@@ -1,9 +1,12 @@
-# make sure we have the right prompt render correctly
+# WHY: Custom right prompt configuration for oh-my-posh compatibility
+# Ensures right prompt displays correctly on the last line in nushell
 if ($env.config? | is-not-empty) {
     $env.config = ($env.config | upsert render_right_prompt_on_last_line true)
 }
 
 $env.POWERLINE_COMMAND = 'oh-my-posh'
+# WHY: Custom config path instead of built-in themes
+# Uses personal oh-my-posh.yaml config with gruvbox-inspired colors and custom segments
 $env.POSH_THEME = (echo "/Users/virajpatel/.config/oh-my-posh.yaml")
 $env.PROMPT_INDICATOR = ""
 $env.POSH_SESSION_ID = (echo "4b4d2638-1bcf-4ed6-a532-551acd3e4fe9")
