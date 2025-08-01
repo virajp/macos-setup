@@ -6,13 +6,13 @@
 
 ## Setup GPG
 
-```bash
+```shell
 chmod 0700 $HOME/.gnupg
 ```
 
 ## Creating a GPG Key
 
-```bash
+```shell
 gpg --full-generate-key
 ```
 
@@ -26,7 +26,7 @@ gpg --full-generate-key
 
 ## Check the GPG Key
 
-```bash
+```shell
 gpg --list-secret-keys --keyid-format=long
 ```
 
@@ -34,7 +34,7 @@ gpg --list-secret-keys --keyid-format=long
 
 ## Configure GPG in gitconfig
 
-```bash
+```shell
 git config --global commit.gpgsign true
 git config --global gpg.format openpgp
 git config --global gpg.program (which --path gpg)
@@ -43,7 +43,7 @@ git config --global user.signingkey 9B2F2A3AAA8409F0
 
 ## Print the GPG Key
 
-```bash
+```shell
 gpg --armor --export 9B2F2A3AAA8409F0
 ```
 
@@ -51,13 +51,13 @@ gpg --armor --export 9B2F2A3AAA8409F0
 
 ## Use macOS Keychain to enter GPG Passphrase
 
-```bash
+```shell
 # brew info --formulae keychain
 echo "pinentry-program $HOMEBREW_PREFIX/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
 pkill -TERM gpg-agent
 ```
 
-```bash
+```shell
 # Test if it's working
 gpg --list-keys
 echo test | gpg -e -r 3125954+virajp@users.noreply.github.com | gpg -d

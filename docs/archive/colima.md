@@ -1,6 +1,6 @@
 # Install Colima & MiniKube
 
-```bash
+```shell
 # Install alternate to Docker-Desktop (colima)
 brew install --formulae docker docker-buildx docker-scan kubectl colima minikube
 

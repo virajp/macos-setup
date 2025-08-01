@@ -2,7 +2,7 @@
 
 ## Global Preferences
 
-```bash
+```shell
 defaults write -globalDomain AppleInterfaceStyle -string Dark
 # Finder > Preferences > Advance > Show all filename extensions
 defaults write -globalDomain AppleShowAllExtensions -bool true
@@ -20,7 +20,7 @@ killall Dock
 
 ## Trackpad
 
-```bash
+```shell
 # Trackpad "Tap to Click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -28,7 +28,7 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
 ## Firewall
 
-```bash
+```shell
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -bool true
 sudo defaults write /Library/Preferences/com.apple.alf allowdownloadsignedenabled -bool true
 sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool true
@@ -37,14 +37,14 @@ sudo defaults write /Library/Preferences/com.apple.alf loggingenabled -bool true
 
 ## DNS
 
-```bash
+```shell
 networksetup -setv6off Wi-Fi
 # networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1
 ```
 
 ## Dock
 
-```bash
+```shell
 defaults write com.apple.dock orientation -string bottom
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
@@ -59,14 +59,14 @@ killall Dock
 
 ## Address Book
 
-```bash
+```shell
 defaults read com.apple.AddressBook ABNameSortingFormat -string "sortingFirstName sortingLastName"
 defaults read com.apple.AddressBook ABBirthDayVisible -bool true
 ```
 
 ## Desktop
   
-```bash
+```shell
 defaults write com.apple.finder CreateDesktop -bool false
 # Finder > Preferences > General > Show items on the Desktop
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
@@ -119,7 +119,7 @@ defaults write com.apple.finder FXICloudDriveDocuments -bool true
 
 ## Search Recents View Settings
 
-```bash
+```shell
 /usr/libexec/PlistBuddy -c "Set :SearchRecentsViewSettings:WindowState:ContainerShowSidebar true" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :SearchRecentsViewSettings:WindowState:ShowTabView false" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :SearchRecentsViewSettings:WindowState:ShowSidebar true" ~/Library/Preferences/com.apple.finder.plist
@@ -130,7 +130,7 @@ defaults write com.apple.finder FXICloudDriveDocuments -bool true
 
 ## Computer View Settings
 
-```bash
+```shell
 /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:ExtendedListViewSettingsV2:showIconPreview false" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:WindowState:ContainerShowSidebar true" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:WindowState:ShowTabView false" ~/Library/Preferences/com.apple.finder.plist
@@ -141,7 +141,7 @@ defaults write com.apple.finder FXICloudDriveDocuments -bool true
 
 ## Standard View Settings
 
-```bash
+```shell
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:showIconPreview false" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:sortColumn name" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:ExtendedListViewSettingsV2:showIconPreview false" ~/Library/Preferences/com.apple.finder.plist
@@ -154,13 +154,13 @@ defaults write com.apple.finder FXICloudDriveDocuments -bool true
 
 ## iCloud View Settings
 
-```bash
+```shell
 /usr/libexec/PlistBuddy -c "Set :ICloudViewSettings:ExtendedListViewSettingsV2:showIconPreview false" ~/Library/Preferences/com.apple.finder.plist
 ```
 
 ## Apply above settings
 
-```bash
+```shell
 # Apply settings
 killall cfprefsd; killall Finder; killall Dock
 ```

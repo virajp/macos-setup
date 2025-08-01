@@ -4,12 +4,12 @@ This is required to use TouchID for sudo and needs to be done post every macOS u
 
 ## Open the sudo utility
 
-```bash
+```shell
 subl /etc/pam.d/sudo
 ```
 
 ## Add the following as the first line
 
-```bash
+```shell
 auth       sufficient     pam_tid.so
 ```

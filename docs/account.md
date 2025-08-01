@@ -22,7 +22,7 @@ Next, create an admin user account with name as "admin".
 
 Go to terminal and run the following command:
 
-```bash
+```shell
 # If you are logged in as standard user, you will have to switch to admin user context
 su admin
 

@@ -6,7 +6,7 @@ This guide establishes consistent documentation standards for shell scripts, jus
 
 Every script file should begin with a standardized header block containing essential metadata:
 
-```bash
+```shell
 #!/usr/bin/env <shell>
 #
 # Purpose: [Brief description of what this script does]
@@ -23,7 +23,7 @@ Every script file should begin with a standardized header block containing essen
 
 Document each function with a consistent block format:
 
-```bash
+```shell
 # Function: function_name
 # Description: [What this function does]
 # Arguments:
@@ -43,6 +43,7 @@ Document each function with a consistent block format:
 ## Comment Style Conventions
 
 ### Zsh Scripts
+
 - Use `#` at the beginning of comment lines
 - For inline comments, use `#` with a space after code
 - Multi-line comments should each start with `#`
@@ -57,11 +58,12 @@ echo "Hello" # This is an inline comment
 ```
 
 ### Fish Scripts
+
 - Use `#` at the beginning of comment lines
 - For inline comments, use `#` with a space after code
 - Multi-line comments should each start with `#`
 
-```fish
+```shell
 # This is a full-line comment
 echo "Hello" # This is an inline comment
 
@@ -71,6 +73,7 @@ echo "Hello" # This is an inline comment
 ```
 
 ### Justfiles
+
 - Use `#` at the very beginning of the line (no indentation)
 - Comments apply to the recipe that follows them
 - Use `#` for recipe descriptions
@@ -99,6 +102,7 @@ complex-task:
 ## Template Usage
 
 Use the templates in this directory as starting points:
+
 - `file-header-template.txt` - Copy-paste file header
 - `function-doc-template.txt` - Copy-paste function documentation
 - `zsh-script-template.zsh` - Complete Zsh script template

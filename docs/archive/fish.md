@@ -4,7 +4,7 @@ Fish is a smart and user-friendly command line shell for macOS. It is the prefer
 
 ## Install
 
-```bash
+```shell
 # Install
 brew install --formulae fish
 
@@ -22,7 +22,7 @@ We will be using `Tide (IlanCosman/tide)` as the shell prompt and use `Fisher (P
 
 > **Note:** The following commands require to use `fish` shell.
 
-```bash
+```shell
 # Install Tide
 fisher install IlanCosman/tide@v5
 ```
@@ -31,7 +31,7 @@ fisher install IlanCosman/tide@v5
 
 > Follow these steps to configure `Tide` shell prompt in case your prompt is not showing up correctly.
 
-```bash
+```shell
 tide configure
 ```
 

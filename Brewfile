@@ -6,6 +6,8 @@ brew "apko"
 brew "libpcap"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
+# Text-based UI library
+brew "ncurses"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -60,8 +62,6 @@ brew "d2"
 brew "jpeg-turbo"
 # TIFF library and utilities
 brew "libtiff"
-# Library for command-line editing
-brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # Secure runtime for JavaScript and TypeScript
@@ -70,8 +70,6 @@ brew "deno"
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
 brew "diffoci"
-# Text-based UI library
-brew "ncurses"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Tool for exploring each layer in a docker image
@@ -233,7 +231,7 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
-cask "google-cloud-sdk"
+cask "gcloud-cli"
 # Open-source video transcoder
 cask "handbrake-app"
 # Terminal emulator as alternative to Apple's Terminal app

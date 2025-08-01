@@ -8,7 +8,7 @@ I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles. To i
 
 > NOTE: Run the `stow` cli from `dotfiles` directory
 
-```bash
+```shell
 stow --dir=. --target=$HOME --verbose */
 ```
 
@@ -16,13 +16,13 @@ stow --dir=. --target=$HOME --verbose */
 
 To remove the symlinks, use the following command:
 
-```bash
+```shell
 stow --delete --dir=. --target=$HOME --verbose */
 ```
 
 ## Simulate
 
-```bash
+```shell
 stow --dir=. --target=$HOME --verbose --simulate */
 ```
 

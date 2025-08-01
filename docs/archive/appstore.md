@@ -1,6 +1,6 @@
 # Install apps from Apple App Store
 
-```bash
+```shell
 # First we need to install "mas", a cli for Mac-AppStore
 brew install --formulae mas
 

@@ -17,7 +17,7 @@
 # @example grype-update
 ##
 function grype-update
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Updating grype database ..."
     set_color normal
@@ -35,12 +35,15 @@ end
 # @example gcloud-upgrade
 ##
 function gcloud-upgrade
-    repchar '='  # Display separator line
+    # Check if gcloud command is available before proceeding
+    type gcloud >/dev/null 2>&1 || return 0 # Exit if gcloud is not installed
+
+    # Display upgrade information
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Updating gcloud components ..."
     set_color normal
-    # Check if gcloud is available before attempting update
-    type gcloud > /dev/null && gcloud components update --verbosity=info --quiet
+    gcloud components update --verbosity=warning --quiet
 end
 
 # =============================================================================
@@ -57,7 +60,7 @@ function check-touch-id
     set_color --bold green
     echo -n "Checking Touch ID setup for shell ..."
     set_color normal
-    
+
     # Check if pam_tid.so module is configured in sudo PAM config
     if grep -q "pam_tid.so" /etc/pam.d/sudo
         set_color --bold green
@@ -94,7 +97,7 @@ end
 # @example bf
 ##
 function bf
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Updating brew ..."
     set_color normal
@@ -103,7 +106,7 @@ function bf
     # Show outdated formulae
     brew outdated --formulae
 
-    repchar -  # Display sub-separator
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Upgrading outdated formulaes ..."
     set_color normal
@@ -114,7 +117,7 @@ function bf
         brew upgrade --formulae --verbose --display-times $formulae
     end
 
-    repchar -  # Display sub-separator
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Upgrading outdated casks ..."
     set_color normal
@@ -140,14 +143,14 @@ function bf
         end
     end
 
-    repchar -  # Display sub-separator
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Autoremoving dangling formulaes ..."
     set_color normal
     # Remove unused dependencies
     brew autoremove --verbose
 
-    repchar -  # Display sub-separator
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Cleaning up ..."
     set_color normal
@@ -166,13 +169,16 @@ end
 # @example pip-upgrade
 ##
 function pip-upgrade
-    repchar '='  # Display separator line
+    # Check if pip3 command is available before proceeding
+    type pip3 >/dev/null 2>&1 || return 0 # Exit if pip3 is not installed
+
+    # Display upgrade information
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Upgrading pip, setuptools & wheel ..."
     set_color normal
-    # Check if pip3 is available and upgrade core packages
     # --break-system-packages allows upgrading in newer Python environments
-    type pip3 >/dev/null && pip3 install --upgrade pip setuptools wheel --break-system-packages --upgrade-strategy only-if-needed
+    pip3 install --upgrade --break-system-packages --upgrade-strategy=only-if-needed pip setuptools wheel
 end
 
 # =============================================================================
@@ -186,12 +192,16 @@ end
 # @example gem-upgrade
 ##
 function gem-upgrade
-    repchar '='  # Display separator line
+    # Check if gem command is available before proceeding
+    type gem >/dev/null 2>&1 || return 0 # Exit if gem is not installed
+
+    # Display upgrade information
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Upgrading gem for cocoapods (requires sudo) ..."
     set_color normal
     # Check if gem is available and update system with conservative options
-    type gem >/dev/null && sudo gem update --system --no-prerelease --conservative --minimal-deps
+    sudo gem update --system --no-prerelease --conservative --minimal-deps
 end
 
 # =============================================================================
@@ -205,12 +215,15 @@ end
 # @example flutter-upgrade
 ##
 function flutter-upgrade
-    repchar '='  # Display separator line
+    # Check if flutter command is available before proceeding
+    type flutter >/dev/null 2>&1 || return 0 # Exit if flutter is not installed
+
+    # Display upgrade information
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Upgrading Flutter ..."
     set_color normal
-    # Check if flutter is available and upgrade to latest
-    type flutter >/dev/null && flutter upgrade
+    flutter upgrade --disable-analytics --prefixed-errors
 end
 
 # =============================================================================
@@ -224,21 +237,21 @@ end
 # @example osx-download
 ##
 function osx-download
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Install Rosetta ..."
     set_color normal
     # Install Rosetta 2 for Intel app compatibility on Apple Silicon
     softwareupdate --install-rosetta --agree-to-license
-    
-    repchar -  # Display sub-separator
+
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Download macOS updates ..."
     set_color normal
     # Download all available macOS system updates
     softwareupdate --download --all --verbose
-    
-    repchar -  # Display sub-separator
+
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Upgrades from AppStore ..."
     set_color normal
@@ -253,14 +266,14 @@ end
 # @example osx-list
 ##
 function osx-list
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Checking for macOS updates ..."
     set_color normal
     # List available macOS system updates
     softwareupdate --list
-    
-    repchar -  # Display sub-separator
+
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Checking for update from AppStore ..."
     set_color normal
@@ -275,7 +288,7 @@ end
 # @example osx-upgrade
 ##
 function osx-upgrade
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Checking for macOS updates ..."
     set_color normal
@@ -294,28 +307,33 @@ end
 # @example node-upgrade
 ##
 function node-upgrade
-    repchar '='  # Display separator line
+    repchar '=' # Display separator line
     set_color --bold green
     echo "Upgrade node using fnm ..."
     set_color normal
-    
+
     # Use fnm to get latest stable Node.js version
-    # Regex matches semantic versions (e.g., v18.17.0)
-    set latest_version (fnm list-remote | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | sed 's/^v//')
+    set latest_version (fnm list-remote --latest)
     # Install, use, and set as default the latest version
-    fnm install $latest_version
+    fnm install $latest_version --corepack-enabled
     fnm use $latest_version
     fnm default $latest_version
-    
+
+    # Ensure corepack is enabled for package management & pnpm is default
+    corepack enable && corepack prepare pnpm@latest --activate
+
+    # Uninstall npm
+    type npm >/dev/null 2>&1 && npm uninstall --global npm
+
     # Clean up old versions
     node-cleanup
-    
-    repchar '-'  # Display sub-separator
+
+    repchar - # Display sub-separator
     set_color --bold green
-    echo "Install global npm packages ..."
+    echo "Install global pnpm packages ..."
     set_color normal
-    # Install essential global packages with force flag to ensure latest versions
-    npm install --global --force npm@latest pnpm@latest firebase-tools@latest prettier@latest
+    # Upgrade global packages
+    pnpm update --global
 end
 
 ##
@@ -325,14 +343,14 @@ end
 # @example node-cleanup
 ##
 function node-cleanup
-    repchar '-'  # Display sub-separator
+    repchar - # Display sub-separator
     set_color --bold green
     echo "Cleaning up older versions of node ..."
     set_color normal
-    
+
     # Extract the default version from fnm list output
     set default_version (fnm list | grep "default" | awk '{print $2}')
-    
+
     # Iterate through all installed versions and remove non-default ones
     # Exclude "default" and "system" entries, clean up formatting
     for node_version in (fnm list | grep -v "default" | grep -v "system" | sed 's/^\* //' | sed 's/^  //')
@@ -358,15 +376,15 @@ end
 function updateall
     # Verify Touch ID is configured before proceeding with operations requiring sudo
     check-touch-id || return 1
-    
+
     # Execute all upgrade functions in logical order
-    bf                    # Homebrew packages (formulae and casks)
-    gcloud-upgrade        # Google Cloud CLI components
-    node-upgrade          # Node.js and global npm packages
-    grype-update          # Security vulnerability database
-    cleanupDS-Projects    # Clean .DS_Store files from Projects directory
-    pip-upgrade           # Python packaging tools
-    gem-upgrade           # Ruby gem system
-    flutter-upgrade       # Flutter SDK
-    osx-download          # macOS updates and App Store apps
+    bf # Homebrew packages (formulae and casks)
+    gcloud-upgrade # Google Cloud CLI components
+    node-upgrade # Node.js and global pnpm packages
+    grype-update # Security vulnerability database
+    cleanupDS-Projects # Clean .DS_Store files from Projects directory
+    pip-upgrade # Python packaging tools
+    gem-upgrade # Ruby gem system
+    flutter-upgrade # Flutter SDK
+    osx-download # macOS updates and App Store apps
 end

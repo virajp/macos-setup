@@ -4,7 +4,7 @@ Here's how to install .NET on macOS
 
 ## Install
 
-```bash
+```shell
 brew install --cask dotnet-sdk
 ```
 
@@ -12,19 +12,19 @@ brew install --cask dotnet-sdk
 
 > First update the workload list
 
-```bash
+```shell
 sudo dotnet workload update
 ```
 
 > Now, install Aspire
 
-```bash
+```shell
 sudo dotnet workload install aspire
 ```
 
 > Check the list of workloads installed
 
-```bash
+```shell
 dotnet workload list
 ```
 
@@ -33,6 +33,6 @@ dotnet workload list
 > Container Runtime
 > Not required for Docker Desktop
 
-```bash
+```shell
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
 ```

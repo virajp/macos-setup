@@ -2,40 +2,45 @@
 
 ## Configure bash
 
-```bash
+```shell
 echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
 ```
 
 ## Upgrade pip, setuptools and wheel (python)
 
-```bash
+```shell
 pip3 install --upgrade pip setuptools wheel
 ```
 
 ## NodeJS & tools
 
-- `NodeJS`: NodeJS
-- `NPM`: Node Package Manager
-- `TypeScript`: TypeScript
+### Install fnm (Node Version Manager)
 
-### Install NodeJS & npm
-
-```bash
-brew install --formulae node
+```shell
+brew install --formulae fnm
 ```
 
-## Configure npm
+### Install NodeJS
 
-```bash
-npm config set fund false
+```shell
+set latest_version (fnm list-remote --latest)
+fnm install $latest_version --corepack-enabled && fnm use $latest_version && fnm default $latest_version
+corepack enable && corepack prepare pnpm@latest --activate
+npm uninstall --global npm
 ```
 
-### Install TypeScript & Firebase-Tools
+## Configure pnpm
 
-> Note that the side effect of installing typescript like this is that it will be only available for the specific version of node. When you switch to another version of node, you will have to install typescript again.
+```shell
+pnpm config --global set fund false
+pnpm setup
+```
 
-```bash
-npm install --global typescript firebase-tools
+### Install global pnpm packages
+
+```shell
+pnpm install --global firebase-tools@latest pnpm@latest prettier@latest
+pnpm approve-builds --global
 ```
 
 ## Flutter & tools
@@ -54,7 +59,7 @@ SetApp will be installed via Homebrew. To install apps from SetApp, simply go in
 
 ## Configure tools
 
-```bash
+```shell
 # Configure Sublime-Text
 open "$HOME/Applications/Sublime Text.app"
 # Copy license from 1Password and apply

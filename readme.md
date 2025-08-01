@@ -18,7 +18,7 @@ Follow these steps to setup macOS.
 
 ## Final steps: Update tools & macOS
 
-```bash
+```shell
 # Update everything
 updateall
 
@@ -42,6 +42,6 @@ sudo softwareupdate --install --all --restart --verbose
 
 > To update the `Brewfile` with latest installed packages
 
-```bash
+```shell
 brew bundle dump --all --force --describe --file=./Brewfile
 ```

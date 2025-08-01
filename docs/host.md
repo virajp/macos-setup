@@ -4,13 +4,13 @@
 
 ### Check the ComputerName & HostName
 
-```bash
+```shell
 scutil --get ComputerName && scutil --get LocalHostName
 ```
 
 ### Set the ComputerName & HostName
 
-```bash
+```shell
 scutil --set ComputerName "Vicz MBP (2023)"
 scutil --set LocalHostName "Vicz-MBP-2023"
 ```
@@ -19,12 +19,12 @@ scutil --set LocalHostName "Vicz-MBP-2023"
 
 > - List all the volumes
 
-```bash
+```shell
 diskutil list internal virtual | grep Volume | grep -Eiv "preboot|recovery|vm|macOS"
 ```
 
 > - Rename the volume
 
-```bash
+```shell
 diskutil renameVolume "disk3s5" "Data"
 ```

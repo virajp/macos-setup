@@ -4,11 +4,11 @@
 
 ### Fonts from iCloud Drive
 
-```bash
+```shell
 cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.ttf $HOME/Library/Fonts/
 ```
 
-```bash
+```shell
 cp -nv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Personalization/fonts/*.otf $HOME/Library/Fonts/
 ```
 

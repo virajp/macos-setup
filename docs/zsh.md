@@ -6,11 +6,11 @@ ZSH is the default macOS shell, but we will install the latest version from home
 
 > - Make ZSH (brew version) as default shell (you will be asked to enter password)
 
-```bash
+```shell
 echo /opt/homebrew/bin/zsh | sudo tee -a /etc/shells
 ```
 
-```bash
+```shell
 chsh -s /opt/homebrew/bin/zsh
 ```
 

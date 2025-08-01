@@ -1,5 +1,5 @@
 # Install Rosetta
 
-```bash
+```shell
 sudo softwareupdate --install-rosetta --agree-to-license
 ```
