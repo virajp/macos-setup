@@ -1,5 +1,17 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
+# Library and utilities for processing GIFs
+brew "giflib"
+# JPEG image codec that aids compression and decompression
+brew "jpeg-turbo"
+# Library for manipulating PNG images
+brew "libpng"
+# Extremely Fast Compression algorithm
+brew "lz4"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# TIFF library and utilities
+brew "libtiff"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
 # Portable library for network traffic capture
@@ -22,8 +34,6 @@ brew "bat"
 brew "btop"
 # Asynchronous DNS library
 brew "c-ares"
-# Library for manipulating PNG images
-brew "libpng"
 # Software library to render fonts
 brew "freetype"
 # Perl compatible regular expressions library with a new API
@@ -50,18 +60,10 @@ brew "cosign"
 brew "crane"
 # HTTP/2 C Library
 brew "libnghttp2"
-# Extremely Fast Compression algorithm
-brew "lz4"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
-# JPEG image codec that aids compression and decompression
-brew "jpeg-turbo"
-# TIFF library and utilities
-brew "libtiff"
 # Command-line interface for SQLite
 brew "sqlite"
 # Secure runtime for JavaScript and TypeScript
@@ -88,8 +90,6 @@ brew "fzf"
 brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
-# Library and utilities for processing GIFs
-brew "giflib"
 # Distributed revision control system
 brew "git"
 # Assorted git-related scripts and tools
@@ -118,6 +118,8 @@ brew "httping"
 brew "hub-tool"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
@@ -166,8 +168,6 @@ brew "pstree"
 brew "python-packaging"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
 # Easy and Repeatable Kubernetes Development
 brew "skaffold"
 # Cross-shell prompt for astronauts
@@ -216,6 +216,8 @@ cask "android-studio"
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Create and run Linux containers using lightweight virtual machines
+cask "container"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Voice and text chat software
@@ -230,6 +232,7 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
+cask "font-meslo-lg-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Open-source video transcoder
@@ -280,7 +283,7 @@ mas "Disk Doctor", id: 455970963
 mas "Disk Map", id: 715464874
 mas "Duplicate Detective", id: 686428787
 mas "Final Cut Pro", id: 424389933
-mas "HP Smart", id: 1474276998
+mas "HP", id: 1474276998
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
@@ -304,11 +307,14 @@ vscode "bmalehorn.vscode-fish"
 vscode "davidanson.vscode-markdownlint"
 vscode "donjayamanne.githistory"
 vscode "foxundermoon.shell-format"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"

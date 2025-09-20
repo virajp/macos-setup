@@ -223,7 +223,10 @@ function flutter-upgrade
     set_color --bold green
     echo "Upgrading Flutter ..."
     set_color normal
-    flutter upgrade --disable-analytics --prefixed-errors
+    set_color --bold green
+    echo "Disable analytics ..."
+    set_color normal
+    flutter upgrade --disable-analytics
 end
 
 # =============================================================================
