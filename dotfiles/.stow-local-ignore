@@ -2,11 +2,7 @@
 
 \.git
 \.gitignore
-^/readme.md
+^/readme.md$
 \.DS_Store
 \.stow-local-ignore
 ^/history.*
-
-# Ignore Docker's trust folder
-
-^/docker/.docker/trust

@@ -1,5 +1,6 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
+tap "sst/tap"
 # Library and utilities for processing GIFs
 brew "giflib"
 # JPEG image codec that aids compression and decompression
@@ -32,6 +33,8 @@ brew "libgit2"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# New way of working with Protocol Buffers
+brew "buf"
 # Asynchronous DNS library
 brew "c-ares"
 # Software library to render fonts
@@ -76,6 +79,8 @@ brew "diffoci"
 brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
+# Command-line DNS client
+brew "doge"
 # Command-line DNS Client for Humans
 brew "doggo"
 # Modern, maintained replacement for ls
@@ -102,6 +107,8 @@ brew "go"
 brew "go-task"
 # Ping, but with a graph
 brew "gping"
+# Next generation open source RPC library and framework
+brew "grpc"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
 # OpenType text shaping engine
@@ -204,6 +211,8 @@ brew "zoxide"
 brew "zsh"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
+# The AI coding agent built for the terminal.
+brew "sst/tap/opencode"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -295,6 +304,7 @@ mas "Okta Verify", id: 490179405
 mas "Pages", id: 409201541
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
+mas "Swift Playground", id: 1496833156
 mas "Telegram", id: 747648890
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
