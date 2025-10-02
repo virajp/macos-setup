@@ -14,10 +14,15 @@
 
 # Apko - APK package building tool
 if type -q apko
-  apko completion fish | source
+    apko completion fish | source
 end
 
 # Melange - Package building tool
 if type -q melange
-  melange completion fish | source
+    melange completion fish | source
+end
+
+# GitLab CLI
+if type -q glab
+    glab completion -s fish | source
 end

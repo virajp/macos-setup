@@ -1,6 +1,5 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
-tap "sst/tap"
 # Library and utilities for processing GIFs
 brew "giflib"
 # JPEG image codec that aids compression and decompression
@@ -101,6 +100,8 @@ brew "git"
 brew "git-tools"
 # Audit git repos for secrets
 brew "gitleaks"
+# Open-source GitLab command-line tool
+brew "glab"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Task is a task runner/build tool that aims to be simpler and easier to use
@@ -211,8 +212,6 @@ brew "zoxide"
 brew "zsh"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
-# The AI coding agent built for the terminal.
-brew "sst/tap/opencode"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
