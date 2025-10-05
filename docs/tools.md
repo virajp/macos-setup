@@ -14,17 +14,15 @@ pip3 install --upgrade pip setuptools wheel
 
 ## NodeJS & tools
 
-### Install fnm (Node Version Manager)
-
-```shell
-brew install --formulae fnm
-```
-
 ### Install NodeJS
 
 ```shell
-set latest_version (fnm list-remote --latest)
-fnm install $latest_version --corepack-enabled && fnm use $latest_version && fnm default $latest_version
+brew install --formulae node
+```
+
+### Install PNPM
+
+```shell
 corepack enable && corepack prepare pnpm@latest --activate
 npm uninstall --global npm
 ```

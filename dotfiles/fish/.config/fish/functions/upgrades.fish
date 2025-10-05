@@ -300,11 +300,11 @@ function osx-upgrade
 end
 
 # =============================================================================
-# NODE.JS VERSION MANAGEMENT FUNCTIONS
+# NODE.JS FUNCTIONS
 # =============================================================================
 
 ##
-# Updates Node.js to latest version using fnm and installs global packages
+# Updates global packages
 #
 # @return 0 on success, non-zero on failure
 # @example node-upgrade
@@ -312,15 +312,8 @@ end
 function node-upgrade
     repchar '=' # Display separator line
     set_color --bold green
-    echo "Upgrade node using fnm ..."
+    echo "Enable corepack & configure pnpm ..."
     set_color normal
-
-    # Use fnm to get latest stable Node.js version
-    set latest_version (fnm list-remote --latest)
-    # Install, use, and set as default the latest version
-    fnm install $latest_version --corepack-enabled
-    fnm use $latest_version
-    fnm default $latest_version
 
     # Ensure corepack is enabled for package management & pnpm is default
     corepack enable && corepack prepare pnpm@latest --activate
@@ -328,41 +321,12 @@ function node-upgrade
     # Uninstall npm
     type npm >/dev/null 2>&1 && npm uninstall --global npm
 
-    # Clean up old versions
-    node-cleanup
-
     repchar - # Display sub-separator
     set_color --bold green
-    echo "Install global pnpm packages ..."
+    echo "Upgrade global pnpm packages ..."
     set_color normal
     # Upgrade global packages
     pnpm update --global
-end
-
-##
-# Removes old Node.js versions managed by fnm, keeping only default and system
-#
-# @return 0 on success, non-zero on failure
-# @example node-cleanup
-##
-function node-cleanup
-    repchar - # Display sub-separator
-    set_color --bold green
-    echo "Cleaning up older versions of node ..."
-    set_color normal
-
-    # Extract the default version from fnm list output
-    set default_version (fnm list | grep "default" | awk '{print $2}')
-
-    # Iterate through all installed versions and remove non-default ones
-    # Exclude "default" and "system" entries, clean up formatting
-    for node_version in (fnm list | grep -v "default" | grep -v "system" | sed 's/^\* //' | sed 's/^  //')
-        # Only remove if it's not the current default version
-        if test "$node_version" != "$default_version"
-            echo "Removing $node_version..."
-            fnm uninstall $node_version
-        end
-    end
 end
 
 # =============================================================================

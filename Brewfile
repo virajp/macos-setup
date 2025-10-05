@@ -30,12 +30,6 @@ brew "openssl@3"
 brew "libgit2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Resource monitor. C++ version and continuation of bashtop and bpytop
-brew "btop"
-# New way of working with Protocol Buffers
-brew "buf"
-# Asynchronous DNS library
-brew "c-ares"
 # Software library to render fonts
 brew "freetype"
 # Perl compatible regular expressions library with a new API
@@ -50,6 +44,18 @@ brew "libx11"
 brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Development kit for the Java programming language
+brew "openjdk"
+# Remove large files or passwords from Git history like git-filter-branch
+brew "bfg"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# New way of working with Protocol Buffers
+brew "buf"
+# Asynchronous DNS library
+brew "c-ares"
 # Console Matrix
 brew "cmatrix"
 # Dependency manager for Cocoa projects
@@ -86,8 +92,6 @@ brew "doggo"
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# Fast and simple Node.js version manager
-brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Toolkit for image loading and pixel buffer manipulation
@@ -112,8 +116,6 @@ brew "gping"
 brew "grpc"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
-# OpenType text shaping engine
-brew "harfbuzz"
 # Kubernetes package manager
 brew "helm"
 # Interpreted, interactive, object-oriented programming language
@@ -154,10 +156,10 @@ brew "melange"
 brew "mkcert"
 # Low-level cryptographic library
 brew "nettle"
+# Platform built on V8 to build network applications
+brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
-# Development kit for the Java programming language
-brew "openjdk"
 # Library to load and enumerate PKCS#11 modules
 brew "p11-kit"
 # Passphrase entry dialog utilizing the Assuan protocol
