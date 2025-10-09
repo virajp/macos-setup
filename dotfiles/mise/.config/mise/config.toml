@@ -1,0 +1,9 @@
+[settings]
+all_compile = true
+arch = "arm"
+gpg_verify = true
+os = "macos"
+
+[tools]
+node = "latest"
+usage = "latest"
