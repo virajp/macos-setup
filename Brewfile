@@ -152,8 +152,6 @@ brew "libuv"
 brew "mas"
 # Build APKs from source code
 brew "melange"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Low-level cryptographic library
