@@ -50,6 +50,8 @@ brew "harfbuzz"
 brew "openjdk"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
+# Toolchain of the web
+brew "biome"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # New way of working with Protocol Buffers
@@ -72,10 +74,6 @@ brew "libnghttp2"
 brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
-# Command-line interface for SQLite
-brew "sqlite"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -86,8 +84,6 @@ brew "direnv"
 brew "dive"
 # Command-line DNS client
 brew "doge"
-# Command-line DNS Client for Humans
-brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
@@ -118,14 +114,14 @@ brew "grpc"
 brew "grype"
 # Kubernetes package manager
 brew "helm"
+# Command-line interface for SQLite
+brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13", link: false
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
-# Docker Hub experimental CLI tool
-brew "hub-tool"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
 # Tools and libraries to manipulate images in many formats
@@ -158,8 +154,6 @@ brew "mkcert"
 brew "nettle"
 # Platform built on V8 to build network applications
 brew "node"
-# Modern shell for the GitHub era
-brew "nushell"
 # Library to load and enumerate PKCS#11 modules
 brew "p11-kit"
 # Passphrase entry dialog utilizing the Assuan protocol
@@ -313,19 +307,12 @@ mas "Transporter", id: 1450874784
 mas "UTM", id: 1538878817
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
-vscode "bierner.markdown-mermaid"
 vscode "bmalehorn.vscode-fish"
-vscode "davidanson.vscode-markdownlint"
-vscode "donjayamanne.githistory"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
 vscode "ms-azuretools.vscode-containers"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
