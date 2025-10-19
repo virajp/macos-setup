@@ -323,6 +323,10 @@ function node-upgrade
 
     repchar - # Display sub-separator
     set_color --bold green
+    echo "Upgrade pnpm ..."
+    set_color normal
+    pnpm self-update
+    set_color --bold green
     echo "Upgrade global pnpm packages ..."
     set_color normal
     # Upgrade global packages
