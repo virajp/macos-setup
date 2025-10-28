@@ -312,14 +312,28 @@ end
 function node-upgrade
     repchar '=' # Display separator line
     set_color --bold green
+    echo "Upgrade to latest version of node ..."
+    set_color normal
+    set latest_version (fnm list-remote --latest)
+    fnm use --install-if-missing --silent-if-unchanged $latest_version
+    fnm default $latest_version
+
+    repchar - # Display sub-separator
+    set_color --bold green
     echo "Enable corepack & configure pnpm ..."
     set_color normal
 
     # Ensure corepack is enabled for package management & pnpm is default
-    corepack enable && corepack prepare pnpm@latest --activate
+    if not type -q corepack
+        npm install --global corepack@latest
+    end
+    corepack enable
+    corepack prepare pnpm@latest --activate
 
     # Uninstall npm
-    type npm >/dev/null 2>&1 && npm uninstall --global npm
+    if type -q npm
+        npm uninstall --global npm
+    end
 
     repchar - # Display sub-separator
     set_color --bold green

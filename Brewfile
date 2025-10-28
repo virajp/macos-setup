@@ -1,5 +1,6 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
+tap "oven-sh/bun"
 # Library and utilities for processing GIFs
 brew "giflib"
 # JPEG image codec that aids compression and decompression
@@ -88,6 +89,8 @@ brew "doge"
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Fast and simple Node.js version manager
+brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Toolkit for image loading and pixel buffer manipulation
@@ -117,7 +120,7 @@ brew "helm"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.13", link: false
+brew "python@3.13"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
@@ -152,8 +155,6 @@ brew "melange"
 brew "mkcert"
 # Low-level cryptographic library
 brew "nettle"
-# Platform built on V8 to build network applications
-brew "node"
 # Library to load and enumerate PKCS#11 modules
 brew "p11-kit"
 # Passphrase entry dialog utilizing the Assuan protocol
@@ -208,6 +209,8 @@ brew "zoxide"
 brew "zsh"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
@@ -220,8 +223,6 @@ cask "android-studio"
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Create and run Linux containers using lightweight virtual machines
-cask "container"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Voice and text chat software
@@ -293,7 +294,7 @@ mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "MindNode", id: 1289197285
+mas "MindNode Classic", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Okta Verify", id: 490179405
 mas "Pages", id: 409201541
@@ -307,6 +308,7 @@ mas "Transporter", id: 1450874784
 mas "UTM", id: 1538878817
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
+vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "foxundermoon.shell-format"
 vscode "github.copilot"
@@ -318,3 +320,5 @@ vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "skellock.just"
 vscode "usernamehw.errorlens"
+go "golang.org/x/tools/gopls"
+go "honnef.co/go/tools/cmd/staticcheck"

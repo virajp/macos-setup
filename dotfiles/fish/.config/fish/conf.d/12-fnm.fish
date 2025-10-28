@@ -18,6 +18,6 @@
 
 # Load fnm if it exists, along with cd hook
 if type -q fnm
-    fnm env --shell fish --use-on-cd --corepack-enabled --version-file-strategy=recursive --resolve-engines=true | source
+    fnm env --shell fish --use-on-cd --version-file-strategy=recursive --resolve-engines=true | source
     fnm completions --shell fish | source
 end
