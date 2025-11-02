@@ -83,8 +83,8 @@ brew "diffoci"
 brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
-# Command-line DNS client
-brew "doge"
+# Command-line DNS Client for Humans
+brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
