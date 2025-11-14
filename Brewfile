@@ -1,6 +1,5 @@
 tap "derailed/k9s"
 tap "homebrew/bundle"
-tap "oven-sh/bun"
 # Library and utilities for processing GIFs
 brew "giflib"
 # JPEG image codec that aids compression and decompression
@@ -107,8 +106,6 @@ brew "gitleaks"
 brew "glab"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Task is a task runner/build tool that aims to be simpler and easier to use
-brew "go-task"
 # Ping, but with a graph
 brew "gping"
 # Next generation open source RPC library and framework
@@ -161,16 +158,12 @@ brew "p11-kit"
 brew "pinentry"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
-# Core utilities for Python packages
-brew "python-packaging"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Easy and Repeatable Kubernetes Development
@@ -209,22 +202,18 @@ brew "zoxide"
 brew "zsh"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
-# Application launcher and productivity software
-cask "alfred"
 # Command-line tools for building and debugging Android apps
 cask "android-commandlinetools"
 # Tools for building Android applications
 cask "android-studio"
+# Display management tool
+cask "betterdisplay"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Voice and text chat software
 cask "discord"
 # Find files, folders, or contents in any file
@@ -250,12 +239,12 @@ cask "keybase"
 cask "notion"
 # Replacement for Docker Desktop
 cask "orbstack"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Collection of apps available by subscription
 cask "setapp"
 # Team communication and collaboration software
 cask "slack"
-# Graphical client for Git version control
-cask "sourcetree"
 # Music streaming service
 cask "spotify"
 # Mux and tag mp4 files
