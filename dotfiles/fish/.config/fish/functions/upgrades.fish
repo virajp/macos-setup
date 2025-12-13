@@ -309,43 +309,43 @@ end
 # @return 0 on success, non-zero on failure
 # @example node-upgrade
 ##
-function node-upgrade
-    repchar '=' # Display separator line
-    set_color --bold green
-    echo "Upgrade to latest version of node ..."
-    set_color normal
-    set latest_version (fnm list-remote --latest)
-    fnm use --install-if-missing --silent-if-unchanged $latest_version
-    fnm default $latest_version
+# function node-upgrade
+#     repchar '=' # Display separator line
+#     set_color --bold green
+#     echo "Upgrade to latest version of node ..."
+#     set_color normal
+#     set latest_version (fnm list-remote --latest)
+#     fnm use --install-if-missing --silent-if-unchanged $latest_version
+#     fnm default $latest_version
 
-    repchar - # Display sub-separator
-    set_color --bold green
-    echo "Enable corepack & configure pnpm ..."
-    set_color normal
+#     repchar - # Display sub-separator
+#     set_color --bold green
+#     echo "Enable corepack & configure pnpm ..."
+#     set_color normal
 
-    # Ensure corepack is enabled for package management & pnpm is default
-    if not type -q corepack
-        npm install --global corepack@latest
-    end
-    corepack enable
-    corepack prepare pnpm@latest --activate
+#     # Ensure corepack is enabled for package management & pnpm is default
+#     if not type -q corepack
+#         npm install --global corepack@latest
+#     end
+#     corepack enable
+#     corepack prepare pnpm@latest --activate
 
-    # Uninstall npm
-    if type -q npm
-        npm uninstall --global npm
-    end
+#     # Uninstall npm
+#     if type -q npm
+#         npm uninstall --global npm
+#     end
 
-    repchar - # Display sub-separator
-    set_color --bold green
-    echo "Upgrade pnpm ..."
-    set_color normal
-    pnpm self-update
-    set_color --bold green
-    echo "Upgrade global pnpm packages ..."
-    set_color normal
-    # Upgrade global packages
-    pnpm update --global
-end
+#     repchar - # Display sub-separator
+#     set_color --bold green
+#     echo "Upgrade pnpm ..."
+#     set_color normal
+#     pnpm self-update
+#     set_color --bold green
+#     echo "Upgrade global pnpm packages ..."
+#     set_color normal
+#     # Upgrade global packages
+#     pnpm update --global
+# end
 
 # =============================================================================
 # COMPREHENSIVE UPDATE FUNCTION
@@ -365,7 +365,7 @@ function updateall
     # Execute all upgrade functions in logical order
     bf # Homebrew packages (formulae and casks)
     gcloud-upgrade # Google Cloud CLI components
-    node-upgrade # Node.js and global pnpm packages
+    # node-upgrade # Node.js and global pnpm packages
     grype-update # Security vulnerability database
     cleanupDS-Projects # Clean .DS_Store files from Projects directory
     pip-upgrade # Python packaging tools

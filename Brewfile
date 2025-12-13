@@ -72,8 +72,6 @@ brew "crane"
 brew "libnghttp2"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Modern diagram scripting language that turns text to diagrams
-brew "d2"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff for Docker and OCI container images
@@ -88,8 +86,6 @@ brew "doggo"
 brew "eza"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# Fast and simple Node.js version manager
-brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Toolkit for image loading and pixel buffer manipulation
@@ -102,22 +98,24 @@ brew "git"
 brew "git-tools"
 # Audit git repos for secrets
 brew "gitleaks"
-# Open-source GitLab command-line tool
-brew "glab"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
+# Low-level cryptographic library
+brew "nettle"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# Common error values for all GnuPG components
+brew "libgpg-error"
+# X.509 and CMS library
+brew "libksba"
+# Passphrase entry dialog utilizing the Assuan protocol
+brew "pinentry"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Ping, but with a graph
 brew "gping"
-# Next generation open source RPC library and framework
-brew "grpc"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
-# Kubernetes package manager
-brew "helm"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
@@ -136,10 +134,6 @@ brew "just"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Common error values for all GnuPG components
-brew "libgpg-error"
-# X.509 and CMS library
-brew "libksba"
 # General purpose TCP-IP emulator
 brew "libslirp"
 # Multi-platform support library with a focus on asynchronous I/O
@@ -148,14 +142,8 @@ brew "libuv"
 brew "mas"
 # Build APKs from source code
 brew "melange"
-# Simple tool to make locally trusted development certificates
-brew "mkcert"
-# Low-level cryptographic library
-brew "nettle"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
-# Passphrase entry dialog utilizing the Assuan protocol
-brew "pinentry"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Package compiler and linker metadata toolkit
@@ -166,28 +154,14 @@ brew "prettyping"
 brew "pstree"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Easy and Repeatable Kubernetes Development
-brew "skaffold"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# CLI for generating a Software Bill of Materials from container images
-brew "syft"
-# Secrets management tool for developers
-brew "teller"
-# Tool to build, change, and version infrastructure
-brew "terraform"
-# CLI tool to generate terraform files from existing infrastructure
-brew "terraformer"
-# Static analysis security scanner for your terraform code
-brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -208,14 +182,10 @@ cask "1password", args: { appdir: "/Applications" }
 cask "android-commandlinetools"
 # Tools for building Android applications
 cask "android-studio"
-# Display management tool
-cask "betterdisplay"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Voice and text chat software
-cask "discord"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
@@ -231,10 +201,6 @@ cask "font-meslo-lg-nerd-font"
 cask "gcloud-cli"
 # Open-source video transcoder
 cask "handbrake-app"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-# End-to-end encryption software
-cask "keybase"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Replacement for Docker Desktop
@@ -245,8 +211,6 @@ cask "raycast"
 cask "setapp"
 # Team communication and collaboration software
 cask "slack"
-# Music streaming service
-cask "spotify"
 # Mux and tag mp4 files
 cask "subler"
 # Text editor for code, markup and prose
@@ -309,5 +273,3 @@ vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "skellock.just"
 vscode "usernamehw.errorlens"
-go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"

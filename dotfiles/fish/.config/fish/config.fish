@@ -15,10 +15,10 @@ end
 # pnpm end
 
 # mise activate
-# if type -q mise
-#     if status is-interactive
-#         mise activate fish | source
-#     else
-#         mise activate fish --shims | source
-#     end
-# end
+if type -q mise
+    if status is-interactive
+        mise activate fish | source
+    else
+        mise activate fish --shims | source
+    end
+end

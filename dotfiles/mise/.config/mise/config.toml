@@ -1,9 +1,9 @@
 [settings]
-all_compile = true
-arch = "arm"
+all_compile = false
+arch = "x86_64"
 gpg_verify = true
 os = "macos"
+paranoid = true
 
 [tools]
-node = "latest"
 usage = "latest"
