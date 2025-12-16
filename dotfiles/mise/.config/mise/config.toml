@@ -6,4 +6,4 @@ os = "macos"
 paranoid = true
 
 [tools]
-usage = "latest"
+usage = { version = "latest" }
