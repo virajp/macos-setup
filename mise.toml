@@ -1,0 +1,41 @@
+[tasks]
+
+# Dotfiles tasks
+[tasks.stow-install]
+description = "Install dotfiles using stow"
+dir = "dotfiles"
+run = "stow --dir=. --target=$HOME --verbose */"
+
+[tasks.stow-reinstall]
+description = "Re-install dotfiles using stow"
+dir = "dotfiles"
+run = "stow --restow --dir=. --target=$HOME --verbose */"
+
+[tasks.stow-cleanup]
+description = "Cleanup dotfiles using stow"
+dir = "dotfiles"
+run = "stow --delete --dir=. --target=$HOME --verbose */"
+
+[tasks.stow-simulate]
+description = "Simulate dotfiles using stow"
+dir = "dotfiles"
+run = "stow --dir=. --target=$HOME --verbose --simulate */"
+
+# Brewfile tasks
+[tasks.brew]
+description = "Generate brewfile for all installed packages"
+run = """
+  echo "Generating brewfile ..."
+  brew bundle dump --all --force --describe --file=./Brewfile
+  echo "Printing the diff ... "
+  git diff --color=always | diff-so-fancy
+  """
+
+[tasks.brew-cleanup]
+description = "Remove packages not in brewfile"
+run = """
+  echo "Removing packages not in Brewfile ..."
+  brew bundle cleanup --force --describe --file=./Brewfile
+  echo "Autoremoving packages ..."
+  brew autoremove --verbose
+  """

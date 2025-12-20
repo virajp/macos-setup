@@ -2,7 +2,7 @@
 
 ## Change the default shell
 
-This can be done only after installing the latest version of ZSH from Homebrew.
+This should be done only after installing the latest version of ZSH from Homebrew.
 
 ## Symlink configuration files
 

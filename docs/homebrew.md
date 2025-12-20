@@ -1,11 +1,13 @@
 # Homebrew
 
-Homebrew is a package manager for macOS. Most of the tools and applications will be installed using Homebrew.
+`Homebrew` is a package manager for `macOS`. All of the global tools and applications will be installed using `Homebrew`. For local tools (specific to respective projects) will be installed using `mise`.
 
-## Install homebrew
+## Initiate the setup
+
+To initiate the setup we will use the `gist` created on github
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/zsh -c "$(curl -fsSL https://gist.githubusercontent.com/virajp/c542ff926710ddbd2f65490c900018f5/raw/setup.sh)"
 ```
 
 ## Configure

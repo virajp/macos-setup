@@ -5,8 +5,8 @@ Follow these steps to setup macOS.
 ## Steps
 
 - [Create account](./docs/account.md)
+- [Install all tools using Homebrew](./docs/homebrew.md)
 - [Configure Shell](./docs/shell.md)
-- [Install Homebrew](./docs/homebrew.md)
 - [Install fonts](./docs/fonts.md)
 - [ZSH Shell](./docs/zsh.md)
 - [Setup Hostname & Diskname](./docs/host.md)

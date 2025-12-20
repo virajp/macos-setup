@@ -1,81 +1,22 @@
 tap "derailed/k9s"
-tap "homebrew/bundle"
-# Library and utilities for processing GIFs
-brew "giflib"
-# JPEG image codec that aids compression and decompression
-brew "jpeg-turbo"
-# Library for manipulating PNG images
-brew "libpng"
-# Extremely Fast Compression algorithm
-brew "lz4"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# TIFF library and utilities
-brew "libtiff"
 # Build OCI images from APK packages directly without Dockerfile
 brew "apko"
-# Portable library for network traffic capture
-brew "libpcap"
-# ARP scanning and fingerprinting tool
-brew "arp-scan"
-# Text-based UI library
-brew "ncurses"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
 brew "ca-certificates"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Software library to render fonts
-brew "freetype"
-# Perl compatible regular expressions library with a new API
-brew "pcre2"
-# Core application library for C
-brew "glib"
-# X.Org: Interface to the X Window System protocol
-brew "libxcb"
-# X.Org: Core X11 protocol client library
-brew "libx11"
-# Low-level library for pixel manipulation
-brew "pixman"
-# Vector graphics library with cross-device output support
-brew "cairo"
-# OpenType text shaping engine
-brew "harfbuzz"
-# Development kit for the Java programming language
-brew "openjdk"
-# Remove large files or passwords from Git history like git-filter-branch
-brew "bfg"
-# Toolchain of the web
-brew "biome"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# New way of working with Protocol Buffers
-brew "buf"
-# Asynchronous DNS library
-brew "c-ares"
-# Console Matrix
-brew "cmatrix"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Container Signing
 brew "cosign"
-# Tool for interacting with remote images and registries
-brew "crane"
-# HTTP/2 C Library
-brew "libnghttp2"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Diff for Docker and OCI container images
-brew "diffoci"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Tool for exploring each layer in a docker image
@@ -88,8 +29,6 @@ brew "eza"
 brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Toolkit for image loading and pixel buffer manipulation
-brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -98,18 +37,6 @@ brew "git"
 brew "git-tools"
 # Audit git repos for secrets
 brew "gitleaks"
-# Low-level cryptographic library
-brew "nettle"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# Common error values for all GnuPG components
-brew "libgpg-error"
-# X.509 and CMS library
-brew "libksba"
-# Passphrase entry dialog utilizing the Assuan protocol
-brew "pinentry"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Ping, but with a graph
@@ -120,42 +47,22 @@ brew "grype"
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Handy way to save and run project-specific commands
-brew "just"
-# Lazier way to manage everything docker
-brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# General purpose TCP-IP emulator
-brew "libslirp"
-# Multi-platform support library with a focus on asynchronous I/O
-brew "libuv"
 # Mac App Store command-line interface
 brew "mas"
 # Build APKs from source code
 brew "melange"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
-# Pinentry for GPG on Mac
-brew "pinentry-mac"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)

@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+
+##############################################################################
+# macOS Setup - Install all the tools using homebrew
+##############################################################################
+#
+# Description:
+#   Installs all the tools on fresh laptop or even already setup laptop
+#   This script requires homebrew so it will first detect whether it exists
+#   and if it doesn't, it will install it and then install all tools
+#
+# Usage:
+#   ./setup
+#
+# Steps (Tasks):
+# - First check whether `brew` is installed, if not then install it
+# - Check whether everything is fine with brew using `brew doctor` command
+# - Check whether anything needs to be installed using `brew bundle check` command
+# - Install all tools from `Brewfile` using `brew bundle install --upgrade` command, if needed
+#
+# Note:
+#   This script must be run from the repository root directory where the
+#   Brewfile is located.
+#
+# Author: Viraj Patel
+##############################################################################
+
+if (( ! $+commands[brew] )); then
+  echo "Homebrew not found. Installing..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Homebrew is already installed."
+fi
+
+# Turn off homebrew analytics
+echo "Turning off Homebrew analytics..."
+brew analytics off
+
+echo ""
+echo "Checking Homebrew health..."
+brew doctor
+
+echo ""
+echo "Checking what needs to be installed from Brewfile..."
+if brew bundle check --file=Brewfile > /dev/null 2>&1; then
+  echo "All dependencies are already installed."
+else
+  echo "Installing/updating packages from Brewfile..."
+  brew bundle install --file=Brewfile --upgrade
+fi
+
+echo ""
+echo "Setup complete!"
