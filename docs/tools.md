@@ -1,46 +1,5 @@
 # Install Tools via Homebrew
 
-## Configure bash
-
-```shell
-echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
-```
-
-## Upgrade pip, setuptools and wheel (python)
-
-```shell
-pip3 install --upgrade pip setuptools wheel
-```
-
-## NodeJS & tools
-
-### Install NodeJS
-
-```shell
-brew install --formulae node
-```
-
-### Install PNPM
-
-```shell
-corepack enable && corepack prepare pnpm@latest --activate
-npm uninstall --global npm
-```
-
-## Configure pnpm
-
-```shell
-pnpm config --global set fund false
-pnpm setup
-```
-
-### Install global pnpm packages
-
-```shell
-pnpm install --global firebase-tools@latest pnpm@latest prettier@latest
-pnpm approve-builds --global
-```
-
 ## Flutter & tools
 
 > Refer to this document for Flutter installation: [Flutter](https://github.com/95octane/wiki/blob/main/engineering/setup/flutter.md)

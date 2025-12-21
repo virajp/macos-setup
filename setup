@@ -17,6 +17,7 @@
 # - Check whether everything is fine with brew using `brew doctor` command
 # - Check whether anything needs to be installed using `brew bundle check` command
 # - Install all tools from `Brewfile` using `brew bundle install --upgrade` command, if needed
+# - Use `stow` to create symlinks for dotfiles (if applicable)
 #
 # Note:
 #   This script must be run from the repository root directory where the
@@ -26,28 +27,37 @@
 ##############################################################################
 
 if (( ! $+commands[brew] )); then
-  echo "Homebrew not found. Installing..."
+  echo "🚀 Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-  echo "Homebrew is already installed."
+  echo "✅ Homebrew is already installed."
 fi
 
 # Turn off homebrew analytics
-echo "Turning off Homebrew analytics..."
+echo "⚙️ Turning off Homebrew analytics..."
 brew analytics off
 
-echo ""
-echo "Checking Homebrew health..."
+# Check Homebrew health
+echo "🩺 Checking Homebrew health..."
 brew doctor
 
 echo ""
-echo "Checking what needs to be installed from Brewfile..."
+echo "🔍 Checking what needs to be installed from Brewfile..."
 if brew bundle check --file=Brewfile > /dev/null 2>&1; then
-  echo "All dependencies are already installed."
+  echo "✅ All dependencies are already installed."
 else
-  echo "Installing/updating packages from Brewfile..."
+  echo "📦 Installing/updating packages from Brewfile..."
   brew bundle install --file=Brewfile --upgrade
 fi
 
 echo ""
-echo "Setup complete!"
+echo "⚙️ Setting up dotfiles with stow..."
+if command -v stow &> /dev/null; then
+  mise run stow-install
+  echo "✅ Dotfiles symlinked successfully."
+else
+  echo "⚠️ Warning: stow not found. Skipping dotfiles setup."
+fi
+
+echo ""
+echo "✅ Setup complete!"

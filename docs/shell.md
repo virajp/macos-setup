@@ -2,87 +2,18 @@
 
 ## Change the default shell
 
-This should be done only after installing the latest version of ZSH from Homebrew.
+This should be done only after installing all tools using `Homebrew`.
 
-## Symlink configuration files
+## Configure all shells
 
-> Open `Terminal` and run the following commands.
-
-### ZSH shell (`.zprofile` & `.zshrc`)
-
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh/zsh_profile.zsh" "$HOME/.zprofile" && source "$HOME/.zprofile"
+```zsh
+zsh -c 'grep -q "^/opt/homebrew/bin/fish$" /etc/shells || echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells'
+zsh -c 'grep -q "^/opt/homebrew/bin/bash$" /etc/shells || echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells'
+zsh -c 'grep -q "^/opt/homebrew/bin/zsh$" /etc/shells || echo /opt/homebrew/bin/zsh | sudo tee -a /etc/shells'
 ```
 
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/zsh/zsh_rc.zsh" "$HOME/.zshrc" && source "$HOME/.zshrc"
-```
+## Configure `fish` as default shell
 
-### .ssh folder
-
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Secure/SSH-Keys/" "$HOME/.ssh"
-chmod 600 $HOME/.ssh/id_*
-```
-
-### Setup gpg (gnupg) folder
-
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Secure/gnupg/" "$HOME/.gnupg"
-chmod 0700 $HOME/.gnupg
-```
-
-### Setup global gitignore
-
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/gitignore_global" "$HOME/.gitignore_global"
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/gitconfig" "$HOME/.gitconfig"
-```
-
-### Setup gh
-
-```shell
-mkdir -p ~/.config/gh; ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/gh/config.yml" "$HOME/.config/gh/config.yml"
-```
-
-### Setup Docker
-
-```shell
-mkdir -p "$HOME/.docker" && yes | cp -v "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/docker-daemon.json" "$HOME/.docker/daemon.json"
-```
-
-### Setup datree
-
-```shell
-mkdir -p "$HOME/.datree" && ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/configs/datree_config.yaml" "$HOME/.datree/config.yaml"
-```
-
-### Setup visual studio code workspaces
-
-#### 95octane
-
-```shell
-mkdir -pv $HOME/Projects/github.com/95octane
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/workspaces/95octane.code-workspace" "$HOME/Projects/github.com/95octane/95octane.code-workspace"
-```
-
-#### OpenServiceFramework (OSF)
-
-```shell
-# mkdir -pv $HOME/Projects/github.com/OpenServiceFramework
-# ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/workspaces/osf.code-workspace" "$HOME/Projects/github.com/OpenServiceFramework/osf.code-workspace"
-```
-
-## Warp - The New Terminal
-
-Warp is a new terminal that aims to be the best terminal for developers.
-
-### Installation
-
-`Warp` & `Starship prompt` will be installed via Homebrew.
-
-### Configuration
-
-```shell
-ln -fs "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Personalization/shell/warp" "$HOME/.warp"
+```zsh
+chsh -s /opt/homebrew/bin/fish
 ```
