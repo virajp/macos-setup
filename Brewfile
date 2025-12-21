@@ -25,6 +25,8 @@ brew "dive"
 brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -63,6 +65,10 @@ brew "mise"
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Wrapper around ripgrep that adds multiple rich file types
+brew "ripgrep-all"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
