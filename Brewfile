@@ -110,6 +110,8 @@ cask "font-iosevka-term-nerd-font"
 cask "font-meslo-lg-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
+# GitHub desktop client
+cask "github"
 # Open-source video transcoder
 cask "handbrake-app"
 # App to write, plan, collaborate, and get organised
