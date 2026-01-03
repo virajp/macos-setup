@@ -29,17 +29,6 @@ path add ($env.HOME | path join ".local/bin")
 path add ($env.GEM_HOME | path join "bin")
 path add ($env.ANDROID_HOME | path join "cmdline-tools/latest/bin")
 
-# WHY: Custom direnv hook for automatic environment variable loading
-# Setup direnv hook
-$env.config.hooks.env_change.PWD = [
-  { ||
-    if (which direnv | is-empty) {
-        return
-    }
-    direnv export json | from json | default {} | load-env
-  }
-]
-
 # WHY: Clean startup without nushell version banner
 # Disable banner at startup
 $env.config.show_banner = false

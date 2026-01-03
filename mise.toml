@@ -1,28 +1,28 @@
 [tasks]
 
 # Dotfiles tasks
-[tasks.stow-install]
+[tasks."stow:install"]
 description = "Install dotfiles using stow"
 dir = "dotfiles"
 run = "stow --dir=. --target=$HOME --verbose */"
 
-[tasks.stow-reinstall]
+[tasks."stow:reinstall"]
 description = "Re-install dotfiles using stow"
 dir = "dotfiles"
 run = "stow --restow --dir=. --target=$HOME --verbose */"
 
-[tasks.stow-cleanup]
+[tasks."stow:cleanup"]
 description = "Cleanup dotfiles using stow"
 dir = "dotfiles"
 run = "stow --delete --dir=. --target=$HOME --verbose */"
 
-[tasks.stow-simulate]
+[tasks."stow:simulate"]
 description = "Simulate dotfiles using stow"
 dir = "dotfiles"
 run = "stow --dir=. --target=$HOME --verbose --simulate */"
 
 # Brewfile tasks
-[tasks.brew]
+[tasks."brew"]
 description = "Generate brewfile for all installed packages"
 run = """
   echo "Generating brewfile ..."
@@ -31,7 +31,7 @@ run = """
   git diff --color=always | diff-so-fancy
   """
 
-[tasks.brew-cleanup]
+[tasks."brew:cleanup"]
 description = "Remove packages not in brewfile"
 run = """
   echo "Removing packages not in Brewfile ..."

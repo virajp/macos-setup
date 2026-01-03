@@ -4,9 +4,6 @@
 # zoxide initialiser
 eval "$(zoxide init zsh)"
 
-# Initialize direnv
-eval "$(direnv hook zsh)"
-
 # GitHub Copilot CLI integration
 # eval "$(gh copilot alias -- zsh)"
 

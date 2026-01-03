@@ -11,7 +11,6 @@ The `dotfiles/` directory contains configuration files organized by application:
 - `starship/` - Alternative prompt configuration (currently unused in favor of oh-my-posh)
 - `warp/` - Terminal theme and keybindings
 - `gh/` - GitHub CLI configuration
-- `direnv/` - Environment variable management
 - `docker/` - Docker security profiles
 - `ssh/` - SSH client configuration
 - `git/` - Git configuration and aliases
@@ -52,7 +51,6 @@ Files are loaded in this order:
 - Trash integration instead of permanent deletion
 - Sublime Text as default editor
 - Custom datetime format
-- direnv auto-loading hook
 
 ### Oh-My-Posh Configuration
 
@@ -77,12 +75,6 @@ Files are loaded in this order:
 - VS Code as default editor
 - Custom aliases for common operations
 
-**direnv** (`direnv.toml`)
-
-- stdin disabled for script compatibility
-- strict_env prevents environment pollution
-- Whitelisted only trusted project directories
-
 **Warp Terminal** (`warp/themes/coolnight.yaml`)
 
 - Custom cyberpunk/synthwave inspired theme
@@ -97,10 +89,9 @@ Files are loaded in this order:
 
 ## Security Features
 
-1. **direnv Whitelist**: Only specific project directories allowed
-2. **SSH Key Usage**: GitHub CLI configured for SSH over HTTPS
-3. **Secret Management**: Sensitive data stored in encrypted iCloud file
-4. **Trash Safety**: Files moved to Trash instead of permanent deletion
+1. **SSH Key Usage**: GitHub CLI configured for SSH over HTTPS
+2. **Secret Management**: Use doppler for secret management
+3. **Trash Safety**: Files moved to Trash instead of permanent deletion
 
 ## Development Environment
 
