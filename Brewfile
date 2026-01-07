@@ -1,6 +1,4 @@
 tap "derailed/k9s"
-# Build OCI images from APK packages directly without Dockerfile
-brew "apko"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -9,8 +7,6 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# Dependency manager for Cocoa projects
-brew "cocoapods"
 # Container Signing
 brew "cosign"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -35,16 +31,10 @@ brew "gh"
 brew "git"
 # Assorted git-related scripts and tools
 brew "git-tools"
-# Audit git repos for secrets
-brew "gitleaks"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Ping, but with a graph
 brew "gping"
-# Vulnerability scanner for container images and filesystems
-brew "grype"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Calculate various network masks, etc. from a given IP address
@@ -55,18 +45,10 @@ brew "jq"
 brew "lazygit"
 # Mac App Store command-line interface
 brew "mas"
-# Build APKs from source code
-brew "melange"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
-# Wrapper to colorize and simplify ping's output
-brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Wrapper around ripgrep that adds multiple rich file types
-brew "ripgrep-all"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -99,8 +81,6 @@ cask "brave-browser"
 cask "claude"
 # Find files, folders, or contents in any file
 cask "easyfind"
-# UI toolkit for building applications for mobile, web and desktop
-cask "flutter"
 # Download manager with a torrent client
 cask "folx"
 cask "font-fira-code-nerd-font"
