@@ -364,12 +364,12 @@ function updateall
 
     # Execute all upgrade functions in logical order
     bf # Homebrew packages (formulae and casks)
-    gcloud-upgrade # Google Cloud CLI components
+    # gcloud-upgrade # Google Cloud CLI components
     # node-upgrade # Node.js and global pnpm packages
-    grype-update # Security vulnerability database
+    # grype-update # Security vulnerability database
     cleanupDS-Projects # Clean .DS_Store files from Projects directory
-    pip-upgrade # Python packaging tools
-    gem-upgrade # Ruby gem system
-    flutter-upgrade # Flutter SDK
+    # pip-upgrade # Python packaging tools
+    # gem-upgrade # Ruby gem system
+    # flutter-upgrade # Flutter SDK
     osx-download # macOS updates and App Store apps
 end
