@@ -58,7 +58,7 @@ end
 ##
 function check-touch-id
     set_color --bold green
-    echo -n "Checking Touch ID setup for shell ..."
+    echo -n "Checking Touch ID setup for shell ... "
     set_color normal
 
     # Check if pam_tid.so module is configured in sudo PAM config
