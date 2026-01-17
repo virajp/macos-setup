@@ -94,6 +94,8 @@ cask "github"
 cask "handbrake-app"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Control your tools with a few keystrokes
