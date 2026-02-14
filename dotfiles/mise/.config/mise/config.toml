@@ -1,6 +1,5 @@
 [settings]
 all_compile = false
-arch = "x86_64"
 gpg_verify = true
 os = "macos"
 paranoid = true
