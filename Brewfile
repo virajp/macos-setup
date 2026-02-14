@@ -1,4 +1,3 @@
-tap "derailed/k9s"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -7,8 +6,6 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# Container Signing
-brew "cosign"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -67,12 +64,8 @@ brew "zinit"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Kubernetes CLI To Manage Your Clusters In Style!
-brew "derailed/k9s/k9s"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
-# Command-line tools for building and debugging Android apps
-cask "android-commandlinetools"
 # Tools for building Android applications
 cask "android-studio"
 # Web browser focusing on privacy
