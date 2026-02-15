@@ -6,12 +6,3 @@
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
-# mise activate
-if type -q mise
-    if status is-interactive
-        mise activate fish | source
-    else
-        mise activate fish --shims | source
-    end
-end

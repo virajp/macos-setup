@@ -1,3 +1,15 @@
+[settings]
+# arch = "x86_64"
+all_compile = false
+activate_aggressive = true
+paranoid = true
+gpg_verify = true
+task_output = "interleave"
+env_shell_expand = true
+
+[env]
+HOMEBREW_BUNDLE_FILE="./Brewfile"
+
 [tasks]
 
 # Dotfiles tasks
@@ -22,20 +34,34 @@ dir = "dotfiles"
 run = "stow --dir=. --target=$HOME --verbose --simulate */"
 
 # Brewfile tasks
-[tasks."brew"]
+[tasks."brew:gen"]
 description = "Generate brewfile for all installed packages"
 run = """
   echo "Generating brewfile ..."
-  brew bundle dump --all --force --describe --file=./Brewfile
+  brew bundle dump --all --force --describe
   echo "Printing the diff ... "
   git diff --color=always | diff-so-fancy
+  """
+
+[tasks."brew:check"]
+description = "Check installed packages against brewfile"
+run = """
+  echo "Removing packages not in Brewfile ..."
+  brew bundle check --describe
+  """
+
+[tasks."brew:install"]
+description = "Install packages in brewfile"
+run = """
+  echo "Install packages in Brewfile ..."
+  brew bundle install --describe --verbose
   """
 
 [tasks."brew:cleanup"]
 description = "Remove packages not in brewfile"
 run = """
   echo "Removing packages not in Brewfile ..."
-  brew bundle cleanup --force --describe --file=./Brewfile
+  brew bundle cleanup --force --describe
   echo "Autoremoving packages ..."
   brew autoremove --verbose
   """

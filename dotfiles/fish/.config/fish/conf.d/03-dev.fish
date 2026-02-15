@@ -26,7 +26,8 @@
 # set --global --export DOTNET_CLI_TELEMETRY_OPTOUT true
 
 # Gem environment variables
-# set --global --export GEM_HOME "$HOME/.gem"
+set --global --export GEM_HOME "$HOME/.gem"
+fish_add_path "$GEM_HOME/bin"
 
 # GoLang environment variables
 # set --global --export GOPATH "$HOME/Projects/golang"
@@ -38,11 +39,13 @@
 # set --global --export NODE_ENV development
 
 # Java environment variables
-# set --global --export JAVA_HOME "$HOMEBREW_PREFIX/opt/openjdk"
-# set --global --export CPPFLAGS "-I$HOMEBREW_PREFIX/opt/openjdk/include"
+set --global --export JAVA_HOME (/usr/libexec/java_home)
+set --global --export CPPFLAGS "-I$JAVA_HOME/include"
+fish_add_path "$JAVA_HOME/bin"
 
 # Android SDK Path
-# set --global --export ANDROID_HOME "$HOMEBREW_PREFIX/share/android-commandlinetools"
+set --global --export ANDROID_HOME "$HOME/.android-sdk"
+fish_add_path "$ANDROID_HOME/cmdline-tools/latest/bin"
 
 # Set Chrome executable path to Brave
 set --global --export CHROME_EXECUTABLE "$HOME/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"

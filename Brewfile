@@ -6,6 +6,8 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -46,6 +48,8 @@ brew "mas"
 brew "mise"
 # Show ps output as a tree
 brew "pstree"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -74,8 +78,11 @@ cask "brave-browser"
 cask "claude"
 # Find files, folders, or contents in any file
 cask "easyfind"
+# UI toolkit for building applications for mobile, web and desktop
+cask "flutter"
 # Download manager with a torrent client
 cask "folx"
+# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
