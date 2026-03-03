@@ -34,6 +34,8 @@ brew "git-tools"
 brew "gnupg"
 # Ping, but with a graph
 brew "gping"
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Calculate various network masks, etc. from a given IP address
@@ -42,6 +44,8 @@ brew "ipcalc"
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Find what models run on your hardware
+brew "llmfit"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
@@ -72,6 +76,8 @@ brew "zsh"
 cask "1password", args: { appdir: "/Applications" }
 # Tools for building Android applications
 cask "android-studio"
+# AI Coding Agent IDE from Google
+cask "antigravity"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
