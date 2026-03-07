@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+#MISE description="Upgrade macOS updates"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Upgrading macOS updates ..."
+sudo softwareupdate --install --all --restart

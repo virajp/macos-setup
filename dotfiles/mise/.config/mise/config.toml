@@ -3,7 +3,15 @@ all_compile = false
 gpg_verify = true
 os = "macos"
 paranoid = true
-trusted_config_paths = ["~/Projects"]
+trusted_config_paths = ["~/.config/mise", "~/Projects"]
 
 [tools]
 usage = { version = "latest" }
+
+[tasks.init]
+hide = true
+description = "Mark all files as executables"
+run = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+
+[shell_alias]
+updateall = "mise run updateall"

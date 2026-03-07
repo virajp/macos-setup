@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+#MISE description="Download macOS updates"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Installing Rosetta 2 ..."
+softwareupdate --install-rosetta --agree-to-license
+
+print_header "Downloading macOS updates ..."
+softwareupdate --download --all
+
+print_header "Upgrades from AppStore ..."
+mas upgrade

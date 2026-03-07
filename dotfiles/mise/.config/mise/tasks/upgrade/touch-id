@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+#MISE description="Check if Touch ID is configured for sudo authentication"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_separator "="
+print_wait "Checking Touch ID setup for shell ... "
+
+# Check if pam_tid.so is configured in /etc/pam.d/sudo
+if grep -q "pam_tid.so" /etc/pam.d/sudo; then
+  print_success "OK"
+  return 0
+else
+  print_error "NOT OK"
+  echo "Please run the following commands to setup Touch ID for sudo:"
+  print_success "subl /etc/pam.d/sudo"
+  echo ""
+  echo "Add the following line to the top of the file:"
+  print_success "'auth       sufficient     pam_tid.so'"
+  echo ""
+  return 1
+fi

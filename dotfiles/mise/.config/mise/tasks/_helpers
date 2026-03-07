@@ -1,0 +1,65 @@
+#!/usr/bin/env zsh
+#MISE hide=true
+# Helper functions for mise tasks
+# Source this file in other tasks using: source "${SCRIPT_DIR}/_helpers"
+
+# Color codes
+readonly GREEN='\033[0;32m'
+readonly YELLOW='\033[0;33m'
+readonly RED='\033[0;31m'
+readonly BOLD='\033[1m'
+readonly NORMAL='\033[0m'
+
+# Print colored section header with new line
+print_header() {
+  local msg="$1"
+  print_separator "="
+  echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
+}
+
+# Print colored section sub-header with new line
+print_subheader() {
+  local msg="$1"
+  print_separator "-"
+  echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
+}
+
+# Print colored section header without new line
+print_wait() {
+  local msg="$1"
+  echo -en "${YELLOW}${BOLD}${msg}${NORMAL}"
+}
+
+# Print empty line
+print_newline() {
+  echo ""
+}
+
+print_error() {
+  local msg="$1"
+  echo -e "${RED}${BOLD}${msg}${NORMAL}"
+}
+
+print_success() {
+  local msg="$1"
+  echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
+}
+
+##
+# Repeats a character string across the terminal width
+# Useful for creating visual separators in terminal output
+#
+# @param $1 - Character or string to repeat
+# @return 0 on success
+# @example print_separator '='    # Creates a line of equals signs
+# @example print_separator '-'    # Creates a line of dashes
+# @note Fish equivalent: repchar function in repchar.fish
+##
+function print_separator() {
+  # Calculate how many times the string fits in terminal width
+  local LENGTH=$(($COLUMNS / ${#1}))
+  # Loop through and echo the character/string without newlines
+  for i in {2..$LENGTH}; do printf -- "$1"; done
+  # Add final newline
+  echo ""
+}

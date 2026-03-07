@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+#MISE description="Upgrade all tools managed in the system"
+#MISE depends=["init"]
+
+set -e
+source "${0%/*}/_helpers"
+
+# Check for Touch ID setup for sudo authentication
+mise run upgrade:touch-id
+
+# Reshim mise to ensure all tools are available
+print_header "Reshimming mise ..."
+mise reshim
+
+# Run mise doctor
+print_header "Running mise doctor ..."
+mise doctor --quiet --silent > /dev/null
+
+# Install & upgrade mise
+print_header "Setting up MISE ..."
+mise install
+
+print_header "Upgrading mise tools ..."
+mise upgrade --bump  || true
+
+# Upgrade Homebrew and all installed packages
+mise upgrade:brew
+
+mise cleanupDS ~/Projects
+
+mise upgrade:macos:download
+
+print_header "Setup complete!"
