@@ -1,3 +1,4 @@
+tap "gromgit/brewtils"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -6,8 +7,12 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -34,8 +39,6 @@ brew "git-tools"
 brew "gnupg"
 # Ping, but with a graph
 brew "gping"
-# Interactive TUI for Homebrew
-brew "gromgit/brewtils/taproom"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Calculate various network masks, etc. from a given IP address
@@ -50,10 +53,10 @@ brew "llmfit"
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Wrapper to colorize and simplify ping's output
+brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -72,16 +75,22 @@ brew "zinit"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Tools for building Android applications
 cask "android-studio"
-# AI Coding Agent IDE from Google
+# AI Coding Agent IDE
 cask "antigravity"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
@@ -94,7 +103,7 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-meslo-lg-nerd-font"
-# GitHub desktop client
+# Desktop client for GitHub repositories
 cask "github"
 # Open-source video transcoder
 cask "handbrake-app"
@@ -163,7 +172,6 @@ mas "Xcode", id: 497799835
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "foxundermoon.shell-format"
-vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "gruntfuggly.todo-tree"
 vscode "ms-azuretools.vscode-containers"
