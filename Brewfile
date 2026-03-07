@@ -97,8 +97,6 @@ cask "copilot-cli"
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
 cask "flutter"
-# Download manager with a torrent client
-cask "folx"
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
