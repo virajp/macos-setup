@@ -39,6 +39,8 @@ brew "git-tools"
 brew "gnupg"
 # Ping, but with a graph
 brew "gping"
+# Vulnerability scanner for container images and filesystems
+brew "grype"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Calculate various network masks, etc. from a given IP address
