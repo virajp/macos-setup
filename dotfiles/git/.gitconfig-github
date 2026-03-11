@@ -1,3 +1,3 @@
 [user]
   email = 3125954+virajp@users.noreply.github.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo
+  signingkey = ~/.ssh/github_signing.pub

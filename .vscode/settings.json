@@ -1,0 +1,17 @@
+{
+  "files.associations": {
+    ".config/mise/tasks/*": "shellscript",
+    ".env": "dotenv",
+    ".env.*": "dotenv",
+    ".envrc": "dotenv",
+    ".gitconfig": "gitconfig",
+    ".gitconfig*": "gitconfig",
+    ".npmrc": "dotenv",
+    ".pnpmrc": "dotenv",
+    "*.env": "dotenv",
+    "*.toml": "toml",
+    "dockerfile.*": "dockerfile",
+    "env.dev": "dotenv",
+    "env.prod": "dotenv"
+  }
+}

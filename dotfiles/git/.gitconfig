@@ -95,6 +95,7 @@
 
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/virajpatel/.ssh/allowed_signers
 
 [tag]
 	forceSignAnnotated = true

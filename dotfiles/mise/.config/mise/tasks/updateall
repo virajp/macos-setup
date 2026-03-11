@@ -5,6 +5,9 @@
 set -e
 source "${0%/*}/_helpers"
 
+# Set global Git configuration for GPG SSH signing
+git config --global gpg.ssh.allowedSignersFile "$HOME/.ssh/allowed_signers"
+
 # Check for Touch ID setup for sudo authentication
 mise run upgrade:touch-id
 
