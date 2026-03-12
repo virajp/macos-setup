@@ -16,8 +16,10 @@
 # =============================================================================
 # Generic Aliases
 alias cls='clear'
-alias ls='eza --icons --color=always --color-scale --group-directories-first --classify'
-alias ll='ls --long --all'
+alias ls='eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1'
+alias lf='ls --only-files'
+alias ld='ls --only-dirs'
+alias lg='ls --git-ignore'
 alias cdcd='cd "$CLOUD_PATH"'
 alias diff='diff-so-fancy'
 alias cdgh='cd "$HOME"/Projects/github.com'
@@ -38,7 +40,7 @@ alias ping='prettyping -i 2 --nolegend'
 alias cancelPrintJobs='sudo cancel -a -x'
 alias plist='plutil -p'
 alias f='flutter'
-alias tree='tree --du -hC'
+alias tree='ls --tree'
 alias cat='bat'
 alias dig='doggo'
 
