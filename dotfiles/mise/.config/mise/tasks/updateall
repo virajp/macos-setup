@@ -11,6 +11,10 @@ git config --global gpg.ssh.allowedSignersFile "$HOME/.ssh/allowed_signers"
 # Check for Touch ID setup for sudo authentication
 mise run upgrade:touch-id
 
+# Upgrade mise first to ensure we have the latest features and fixes
+print_header "Upgrading MISE ..."
+brew upgrade --formulae mise
+
 # Reshim mise to ensure all tools are available
 print_header "Reshimming mise ..."
 mise reshim
