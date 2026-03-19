@@ -53,7 +53,7 @@ fi
 echo ""
 echo "⚙️ Setting up dotfiles with stow..."
 if command -v stow &> /dev/null; then
-  mise run stow-install
+  mise run stow:install
   echo "✅ Dotfiles symlinked successfully."
 else
   echo "⚠️ Warning: stow not found. Skipping dotfiles setup."

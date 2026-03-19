@@ -16,7 +16,7 @@
 # =============================================================================
 # Generic Aliases
 alias cls='clear'
-alias ls='eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1'
+alias ls='eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links'
 alias lf='ls --only-files'
 alias ld='ls --only-dirs'
 alias lg='ls --git-ignore'
