@@ -46,7 +46,8 @@ run = """
 [tasks."brew:check"]
 description = "Check installed packages against brewfile"
 run = """
-  echo "Removing packages not in Brewfile ..."
+  # Check installed packages against brewfile
+  echo "Listing packages not in Brewfile ..."
   brew bundle check --describe
   """
 
