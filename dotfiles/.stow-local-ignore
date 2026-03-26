@@ -3,6 +3,6 @@
 \.git
 \.gitignore
 ^/readme.md$
-\.DS_Store
+^/\.DS_Store
 \.stow-local-ignore
 ^/history.*

@@ -16,12 +16,18 @@ HOMEBREW_BUNDLE_FILE="./Brewfile"
 [tasks."stow:install"]
 description = "Install dotfiles using stow"
 dir = "dotfiles"
-run = "stow --dir=. --target=$HOME --verbose */"
+run = """
+  find . -type f -name '.DS_Store' -ls -delete
+  stow --dir=. --target=$HOME --verbose */
+  """
 
 [tasks."stow:reinstall"]
 description = "Re-install dotfiles using stow"
 dir = "dotfiles"
-run = "stow --restow --dir=. --target=$HOME --verbose */"
+run = """
+  find . -type f -name '.DS_Store' -ls -delete
+  stow --restow --dir=. --target=$HOME --verbose */
+  """
 
 [tasks."stow:cleanup"]
 description = "Cleanup dotfiles using stow"
