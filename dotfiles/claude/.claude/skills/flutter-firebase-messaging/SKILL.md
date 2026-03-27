@@ -34,10 +34,10 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_messaging: ^15.2.0
+  firebase_core:
+  firebase_messaging:
   # Optional: display foreground notifications on iOS / styled Android notifications
-  # flutter_local_notifications: ^18.0.0
+  # flutter_local_notifications:
 ```
 
 ---

@@ -32,8 +32,8 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_analytics: ^11.3.0
+  firebase_core:
+  firebase_analytics:
 ```
 
 Firebase must be initialized before use:

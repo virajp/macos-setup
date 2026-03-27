@@ -32,8 +32,8 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_crashlytics: ^4.3.0
+  firebase_core:
+  firebase_crashlytics:
 ```
 
 ### Android — enable Gradle plugin

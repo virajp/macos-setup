@@ -32,8 +32,8 @@ Covers: `image_picker`, `image_cropper`
 
 ```yaml
 dependencies:
-  image_picker: ^1.1.2
-  image_cropper: ^9.0.0
+  image_picker:
+  image_cropper:
 ```
 
 ### Android — `AndroidManifest.xml`

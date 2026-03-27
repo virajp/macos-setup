@@ -34,11 +34,11 @@ metadata:
 
 ```yaml
 dependencies:
-  json_annotation: ^4.9.0
+  json_annotation:
 
 dev_dependencies:
   build_runner: # already present
-  json_serializable: ^6.8.0
+  json_serializable:
 ```
 
 ---

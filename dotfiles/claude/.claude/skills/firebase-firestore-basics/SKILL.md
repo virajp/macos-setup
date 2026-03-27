@@ -7,7 +7,8 @@ description:
   application.
 compatibility:
   This skill is best used with the Firebase CLI, but does not require it.
-  Install it by running `npm install -g firebase-tools`.
+  Install it by adding `"npm:firebase-tools" = { version = "latest" }` to 
+  `mise.toml` file in `tools` section.
 ---
 
 # Firestore Basics

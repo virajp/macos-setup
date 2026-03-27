@@ -37,9 +37,9 @@ Covers: `google_maps_flutter`, `geolocator`, `wakelock_plus`
 
 ```yaml
 dependencies:
-  google_maps_flutter: ^2.10.0
-  geolocator: ^14.0.0
-  wakelock_plus: ^1.3.0
+  google_maps_flutter:
+  geolocator:
+  wakelock_plus:
 ```
 
 ### Android — `android/app/src/main/AndroidManifest.xml`

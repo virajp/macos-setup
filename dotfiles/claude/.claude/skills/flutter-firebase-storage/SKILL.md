@@ -34,8 +34,8 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_storage: ^12.3.0
+  firebase_core:
+  firebase_storage:
 ```
 
 ---

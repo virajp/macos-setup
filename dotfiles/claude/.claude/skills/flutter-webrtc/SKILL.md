@@ -32,8 +32,8 @@ metadata:
 
 ```yaml
 dependencies:
-  flutter_webrtc: ^0.13.0
-  # audio_session: ^0.1.21  # for routing audio to earpiece/speaker on iOS
+  flutter_webrtc:
+  # audio_session: # for routing audio to earpiece/speaker on iOS
 ```
 
 ### Android — `android/app/src/main/AndroidManifest.xml`

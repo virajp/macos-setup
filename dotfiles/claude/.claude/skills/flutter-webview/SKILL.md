@@ -34,10 +34,10 @@ Add dependencies to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  webview_flutter: ^4.13.1
+  webview_flutter:
   # Only needed when accessing platform-specific APIs directly:
-  webview_flutter_android: ^4.7.0 # Android extras
-  webview_flutter_wkwebview: ^3.22.0 # iOS/macOS extras
+  webview_flutter_android: # Android extras
+  webview_flutter_wkwebview: # iOS/macOS extras
 ```
 
 No `AndroidManifest.xml` or `Info.plist` changes are required for basic usage.

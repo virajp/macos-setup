@@ -35,9 +35,9 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_auth: ^6.3.0
-  google_sign_in: ^6.0.0 # for Google Sign-In
+  firebase_core:
+  firebase_auth:
+  google_sign_in: # for Google Sign-In
 ```
 
 Firebase must be initialized before any auth call:

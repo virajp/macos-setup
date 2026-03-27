@@ -26,7 +26,7 @@ directly from your repository with event-driven automation.
 - Automate testing on every pull request
 - Build and deploy applications on merge to main
 - Schedule regular tasks (nightly builds, backups)
-- Publish packages to registries (npm, PyPI, Docker Hub)
+- Publish packages to registries (pnpm, PyPI, GCP Artifactory)
 - Run security scans and code quality checks
 - Automate release processes and changelog generation
 
@@ -52,9 +52,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm test
+          node-version: "25" # Use latest Node.js version
+          pnpm-version: "10" # Use latest pnpm version
+          cache: "pnpm"
+      - run: pnpm run ci
+      - run: pnpm run test
 ```
 
 ---
@@ -94,13 +96,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - run: npm run lint
+      - run: pnpm run lint
 
   test:
     runs-on: ubuntu-latest
     needs: lint # Wait for lint to complete
     steps:
-      - run: npm test
+      - run: pnpm run test
 
   deploy:
     runs-on: ubuntu-latest
@@ -119,11 +121,11 @@ steps:
   - uses: actions/checkout@v4
 
   # Run shell command
-  - run: npm install
+  - run: pnpm install
 
   # Named step with environment
   - name: Run tests
-    run: npm test
+    run: pnpm run test
     env:
       NODE_ENV: test
 ```
@@ -254,7 +256,7 @@ jobs:
 ```yaml
 steps:
   - name: Build
-    run: npm run build
+    run: pnpm run build
     env:
       BUILD_TARGET: production
 ```
@@ -462,8 +464,9 @@ strategy:
 ```yaml
 - uses: actions/setup-node@v4
   with:
-    node-version: "20"
-    cache: "npm" # or 'yarn', 'pnpm'
+    node-version: "25" # Use latest Node.js version
+    pnpm-version: "10" # Use latest pnpm version
+    cache: "pnpm" # or 'yarn', 'pnpm'
     registry-url: "https://registry.npmjs.org"
 ```
 
@@ -483,7 +486,7 @@ strategy:
   with:
     distribution: "temurin"
     java-version: "17"
-    cache: "maven"
+    cache: "gradle" # or 'maven'
 ```
 
 ### Setup Go
@@ -501,9 +504,9 @@ strategy:
 - uses: actions/cache@v4
   with:
     path: |
-      ~/.npm
+      ~/.pnpm-store
       node_modules
-    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
     restore-keys: |
       ${{ runner.os }}-node-
 ```
@@ -515,7 +518,7 @@ strategy:
   with:
     name: build-output
     path: dist/
-    retention-days: 7
+    retention-days: 1
 ```
 
 ### Download Artifacts
@@ -583,26 +586,26 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [18, 20, 22] # Test on multiple Node versions if required
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: "pnpm"
 
-      - run: npm ci
+      - run: pnpm run ci
 
-      - run: npm run lint
+      - run: pnpm run lint
 
-      - run: npm run type-check
+      - run: pnpm run type-check
 
-      - run: npm test
+      - run: pnpm run test
         env:
           CI: true
 
-      - run: npm run build
+      - run: pnpm run build
 
       - uses: codecov/codecov-action@v4
         if: matrix.node-version == 20
@@ -706,16 +709,17 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: "25" # Use latest Node.js version
+          pnpm-version: "10" # Use latest pnpm version
+          cache: "pnpm"
 
-      - run: npm ci
+      - run: pnpm run ci
 
-      - run: npm run lint
+      - run: pnpm run lint
 
-      - run: npm run build
+      - run: pnpm run build
 
-      - run: npm test
+      - run: pnpm run test
 
   deploy-preview:
     if: github.event_name == 'pull_request'
@@ -789,8 +793,8 @@ jobs:
         with:
           node-version: "20"
 
-      - run: npm ci
-      - run: npm run build
+      - run: pnpm run ci
+      - run: pnpm run build
 
       - uses: netlify/actions/cli@master
         with:

@@ -29,7 +29,7 @@ metadata:
 
 ```yaml
 dependencies:
-  flutter_animate: ^4.0.0
+  flutter_animate:
 ```
 
 ```dart

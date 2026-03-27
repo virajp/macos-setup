@@ -28,8 +28,8 @@ metadata:
 
 ```yaml
 dependencies:
-  firebase_core: ^4.6.0
-  firebase_app_check: ^0.3.1
+  firebase_core:
+  firebase_app_check:
 ```
 
 ---
