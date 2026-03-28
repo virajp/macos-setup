@@ -51,7 +51,7 @@
       }
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "permissions": {
     "additionalDirectories": [
       "~/Projects/github.com/95octane/apiService",

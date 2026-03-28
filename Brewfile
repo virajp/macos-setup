@@ -43,12 +43,16 @@ brew "gping"
 brew "grype"
 # Ping-like tool for HTTP requests
 brew "httping"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
 # Calculate various network masks, etc. from a given IP address
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Graphical front-end for GCC's coverage testing tool (gcov)
+brew "lcov"
 # Find what models run on your hardware
 brew "llmfit"
 # Mac App Store command-line interface
@@ -83,16 +87,14 @@ brew "gromgit/brewtils/taproom"
 cask "1password", args: { appdir: "/Applications" }
 # Tools for building Android applications
 cask "android-studio"
-# AI Coding Agent IDE
-cask "antigravity"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
-# Brings the power of Copilot coding agent directly to your terminal
-cask "copilot-cli"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
