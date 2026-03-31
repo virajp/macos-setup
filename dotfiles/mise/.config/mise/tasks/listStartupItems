@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+#MISE description="List startup items (LaunchAgents & LaunchDaemons)"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "LaunchAgents @ /Library/LaunchAgents ..."
+ls -1 /Library/LaunchAgents | sort
+
+print_header "LaunchDaemons @ /Library/LaunchDaemons ..."
+ls -1 /Library/LaunchDaemons | sort
+
+print_header "User LaunchAgents @ ~/Library/LaunchAgents ..."
+ls -1 ~/Library/LaunchAgents | sort

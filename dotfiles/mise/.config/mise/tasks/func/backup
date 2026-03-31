@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+#MISE hide=true
+
+#USAGE arg "<folder>" help="Folder to backup" required
+
+set -e
+source "${0%/*}/_helpers"
+
+# Generate timestamp for unique filename
+local STAMP=$(date "+%Y%m%d-%H%M%S")
+
+# Get absolute path and extract components (zsh-native, no external binary)
+local FOLDER="$MISE_ORIGINAL_CWD/$1"
+local FULLPATH=${FOLDER:a}
+local BASENAME=${FULLPATH##*/}   # Extract filename/dirname
+local PARENT=${FULLPATH%/*}      # Extract parent directory
+
+# Construct timestamped backup filename
+local FILENAME="$PARENT/$BASENAME-$STAMP.zip"
+
+# Display progress message with colored output
+print_header "Backing up from $FULLPATH to $FILENAME ..."
+
+# Create recursive zip archive
+zip --recurse-paths "$FILENAME" "$FULLPATH" -x "*/.git/*" -x "*/node_modules/*"
+
+print_success "Backup completed: $FILENAME"

@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#MISE description="List startup items (LaunchAgents & LaunchDaemons)"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Listing processes for user $USER ..."
+# Run ps command with:
+# $argv: any additional arguments passed to the function
+# -u $USER: filter to show only processes owned by current user
+# -o: custom output format showing:
+#   - pid: process ID
+#   - %cpu: CPU usage percentage
+#   - %mem: memory usage percentage  
+#   - start: process start time
+#   - time: cumulative CPU time
+#   - bsdtime: BSD-style time format
+#   - command: full command line
+# | sort -n: sort output numerically (by PID)
+ps $argv -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command | sort -n | cat

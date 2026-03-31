@@ -15,6 +15,13 @@ gcloud = { version = "latest" }
 firebase = { version = "latest" }
 gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
+fnox = { version = "latest" }
+
+[plugins]
+fnox-env = "https://github.com/jdx/mise-env-fnox"
+
+[env]
+_.fnox-env = { tools = true }
 
 [tasks.init]
 hide = true
@@ -23,3 +30,80 @@ run = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
 updateall = "mise run updateall"
+cleanupDS-Projects = "mise run cleanupDS ~/Projects"
+cleanupTelegram = "mise run cleanupTelegram"
+
+listStartupItems = "mise run listStartupItems"
+listServices = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
+myps = "mise run myps"
+
+# IP related shortcuts
+ips = "mise run ips:ips"
+gateway = "mise run ips:gateway"
+ii = "mise run ips:ii"
+ipv4 = "mise run ips:ipv4"
+ipv6 = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
+
+# Backup shortcuts
+# backup = "mise run func:backup"
+# zipf = "mise run func:zip"
+
+# Generic Aliases
+cd = "z"
+cls = "clear"
+ls = "eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
+lf = "ls --only-files"
+ld = "ls --only-dirs"
+lg = "ls --git-ignore"
+cdcd = "cd '$CLOUD_PATH'"
+diff = "diff-so-fancy"
+cdgh = "cd '$HOME/Projects/github.com'"
+tf = "terraform"
+edit = "subl"
+finder = "open -a Finder ./"
+reload = "exec fish"
+hping = "httping --ts -GBbXsSYaWZvv"
+dns = "scutil --dns"
+findPid = "lsof -t -c"
+openports = "sudo lsof -i -P | grep LISTEN"
+flushdns = "dscacheutil -flushcache"
+ipInfo0 = "ipconfig getpacket en0"
+routes = "netstat -nr -f inet"
+emulator = "/opt/homebrew/share/android-commandlinetools/emulator/emulator"
+adb = "/opt/homebrew/share/android-commandlinetools/platform-tools/adb"
+ping = "prettyping -i 2 --nolegend"
+cancelPrintJobs = "sudo cancel -a -x"
+plist = "plutil -p"
+f = "flutter"
+tree = "ls --tree"
+cat = "bat"
+dig = "doggo"
+
+# Git Related Aliases
+gpull ='git pull --all --verbose --progress'
+gs ='git status -sb'
+gc ='git commit -a -m'
+gp ='git push --all --atomic --verbose'
+
+# Docker Related Aliases
+dpull = "docker image pull --platform='linux/amd64'"
+drun = "docker run --platform='linux/amd64' --rm --interactive --tty"
+dlist = "docker image list"
+dclean = "docker system prune --all --volumes --force"
+dprune = "docker system prune --volumes --force"
+
+# Kubernetes (K8s) Related Aliases
+k = "kubectl"
+kgc = "kubectl config current-context"
+kc-local = "kubectl config use-context orbstack"
+
+# 95octane Related Customisations
+cd95 = "cd $HOME/Projects/github.com/95octane"
+
+# GCP related
+USE_GKE_GCLOUD_AUTH_PLUGIN = "true"
+
+# Development tools
+RUNTIME_ENV = "development"
+NODE_ENV = "development"

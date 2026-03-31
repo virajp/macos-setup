@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Getting all IP addresses ..."
+ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sort | awk '{ sub(/inet6? (addr:)? ?/, ""); print }'
