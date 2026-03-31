@@ -23,6 +23,10 @@ mise reshim
 print_header "Running mise doctor ..."
 mise doctor --quiet --silent > /dev/null
 
+# Prune all unused versions of tools
+print_header "Pruning unused versions of tools ..."
+mise prune --yes
+
 # Install & upgrade mise
 print_header "Setting up MISE ..."
 mise install
