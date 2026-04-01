@@ -40,8 +40,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "pnpm dlx ccstatusline@latest",
-    "padding": 0
+    "command": "node $HOME/.claude/hud/omc-hud.mjs"
   },
   "enabledPlugins": {
     "chrome-devtools-mcp@claude-plugins-official": true,
