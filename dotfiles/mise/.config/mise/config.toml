@@ -30,6 +30,7 @@ run = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
 updateall = "mise run updateall"
+cleanupDS = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
 cleanupTelegram = "mise run cleanupTelegram"
 
