@@ -1,8 +1,18 @@
-font-family = "MesloLGS NF"
+# Reference: https://ghostty.org/docs/config/reference
+
+font-family = "MesloLGS Nerd Font"
 font-size = 18
 font-feature = "-liga"
 theme = "vesper"
+
 copy-on-select = true
 quick-terminal-position = "bottom"
+
 auto-update = "check"
 auto-update-channel = "stable"
+
+notify-on-command-finish = "unfocused"
+notify-on-command-finish-action = "bell,notify"
+
+window-padding-x = 10
+window-padding-y = 10
