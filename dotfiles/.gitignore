@@ -1,3 +1,15 @@
 .DS_Store
 *.swp
 *.swo
+
+# Claude
+.claude/settings.local.json
+
+# oh-my-claudecode (OMC)
+# Root .omc — track project-memory.json only; ignore transient subdirs
+.omc/state/
+.omc/sessions/
+.omc/artifacts/
+.omc/autopilot/
+# All nested .omc directories in sub-packages/sub-projects — ignore entirely
+*/**/.omc/
