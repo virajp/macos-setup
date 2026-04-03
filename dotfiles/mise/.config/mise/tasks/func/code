@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+#MISE description="Open VSCode"
+
+#USAGE arg "<folder>" default="." help="Folder to open in VSCode"
+
+set -e
+source "${0%/*}/_helpers"
+
+if (( $+commands[code] )); then
+  code "$MISE_ORIGINAL_CWD/$usage_folder"
+else
+  echo "VSCode is not installed or not in PATH."
+  exit 1
+fi
