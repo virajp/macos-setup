@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 #MISE description="Open VSCode"
+#MISE hide=true
 
 #USAGE arg "<folder>" default="." help="Folder to open in VSCode"
 
