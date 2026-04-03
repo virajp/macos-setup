@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775098357471,
+  "lastScanned": 1775207446334,
   "projectRoot": "/Users/virajpatel/Projects/github.com/virajp/macos-setup",
   "techStack": {
     "languages": [],
@@ -38,7 +38,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 7,
-      "lastAccessed": 1775098357330,
+      "lastAccessed": 1775207446204,
       "keyFiles": [
         "account.md",
         "host.md",
@@ -51,7 +51,7 @@
       "path": "dotfiles",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1775098357331,
+      "lastAccessed": 1775207446204,
       "keyFiles": [
         "CONFIG_DOCUMENTATION.md",
         "readme.md"
