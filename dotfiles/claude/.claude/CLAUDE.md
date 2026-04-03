@@ -61,6 +61,7 @@ State: `.omc/state/`, `.omc/state/sessions/{sessionId}/`, `.omc/notepad.md`, `.o
 ## Setup
 
 Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
+
 <!-- OMC:END -->
 
 <!-- User customizations -->
@@ -82,6 +83,8 @@ All repos enforce **conventional commits** via `git-conventional-commits` +
 pre-commit hooks.
 
 > Refer to `git-commit` and `pre-commit` skills respectively
+
+> NEVER commit directly to `main` & `develop` branches. Always use feature branches.
 
 ## Coding Standards
 

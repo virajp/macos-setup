@@ -1,59 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "autoMode": {
-    "allow": [
-      "Write to any file under ~/Projects/github.com/95octane",
-      "Run pnpm, flutter, firebase, docker, temporal CLI commands",
-      "Push/pull to 95octane GitHub repos",
-      "Read and write ~/.claude directory"
-    ],
-    "environment": [
-      "Your local dev machine with repos at ~/Projects/github.com/95octane",
-      "Firebase emulator running on localhost",
-      "Temporal worker in Docker",
-      "Grafana in Docker",
-      "iOS and Android emulators"
-    ],
-    "soft_deny": [
-      "Do not write outside ~/Projects/github.com/95octane except ~/.claude",
-      "Do not delete files without explicit instruction",
-      "Do not push to production branches without confirmation"
-    ]
-  },
-  "autoUpdatesChannel": "stable",
+  "respectGitignore": true,
   "cleanupPeriodDays": 30,
-  "effortLevel": "medium",
-  "enabledPlugins": {
-    "chrome-devtools-mcp@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "kotlin-lsp@claude-plugins-official": true,
-    "oh-my-claudecode@omc": true,
-    "rc@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "omc": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
-      }
-    }
-  },
-  "forceLoginMethod": "claudeai",
   "permissions": {
-    "additionalDirectories": [
-      "~/Projects/github.com/95octane/apiService",
-      "~/Projects/github.com/95octane/flutterApp",
-      "~/Projects/github.com/95octane/astro",
-      "~/.claude"
-    ],
     "allow": [
       "Read(**)",
       "Edit(**)",
@@ -74,19 +23,73 @@
       "Bash(doppler *)",
       "Bash(temporal *)"
     ],
-    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(sudo *)",
       "Bash(su *)",
       "Bash(rm -rf /*)",
       "Bash(ssh *)",
       "Bash(gcloud *)"
+    ],
+    "defaultMode": "auto",
+    "additionalDirectories": [
+      "~/Projects/github.com/95octane/apiService",
+      "~/Projects/github.com/95octane/flutterApp",
+      "~/Projects/github.com/95octane/astro",
+      "~/.claude"
     ]
   },
-  "respectGitignore": true,
   "statusLine": {
-    "command": "node $HOME/.claude/hud/omc-hud.mjs",
-    "type": "command"
+    "type": "command",
+    "command": "node $HOME/.claude/hud/omc-hud.mjs"
   },
-  "terminalProgressBarEnabled": true
+  "enabledPlugins": {
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "rc@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "oh-my-claudecode@omc": true
+  },
+  "extraKnownMarketplaces": {
+    "omc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
+      }
+    }
+  },
+  "forceLoginMethod": "claudeai",
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "stable",
+  "autoMode": {
+    "allow": [
+      "Write to any file under ~/Projects/github.com/95octane",
+      "Run pnpm, flutter, firebase, docker, temporal CLI commands",
+      "Push/pull to 95octane GitHub repos",
+      "Read and write ~/.claude directory"
+    ],
+    "soft_deny": [
+      "Do not write outside ~/Projects/github.com/95octane except ~/.claude",
+      "Do not delete files without explicit instruction",
+      "Do not push to production branches without confirmation"
+    ],
+    "environment": [
+      "Your local dev machine with repos at ~/Projects/github.com/95octane",
+      "Firebase emulator running on localhost",
+      "Temporal worker in Docker",
+      "Grafana in Docker",
+      "iOS and Android emulators"
+    ]
+  },
+  "terminalProgressBarEnabled": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
 }
