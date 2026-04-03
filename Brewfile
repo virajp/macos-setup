@@ -105,6 +105,8 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-meslo-lg-nerd-font"
+# Ghostty is a terminal emulator for macOS built with SwiftUI
+cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Open-source video transcoder
