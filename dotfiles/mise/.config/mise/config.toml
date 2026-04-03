@@ -9,13 +9,14 @@ trusted_config_paths = ["~/.config/mise", "~/Projects"]
 usage = { version = "latest" }
 node = { version = "latest", postinstall = "npm uninstall --global npm" }
 pnpm = { version = "latest" }
-"npm:oh-my-claude-sisyphus" = { version = "latest" }
 doppler = { version = "latest" }
 gcloud = { version = "latest" }
 firebase = { version = "latest" }
 gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
 fnox = { version = "latest" }
+"npm:@anthropic-ai/claude-code" = { version = "latest" }
+"npm:oh-my-claude-sisyphus" = { version = "latest" }
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
