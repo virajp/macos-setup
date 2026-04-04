@@ -54,7 +54,7 @@ brew "lazygit"
 # Graphical front-end for GCC's coverage testing tool (gcov)
 brew "lcov"
 # Find what models run on your hardware
-brew "llmfit"
+# brew "llmfit"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
@@ -91,6 +91,8 @@ cask "android-studio"
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Anthropic's AI-powered code generation and understanding tool
+cask "claude-code@latest"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
 # Find files, folders, or contents in any file
@@ -180,3 +182,4 @@ vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "skellock.just"
 vscode "usernamehw.errorlens"
+vscode "doppler.doppler-vscode"

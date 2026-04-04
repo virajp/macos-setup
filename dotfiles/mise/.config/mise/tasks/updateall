@@ -28,7 +28,7 @@ print_header "Setting up MISE ..."
 mise install
 
 print_header "Upgrading mise tools ..."
-mise upgrade --bump  || true
+mise upgrade  || true
 
 # Prune all unused versions of tools
 print_header "Pruning unused versions of tools ..."
