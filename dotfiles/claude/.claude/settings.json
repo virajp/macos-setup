@@ -41,6 +41,14 @@
       "~/.claude"
     ]
   },
+  "hooks": {
+    "UserPromptSubmit": [],
+    "SessionStart": [],
+    "PreToolUse": [],
+    "PostToolUse": [],
+    "PostToolUseFailure": [],
+    "Stop": []
+  },
   "statusLine": {
     "type": "command",
     "command": "node $HOME/.claude/hud/omc-hud.mjs"
@@ -70,7 +78,7 @@
   },
   "forceLoginMethod": "claudeai",
   "effortLevel": "medium",
-  "autoUpdatesChannel": "stable",
+  "autoUpdatesChannel": "latest",
   "autoMode": {
     "allow": [
       "Write to any file under ~/Projects/github.com/95octane",
