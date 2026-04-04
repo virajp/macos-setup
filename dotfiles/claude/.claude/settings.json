@@ -73,7 +73,8 @@
       "source": {
         "source": "git",
         "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "forceLoginMethod": "claudeai",
@@ -99,5 +100,6 @@
       "iOS and Android emulators"
     ]
   },
-  "terminalProgressBarEnabled": true
+  "terminalProgressBarEnabled": true,
+  "skipDangerousModePermissionPrompt": true
 }

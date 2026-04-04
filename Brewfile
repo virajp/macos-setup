@@ -91,8 +91,6 @@ cask "android-studio"
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Anthropic's AI-powered code generation and understanding tool
-cask "claude-code@latest"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
 # Find files, folders, or contents in any file

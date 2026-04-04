@@ -1,7 +1,6 @@
 [settings]
 all_compile = false
 gpg_verify = true
-os = "macos"
 paranoid = true
 trusted_config_paths = ["~/.config/mise", "~/Projects"]
 
@@ -17,6 +16,7 @@ pre-commit = { version = "latest" }
 fnox = { version = "latest" }
 "npm:oh-my-claude-sisyphus" = { version = "latest" }
 java = { version = "openjdk-17" }
+claude-code = { version = "latest" }
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
