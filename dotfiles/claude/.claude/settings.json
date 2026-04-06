@@ -43,7 +43,6 @@
   },
   "extraKnownMarketplaces": {
     "omc": {
-      "autoUpdate": true,
       "source": {
         "source": "git",
         "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
@@ -60,12 +59,6 @@
     "UserPromptSubmit": []
   },
   "permissions": {
-    "additionalDirectories": [
-      "~/Projects/github.com/95octane/apiService",
-      "~/Projects/github.com/95octane/flutterApp",
-      "~/Projects/github.com/95octane/astro",
-      "~/.claude"
-    ],
     "allow": [
       "Read",
       "Edit",
@@ -80,7 +73,7 @@
       "Bash(ssh *)",
       "Bash(firebase *)",
       "Bash(gcloud *)",
-      "Bash(doppler *)",
+      "Bash(doppler *)"
     ]
   },
   "respectGitignore": true,
