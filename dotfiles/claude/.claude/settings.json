@@ -43,6 +43,7 @@
   },
   "extraKnownMarketplaces": {
     "omc": {
+      "autoUpdate": true,
       "source": {
         "source": "git",
         "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
