@@ -2,22 +2,22 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "autoMode": {
     "allow": [
-      "Write to any file under ~/Projects/github.com/95octane",
-      "Run pnpm, flutter, firebase, docker, temporal CLI commands",
+      "Write to any file under ~/Projects/github.com/95octane/workspace",
+      "Run mise, pnpm, flutter, firebase, docker, temporal CLI commands",
       "Push/pull to 95octane GitHub repos",
-      "Read and write ~/.claude directory"
+      "Read ~/.claude directory"
     ],
     "environment": [
-      "Your local dev machine with repos at ~/Projects/github.com/95octane",
-      "Firebase emulator running on localhost",
-      "Temporal worker in Docker",
-      "Grafana in Docker",
+      "Your local dev machine with repos at ~/Projects/github.com/95octane/workspace",
+      "Firebase emulator running on firebase-emulator.95octane-deps.orb.local",
+      "Temporal worker running on temporal.95octane-deps.orb.local",
+      "Grafana running on grafana.95octane-deps.orb.local",
       "iOS and Android emulators"
     ],
     "soft_deny": [
-      "Do not write outside ~/Projects/github.com/95octane except ~/.claude",
+      "Do not write outside ~/Projects/github.com/95octane/workspace",
       "Do not delete files without explicit instruction",
-      "Do not push to production branches without confirmation"
+      "Do not push to main/develop branches without confirmation"
     ]
   },
   "autoUpdatesChannel": "latest",
@@ -52,42 +52,12 @@
   },
   "forceLoginMethod": "claudeai",
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/keyword-detector.mjs\""
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/session-start.mjs\""
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/pre-tool-use.mjs\""
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/post-tool-use.mjs\""
+            "command": "node \"$HOME/.claude/hooks/post-tool-use.mjs\"",
+            "type": "command"
           }
         ]
       }
@@ -96,8 +66,28 @@
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/post-tool-use-failure.mjs\""
+            "command": "node \"$HOME/.claude/hooks/post-tool-use-failure.mjs\"",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "node \"$HOME/.claude/hooks/pre-tool-use.mjs\"",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "node \"$HOME/.claude/hooks/session-start.mjs\"",
+            "type": "command"
           }
         ]
       }
@@ -106,16 +96,26 @@
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/persistent-mode.mjs\""
+            "command": "node \"$HOME/.claude/hooks/persistent-mode.mjs\"",
+            "type": "command"
           }
         ]
       },
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/code-simplifier.mjs\""
+            "command": "node \"$HOME/.claude/hooks/code-simplifier.mjs\"",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "node \"$HOME/.claude/hooks/keyword-detector.mjs\"",
+            "type": "command"
           }
         ]
       }
@@ -142,8 +142,8 @@
   "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
-    "type": "command",
-    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs",
+    "type": "command"
   },
   "terminalProgressBarEnabled": true
 }
