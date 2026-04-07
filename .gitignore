@@ -1,3 +1,21 @@
+# ============================================================
 # macOS
+# ============================================================
 .DS_Store
-Brewfile.lock.json
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ============================================================
+# Claude / AI tooling
+# ============================================================
+.claude/settings.local.json
+
+# oh-my-claudecode (OMC)
+.omc/state/
+.omc/sessions/
+.omc/artifacts/
+.omc/autopilot/
+*/**/.omc/
