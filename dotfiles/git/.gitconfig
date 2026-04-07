@@ -26,6 +26,9 @@
 [pull]
 	rebase = false
 
+[status]
+	submoduleSummary = 9999
+
 [color]
 	ui = true
 
@@ -71,7 +74,7 @@
 	ign = ls-files -o -i --exclude-standard
 	dw = diff --word-diff
 	dt = difftool
-	s = status --short --branch
+	s = status --short --branch --ignore-submodules=all --renames
 	c = checkout
 	b = branch
 	rb = rebase

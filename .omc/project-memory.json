@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775207446334,
+  "lastScanned": 1775560178065,
   "projectRoot": "/Users/virajpatel/Projects/github.com/virajp/macos-setup",
   "techStack": {
     "languages": [],
@@ -38,7 +38,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 7,
-      "lastAccessed": 1775207446204,
+      "lastAccessed": 1775560177913,
       "keyFiles": [
         "account.md",
         "host.md",
@@ -51,13 +51,38 @@
       "path": "dotfiles",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1775207446204,
+      "lastAccessed": 1775560177913,
       "keyFiles": [
         "CONFIG_DOCUMENTATION.md",
         "readme.md"
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": ".claude/skills/git-commit-macos-setup/SKILL.md",
+      "accessCount": 9,
+      "lastAccessed": 1775560845961,
+      "type": "file"
+    },
+    {
+      "path": "git-conventional-commits.yaml",
+      "accessCount": 2,
+      "lastAccessed": 1775561280352,
+      "type": "file"
+    },
+    {
+      "path": "dotfiles/ssh/generate-ssh-keys.md",
+      "accessCount": 2,
+      "lastAccessed": 1775562404119,
+      "type": "file"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "accessCount": 1,
+      "lastAccessed": 1775560236250,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
