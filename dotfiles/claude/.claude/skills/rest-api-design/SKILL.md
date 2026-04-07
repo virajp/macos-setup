@@ -359,6 +359,7 @@ share.
 4. Maintain previous major version for a documented **sunset period** (minimum 6
    months for public APIs)
 5. Communicate deprecation via `Deprecation` and `Sunset` response headers:
+
    ```
    Deprecation: Sat, 01 Jan 2025 00:00:00 GMT
    Sunset: Mon, 01 Jul 2025 00:00:00 GMT

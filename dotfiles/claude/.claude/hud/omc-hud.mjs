@@ -9,7 +9,11 @@ import { existsSync, readdirSync } from "node:fs";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const { getClaudeConfigDir } = await import(pathToFileURL(join(__dirname, "lib", "config-dir.mjs")).href);
 
 function uniquePaths(paths) {
   return [...new Set(paths.filter(Boolean).map((candidate) => resolve(candidate)))];
@@ -83,7 +87,7 @@ async function main() {
   const home = homedir();
   let pluginCacheVersion = null;
   let pluginCacheDir = null;
-  
+
   // 1. Development paths (only when OMC_DEV=1)
   if (process.env.OMC_DEV === "1") {
     const devPaths = [
@@ -91,7 +95,7 @@ async function main() {
       join(home, "workspace/oh-my-claudecode/dist/hud/index.js"),
       join(home, "projects/oh-my-claudecode/dist/hud/index.js"),
     ];
-    
+
     for (const devPath of devPaths) {
       if (existsSync(devPath)) {
         try {
@@ -101,10 +105,10 @@ async function main() {
       }
     }
   }
-  
+
   // 2. Plugin cache (for production installs)
   // Respect CLAUDE_CONFIG_DIR so installs under a custom config dir are found
-  const configDir = process.env.CLAUDE_CONFIG_DIR || join(home, ".claude");
+  const configDir = getClaudeConfigDir();
   const pluginCacheBase = join(configDir, "plugins", "cache", "omc", "oh-my-claudecode");
   if (existsSync(pluginCacheBase)) {
     try {
@@ -114,14 +118,14 @@ async function main() {
         const latestInstalledVersion = sortedVersions[0];
         pluginCacheVersion = latestInstalledVersion;
         pluginCacheDir = join(pluginCacheBase, latestInstalledVersion);
-        
+
         // Filter to only versions with built dist/hud/index.js
         // This prevents picking an unbuilt new version after plugin update
         const builtVersions = sortedVersions.filter(version => {
           const pluginPath = join(pluginCacheBase, version, "dist/hud/index.js");
           return existsSync(pluginPath);
         });
-        
+
         if (builtVersions.length > 0) {
           const latestVersion = builtVersions[0];
           pluginCacheVersion = latestVersion;
@@ -133,7 +137,7 @@ async function main() {
       }
     } catch { /* continue */ }
   }
-  
+
   // 3. Marketplace clone (for marketplace installs without a populated cache)
   const marketplaceHudPath = join(configDir, "plugins", "marketplaces", "omc", "dist/hud/index.js");
   if (existsSync(marketplaceHudPath)) {
@@ -142,7 +146,7 @@ async function main() {
       return;
     } catch { /* continue */ }
   }
-  
+
   // 4. npm package (current project, global install, or branded fallback)
   const npmHudPackages = [
     "oh-my-claude-sisyphus/dist/hud/index.js",
@@ -153,7 +157,7 @@ async function main() {
       return;
     }
   }
-  
+
   // 5. Fallback: provide detailed error message with fix instructions
   if (pluginCacheDir && existsSync(pluginCacheDir)) {
     // Plugin exists but HUD could not be loaded
