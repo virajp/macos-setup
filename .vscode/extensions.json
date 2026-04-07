@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "davidanson.vscode-markdownlint",
+    "biomejs.biome",
+    "doppler.doppler-vscode",
+    "usernamehw.errorlens",
+    "bmalehorn.vscode-fish",
+    "github.copilot-chat",
+    "oderwat.indent-rainbow",
+    "pkief.material-icon-theme",
+    "foxundermoon.shell-format",
+    "gruntfuggly.todo-tree",
+    "redhat.vscode-yaml"
+  ]
+}

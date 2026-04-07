@@ -1,17 +1,161 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.autoIndent": "keep",
+    "editor.defaultColorDecorators": "auto",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "biome.configurationPath": "biome.jsonc",
+  "chat.promptFilesRecommendations": {
+    "speckit.constitution": true,
+    "speckit.implement": true,
+    "speckit.plan": true,
+    "speckit.specify": true,
+    "speckit.tasks": true
+  },
+  "chat.tools.terminal.autoApprove": {
+    ".specify/scripts/bash/": true,
+    ".specify/scripts/powershell/": true
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+  "doppler.autocomplete.enable": true,
+  "doppler.hover.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
+  },
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "comments": true,
+    "other": true,
+    "strings": true
+  },
+  "editor.suggest.insertMode": "replace",
+  "editor.tabSize": 2,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".envrc": ".env,.env.*,.nvmrc,.env.*.secrets,*.env",
+    ".gitignore": ".gitkeep,.dockerignore,.env,.prettierignore,.claudeignore,.pre-commit-config.yaml,analysis_options.yaml,git-conventional-commits.yaml,.gitleaks.toml,.gitleaksignore",
+    "*.dart": "${capture}.g.dart",
+    "*.js": "${capture}.js.map,${capture}.d.ts,${capture}.d.ts.map",
+    "dockerfile.projects": "dockerfile.dev,docker-bake.hcl",
+    "doppler.yaml": ".doppler.yaml",
+    "firebase.json": "firebase-debug.json,.firebaserc,*.rules,firestore.indexes.json",
+    "mise.toml": "miserc.toml,mise.*.toml,root.toml",
+    "package.json": "tsconfig.base.json,tsconfig.json,biome.jsonc,waitOn.json,waitOnExternal.json,vitest.config.ts,esbuild.mjs,turbo.json,bun.lock,bun.lockb,.npmrc,.prettierrc.yaml,apphosting.*.yaml,apphosting.yaml,.markdownlint.yaml,bunfig.toml,build.ts",
+    "Podfile": "Podfile.lock",
+    "pubspec.yaml": ".envrc,pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata,l10n.yaml,analysis_options.yaml,devtools_options.yaml,dart_dependency_validator.yaml",
+    "Pulumi.yaml": "Pulumi.*.yaml",
+    "readme.md": "*.md,doppler.yaml,LICENSE,.pre-commit-config.yaml,.gitleaks.toml,skills-lock.json,analysis_options.yaml,git-conventional-commits.yaml,.prettierrc.yaml,.augment-guidelines,claude.md,.cursorrules,CODING_STANDARDS.md,PROJECT_STRUCTURE.md,.cursorignore,.markdownlint.yaml"
+  },
   "files.associations": {
     ".config/mise/tasks/*": "shellscript",
+    ".devcontainer/devcontainer.json": "jsonc",
     ".env": "dotenv",
     ".env.*": "dotenv",
     ".envrc": "dotenv",
-    ".gitconfig": "gitconfig",
-    ".gitconfig*": "gitconfig",
     ".npmrc": "dotenv",
     ".pnpmrc": "dotenv",
     "*.env": "dotenv",
+    "*.json": "jsonc",
+    "*.jsonc": "jsonc",
+    "*.md": "markdown",
     "*.toml": "toml",
+    "*.yaml": "yaml",
+    "*.yml": "yaml",
     "dockerfile.*": "dockerfile",
     "env.dev": "dotenv",
-    "env.prod": "dotenv"
-  }
+    "env.prod": "dotenv",
+    "firebase.json": "json",
+    "LICENSE": "markdown",
+    "package.json": "json"
+  },
+  "files.autoGuessEncoding": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".github/git-commit-guidelines.md"
+    }
+  ],
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "js/ts.preferences.includePackageJsonAutoImports": "on",
+  "js/ts.preferences.quoteStyle": "double",
+  "js/ts.suggest.autoImports": false,
+  "js/ts.suggest.paths": true,
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": true,
+  "js/ts.updateImportsOnFileMove.enabled": "never",
+  "markdownlint.configFile": ".markdownlint.yaml",
+  "markdownlint.lintWorkspaceGlobs": [
+    "**/*.md",
+    "#**/node_modules"
+  ],
+  "outline.showKeys": true,
+  "search.exclude": {
+    "**/.turbo/": true,
+    "**/*.code-search": true,
+    "**/*.log": true,
+    "**/bower_components": true,
+    "**/coverage/": true,
+    "**/dist/": true,
+    "**/node_modules/": true,
+    "**/tsconfig.build.tsbuildinfo": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/ui-debug.log": true
+  },
+  "template-string-converter.autoRemoveTemplateString": true,
+  "template-string-converter.convertOutermostQuotes": true,
+  "template-string-converter.convertWithinTemplateString": true,
+  "template-string-converter.quoteType": "both",
+  "template-string-converter.validLanguages": [
+    "javascript",
+    "typescript"
+  ],
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "HACK",
+    "REVIEW",
+    "NOTE",
+    "REFACTOR",
+    "REMOVE"
+  ],
+  "todo-tree.highlights.defaultHighlight": {
+    "hideFromActivityBar": true,
+    "hideFromStatusBar": false,
+    "type": "text-and-comment"
+  },
+  "ts.tsserver.maxTsServerMemory": 4096
 }
