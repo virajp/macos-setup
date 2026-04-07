@@ -35,6 +35,8 @@ cleanupDS = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
 cleanupTelegram = "mise run cleanupTelegram"
 
+cc = "claude --allow-dangerously-skip-permissions"
+
 code = "mise run --silent func:code"
 
 listStartupItems = "mise run --silent func:listStartupItems"
