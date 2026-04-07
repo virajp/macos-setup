@@ -12,6 +12,31 @@ HOMEBREW_BUNDLE_FILE="./Brewfile"
 
 [tasks]
 
+# Precommit
+[tasks."precommit"]
+description = "Run pre-commit hooks on all files"
+run = "pre-commit run --all-files"
+
+[tasks."setup:precommit"]
+description = "Setup pre-commit hooks"
+run = """
+  echo "Updating pre-commit hooks ..."
+  pre-commit autoupdate
+
+  echo "Installing pre-commit ..."
+  pre-commit install --all --install-hooks
+  """
+
+# Lint
+[tasks."lint"]
+description = "Linting, formatting"
+run = """
+  echo "YAML linting, formatting ..."
+  npx prettier --config ./.prettierrc.yaml --check --write "**/*.yaml"
+  echo "Markdown linting, formatting ..."
+  npx markdownlint-cli2 --fix --format "**/*.md" "#node_modules"
+  """
+
 # Dotfiles tasks
 [tasks."stow:install"]
 description = "Install dotfiles using stow"
@@ -72,3 +97,6 @@ run = """
   echo "Autoremoving packages ..."
   brew autoremove --verbose
   """
+
+[shell_alias]
+lint = "mise run lint"
