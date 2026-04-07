@@ -146,7 +146,7 @@ run. `architect` remains the default. </PRD_Mode>
   follow-up edits, keep those edits inside the same changed-file scope before
   proceeding.
 
-7.6 **Regression Re-verification**:
+  7.6 **Regression Re-verification**:
 
 - After the deslop pass, re-run all relevant tests, build, and lint checks for
   the Ralph session.

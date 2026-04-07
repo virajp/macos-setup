@@ -50,9 +50,9 @@ function cleanupDS() {
   if [ -z "$ARGS" ]; then
     ARGS="."
   fi
-  
+
   echo "Deleting .DS_Store files: $ARGS"
-  
+
   # Use find to locate and delete .DS_Store files:
   # -type f: only files (not directories)
   # -name '.DS_Store': exact filename match for macOS metadata files
@@ -367,7 +367,7 @@ function cleanupTelegram() {
   # osascript: macOS AppleScript command-line tool
   # Use AppleScript to gracefully quit Telegram application
   osascript -e 'quit app "Telegram"'
-  
+
   echo "Cleaning Telegram cache ..."
   # Target Telegram's Group Container (sandboxed app storage):
   # -type f: files only
@@ -375,7 +375,7 @@ function cleanupTelegram() {
   # -size +1024k: files larger than 1MB (1024 kilobytes)
   # -delete: remove the matched files
   find "/Users/virajpatel/Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/appstore" -type f -name "telegram-*" -size +1024k -delete
-  
+
   echo "Starting Telegram ..."
   # open -a: macOS command to launch applications
   open -a Telegram
@@ -394,16 +394,16 @@ function listStartupItems() {
   echo "LaunchAgents @ /Library/LaunchAgents ..."
   ls -1 /Library/LaunchAgents
   echo "------------------------------------------"
-  
+
   # Display system-wide LaunchDaemons (run as root/system)
   echo "LaunchDaemons @ /Library/LaunchDaemons ..."
   ls -1 /Library/LaunchDaemons
   echo "------------------------------------------"
-  
+
   # Display user-specific LaunchAgents
   echo "User LaunchAgents @ ~/Library/LaunchAgents ..."
   ls -1 ~/Library/LaunchAgents
-  
+
   # Alternative: sudo sfltool dumpbtm (commented out)
   # sfltool: System Filter Tool for background task management
   # Requires admin privileges to show background task management info

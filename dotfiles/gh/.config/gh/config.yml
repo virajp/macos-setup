@@ -12,4 +12,4 @@ pager: less
 # WHY: Aliases for commonly used commands to speed up workflow
 # Aliases allow you to create nicknames for gh commands
 aliases:
-    co: pr checkout
+  co: pr checkout

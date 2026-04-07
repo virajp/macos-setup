@@ -12,7 +12,7 @@ print_header "Listing processes for user $USER ..."
 # -o: custom output format showing:
 #   - pid: process ID
 #   - %cpu: CPU usage percentage
-#   - %mem: memory usage percentage  
+#   - %mem: memory usage percentage
 #   - start: process start time
 #   - time: cumulative CPU time
 #   - bsdtime: BSD-style time format

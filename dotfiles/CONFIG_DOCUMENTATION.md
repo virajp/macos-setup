@@ -1,6 +1,7 @@
 # Configuration Documentation
 
-This document explains the less-obvious settings and customizations in the dotfiles configuration.
+This document explains the less-obvious settings and customizations in the
+dotfiles configuration.
 
 ## Directory Structure
 
@@ -8,7 +9,8 @@ The `dotfiles/` directory contains configuration files organized by application:
 
 - `nushell/` - Modern shell configuration with custom vendor autoload system
 - `oh-my-posh/` - Custom prompt theme with gruvbox colors
-- `starship/` - Alternative prompt configuration (currently unused in favor of oh-my-posh)
+- `starship/` - Alternative prompt configuration (currently unused in favor of
+  oh-my-posh)
 - `warp/` - Terminal theme and keybindings
 - `gh/` - GitHub CLI configuration
 - `docker/` - Docker security profiles
@@ -126,7 +128,7 @@ Custom PATH additions include:
 All tools use consistent gruvbox-inspired colors:
 
 - Background: Dark variants (#3c3836, #665c54)
-- Foreground: Light variants (#fbf1c7, #ffffff)  
+- Foreground: Light variants (#fbf1c7, #ffffff)
 - Accents: Blue (#458588), Aqua (#689d6a), Green (#98971a)
 - Alerts: Orange (#d65d0e), Red (#cc241d), Yellow (#d79921)
 

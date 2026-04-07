@@ -11,7 +11,7 @@
 #   type gcloud >/dev/null && gcloud components update --verbosity=info --quiet
 # }
 
-# # Function to check whether touch-id is setup for sudo 
+# # Function to check whether touch-id is setup for sudo
 # function check-touch-id() {
 #   echo -n "Checking Touch ID setup for shell ... "
 #   if [ -n "$(cat /etc/pam.d/sudo | grep pam_tid.so)" ]; then

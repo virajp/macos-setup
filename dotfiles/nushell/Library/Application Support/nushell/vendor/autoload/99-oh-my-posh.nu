@@ -69,4 +69,3 @@ $env.PROMPT_COMMAND = {||
 }
 
 $env.PROMPT_COMMAND_RIGHT = {|| _omp_get_prompt right }
-
