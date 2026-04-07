@@ -30,8 +30,7 @@ dotnet workload list
 
 ## Configuration
 
-> Container Runtime
-> Not required for Docker Desktop
+> Container Runtime Not required for Docker Desktop
 
 ```shell
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman

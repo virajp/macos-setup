@@ -2,7 +2,8 @@
 
 > NOTE: This will be checked everytime `updateall` is called
 
-This is required to use TouchID for sudo and needs to be done post every macOS update.
+This is required to use TouchID for sudo and needs to be done post every macOS
+update.
 
 ## Open the sudo utility
 

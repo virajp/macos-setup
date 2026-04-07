@@ -1,6 +1,7 @@
 # Fish Shell
 
-Fish is a smart and user-friendly command line shell for macOS. It is the preferred shell for this setup.
+Fish is a smart and user-friendly command line shell for macOS. It is the
+preferred shell for this setup.
 
 ## Install
 
@@ -18,7 +19,8 @@ exit
 
 ## Shell prompt
 
-We will be using `Tide (IlanCosman/tide)` as the shell prompt and use `Fisher (Plugin Management)` to install it.
+We will be using `Tide (IlanCosman/tide)` as the shell prompt and use
+`Fisher (Plugin Management)` to install it.
 
 > **Note:** The following commands require to use `fish` shell.
 
@@ -29,7 +31,8 @@ fisher install IlanCosman/tide@v5
 
 ### Configure `Tide`
 
-> Follow these steps to configure `Tide` shell prompt in case your prompt is not showing up correctly.
+> Follow these steps to configure `Tide` shell prompt in case your prompt is not
+> showing up correctly.
 
 ```shell
 tide configure

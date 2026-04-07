@@ -4,15 +4,21 @@ There are two options here:
 
 ## As Admin User
 
-This is the easiest way to get started. You can create an `admin user` and use that for everything. However, it is not recommended to use an `admin user` for day-to-day use.
+This is the easiest way to get started. You can create an `admin user` and use
+that for everything. However, it is not recommended to use an `admin user` for
+day-to-day use.
 
 ## As Standard User
 
-This is the recommended way to use macOS. You can create a `standard user` and use that for day-to-day use. For administration purpose, you will need to create additional account with `admin privileges`. Let's call the name of `admini user` as `admin`
+This is the recommended way to use macOS. You can create a `standard user` and
+use that for day-to-day use. For administration purpose, you will need to create
+additional account with `admin privileges`. Let's call the name of `admini user`
+as `admin`
 
 ### Step 1: Create a Standard User
 
-First, create a standard user account. You can do this by going to System Preferences > Users & Groups > Add User. Let's name this user as `virajpatel`
+First, create a standard user account. You can do this by going to System
+Preferences > Users & Groups > Add User. Let's name this user as `virajpatel`
 
 ### Step 2: Create an Admin User
 

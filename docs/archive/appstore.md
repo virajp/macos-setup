@@ -8,25 +8,25 @@ brew install --formulae mas
 mas open
 
 # Install apps from Mac App Store
-mas install 425424353    # The Unarchiver 
+mas install 425424353    # The Unarchiver
 mas install 1569813296   # 1Password for Safari
 
-mas install 1147396723   # WhatsApp 
+mas install 1147396723   # WhatsApp
 mas install 747648890    # Telegram
 
-mas install 409201541    # Pages 
-mas install 409203825    # Numbers 
+mas install 409201541    # Pages
+mas install 409203825    # Numbers
 mas install 409183694    # Keynote
 mas install 462054704    # Microsoft Word
 mas install 462058435    # Microsoft Excel
-mas install 462062816    # Microsoft PowerPoint 
+mas install 462062816    # Microsoft PowerPoint
 
 mas install 568494494    # Pocket
 
-mas install 455970963    # Disk Doctor 
-mas install 715464874    # Disk Map 
-mas install 686428787    # Duplicate Detective 
-mas install 411643860    # DaisyDisk 
+mas install 455970963    # Disk Doctor
+mas install 715464874    # Disk Map
+mas install 686428787    # Duplicate Detective
+mas install 411643860    # DaisyDisk
 mas install 1120214373   # Battery Health 2
 mas install 504700302    # PDF Squeezer
 mas install 6443781970   # PDF Text Includer

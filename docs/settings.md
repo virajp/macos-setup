@@ -65,7 +65,7 @@ defaults read com.apple.AddressBook ABBirthDayVisible -bool true
 ```
 
 ## Desktop
-  
+
 ```shell
 defaults write com.apple.finder CreateDesktop -bool false
 # Finder > Preferences > General > Show items on the Desktop
@@ -115,7 +115,8 @@ defaults write com.apple.finder FXICloudDriveEnabled -bool true
 defaults write com.apple.finder FXICloudDriveDocuments -bool true
 ```
 
-> - For configuration which has complex settings, use `PlistBuddy` to set the values.
+> - For configuration which has complex settings, use `PlistBuddy` to set the
+>   values.
 
 ## Search Recents View Settings
 
