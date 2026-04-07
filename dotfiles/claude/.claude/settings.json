@@ -1,28 +1,102 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "autoMode": {
+  "respectGitignore": true,
+  "cleanupPeriodDays": 30,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
     "allow": [
-      "Write to any file under ~/Projects/github.com/95octane/workspace",
-      "Run mise, pnpm, flutter, firebase, docker, temporal CLI commands",
-      "Push/pull to 95octane GitHub repos",
-      "Read ~/.claude directory"
+      "Read",
+      "Edit",
+      "Write",
+      "Bash"
     ],
-    "environment": [
-      "Your local dev machine with repos at ~/Projects/github.com/95octane/workspace",
-      "Firebase emulator running on firebase-emulator.95octane-deps.orb.local",
-      "Temporal worker running on temporal.95octane-deps.orb.local",
-      "Grafana running on grafana.95octane-deps.orb.local",
-      "iOS and Android emulators"
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(su *)",
+      "Bash(rm -rf /*)",
+      "Bash(ssh *)",
+      "Bash(firebase *)",
+      "Bash(gcloud *)",
+      "Bash(doppler *)"
     ],
-    "soft_deny": [
-      "Do not write outside ~/Projects/github.com/95octane/workspace",
-      "Do not delete files without explicit instruction",
-      "Do not push to main/develop branches without confirmation"
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/post-tool-use.mjs\""
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/post-tool-use-failure.mjs\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/pre-tool-use.mjs\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/session-start.mjs\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/persistent-mode.mjs\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/code-simplifier.mjs\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/keyword-detector.mjs\""
+          }
+        ]
+      }
     ]
   },
-  "autoUpdatesChannel": "latest",
-  "cleanupPeriodDays": 30,
-  "effortLevel": "medium",
+  "statusLine": {
+    "type": "command",
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+  },
   "enabledPlugins": {
     "chrome-devtools-mcp@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
@@ -32,118 +106,43 @@
     "frontend-design@claude-plugins-official": true,
     "kotlin-lsp@claude-plugins-official": true,
     "oh-my-claudecode@omc": true,
-    "rc@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
   "extraKnownMarketplaces": {
     "omc": {
-      "autoUpdate": true,
       "source": {
         "source": "git",
         "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "forceLoginMethod": "claudeai",
-  "hooks": {
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/post-tool-use.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PostToolUseFailure": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/post-tool-use-failure.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/pre-tool-use.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/session-start.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/persistent-mode.mjs\"",
-            "type": "command"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/code-simplifier.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "command": "node \"$HOME/.claude/hooks/keyword-detector.mjs\"",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "permissions": {
-    "allow": [
-      "Read",
-      "Edit",
-      "Write",
-      "Bash"
-    ],
-    "defaultMode": "acceptEdits",
-    "deny": [
-      "Bash(sudo *)",
-      "Bash(su *)",
-      "Bash(rm -rf /*)",
-      "Bash(ssh *)",
-      "Bash(firebase *)",
-      "Bash(gcloud *)",
-      "Bash(doppler *)"
-    ]
-  },
-  "respectGitignore": true,
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "latest",
   "skipDangerousModePermissionPrompt": true,
-  "statusLine": {
-    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs",
-    "type": "command"
+  "autoMode": {
+    "allow": [
+      "Write to any file under ~/Projects/github.com/95octane/workspace",
+      "Run mise, pnpm, flutter, firebase, docker, temporal CLI commands",
+      "Push/pull to 95octane GitHub repos",
+      "Read ~/.claude directory"
+    ],
+    "soft_deny": [
+      "Do not write outside ~/Projects/github.com/95octane/workspace",
+      "Do not delete files without explicit instruction",
+      "Do not push to main/develop branches without confirmation"
+    ],
+    "environment": [
+      "Your local dev machine with repos at ~/Projects/github.com/95octane/workspace",
+      "Firebase emulator running on firebase-emulator.95octane-deps.orb.local",
+      "Temporal worker running on temporal.95octane-deps.orb.local",
+      "Grafana running on grafana.95octane-deps.orb.local",
+      "iOS and Android emulators"
+    ]
   },
   "terminalProgressBarEnabled": true
 }
