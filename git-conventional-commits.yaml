@@ -1,0 +1,16 @@
+---
+convention:
+  commitTypes:
+    - spec
+    - ops
+    - docs
+    - merge
+  commitScopes:
+
+  # GitHub
+  commitUrl: https://github.com/virajp/macos-setup/commit/%commit%
+  commitRangeUrl: https://github.com/virajp/macos-setup/compare/%from%...%to%?diff=split
+
+  # GitHub Issues
+  issueRegexPattern: "#[0-9]+"
+  issueUrl: https://github.com/virajp/macos-setup/issues/%issue%

@@ -1,0 +1,21 @@
+# .prettierrc.yaml
+---
+overrides:
+  - files:
+      - "*.md"
+      - "*.markdown"
+    options:
+      parser: markdown
+      proseWrap: always
+      # Match markdownlint expectations
+      printWidth: 80
+      # Ensure consistent list markers
+      singleQuote: false
+
+  - files:
+      - "*.yaml"
+      - "*.yml"
+    options:
+      parser: yaml
+      tabWidth: 2
+      useTabs: false
