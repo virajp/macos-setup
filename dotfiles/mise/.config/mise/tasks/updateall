@@ -51,8 +51,4 @@ mise upgrade:macos:download
 print_header "Updating OMC ..."
 omc update
 
-# Update GSD
-print_header "Updating GSD ..."
-npx get-shit-done-cc@latest --global --claude
-
 print_header "Setup complete!"
