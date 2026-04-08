@@ -27,6 +27,8 @@ brew "eza"
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Fort Knox for your secrets - flexible secret management tool
+brew "fnox"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
