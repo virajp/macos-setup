@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#MISE description="Setup pre-commit hooks"
+#MISE hide=true
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Updating pre-commit hooks ..."
+pre-commit autoupdate
+
+print_header "Installing pre-commit ..."
+pre-commit install --all --install-hooks

@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#MISE description="Delete packages NOT in Brewfile"
+#MISE hide=false
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Deleting packages NOT in Brewfile ..."
+brew bundle cleanup --force --verbose
+
+print_header "Autoremoving packages ..."
+brew autoremove --verbose

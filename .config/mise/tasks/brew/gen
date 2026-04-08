@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#MISE description="Generate Brewfile"
+#MISE hide=false
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Generating Brewfile ..."
+brew bundle dump --all --force --describe
+
+print_header "Printing the diff ... "
+git diff --color=always | diff-so-fancy

@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#MISE description="Recreate symlinks for stow-managed dotfiles"
+#MISE hide=false
+#MISE dir="dotfiles"
+
+set -e
+source "${0%/*}/_helpers"
+
+find . -type f -name '.DS_Store' -ls -delete || true
+
+print_header "Reinstalling stow-managed dotfiles ..."
+stow --restow --dir=. --target=$HOME --verbose */

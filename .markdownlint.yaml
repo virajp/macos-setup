@@ -1,11 +1,10 @@
 # .markdownlint.yaml
 ---
 # MD001: heading-increment - disabled, Prettier doesn't enforce
-MD001: false
+MD001: true
 
 # MD003: heading-style - consistent style
-MD003:
-  style: consistent
+MD003: true
 
 # MD004: ul-indent - list indentation
 MD004: true
@@ -28,11 +27,14 @@ MD010: true
 MD011: true
 
 # MD012: no-multiple-blanks - limit blank lines
-MD012:
-  maximum: 1
+MD012: true
 
 # MD013: line-length
-MD013: false
+MD013:
+  line_length: 80
+  code_blocks: false
+  tables: false
+  headings: false # optional, headings rarely benefit from wrapping either
 
 # MD014: commands-show-output
 MD014: true
@@ -153,3 +155,4 @@ MD050:
 
 MD060:
   aligned_delimiter: true
+  style: aligned

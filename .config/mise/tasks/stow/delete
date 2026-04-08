@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+#MISE description="Delete symlinks for stow-managed dotfiles"
+#MISE hide=false
+#MISE dir="dotfiles"
+
+set -e
+source "${0%/*}/_helpers"
+
+print_header "Deleting stow-managed dotfiles ..."
+stow --delete --dir=. --target=$HOME --verbose */

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+#MISE hide=true
+
+set -e
+source "${0%/*}/../_helpers"

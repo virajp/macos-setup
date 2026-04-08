@@ -9,6 +9,9 @@ overrides:
       proseWrap: always
       # Match markdownlint expectations
       printWidth: 80
+      # Tab settings
+      useTabs: false
+      tabWidth: 2
       # Ensure consistent list markers
       singleQuote: false
 
@@ -17,5 +20,6 @@ overrides:
       - "*.yml"
     options:
       parser: yaml
-      tabWidth: 2
+      # Tab settings
       useTabs: false
+      tabWidth: 2

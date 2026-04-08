@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#MISE description="Create symlinks for stow-managed dotfiles"
+#MISE hide=false
+#MISE dir="dotfiles"
+
+set -e
+source "${0%/*}/_helpers"
+
+find . -type f -name '.DS_Store' -ls -delete || true
+
+print_header "Stowing dotfiles ..."
+stow --dir=. --target=$HOME --verbose */
