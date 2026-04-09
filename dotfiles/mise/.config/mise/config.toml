@@ -13,7 +13,6 @@ gcloud = { version = "latest" }
 firebase = { version = "latest" }
 gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
-"npm:oh-my-claude-sisyphus" = { version = "latest" }
 java = { version = "openjdk-17" }
 claude-code = { version = "latest" }
 

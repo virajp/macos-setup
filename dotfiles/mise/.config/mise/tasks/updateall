@@ -48,7 +48,7 @@ mise cleanupDS ~/Projects
 mise upgrade:macos:download
 
 # Update OMC
-print_header "Updating OMC ..."
-omc update
+print_header "Install superpowers ..."
+claude plugin install --scope "user" superpowers@claude-plugins-official
 
 print_header "Setup complete!"
