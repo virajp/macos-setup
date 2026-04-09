@@ -14,7 +14,10 @@ firebase = { version = "latest" }
 gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
 java = { version = "openjdk-17" }
+
+# Claude Code
 claude-code = { version = "latest" }
+"npm:ccstatusline" = { version = "latest" }
 
 [tasks.init]
 hide = true

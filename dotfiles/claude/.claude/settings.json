@@ -1,10 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "respectGitignore": true,
+  "autoUpdatesChannel": "latest",
   "cleanupPeriodDays": 30,
+  "effortLevel": "medium",
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
+  "forceLoginMethod": "claudeai",
+  "includeCoAuthoredBy": true,
   "permissions": {
     "allow": [
       "Read",
@@ -12,6 +19,7 @@
       "Write",
       "Bash"
     ],
+    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(sudo *)",
       "Bash(su *)",
@@ -20,16 +28,14 @@
       "Bash(firebase *)",
       "Bash(gcloud *)",
       "Bash(doppler *)"
-    ],
-    "defaultMode": "acceptEdits"
+    ]
   },
-  "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
-  },
-  "forceLoginMethod": "claudeai",
-  "effortLevel": "medium",
-  "autoUpdatesChannel": "latest",
+  "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "command": "ccstatusline",
+    "padding": 0,
+    "type": "command"
+  },
   "terminalProgressBarEnabled": true
 }
