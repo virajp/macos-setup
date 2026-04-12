@@ -82,10 +82,10 @@ cat = "bat"
 dig = "doggo"
 
 # Git Related Aliases
-gpull ='git pull --all --verbose --progress'
-gs ='git status -sb'
-gc ='git commit -a -m'
-gp ='git push --all --atomic --verbose'
+gpull = 'git pull --all --verbose --progress'
+gs = 'git status -sb'
+gc = 'git commit -a -m'
+gp = 'git push --all --atomic --verbose'
 
 # Docker Related Aliases
 dpull = "docker image pull --platform='linux/amd64'"
