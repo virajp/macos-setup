@@ -5,22 +5,7 @@ description:
   working with project dependencies, dev servers, tests, builds, or releases via
   mise run. Triggers on `mise`, `dev-tools`, `tasks`, `build`, `test`, `deploy`,
   `dependencies`, `toolchain`, and `environment-variables` topics.
-metadata:
-  author: "Viraj Patel"
-  version: 2.0.0
-  updatedAt: 2026-04-15T02:30:00Z
 allowed-tools: Bash(git:*) Bash(mise:*) Read
-progressive_disclosure:
-  entry_point:
-    summary: "mise manages tools and tasks"
-    when_to_use:
-      "Running dev servers, builds, tests, linting, releasing, or managing
-      dependencies, environment variables or tool versions."
-    quick_start:
-      "Use `mise run <task>` for any project operation. Config lives in
-      .config/mise.toml and tasks in .config/mise/tasks/"
-  references: []
-context_limit: 800
 ---
 
 # mise - Dev Tools & Task Runner (95octane)
