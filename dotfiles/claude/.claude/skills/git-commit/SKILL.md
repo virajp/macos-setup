@@ -6,6 +6,7 @@ description:
   files, write a commit message, or run git commit while working in the
   repository. Triggers on phrases like "commit", "git commit", "stage and
   commit", "make a commit", "commit all" when working in the repository.
+allowed-tools: Bash(git:*) Bash(mise:*) Read
 ---
 
 # Git Commit

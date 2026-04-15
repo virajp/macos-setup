@@ -1,16 +1,8 @@
 ---
 name: github-actions
 description:
-  "GitHub Actions CI/CD workflows for automating build, test, and deployment"
-version: 1.0.0
-progressive_disclosure:
-  entry_point:
-    - summary
-    - when_to_use
-    - quick_start
-  tokens:
-    entry: 70
-    full: 5000
+  GitHub Actions CI/CD workflows for automating build, test, and deployment
+allowed-tools: Read Write
 ---
 
 # GitHub Actions CI/CD
