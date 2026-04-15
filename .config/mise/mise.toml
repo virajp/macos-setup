@@ -7,8 +7,10 @@ gpg_verify = true
 task_output = "interleave"
 env_shell_expand = true
 
+[tools]
+
 [env]
-HOMEBREW_BUNDLE_FILE="./Brewfile"
+HOMEBREW_BUNDLE_FILE = "./Brewfile"
 
 [tasks.init]
 hide = true
