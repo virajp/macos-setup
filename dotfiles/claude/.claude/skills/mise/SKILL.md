@@ -3,21 +3,13 @@ name: mise
 description:
   mise dev tools manager. Use when running tasks, managing tool versions, or
   working with project dependencies, dev servers, tests, builds, or releases via
-  mise run.
-skill_version: 2.0.0
-updated_at: 2026-04-15T02:30:00Z
-tags:
-  [
-    mise,
-    dev-tools,
-    tasks,
-    build,
-    test,
-    deploy,
-    dependencies,
-    toolchain,
-    environment-variables,
-  ]
+  mise run. Triggers on `mise`, `dev-tools`, `tasks`, `build`, `test`, `deploy`,
+  `dependencies`, `toolchain`, and `environment-variables` topics.
+metadata:
+  author: "Viraj Patel"
+  version: 2.0.0
+  updatedAt: 2026-04-15T02:30:00Z
+allowed-tools: Bash(git:*) Bash(mise:*) Read
 progressive_disclosure:
   entry_point:
     summary: "mise manages tools and tasks"
@@ -35,7 +27,7 @@ context_limit: 800
 
 ## Overview
 
-mise manages tool versions (Node, pnpm, Doppler, gcloud, etc.) and runs all
+mise manages tool versions (Bun, Node, pnpm, Doppler, gcloud, etc.) and runs all
 project tasks. Tasks live in `.config/mise/tasks/` as executable shell scripts.
 Config is at `.config/mise.toml`. Environment wise config may exist in
 `.config/mise.*.toml`, and environment is set via `MISE_ENV=dev|prod` or
@@ -54,6 +46,7 @@ mise reshim           # Rebuild shims after tool changes
 mise doctor           # Check mise health
 mise list             # List installed tools
 mise which <tool>     # Show path to tool binary
+mise registry <tool>  # Show tool registry info
 ```
 
 ## Tasks
@@ -62,28 +55,6 @@ mise which <tool>     # Show path to tool binary
 > descriptions, configured in the project.
 
 Run any task with: `mise run <task-name>`
-
-## Shell Aliases
-
-These aliases are available in a mise-activated shell (set in mise config):
-
-### Examples
-
-| Alias           | Expands to                 |
-| --------------- | -------------------------- |
-| `setup`         | `mise run setup`           |
-| `upgrade`       | `mise run pnpm:install`    |
-| `lint`          | `mise run all:lint`        |
-| `check`         | `mise run all:check`       |
-| `dev`           | `mise run s:dev`           |
-| `web-dev`       | `mise run web:dev`         |
-| `test-all`      | `mise run s:test:all`      |
-| `test-external` | `mise run s:test:external` |
-| `dev-merge`     | `mise run dev:merge`       |
-| `prod-merge`    | `mise run prod:merge`      |
-| `pkg`           | `mise run deps:packages`   |
-| `pnpm-install`  | `mise run pnpm:install`    |
-| `npx`           | `pnpm dlx`                 |
 
 ## Examples of Common Workflows
 
