@@ -1,11 +1,6 @@
 ---
 name: git-commit
-description:
-  Create git commits for the repository following its conventional commits
-  configuration. Use this skill whenever the user wants to commit changes, stage
-  files, write a commit message, or run git commit while working in the
-  repository. Triggers on phrases like "commit", "git commit", "stage and
-  commit", "make a commit", "commit all" when working in the repository.
+description: git-commit
 allowed-tools: Bash(git:*) Bash(mise:*) Read
 ---
 
