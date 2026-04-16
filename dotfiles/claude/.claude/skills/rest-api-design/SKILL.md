@@ -1,6 +1,6 @@
 ---
 name: rest-api-design
-description: >
+description:
   Comprehensive, technology-agnostic principles and best practices for designing
   REST APIs. Use this skill whenever designing new REST endpoints, reviewing API
   contracts, planning versioning strategy, defining error formats, or
