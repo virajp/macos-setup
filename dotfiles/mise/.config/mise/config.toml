@@ -15,8 +15,10 @@ gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
 java = { version = "openjdk-17" }
 
-# Claude Code
+# AI Coding Tools (CLIs)
 claude-code = { version = "latest" }
+gemini-cli = { version = "latest" }
+copilot-cli = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 
 [tasks.init]
