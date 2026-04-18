@@ -1,25 +1,25 @@
 {
   "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "dprint.dprint",
     "editor.formatOnSave": true
   },
   "[yaml]": {
@@ -36,7 +36,6 @@
     },
     "editor.tabSize": 2
   },
-  "biome.configurationPath": "biome.jsonc",
   "chat.promptFilesRecommendations": {
     "speckit.constitution": true,
     "speckit.implement": true,
@@ -106,7 +105,7 @@
   "files.autoGuessEncoding": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "file": ".github/git-commit-guidelines.md"
+      "file": "~/.github/git-commit-guidelines.md"
     }
   ],
   "js/ts.preferences.importModuleSpecifier": "non-relative",
@@ -117,11 +116,6 @@
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "js/ts.tsserver.experimental.enableProjectDiagnostics": true,
   "js/ts.updateImportsOnFileMove.enabled": "never",
-  "markdownlint.configFile": ".markdownlint.yaml",
-  "markdownlint.lintWorkspaceGlobs": [
-    "**/*.md",
-    "#**/node_modules"
-  ],
   "outline.showKeys": true,
   "search.exclude": {
     "**/.turbo/": true,
@@ -156,6 +150,5 @@
     "hideFromActivityBar": true,
     "hideFromStatusBar": false,
     "type": "text-and-comment"
-  },
-  "ts.tsserver.maxTsServerMemory": 4096
+  }
 }
