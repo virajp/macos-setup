@@ -20,7 +20,6 @@ java = { version = "openjdk-17" }
 claude-code = { version = "latest" }
 gemini-cli = { version = "latest" }
 copilot-cli = { version = "latest" }
-opencode = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 
 [tasks.init]
