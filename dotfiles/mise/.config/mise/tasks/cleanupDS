@@ -10,4 +10,4 @@ source "${0%/*}/_helpers"
 FOLDER=${1:-$HOME}
 
 print_header "Cleaning up .DS_Store files in $FOLDER ..."
-find "$FOLDER" -type f -name '.DS_Store' -not -path '*/Library/*' -ls -delete
+find "$FOLDER" -type f -name '.DS_Store' -not -path '*/Library/*' -ls -delete 2>/dev/null || true
