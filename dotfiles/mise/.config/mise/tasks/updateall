@@ -43,9 +43,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 print_header "Disabling .DS_Store file creation on USB drives ..."
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-mise cleanupDS ~/Projects
+mise run cleanupDS ~/Projects
 
-mise upgrade:macos:download
+mise run upgrade:macos:download
 
 # Link Claude Code to ~/.local/bin/claude
 ln -sf "$(mise which claude)" ~/.local/bin/claude
