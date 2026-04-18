@@ -1,4 +1,7 @@
 tap "gromgit/brewtils"
+tap "coleam00/archon"
+# Remote agentic coding platform - control AI assistants from anywhere
+brew "archon"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
