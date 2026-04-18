@@ -6,7 +6,8 @@ trusted_config_paths = ["~/.config/mise", "~/Projects"]
 
 [tools]
 usage = { version = "latest" }
-node = { version = "latest", postinstall = "npm uninstall --global npm" }
+bun = { version = "latest" }
+node = { version = "latest" }
 pnpm = { version = "latest" }
 doppler = { version = "latest" }
 gcloud = { version = "latest" }
@@ -19,6 +20,7 @@ java = { version = "openjdk-17" }
 claude-code = { version = "latest" }
 gemini-cli = { version = "latest" }
 copilot-cli = { version = "latest" }
+opencode = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 
 [tasks.init]
@@ -33,6 +35,8 @@ cleanupDS-Projects = "mise run cleanupDS ~/Projects"
 cleanupTelegram = "mise run cleanupTelegram"
 
 cc = "claude --allow-dangerously-skip-permissions"
+
+aistats = "bunx codeburn"
 
 code = "mise run --silent func:code"
 
