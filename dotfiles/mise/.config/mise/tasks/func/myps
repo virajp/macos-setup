@@ -17,8 +17,6 @@ print_header "Listing processes for user $USER filtered by $usage_process ..."
 #   - %mem: memory usage percentage
 #   - start: process start time
 #   - time: cumulative CPU time
-#   - bsdtime: BSD-style time format
 #   - command: full command line
 # | sort -n: sort output numerically (by PID)
-#ps $usage_process -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command #| sort -n | cat
 ps -u $USER -o pid,%cpu,%mem,start,time,command | grep -E "PID|$usage_process" | grep -E -v "grep|mise/bin/mise|mise\/tasks" | sort -n
