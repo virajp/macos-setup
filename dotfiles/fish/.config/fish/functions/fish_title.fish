@@ -10,6 +10,6 @@ function fish_title
             echo (basename $git_root)
         end
     else
-        prompt_pwd
+        echo (basename $PWD)
     end
 end
