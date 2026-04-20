@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "claude-mem": {
+      "args": [
+        "/Users/virajpatel/.claude/plugins/marketplaces/thedotmack/plugin/scripts/mcp-server.cjs"
+      ],
+      "command": "node"
+    }
+  }
+}

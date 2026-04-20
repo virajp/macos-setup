@@ -51,10 +51,6 @@ jobs:
       - run: pnpm run test
 ```
 
----
-
-# Complete GitHub Actions Guide
-
 ## Core Concepts
 
 ### Workflows

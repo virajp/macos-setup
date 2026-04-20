@@ -4,13 +4,13 @@ This skill governs commits made in the **repository**
 
 ## Commit Format
 
-```
+```text
 <type>(<scope>): <description>
 ```
 
 or without a scope:
 
-```
+```text
 <type>: <description>
 ```
 
@@ -28,7 +28,7 @@ or without a scope:
   types & scopes
 - Scope is optional but if used, must be one of the configured scopes
 
-### Sample list of types (see config file for actual allowed types):
+### Sample list of types (see config file for actual allowed types)
 
 | Type       | When to use                                             |
 | ---------- | ------------------------------------------------------- |
@@ -53,7 +53,7 @@ versions would have type `ops` but no scope, since it affects multiple areas.
 
 ## Examples
 
-```
+```text
 feat(service): add ride group endpoint
 fix(worker): handle timeout in ride status workflow
 refactor(common): simplify error factory helpers

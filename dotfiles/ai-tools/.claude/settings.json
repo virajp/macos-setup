@@ -3,6 +3,8 @@
   "respectGitignore": true,
   "cleanupPeriodDays": 30,
   "env": {
+    "ANTHROPIC_MODEL": "sonnet",
+    "CLAUDE_CODE_EFFORT_LEVEL": "medium",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_INSTALL_METHOD": "other",
     "DISABLE_AUTOUPDATER": "1"
@@ -26,6 +28,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "ccstatusline",
@@ -41,6 +44,12 @@
       "source": {
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
       }
     }
   },

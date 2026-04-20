@@ -27,7 +27,7 @@ framework, or runtime.
 URLs identify resources. Actions are expressed via HTTP methods, not path
 segments.
 
-```
+```text
 ✅  GET    /rides
 ✅  POST   /rides
 ✅  GET    /rides/{rideId}
@@ -43,7 +43,7 @@ segments.
 
 Collections are plural. Sub-resources nest naturally under their parent.
 
-```
+```text
 /users/{userId}
 /users/{userId}/rides
 /users/{userId}/rides/{rideId}
@@ -55,7 +55,7 @@ Collections are plural. Sub-resources nest naturally under their parent.
 Nest only when a resource only makes sense in the context of its parent. Beyond
 two levels, prefer flat resources with query filters.
 
-```
+```text
 ✅  /rides/{rideId}/waypoints
 ✅  /rides?userId={userId}
 ❌  /users/{userId}/rides/{rideId}/waypoints/{waypointId}/photos
@@ -92,7 +92,7 @@ not relative deltas (e.g., "set status to X" vs. "increment counter by 1").
 When an operation is a state transition or command that doesn't map cleanly to
 CRUD, use a verb sub-resource:
 
-```
+```text
 POST /rides/{rideId}/cancel
 POST /rides/{rideId}/complete
 POST /payments/{paymentId}/refund
@@ -121,7 +121,7 @@ than the field change.
 
 Use query parameters:
 
-```
+```text
 GET /rides?status=ongoing&userId=abc123
 GET /rides?sort=startedAt:desc
 GET /rides?q=highway+route
@@ -188,7 +188,7 @@ evolve.
 
 Stable across inserts and deletes. Use for real-time data or large datasets.
 
-```
+```text
 GET /rides?cursor=eyJpZCI6ImFiYyJ9&limit=20
 
 Response:
@@ -206,7 +206,7 @@ Response:
 Simple, but unstable under concurrent mutations. Acceptable for admin/reporting
 use cases.
 
-```
+```text
 GET /rides?page=2&pageSize=20
 
 Response:
@@ -322,7 +322,7 @@ Never return `200` with an error payload — clients rely on status codes.
 
 Version in the **URL path** for major breaking changes:
 
-```
+```text
 /v1/rides
 /v2/rides
 ```
@@ -361,7 +361,7 @@ share.
    months for public APIs)
 5. Communicate deprecation via `Deprecation` and `Sunset` response headers:
 
-   ```
+   ```text
    Deprecation: Sat, 01 Jan 2025 00:00:00 GMT
    Sunset: Mon, 01 Jul 2025 00:00:00 GMT
    Link: <https://api.example.com/v2/rides>; rel="successor-version"
@@ -371,7 +371,7 @@ share.
 
 Use a prefix to signal instability:
 
-```
+```text
 /beta/rides/{rideId}/ai-suggestions
 ```
 
@@ -383,7 +383,7 @@ Callers of beta endpoints accept no stability guarantees.
 
 ### Expose limits via headers
 
-```
+```text
 X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 732
 X-RateLimit-Reset: 1717200000
@@ -411,7 +411,7 @@ Return `429 Too Many Requests` when the limit is exceeded, always with
 For `POST` operations that create resources or trigger side effects, support
 client-supplied idempotency keys:
 
-```
+```text
 POST /rides
 Idempotency-Key: 7f9c2b3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d
 ```
@@ -437,7 +437,7 @@ failures.
 - Use `Vary` header when response varies by header (e.g., `Accept-Language`,
   `Authorization`)
 
-```
+```text
 Cache-Control: max-age=60, stale-while-revalidate=30
 ETag: "abc123def456"
 ```
@@ -473,7 +473,7 @@ authentication tokens, PII, or financial data.
 
 ### Response security headers
 
-```
+```text
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 Content-Security-Policy: default-src 'none'
@@ -521,7 +521,7 @@ Referrer-Policy: no-referrer
 
 Provide machine-readable health endpoints:
 
-```
+```text
 GET /health          → 200 { "status": "ok" }
 GET /health/ready    → 200/503 (readiness — is the service able to serve traffic?)
 GET /health/live     → 200/503 (liveness — is the process alive?)
