@@ -28,3 +28,8 @@ set --global --export COMPOSE_DOCKER_CLI_BUILD 1
 set --global --export DOCKER_DEFAULT_PLATFORM linux/amd64
 set --global --export DOCKER_HIDE_LEGACY_COMMANDS 1
 set --global --export BUILDKIT_PROGRESS auto
+
+# Python environment variables (UV)
+set --global --export UV_PYTHON_DOWNLOADS never
+set --global --export UV_NO_MANAGED_PYTHON true
+set --global --export UV_NO_CACHE true
