@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
+  "agents": {
+    "browser": {
+      "allowedDomains": [
+        "github.com",
+        "*.google.com",
+        "localhost",
+        "95octane.app",
+        "95octane.dev"
+      ],
+      "visualModel": "pro"
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "customIgnoreFilePaths": []
+    },
+    "includeDirectoryTree": false,
+    "loadMemoryFromIncludeDirectories": true
+  },
+  "general": {
+    "defaultApprovalMode": "auto_edit",
+    "enableAutoUpdate": false,
+    "enableAutoUpdateNotification": false,
+    "enableNotifications": true,
+    "preferredEditor": "code"
+  },
+  "ide": {
+    "enabled": true
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    },
+    "enablePermanentToolApproval": true
+  },
+  "skills": {
+    "enabled": true
+  },
+  "tools": {
+    "core": [
+      "activate_skill(*)",
+      "ask_user(*)",
+      "glob(*)",
+      "cli_help(*)",
+      "codebase_investigator(*)",
+      "replace(*)",
+      "enter_plan_mode(*)",
+      "generalist(*)",
+      "google_web_search(*)",
+      "list_background_processes(*)",
+      "read_background_output(*)",
+      "read_file(*)",
+      "list_directory(*)",
+      "save_memory(*)",
+      "grep_search(*)",
+      "web_fetch(*)",
+      "write_file(*)",
+      "run_shell_command(git)",
+      "run_shell_command(mise)",
+      "run_shell_command(flutter)",
+      "run_shell_command(dart)"
+    ],
+    "sandbox": "sandbox-exec"
+  },
+  "ui": {
+    "footer": {
+      "hideContextPercentage": false
+    },
+    "showModelInfoInChat": true,
+    "terminalBuffer": true
+  }
+}
