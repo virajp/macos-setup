@@ -15,6 +15,8 @@ firebase = { version = "latest" }
 gitleaks = { version = "latest" }
 pre-commit = { version = "latest" }
 java = { version = "openjdk-17" }
+uv = { version = "latest" }
+python = { version = "latest" }
 
 # AI Coding Tools (CLIs)
 claude-code = { version = "latest" }
@@ -34,12 +36,15 @@ cleanupDS = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
 cleanupTelegram = "mise run cleanupTelegram"
 
+# AI Tools shortcuts
 cc = "claude --allow-dangerously-skip-permissions"
-
 aistats = "bunx codeburn"
+claude-mem = 'bun "~/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
+# Development related shortcuts
 code = "mise run --silent func:code"
 
+# Startup, Services and Process related shortcuts
 listStartupItems = "mise run --silent func:listStartupItems"
 listServices = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
 myps = "mise run --silent func:myps"
@@ -108,8 +113,9 @@ kc-local = "kubectl config use-context orbstack"
 # 95octane Related Customisations
 cd95 = "cd $HOME/Projects/github.com/95octane"
 
+[env]
 # GCP related
-USE_GKE_GCLOUD_AUTH_PLUGIN = "true"
+USE_GKE_GCLOUD_AUTH_PLUGIN = { value = "true", tools = true }
 
 # Development tools
 RUNTIME_ENV = "development"
