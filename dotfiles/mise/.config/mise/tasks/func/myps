@@ -2,10 +2,12 @@
 #MISE description="List startup items (LaunchAgents & LaunchDaemons)"
 #MISE hide=true
 
+#USAGE arg "<process>" help="List processes with specified name"
+
 set -e
 source "${0%/*}/_helpers"
 
-print_header "Listing processes for user $USER ..."
+print_header "Listing processes for user $USER filtered by $usage_process ..."
 # Run ps command with:
 # $argv: any additional arguments passed to the function
 # -u $USER: filter to show only processes owned by current user
@@ -18,4 +20,5 @@ print_header "Listing processes for user $USER ..."
 #   - bsdtime: BSD-style time format
 #   - command: full command line
 # | sort -n: sort output numerically (by PID)
-ps $argv -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command | sort -n | cat
+#ps $usage_process -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command #| sort -n | cat
+ps -u $USER -o pid,%cpu,%mem,start,time,command | grep -E "PID|$usage_process" | grep -E -v "grep|mise/bin/mise|mise\/tasks" | sort -n

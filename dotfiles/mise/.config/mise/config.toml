@@ -39,23 +39,22 @@ cleanupTelegram = "mise run cleanupTelegram"
 # AI Tools shortcuts
 cc = "claude --allow-dangerously-skip-permissions"
 aistats = "bunx codeburn"
-claude-mem = 'bun "~/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 # Development related shortcuts
 code = "mise run --silent func:code"
 
 # Startup, Services and Process related shortcuts
-listStartupItems = "mise run --silent func:listStartupItems"
+listStartupItems = "mise run func:listStartupItems"
 listServices = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
-myps = "mise run --silent func:myps"
+myps = "mise run func:myps"
 
 # IP related shortcuts
-ips = "mise run --silent ips:ips"
-gateway = "mise run --silent ips:gateway"
-ii = "mise run --silent ips:ii"
-ipv4 = "mise run --silent ips:ipv4"
-ipv6 = "mise run --silent ips:ipv6"
-remoteip = "mise run --silent ips:remoteip"
+ips = "mise run ips:ips"
+gateway = "mise run ips:gateway"
+ii = "mise run ips:ii"
+ipv4 = "mise run ips:ipv4"
+ipv6 = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
 
 # Backup shortcuts
 # backup = "mise run func:backup"
