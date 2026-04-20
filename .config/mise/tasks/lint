@@ -9,4 +9,4 @@ print_header "YAML linting, formatting ..."
 npx prettier --write --ignore-unknown --log-level error --config ./.prettierrc.yaml '**/*.{md,yaml,yml}'
 
 print_header "Markdown linting, formatting ..."
-npx markdownlint-cli2 --fix "**/*.md" "#dotfiles/claude/.claude" "#.claude"
+npx markdownlint-cli2 --fix "**/*.md" "#**/node_modules" "#dotfiles/claude/.claude" "#.claude"
