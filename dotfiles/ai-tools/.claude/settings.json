@@ -1,34 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "respectGitignore": true,
   "cleanupPeriodDays": 30,
-  "effortLevel": "medium",
-  "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
-    "warp@claude-code-warp": true
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_INSTALL_METHOD": "other",
     "DISABLE_AUTOUPDATER": "1"
   },
-  "extraKnownMarketplaces": {
-    "claude-code-warp": {
-      "source": {
-        "repo": "warpdotdev/claude-code-warp",
-        "source": "github"
-      }
-    },
-    "thedotmack": {
-      "source": {
-        "repo": "thedotmack/claude-mem",
-        "source": "github"
-      }
-    }
-  },
-  "forceLoginMethod": "claudeai",
   "includeCoAuthoredBy": true,
-  "model": "sonnet",
   "permissions": {
     "allow": [
       "Read",
@@ -36,7 +15,6 @@
       "Write",
       "Bash"
     ],
-    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(sudo *)",
       "Bash(su *)",
@@ -45,14 +23,34 @@
       "Bash(firebase *)",
       "Bash(gcloud *)",
       "Bash(doppler *)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
   },
-  "respectGitignore": true,
-  "skipDangerousModePermissionPrompt": true,
+  "model": "sonnet",
   "statusLine": {
+    "type": "command",
     "command": "ccstatusline",
-    "padding": 0,
-    "type": "command"
+    "padding": 0
   },
+  "enabledPlugins": {
+    "warp@claude-code-warp": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    }
+  },
+  "forceLoginMethod": "claudeai",
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
   "terminalProgressBarEnabled": true
 }
