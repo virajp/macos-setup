@@ -7,16 +7,13 @@ trusted_config_paths = ["~/.config/mise", "~/Projects"]
 [tools]
 usage = { version = "latest" }
 bun = { version = "latest" }
-node = { version = "latest" }
-pnpm = { version = "latest" }
 doppler = { version = "latest" }
 gcloud = { version = "latest" }
 firebase = { version = "latest" }
 gitleaks = { version = "latest" }
-pre-commit = { version = "latest" }
 java = { version = "openjdk-17" }
 uv = { version = "latest" }
-python = { version = "latest" }
+hk = { version = "latest" }
 
 # AI Coding Tools (CLIs)
 claude-code = { version = "latest" }
