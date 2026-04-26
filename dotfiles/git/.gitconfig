@@ -1,18 +1,19 @@
 [user]
 	name = Viraj Patel
-	# No default email/signingkey - force explicit config
+  email = 3125954+virajp@users.noreply.github.com
+  signingkey = ~/.ssh/github_signing.pub
 
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-	path = ~/.gitconfig-github
+# [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+# 	path = ~/.gitconfig-github
 
-[includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
-	path = ~/.gitconfig-github
+# [includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
+# 	path = ~/.gitconfig-github
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
-	path = ~/.gitconfig-gitlab
+# [includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+# 	path = ~/.gitconfig-gitlab
 
-[includeIf "hasconfig:remote.*.url:https://gitlab.com/*/**"]
-	path = ~/.gitconfig-gitlab
+# [includeIf "hasconfig:remote.*.url:https://gitlab.com/*/**"]
+# 	path = ~/.gitconfig-gitlab
 
 [core]
 	autocrlf = input
