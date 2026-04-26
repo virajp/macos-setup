@@ -26,7 +26,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "sonnet",
+  "model": "sonnet[1m]",
   "statusLine": {
     "type": "command",
     "command": "ccstatusline",
@@ -44,7 +44,7 @@
     }
   },
   "forceLoginMethod": "claudeai",
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
   "terminalProgressBarEnabled": true
 }
