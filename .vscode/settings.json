@@ -71,7 +71,7 @@
   "evenBetterToml.formatter.arrayTrailingComma": true,
   "evenBetterToml.formatter.columnWidth": 80,
   "evenBetterToml.formatter.indentEntries": true,
-  "evenBetterToml.formatter.indentString": "spaces",
+  "evenBetterToml.formatter.indentString": "",
   "evenBetterToml.formatter.indentTables": true,
   "evenBetterToml.formatter.reorderArrays": true,
   "evenBetterToml.formatter.reorderInlineTables": true,

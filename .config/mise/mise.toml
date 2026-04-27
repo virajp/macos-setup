@@ -1,25 +1,26 @@
 [settings]
 # arch = "x86_64"
-all_compile = false
 activate_aggressive = true
-paranoid = true
-gpg_verify = true
-task_output = "interleave"
-env_shell_expand = true
+all_compile         = false
+env_shell_expand    = true
+gpg_verify          = true
+paranoid            = true
+task_output         = "interleave"
 
 [tools]
+node = { version = "latest" }
 
 [env]
 HOMEBREW_BUNDLE_FILE = "./Brewfile"
 
 [tasks.init]
-hide = true
 description = "Initialize mise tasks"
-run = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+hide        = true
+run         = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [tasks.setup]
 description = "Setup"
-run = "mise run setup:precommit"
+run         = "mise run setup:precommit"
 
 [shell_alias]
 lint = "mise run lint"
