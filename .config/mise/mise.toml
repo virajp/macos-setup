@@ -8,7 +8,8 @@ paranoid            = true
 task_output         = "interleave"
 
 [tools]
-node = { version = "latest" }
+node       = { version = "latest" }
+pre-commit = { version = "latest" }
 
 [env]
 HOMEBREW_BUNDLE_FILE = "./Brewfile"
