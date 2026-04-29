@@ -9,13 +9,26 @@
 .Trashes
 
 # ============================================================
+# Vim swap files
+# ============================================================
+*/**/.starship.toml.swp
+*/**/.starship.toml.swo
+
+# ============================================================
+# Brew generated file
+# ============================================================
+Brewfile.gen
+
+# ============================================================
 # Claude / AI tooling
 # ============================================================
 .claude/settings.local.json
 
 # oh-my-claudecode (OMC)
+# Root .omc — track project-memory.json only; ignore transient subdirs
 .omc/state/
 .omc/sessions/
 .omc/artifacts/
 .omc/autopilot/
+# All nested .omc directories in sub-packages/sub-projects — ignore entirely
 */**/.omc/
