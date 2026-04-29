@@ -1,7 +1,3 @@
-tap "gromgit/brewtils"
-tap "coleam00/archon"
-# Remote agentic coding platform - control AI assistants from anywhere
-brew "archon"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -58,8 +54,6 @@ brew "jq"
 brew "lazygit"
 # Graphical front-end for GCC's coverage testing tool (gcov)
 brew "lcov"
-# Find what models run on your hardware
-# brew "llmfit"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
@@ -86,8 +80,6 @@ brew "zinit"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Interactive TUI for Homebrew
-brew "gromgit/brewtils/taproom"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
 # Tools for building Android applications
@@ -98,6 +90,8 @@ cask "brave-browser"
 cask "claude"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
+# Claude code parallelisation
+cask "conductor"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
@@ -108,8 +102,6 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-meslo-lg-nerd-font"
-# Ghostty is a terminal emulator for macOS built with SwiftUI
-cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Open-source video transcoder
@@ -132,8 +124,6 @@ cask "subler"
 cask "sublime-text"
 # Tool to explore all the running tasks (processes)
 cask "taskexplorer"
-# Disposable email client
-cask "tempbox"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -175,22 +165,21 @@ mas "UTM", id: 1538878817
 mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
 vscode "astro-build.astro-vscode"
-vscode "Dart-Code.dart-code"
+vscode "bmalehorn.vscode-fish"
+vscode "bradlc.vscode-tailwindcss"
+vscode "christian-kohler.npm-intellisense"
+vscode "dart-code.dart-code"
+vscode "dart-code.flutter"
+vscode "dbaeumer.vscode-eslint"
 vscode "doppler.doppler-vscode"
 vscode "dprint.dprint"
 vscode "effectful-tech.effect-vscode"
-vscode "usernamehw.errorlens"
-vscode "dbaeumer.vscode-eslint"
-vscode "tamasfe.even-better-toml"
-vscode "bmalehorn.vscode-fish"
-vscode "Dart-Code.flutter"
-vscode "GitHub.copilot-chat"
-vscode "oderwat.indent-rainbow"
-vscode "PKief.material-icon-theme"
-vscode "hverlin.mise-vscode"
-vscode "christian-kohler.npm-intellisense"
 vscode "foxundermoon.shell-format"
-vscode "bradlc.vscode-tailwindcss"
+vscode "gruntfuggly.todo-tree"
+vscode "hverlin.mise-vscode"
 vscode "meganrogge.template-string-converter"
-vscode "Gruntfuggly.todo-tree"
+vscode "oderwat.indent-rainbow"
+vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
+vscode "usernamehw.errorlens"

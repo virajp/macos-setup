@@ -6,4 +6,11 @@ set -e
 source "${0%/*}/_helpers"
 
 print_header "Installing packages from Brewfile ..."
-brew bundle install --describe --verbose
+brew bundle install \
+  --all \
+  --force \
+  --describe \
+  --file "./Brewfile"
+
+print_header "Cleaning up Homebrew cache ..."
+brew cleanup --prune=all
