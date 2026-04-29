@@ -1,56 +1,56 @@
 [settings]
-all_compile = false
-gpg_verify = true
-paranoid = true
+all_compile          = false
+gpg_verify           = true
+paranoid             = true
 trusted_config_paths = ["~/.config/mise", "~/Projects"]
 
 [tools]
-usage = { version = "latest" }
-bun = { version = "latest" }
-doppler = { version = "latest" }
-gcloud = { version = "latest" }
+bun      = { version = "latest" }
+doppler  = { version = "latest" }
 firebase = { version = "latest" }
+gcloud   = { version = "latest" }
 gitleaks = { version = "latest" }
-java = { version = "openjdk-17" }
-uv = { version = "latest" }
-hk = { version = "latest" }
+hk       = { version = "latest" }
+java     = { version = "openjdk-17" }
+usage    = { version = "latest" }
+uv       = { version = "latest" }
 
 # AI Coding Tools (CLIs)
-claude-code = { version = "latest" }
-gemini-cli = { version = "latest" }
-copilot-cli = { version = "latest" }
+claude-code        = { version = "latest" }
+copilot-cli        = { version = "latest" }
+gemini-cli         = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 
 [tasks.init]
-hide = true
 description = "Mark all files as executables"
-run = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+hide        = true
+run         = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
-updateall = "mise run updateall"
-osx-upgrade = "mise run upgrade:macos:upgrade"
-cleanupDS = "mise run cleanupDS"
+cleanupDS          = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
-cleanupTelegram = "mise run cleanupTelegram"
+cleanupTelegram    = "mise run cleanupTelegram"
+osx-upgrade        = "mise run upgrade:macos:upgrade"
+updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-cc = "claude --allow-dangerously-skip-permissions"
 aistats = "bunx codeburn"
+cc      = "claude --allow-dangerously-skip-permissions"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
 
 # Startup, Services and Process related shortcuts
+listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
 listStartupItems = "mise run func:listStartupItems"
-listServices = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
-myps = "mise run func:myps"
+myps             = "mise run func:myps"
 
 # IP related shortcuts
-ips = "mise run ips:ips"
-gateway = "mise run ips:gateway"
-ii = "mise run ips:ii"
-ipv4 = "mise run ips:ipv4"
-ipv6 = "mise run ips:ipv6"
+gateway  = "mise run ips:gateway"
+ii       = "mise run ips:ii"
+ips      = "mise run ips:ips"
+ipv4     = "mise run ips:ipv4"
+ipv6     = "mise run ips:ipv6"
 remoteip = "mise run ips:remoteip"
 
 # Backup shortcuts
@@ -58,53 +58,53 @@ remoteip = "mise run ips:remoteip"
 # zipf = "mise run func:zip"
 
 # Generic Aliases
-cd = "z"
-cls = "clear"
-ls = "eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
-lf = "ls --only-files"
-ld = "ls --only-dirs"
-lg = "ls --git-ignore"
-cdcd = "cd '$CLOUD_PATH'"
-diff = "diff-so-fancy"
-cdgh = "cd '$HOME/Projects/github.com'"
-tf = "terraform"
-edit = "subl"
-finder = "open -a Finder ./"
-reload = "exec fish"
-hping = "httping --ts -GBbXsSYaWZvv"
-dns = "scutil --dns"
-findPid = "lsof -t -c"
-openports = "sudo lsof -i -P | grep LISTEN"
-flushdns = "dscacheutil -flushcache"
-ipInfo0 = "ipconfig getpacket en0"
-routes = "netstat -nr -f inet"
-emulator = "$ANDROID_HOME/emulator/emulator"
-adb = "$ANDROID_HOME/platform-tools/adb"
-ping = "prettyping -i 2 --nolegend"
+adb             = "$ANDROID_HOME/platform-tools/adb"
 cancelPrintJobs = "sudo cancel -a -x"
-plist = "plutil -p"
-f = "flutter"
-tree = "ls --tree"
-cat = "bat"
-dig = "doggo"
+cat             = "bat"
+cd              = "z"
+cdcd            = "cd '$CLOUD_PATH'"
+cdgh            = "cd '$HOME/Projects/github.com'"
+cls             = "clear"
+diff            = "diff-so-fancy"
+dig             = "doggo"
+dns             = "scutil --dns"
+edit            = "subl"
+emulator        = "$ANDROID_HOME/emulator/emulator"
+f               = "flutter"
+findPid         = "lsof -t -c"
+finder          = "open -a Finder ./"
+flushdns        = "dscacheutil -flushcache"
+hping           = "httping --ts -GBbXsSYaWZvv"
+ipInfo0         = "ipconfig getpacket en0"
+ld              = "ls --only-dirs"
+lf              = "ls --only-files"
+lg              = "ls --git-ignore"
+ls              = "eza --icons --color=always --color-scale --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
+openports       = "sudo lsof -i -P | grep LISTEN"
+ping            = "prettyping -i 2 --nolegend"
+plist           = "plutil -p"
+reload          = "exec fish"
+routes          = "netstat -nr -f inet"
+tf              = "terraform"
+tree            = "ls --tree"
 
 # Git Related Aliases
+gc    = 'git commit -a -m'
+gp    = 'git push --all --atomic --verbose'
 gpull = 'git pull --all --verbose --progress'
-gs = 'git status -sb'
-gc = 'git commit -a -m'
-gp = 'git push --all --atomic --verbose'
+gs    = 'git status -sb'
 
 # Docker Related Aliases
-dpull = "docker image pull --platform='linux/amd64'"
-drun = "docker run --platform='linux/amd64' --rm --interactive --tty"
-dlist = "docker image list"
 dclean = "docker system prune --all --volumes --force"
+dlist  = "docker image list"
 dprune = "docker system prune --volumes --force"
+dpull  = "docker image pull --platform='linux/amd64'"
+drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
 
 # Kubernetes (K8s) Related Aliases
-k = "kubectl"
-kgc = "kubectl config current-context"
+k        = "kubectl"
 kc-local = "kubectl config use-context orbstack"
+kgc      = "kubectl config current-context"
 
 # 95octane Related Customisations
 cd95 = "cd $HOME/Projects/github.com/95octane"
@@ -114,5 +114,5 @@ cd95 = "cd $HOME/Projects/github.com/95octane"
 USE_GKE_GCLOUD_AUTH_PLUGIN = { value = "true", tools = true }
 
 # Development tools
+NODE_ENV    = "development"
 RUNTIME_ENV = "development"
-NODE_ENV = "development"
