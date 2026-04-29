@@ -6,7 +6,11 @@ set -e
 source "${0%/*}/_helpers"
 
 print_header "Generating Brewfile ..."
-brew bundle dump --all --force --describe
+brew bundle dump \
+  --all \
+  --force \
+  --describe \
+  --file "./Brewfile.gen"
 
 print_header "Printing the diff ... "
 git diff --color=always | diff-so-fancy
