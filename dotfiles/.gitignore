@@ -2,6 +2,9 @@
 *.swp
 *.swo
 
+# Brew generated file
+Brewfile.gen
+
 # Claude
 .claude/settings.local.json
 
