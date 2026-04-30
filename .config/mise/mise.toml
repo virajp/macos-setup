@@ -11,6 +11,7 @@ task_output         = "interleave"
 dprint     = { version = "latest" }
 node       = { version = "latest" }
 pre-commit = { version = "latest" }
+taplo = { version = "latest" }
 
 [env]
 HOMEBREW_BUNDLE_FILE = "./Brewfile"
