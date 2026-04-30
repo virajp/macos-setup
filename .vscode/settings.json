@@ -1,41 +1,4 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true
-  },
-  "[json]": {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true
-  },
-  "[yaml]": {
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.autoIndent": "keep",
-    "editor.defaultColorDecorators": "auto",
-    "editor.defaultFormatter": "redhat.vscode-yaml",
-    "editor.formatOnSave": true,
-    "editor.insertSpaces": true,
-    "editor.quickSuggestions": {
-      "comments": false,
-      "other": true,
-      "strings": true
-    },
-    "editor.tabSize": 2
-  },
   "chat.promptFilesRecommendations": {
     "speckit.constitution": true,
     "speckit.implement": true,
