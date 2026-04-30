@@ -8,6 +8,7 @@ paranoid            = true
 task_output         = "interleave"
 
 [tools]
+dprint     = { version = "latest" }
 node       = { version = "latest" }
 pre-commit = { version = "latest" }
 
