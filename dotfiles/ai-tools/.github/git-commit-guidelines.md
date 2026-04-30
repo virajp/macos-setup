@@ -75,13 +75,12 @@ wip(worker): prototype notification activity
    the changes being made
 6. Write: `<type>(<scope>): <imperative description>` (with scope) or
    `<type>: <imperative description>` (without scope) as the commit message
-7. Run `pre-commit run` to apply auto-fixes (prettier, markdownlint) and
-   re-stage those changes before the final commit
+7. Run `mise code:precommit` to apply auto-fixes (linter, formatter, secrets
+   checks, etc) and re-stage those changes before the final commit
 8. Run: `git commit -m "<message>"`
 
-Running `pre-commit run` before `git commit` ensures that auto-fixable
-formatting issues are incorporated into the commit rather than appearing as a
-dirty working tree afterwards.
+<IMPORTANT_NOTE> `git-conventional-commits.yaml` can be found at the root of the
+repository or inside `.config` folder. ` </IMPORTANT_NOTE>
 
 ## Pre-commit Hooks
 
@@ -90,7 +89,8 @@ The repository runs these hooks automatically:
 - **conventional-commits validation** — rejects messages not matching allowed
   types; rejects unknown scope
 - Other hooks depending on the repository configuration, refer to
-  `.pre-commit-config.yaml` for details
+  `.pre-commit-config.yaml` at the root of the repository or inside `.config`
+  folder as `pre-commit-config.yaml` for details
 
 > Note: The repository may or may not have a `no-commit-to-branch` hook.
 

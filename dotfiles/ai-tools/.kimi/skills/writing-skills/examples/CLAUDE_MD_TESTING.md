@@ -95,18 +95,15 @@ Browse: `ls ~/.claude/skills/` Search: `grep -r "keyword" ~/.claude/skills/`
 ### Variant C: Claude.AI Emphatic Style
 
 ```xml
-<available_skills>
-Your personal library of proven techniques, patterns, and tools
+<available_skills>Your personal library of proven techniques, patterns, and tools
 is at `~/.claude/skills/`.
 
 Browse categories: `ls ~/.claude/skills/`
 Search: `grep -r "keyword" ~/.claude/skills/ --include="SKILL.md"`
 
-Instructions: `skills/using-skills`
-</available_skills>
+Instructions: `skills/using-skills`</available_skills>
 
-<important_info_about_skills>
-Claude might think it knows how to approach tasks, but the skills
+<important_info_about_skills>Claude might think it knows how to approach tasks, but the skills
 library contains battle-tested approaches that prevent common mistakes.
 
 THIS IS EXTREMELY IMPORTANT. BEFORE ANY TASK, CHECK FOR SKILLS!
@@ -116,8 +113,7 @@ Process:
 2. Found a skill? READ IT COMPLETELY before proceeding
 3. Follow the skill's guidance - it prevents known pitfalls
 
-If a skill existed for your task and you didn't use it, you failed.
-</important_info_about_skills>
+If a skill existed for your task and you didn't use it, you failed.</important_info_about_skills>
 ```
 
 ### Variant D: Process-Oriented

@@ -26,9 +26,9 @@ isolate, not the thing being tested.
 
 ```typescript
 // ❌ BAD: Testing that the mock exists
-test('renders sidebar', () => {
+test("renders sidebar", () => {
   render(<Page />);
-  expect(screen.getByTestId('sidebar-mock')).toBeInTheDocument();
+  expect(screen.getByTestId("sidebar-mock")).toBeInTheDocument();
 });
 ```
 
@@ -44,9 +44,9 @@ test('renders sidebar', () => {
 
 ```typescript
 // ✅ GOOD: Test real component or don't mock it
-test('renders sidebar', () => {
-  render(<Page />);  // Don't mock sidebar
-  expect(screen.getByRole('navigation')).toBeInTheDocument();
+test("renders sidebar", () => {
+  render(<Page />); // Don't mock sidebar
+  expect(screen.getByRole("navigation")).toBeInTheDocument();
 });
 
 // OR if sidebar must be mocked for isolation:

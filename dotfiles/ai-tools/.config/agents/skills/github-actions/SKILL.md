@@ -371,7 +371,7 @@ jobs:
 runs-on: self-hosted
 
 # With labels
-runs-on: [self-hosted, linux, x64, gpu]
+runs-on: [ self-hosted, linux, x64, gpu ]
 ```
 
 **Setup**:

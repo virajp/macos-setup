@@ -163,7 +163,7 @@ Use `--url-host` to control what hostname is printed in the returned URL JSON.
    ```html
    <!-- filename: waiting.html (or waiting-2.html, etc.) -->
    <div
-     style="display:flex;align-items:center;justify-content:center;min-height:60vh"
+     style="display: flex; align-items: center; justify-content: center; min-height: 60vh"
    >
      <p class="subtitle">Continuing in terminal...</p>
    </div>
@@ -291,7 +291,7 @@ count.
 
 ```html
 <div class="mock-nav">Logo | Home | About | Contact</div>
-<div style="display: flex;">
+<div style="display: flex">
   <div class="mock-sidebar">Navigation</div>
   <div class="mock-content">Main content area</div>
 </div>

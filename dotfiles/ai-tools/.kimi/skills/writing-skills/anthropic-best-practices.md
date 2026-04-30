@@ -1281,7 +1281,6 @@ reader = PdfReader("file.pdf")
 `````
 
 ```
-
 ## Technical notes
 
 ### YAML frontmatter requirements

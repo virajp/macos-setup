@@ -73,7 +73,9 @@ async function waitFor<T>(
 
   while (true) {
     const result = condition();
-    if (result) return result;
+    if (result) {
+      return result;
+    }
 
     if (Date.now() - startTime > timeoutMs) {
       throw new Error(
