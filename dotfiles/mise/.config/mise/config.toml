@@ -1,25 +1,17 @@
 [settings]
+os = "macos"
 all_compile          = false
 gpg_verify           = true
 paranoid             = true
 trusted_config_paths = ["~/.config/mise", "~/Projects"]
+env_shell_expand = true
 
 [tools]
-bun      = { version = "latest" }
-doppler  = { version = "latest" }
-firebase = { version = "latest" }
-gcloud   = { version = "latest" }
-gitleaks = { version = "latest" }
-hk       = { version = "latest" }
-java     = { version = "openjdk-17" }
-usage    = { version = "latest" }
-uv       = { version = "latest" }
+usage = { version = "latest" }
+fnox = { version = "latest" }
 
-# AI Coding Tools (CLIs)
-claude-code        = { version = "latest" }
-copilot-cli        = { version = "latest" }
-gemini-cli         = { version = "latest" }
-"npm:ccstatusline" = { version = "latest" }
+[plugins]
+fnox-env = "https://github.com/jdx/mise-env-fnox"
 
 [tasks.init]
 description = "Mark all files as executables"
@@ -110,6 +102,9 @@ kgc      = "kubectl config current-context"
 cd95 = "cd $HOME/Projects/github.com/95octane"
 
 [env]
+# fnox plugin
+_.fnox-env = { tools = true }
+
 # GCP related
 USE_GKE_GCLOUD_AUTH_PLUGIN = { value = "true", tools = true }
 
