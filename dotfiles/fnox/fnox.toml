@@ -3,4 +3,3 @@ keychain = { type = "keychain", service = "fnox" }
 
 [secrets]
 HOMEBREW_GITHUB_API_TOKEN = { provider = "keychain", value = "HOMEBREW_GITHUB_API_TOKEN" }
-DOPPLER_TOKEN = { provider = "keychain", value = "DOPPLER_TOKEN" }
