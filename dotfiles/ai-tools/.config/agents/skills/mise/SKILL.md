@@ -12,14 +12,14 @@ allowed-tools: Bash(git:*) Bash(mise:*) Read
 
 ## Overview
 
-mise manages tool versions (Bun, Node, pnpm, Doppler, gcloud, etc.) and runs all
+mise manages tool versions (Node, pnpm, Doppler, gcloud, etc.) and runs all
 project tasks. Tasks live in `.config/mise/tasks/` as executable shell scripts.
 Config is at `.config/mise.toml`. Environment wise config may exist in
 `.config/mise.*.toml`, and environment is set via `MISE_ENV=dev|prod` or
 `.config/miserc.toml`
 
-**IMPORTANT**: Always use `mise run <task>` instead of running npm/pnpm/bun
-scripts directly when an equivalent task exists. Tasks handle setup dependencies
+**IMPORTANT**: Always use `mise run <task>` instead of running npm/pnpm scripts
+directly when an equivalent task exists. Tasks handle setup dependencies
 (starting Docker services, installing packages, etc.) automatically.
 
 ## Tool Management
