@@ -46,5 +46,6 @@
   "forceLoginMethod": "claudeai",
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "terminalProgressBarEnabled": true
 }

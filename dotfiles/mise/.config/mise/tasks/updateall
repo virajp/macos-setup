@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 #MISE description="Upgrade all tools managed in the system"
 #MISE depends=["init"]
+#MISE hide=true
 
 set -e
 source "${0%/*}/_helpers"
