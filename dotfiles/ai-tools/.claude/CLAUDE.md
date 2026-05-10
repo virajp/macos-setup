@@ -11,13 +11,19 @@ project-specific instructions as needed.
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial
 tasks, use judgment.
 
-## Git & Commits
+## graphify
 
-All repos enforce **conventional commits** via `git-conventional-commits` +
-pre-commit hooks.
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge
+  graph. Trigger: `/graphify` When the user types `/graphify`, invoke the Skill
+  tool with `skill: "graphify"` before doing anything else.
 
-> Refer to `git-commit` and `pre-commit` skills respectively NEVER commit
-> directly to `main` & `develop` branches. Always use feature branches.
+## ALWAYS follow these RULES:
+
+- All repos enforce **conventional commits** via `git-conventional-commits` +
+  pre-commit hooks.
+- Refer to `git-commit` and `pre-commit` skills respectively
+- NEVER commit directly to `main` & `develop` branches.
+- ALWAYS use `git-worktrees`.
 
 ## 1. Think Before Coding
 
