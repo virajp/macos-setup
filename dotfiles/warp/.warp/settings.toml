@@ -32,7 +32,7 @@ should_show_oz_updates_in_zero_state = false
 [agents.warp_agent.input]
 nld_in_terminal_enabled = false
 show_agent_tips = false
-ai_auto_detection_enabled = false
+ai_auto_detection_enabled = true
 
 [agents.warp_agent.active_ai]
 enabled = true
