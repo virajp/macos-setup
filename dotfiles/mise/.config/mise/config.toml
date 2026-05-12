@@ -10,6 +10,16 @@ env_shell_expand = true
 usage = { version = "latest" }
 fnox = { version = "latest" }
 
+# AI Tools
+claude-code        = { version = "latest" }
+jq                 = { version = "latest" }
+"npm:ccstatusline" = { version = "latest" }
+"pipx:graphifyy"   = { uvx = true, version = "latest" }
+"pipx:kimi-cli"    = { uvx = true, version = "latest" }
+"pipx:watchdog"    = { uvx = true, version = "latest" }
+python             = { version = "latest" }
+uv                 = { version = "latest" }
+
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
 
