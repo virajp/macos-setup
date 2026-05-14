@@ -33,3 +33,6 @@ set --global --export BUILDKIT_PROGRESS auto
 set --global --export UV_PYTHON_DOWNLOADS never
 set --global --export UV_NO_MANAGED_PYTHON true
 set --global --export UV_NO_CACHE true
+
+# Precommit cache directory
+set --global --export PRE_COMMIT_HOME "$HOME/.cache/pre-commit"
