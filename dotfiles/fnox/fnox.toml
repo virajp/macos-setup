@@ -1,6 +1,6 @@
 [providers]
-keychain = { type = "keychain", service = "fnox" }
+keychain = { service = "fnox", type = "keychain" }
 
 [secrets]
-GITHUB_API_TOKEN = { provider = "keychain", value = "HOMEBREW_GITHUB_API_TOKEN" }
+GITHUB_API_TOKEN          = { provider = "keychain", value = "HOMEBREW_GITHUB_API_TOKEN" }
 HOMEBREW_GITHUB_API_TOKEN = { provider = "keychain", value = "HOMEBREW_GITHUB_API_TOKEN" }

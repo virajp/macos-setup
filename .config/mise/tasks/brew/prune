@@ -1,9 +1,9 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Delete packages NOT in Brewfile"
 #MISE hide=false
 
 set -e
-source "${0%/*}/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Deleting packages NOT in Brewfile ..."
 brew bundle cleanup --force --verbose

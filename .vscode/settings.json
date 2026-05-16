@@ -17,7 +17,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "never",
   },
-  "editor.defaultFormatter": null,
+  "editor.defaultFormatter": "dprint.dprint",
   "editor.formatOnSave": true,
   "editor.quickSuggestions": {
     "comments": true,
@@ -26,6 +26,7 @@
   },
   "editor.suggest.insertMode": "replace",
   "editor.tabSize": 2,
+  "eslint.useFlatConfig": true,
   "evenBetterToml.completion.maxKeys": 11,
   "evenBetterToml.formatter.alignComments": true,
   "evenBetterToml.formatter.alignEntries": true,
@@ -49,14 +50,9 @@
     ".gitignore": ".gitkeep,.dockerignore,.env,.prettierignore,.claudeignore,.pre-commit-config.yaml,analysis_options.yaml,git-conventional-commits.yaml,.gitleaks.toml,.gitleaksignore",
     "*.dart": "${capture}.g.dart",
     "*.js": "${capture}.js.map,${capture}.d.ts,${capture}.d.ts.map",
-    "dockerfile.projects": "dockerfile.dev,docker-bake.hcl",
     "doppler.yaml": ".doppler.yaml",
-    "firebase.json": "firebase-debug.json,.firebaserc,*.rules,firestore.indexes.json",
+    "linter.yaml": "taplo.toml,pre-commit-config.yaml,git-conventional-commits.yaml,gitleaks.toml",
     "mise.toml": "miserc.toml,mise.*.toml,root.toml",
-    "package.json": "tsconfig.base.json,tsconfig.json,biome.jsonc,waitOn.json,waitOnExternal.json,vitest.config.ts,esbuild.mjs,turbo.json,.npmrc,.prettierrc.yaml,apphosting.*.yaml,apphosting.yaml,.markdownlint.yaml,bunfig.toml,build.ts",
-    "Podfile": "Podfile.lock",
-    "pubspec.yaml": ".envrc,pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata,l10n.yaml,analysis_options.yaml,devtools_options.yaml,dart_dependency_validator.yaml",
-    "Pulumi.yaml": "Pulumi.*.yaml",
     "readme.md": "*.md,doppler.yaml,LICENSE,.pre-commit-config.yaml,.gitleaks.toml,skills-lock.json,analysis_options.yaml,git-conventional-commits.yaml,.prettierrc.yaml,.augment-guidelines,claude.md,.cursorrules,CODING_STANDARDS.md,PROJECT_STRUCTURE.md,.cursorignore,.markdownlint.yaml",
   },
   "files.associations": {

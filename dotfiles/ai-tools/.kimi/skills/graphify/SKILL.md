@@ -188,7 +188,7 @@ the analysis file if it exists from a previous run). You are already a language
 model — write a one-sentence domain hint yourself from those labels. Then pass
 it to Whisper as the initial prompt. No separate API call needed.
 
-**However**, if the corpus has _only_ video files and no other docs/code, use
+**However**, if the corpus has *only* video files and no other docs/code, use
 the generic fallback prompt: `"Use proper punctuation and paragraph breaks."`
 
 **Step 1 - Write the Whisper prompt yourself.**
@@ -1057,7 +1057,7 @@ Two traversal modes - choose based on the question:
 
 | Mode          | Flag     | Best for                                                           |
 | ------------- | -------- | ------------------------------------------------------------------ |
-| BFS (default) | _(none)_ | "What is X connected to?" - broad context, nearest neighbors first |
+| BFS (default) | *(none)* | "What is X connected to?" - broad context, nearest neighbors first |
 | DFS           | `--dfs`  | "How does X reach Y?" - trace a specific chain or dependency path  |
 
 ```bash

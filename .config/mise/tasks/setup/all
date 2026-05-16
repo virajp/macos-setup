@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#MISE description="Setup the project: install precommit hooks, upgrade dependencies, clean up cache, etc."
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Starting project setup ..."
+
+# Reshim mise to ensure all tools are available
+print_subheader "Reshimming mise ..."
+mise reshim
+
+# Run mise doctor
+print_subheader "Running mise doctor ..."
+mise doctor --quiet --silent > /dev/null
+
+# Install & upgrade mise
+print_subheader "Setting up MISE ..."
+mise install
+
+print_subheader "Upgrading mise tools ..."
+mise upgrade --local || true
+
+mise run setup:precommit
+
+line_sep "="
+print_green "Setup complete!"

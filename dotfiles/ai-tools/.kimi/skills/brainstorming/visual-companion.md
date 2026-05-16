@@ -30,7 +30,7 @@ better by seeing it than reading it?**
 - **Clarifying questions** — anything where the answer is words, not a visual
   preference
 
-A question _about_ a UI topic is not automatically a visual question. "What kind
+A question *about* a UI topic is not automatically a visual question. "What kind
 of wizard do you want?" is conceptual — use the terminal. "Which of these wizard
 layouts feels right?" is visual — use the browser.
 
@@ -162,9 +162,7 @@ Use `--url-host` to control what hostname is printed in the returned URL JSON.
 
    ```html
    <!-- filename: waiting.html (or waiting-2.html, etc.) -->
-   <div
-     style="display: flex; align-items: center; justify-content: center; min-height: 60vh"
-   >
+   <div style="display: flex; align-items: center; justify-content: center; min-height: 60vh">
      <p class="subtitle">Continuing in terminal...</p>
    </div>
    ```

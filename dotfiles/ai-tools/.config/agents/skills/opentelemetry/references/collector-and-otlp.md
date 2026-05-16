@@ -27,13 +27,13 @@ exporters:
 service:
   pipelines:
     traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [otlphttp]
+      receivers: [ otlp ]
+      processors: [ batch ]
+      exporters: [ otlphttp ]
     metrics:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [otlphttp]
+      receivers: [ otlp ]
+      processors: [ batch ]
+      exporters: [ otlphttp ]
 ```
 
 ## Deployment Patterns

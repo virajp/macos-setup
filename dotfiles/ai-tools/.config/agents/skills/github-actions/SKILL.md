@@ -33,9 +33,9 @@ name: Test
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   test:
@@ -66,7 +66,7 @@ YAML files in `.github/workflows/` that define automation pipelines.
 
 ```yaml
 name: CI Pipeline
-on: [push, pull_request]
+on: [ push, pull_request ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [lint, test] # Wait for both
+    needs: [ lint, test ] # Wait for both
     steps:
       - run: ./deploy.sh
 ```
@@ -161,8 +161,8 @@ on:
 ```yaml
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches: [main, develop]
+    types: [ opened, synchronize, reopened ]
+    branches: [ main, develop ]
     paths-ignore:
       - "**.md"
       - "docs/**"
@@ -203,9 +203,9 @@ on:
 ```yaml
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
   schedule:
     - cron: "0 0 * * 0" # Weekly
   workflow_dispatch: # Manual
@@ -316,7 +316,7 @@ Access matrix values.
 ```yaml
 strategy:
   matrix:
-    node: [18, 20, 22]
+    node: [ 18, 20, 22 ]
 steps:
   - run: echo "Testing Node ${{ matrix.node }}"
 ```
@@ -390,8 +390,8 @@ Test across multiple versions.
 ```yaml
 strategy:
   matrix:
-    node: [18, 20, 22]
-    os: [ubuntu-latest, macos-latest, windows-latest]
+    node: [ 18, 20, 22 ]
+    os: [ ubuntu-latest, macos-latest, windows-latest ]
 
 runs-on: ${{ matrix.os }}
 steps:
@@ -405,8 +405,8 @@ steps:
 ```yaml
 strategy:
   matrix:
-    node: [18, 20, 22]
-    os: [ubuntu-latest, windows-latest]
+    node: [ 18, 20, 22 ]
+    os: [ ubuntu-latest, windows-latest ]
     include:
       # Add specific combination
       - node: 22
@@ -424,7 +424,7 @@ strategy:
 strategy:
   fail-fast: false # Continue other jobs if one fails
   matrix:
-    node: [18, 20, 22]
+    node: [ 18, 20, 22 ]
 ```
 
 ### Max Parallel
@@ -433,7 +433,7 @@ strategy:
 strategy:
   max-parallel: 2 # Run only 2 jobs concurrently
   matrix:
-    node: [18, 20, 22]
+    node: [ 18, 20, 22 ]
 ```
 
 ## Common Actions
@@ -567,14 +567,18 @@ jobs:
 ```yaml
 name: Node.js CI
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20, 22] # Test on multiple Node versions if required
+        node-version: [
+          18,
+          20,
+          22,
+        ] # Test on multiple Node versions if required
     steps:
       - uses: actions/checkout@v4
 
@@ -606,14 +610,14 @@ jobs:
 ```yaml
 name: Python CI
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
+        python-version: [ "3.10", "3.11", "3.12" ]
     steps:
       - uses: actions/checkout@v4
 
@@ -643,8 +647,8 @@ name: Docker Build
 
 on:
   push:
-    branches: [main]
-    tags: ["v*"]
+    branches: [ main ]
+    tags: [ "v*" ]
 
 jobs:
   build:
@@ -685,9 +689,9 @@ name: Next.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build:
@@ -746,7 +750,7 @@ name: Deploy to Vercel
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -769,7 +773,7 @@ name: Deploy to Netlify
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -799,7 +803,7 @@ name: Deploy to AWS
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -835,7 +839,7 @@ name: Publish Docker Image
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   push:
@@ -865,7 +869,7 @@ jobs:
 ```yaml
 name: Test Coverage
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   test:
@@ -894,7 +898,7 @@ jobs:
 ```yaml
 name: Integration Tests
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   integration:
@@ -938,7 +942,7 @@ jobs:
 ```yaml
 name: E2E Tests
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   e2e:
@@ -976,7 +980,7 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   release:
@@ -1045,7 +1049,7 @@ name: Publish to npm
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   publish:
@@ -1076,9 +1080,9 @@ name: CodeQL
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
   schedule:
     - cron: "0 0 * * 1" # Weekly
 
@@ -1093,7 +1097,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["javascript", "python"]
+        language: [ "javascript", "python" ]
 
     steps:
       - uses: actions/checkout@v4
@@ -1114,7 +1118,7 @@ name: Dependency Check
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   schedule:
     - cron: "0 0 * * 1"
 
@@ -1143,7 +1147,7 @@ name: Container Security Scan
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   scan:
@@ -1241,7 +1245,7 @@ name: Deploy Production
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -1398,7 +1402,7 @@ name: Auto-merge Dependabot
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [ opened, synchronize ]
 
 jobs:
   auto-merge:

@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Recreate symlinks for stow-managed dotfiles"
 #MISE hide=false
 #MISE dir="dotfiles"
 
 set -e
-source "${0%/*}/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 find . -type f -name '.DS_Store' -ls -delete || true
 

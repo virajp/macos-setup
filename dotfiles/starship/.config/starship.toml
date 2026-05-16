@@ -38,171 +38,171 @@ $character\
 right_format = ""
 
 # Custom color palette inspired by gruvbox theme
-palette = 'viraj_dark'
 continuation_prompt = ' '
+palette             = 'viraj_dark'
 # Higher timeout for slow git operations
+add_newline     = true
 command_timeout = 500
-add_newline = true
 
 [palettes.viraj_dark]
-color_white = '#fbf1c7'
-color_grey = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
+color_aqua   = '#689d6a'
+color_bg3    = '#665c54'
+color_blue   = '#458588'
+color_green  = '#98971a'
+color_grey   = '#3c3836'
 color_orange = '#d65d0e'
 color_purple = '#b16286'
-color_red = '#cc241d'
+color_red    = '#cc241d'
+color_white  = '#fbf1c7'
 color_yellow = '#d79921'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_white"
+style    = "bg:color_orange fg:color_white"
 
 [os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
+Alpine           = ""
+Amazon           = ""
+Android          = ""
+Arch             = "󰣇"
+Artix            = "󰣇"
+CentOS           = ""
+Debian           = "󰣚"
+Fedora           = "󰣛"
+Gentoo           = "󰣨"
+Linux            = "󰌽"
+Macos            = "󰀵"
+Manjaro          = ""
+Mint             = "󰣭"
+Raspbian         = "󰐿"
 RedHatEnterprise = "󱄛"
+Redhat           = "󱄛"
+SUSE             = ""
+Ubuntu           = "󰕈"
+Windows          = "󰍲"
 
 [username]
+format      = '[ $user ]($style)'
 show_always = true
-style_user = "bg:color_orange fg:color_white"
-style_root = "bg:color_orange fg:color_white"
-format = '[ $user ]($style)'
+style_root  = "bg:color_orange fg:color_white"
+style_user  = "bg:color_orange fg:color_white"
 
 [directory]
-style = "fg:color_white bg:color_yellow"
-format = "[ $path ]($style)"
-home_symbol = " 🏠 "
-truncate_to_repo = false
+format            = "[ $path ]($style)"
+home_symbol       = " 🏠 "
+read_only         = " 󰌾"
+read_only_style   = "red"
+style             = "fg:color_white bg:color_yellow"
+truncate_to_repo  = false
 truncation_length = 4
 truncation_symbol = "… /"
-use_os_path_sep = false
-read_only = " 󰌾"
-read_only_style = "red"
-use_logical_path = true
+use_logical_path  = true
+use_os_path_sep   = false
 
 [directory.substitutions]
-"Documents" = " 󰈙 "
-"Downloads" = "  "
-"Music" = " 󰝚 "
-"Pictures" = "  "
-"Developer" = " 󰨞 "
+"Developer"           = " 󰨞 "
+"Documents"           = " 󰈙 "
+"Downloads"           = "  "
+"Music"               = " 󰝚 "
+"Pictures"            = "  "
+"Projects"            = " 󰉋 "
 "Projects/github.com" = " 󰊤 "
-"Projects" = " 󰉋 "
-"gitlab.com" = " 󰮠 "
-"bitbucket.org" = " 󰂨 "
-"cloudflare.com" = " 󰅟 "
-"google.com" = " 󰊭 "
-"microsoft.com" = " 󰍲 "
-"apple.com" = " 󰀵 "
+"apple.com"           = " 󰀵 "
+"bitbucket.org"       = " 󰂨 "
+"cloudflare.com"      = " 󰅟 "
+"gitlab.com"          = " 󰮠 "
+"google.com"          = " 󰊭 "
+"microsoft.com"       = " 󰍲 "
 
 [cmd_duration]
-style = "bg:color_red"
+format   = '[[ $duration ](fg:color_white $style)]($style)'
 min_time = 0
-format = '[[ $duration ](fg:color_white $style)]($style)'
+style    = "bg:color_red"
 
 [git_branch]
 # Symbol for Git
-symbol = ""
-style = "bg:color_aqua"
 format = '[[ $symbol $branch ](fg:color_white bg:color_aqua)]($style)'
+style  = "bg:color_aqua"
+symbol = ""
 
 [git_status]
-style = "bg:color_aqua"
 format = '[[($all_status$ahead_behind )](fg:color_white bg:color_aqua)]($style)'
+style  = "bg:color_aqua"
 
 [nodejs]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [dart]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [c]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [rust]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [golang]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [php]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [java]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [kotlin]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [haskell]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [python]
-style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+style  = "bg:color_blue"
 
 [docker_context]
 disabled = true
-style = "bg:color_white fg:color_aqua"
-format = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+format   = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+style    = "bg:color_white fg:color_aqua"
 
 [kubernetes]
 disabled = false
-style = "bg:color_white fg:color_aqua"
-format = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+format   = '[[ $symbol( $context) ](fg:color_white bg:color_aqua)]($style)'
+style    = "bg:color_white fg:color_aqua"
 # namespaces = ["default", "kube-system", "kube-public", "kube-node-lease"]
 
 [gcloud]
 disabled = false
-symbol = ""
-style = "bg:color_red"
-format = '[[ $symbol $project ](fg:color_white bg:color_aqua)]($style)'
+format   = '[[ $symbol $project ](fg:color_white bg:color_aqua)]($style)'
+style    = "bg:color_red"
+symbol   = ""
 
 [time]
-disabled = false
+disabled    = false
+format      = '[[ $time ](fg:color_white bg:color_orange)]($style)'
+style       = "bg:color_orange"
 time_format = "%a %l:%M%P"
-use_12hr = true
-style = "bg:color_orange"
-format = '[[ $time ](fg:color_white bg:color_orange)]($style)'
+use_12hr    = true
 
 [line_break]
 disabled = false
 
 [status]
-disabled = false
+disabled   = false
+format     = ' [$symbol]($style)'
 map_symbol = true
-format = ' [$symbol]($style)'
 
 [character]
-disabled = false
-format = '$symbol '
+disabled       = false
+error_symbol   = '[╰─❯](bold red)'
+format         = '$symbol '
 success_symbol = '[╰─❯](bold green)'
-error_symbol = '[╰─❯](bold red)'

@@ -39,7 +39,7 @@ digraph when_to_use {
 
 ```typescript
 // ❌ BEFORE: Guessing at timing
-await new Promise((r) => setTimeout(r, 50));
+await new Promise(r => setTimeout(r, 50));
 const result = getResult();
 expect(result).toBeDefined();
 
@@ -83,7 +83,7 @@ async function waitFor<T>(
       );
     }
 
-    await new Promise((r) => setTimeout(r, 10)); // Poll every 10ms
+    await new Promise(r => setTimeout(r, 10)); // Poll every 10ms
   }
 }
 ```
@@ -108,7 +108,7 @@ for fresh data
 ```typescript
 // Tool ticks every 100ms - need 2 ticks to verify partial output
 await waitForEvent(manager, "TOOL_STARTED"); // First: wait for condition
-await new Promise((r) => setTimeout(r, 200)); // Then: wait for timed behavior
+await new Promise(r => setTimeout(r, 200)); // Then: wait for timed behavior
 // 200ms = 2 ticks at 100ms intervals - documented and justified
 ```
 

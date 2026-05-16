@@ -1,9 +1,9 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Check the system state against the Brewfile"
 #MISE hide=false
 
 set -e
-source "${0%/*}/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Listing packages not in Brewfile ..."
 brew bundle check --describe

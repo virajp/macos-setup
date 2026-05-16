@@ -136,5 +136,5 @@ When encountering a bug:
 
 ---
 
-_Created: 2025-10-03_ _Purpose: Reference example for skill extraction and
-bulletproofing_
+*Created: 2025-10-03* *Purpose: Reference example for skill extraction and
+bulletproofing*

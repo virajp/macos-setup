@@ -1,18 +1,19 @@
 [settings]
-os = "macos"
 all_compile          = false
+env_shell_expand     = true
 gpg_verify           = true
+os                   = "macos"
 paranoid             = true
-trusted_config_paths = ["~/.config/mise", "~/Projects"]
-env_shell_expand = true
+trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
 
 [tools]
+fnox  = { version = "latest" }
 usage = { version = "latest" }
-fnox = { version = "latest" }
 
 # AI Tools
 claude-code        = { version = "latest" }
 jq                 = { version = "latest" }
+node               = { postinstall = "npm uninstall --global npm", version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 "pipx:graphifyy"   = { uvx = true, version = "latest" }
 "pipx:kimi-cli"    = { uvx = true, version = "latest" }
@@ -116,7 +117,7 @@ cd95 = "cd $HOME/Projects/github.com/95octane"
 _.fnox-env = { tools = true }
 
 # GCP related
-USE_GKE_GCLOUD_AUTH_PLUGIN = { value = "true", tools = true }
+USE_GKE_GCLOUD_AUTH_PLUGIN = { tools = true, value = "true" }
 
 # Development tools
 NODE_ENV    = "development"

@@ -9,9 +9,10 @@ task_output         = "interleave"
 
 [tools]
 dprint     = { version = "latest" }
-node       = { version = "latest" }
+node       = { postinstall = "npm uninstall --global npm", version = "latest" }
+pnpm       = { version = "latest" }
 pre-commit = { version = "latest" }
-taplo = { version = "latest" }
+taplo      = { version = "latest" }
 
 [env]
 HOMEBREW_BUNDLE_FILE = "./Brewfile"
@@ -21,9 +22,6 @@ description = "Initialize mise tasks"
 hide        = true
 run         = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
-[tasks.setup]
-description = "Setup"
-run         = "mise run setup:precommit"
-
 [shell_alias]
-lint = "mise run lint"
+lint  = "mise run lint"
+setup = "mise run setup:all"

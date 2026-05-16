@@ -215,8 +215,8 @@ description: Use when implementing any feature or bugfix, before writing
 **Content:**
 
 - Use concrete triggers, symptoms, and situations that signal this skill applies
-- Describe the _problem_ (race conditions, inconsistent behavior) not
-  _language-specific symptoms_ (setTimeout, sleep)
+- Describe the *problem* (race conditions, inconsistent behavior) not
+  *language-specific symptoms* (setTimeout, sleep)
 - Keep triggers technology-agnostic unless the skill itself is
   technology-specific
 - If skill is technology-specific, make that explicit in the trigger

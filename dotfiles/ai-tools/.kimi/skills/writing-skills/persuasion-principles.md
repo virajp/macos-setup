@@ -203,8 +203,8 @@ fully understood it?
 
 ## Research Citations
 
-**Cialdini, R. B. (2021).** _Influence: The Psychology of Persuasion (New and
-Expanded)._ Harper Business.
+**Cialdini, R. B. (2021).** *Influence: The Psychology of Persuasion (New and
+Expanded).* Harper Business.
 
 - Seven principles of persuasion
 - Empirical foundation for influence research

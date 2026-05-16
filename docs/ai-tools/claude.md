@@ -36,7 +36,7 @@ handlers. Practical uses:
 Sub-agents support tool restrictions, model selection (e.g. Haiku for
 lightweight tasks), persistent memory at `~/.claude/agent-memory/`, worktree
 isolation, and max turn limits. You can invoke them via `@agent-name` mentions,
-or start an entire session _as_ a subagent with `--agent <name>`.
+or start an entire session *as* a subagent with `--agent <name>`.
 
 Multiple independent Claude Code sessions can coordinate via shared tasks and
 peer-to-peer messaging, each with its own full context window — enabling truly
