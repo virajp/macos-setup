@@ -32,7 +32,7 @@ should_show_oz_updates_in_zero_state = false
 [agents.warp_agent.input]
 nld_in_terminal_enabled = false
 show_agent_tips = false
-ai_auto_detection_enabled = true
+ai_auto_detection_enabled = false
 
 [agents.warp_agent.active_ai]
 enabled = true
@@ -50,6 +50,9 @@ left = [
   { context_chip = "git_diff_stats" },
 ]
 right = []
+
+[agents.third_party.cli_agent_toolbar_enabled_commands]
+cc = "Claude"
 
 [agents.voice]
 voice_input_enabled = false
