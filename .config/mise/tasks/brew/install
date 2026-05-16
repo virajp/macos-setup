@@ -8,6 +8,7 @@ source "${0%/*}/_helpers"
 print_header "Installing packages from Brewfile ..."
 brew bundle install \
   --all \
+  --upgrade \
   --force \
   --describe \
   --file "./Brewfile"

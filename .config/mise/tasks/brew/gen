@@ -13,4 +13,4 @@ brew bundle dump \
   --file "./Brewfile.gen"
 
 print_header "Printing the diff ... "
-git diff --color=always | diff-so-fancy
+git diff --no-index Brewfile.gen Brewfile | diff-so-fancy
