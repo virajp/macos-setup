@@ -1,3 +1,9 @@
+# Taproom
+tap "gromgit/brewtils"
+# Archon
+tap "coleam00/archon"
+# Remote agentic coding platform - control AI assistants from anywhere
+brew "archon"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -66,6 +72,8 @@ brew "pstree"
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Interactive TUI for Homebrew
+brew "taproom"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Executes a program periodically, showing output fullscreen
@@ -82,6 +90,8 @@ brew "zoxide"
 brew "zsh"
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { appdir: "/Applications" }
+# Application launcher and productivity software
+cask "alfred"
 # Tools for building Android applications
 cask "android-studio"
 # Web browser focusing on privacy
@@ -89,9 +99,9 @@ cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Free app that makes your Internet safer
-cask "cloudflare-warp"
+# cask "cloudflare-warp"
 # Claude code parallelisation
-cask "conductor"
+# cask "conductor"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # UI toolkit for building applications for mobile, web and desktop
@@ -102,6 +112,8 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-meslo-lg-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Open-source video transcoder
@@ -112,8 +124,6 @@ cask "notion"
 cask "obsidian"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Control your tools with a few keystrokes
-cask "raycast"
 # Collection of apps available by subscription
 cask "setapp"
 # Team communication and collaboration software
@@ -183,3 +193,4 @@ vscode "pkief.material-icon-theme"
 vscode "redhat.vscode-yaml"
 vscode "tamasfe.even-better-toml"
 vscode "usernamehw.errorlens"
+vscode "github.copilot-chat"
