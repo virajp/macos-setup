@@ -5,7 +5,7 @@ convention:
     - ops
     - docs
     - merge
-  commitScopes:
+  commitScopes: []
 
   # GitHub
   commitUrl: https://github.com/virajp/macos-setup/commit/%commit%

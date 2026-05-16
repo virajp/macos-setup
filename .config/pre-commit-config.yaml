@@ -71,10 +71,10 @@ repos:
         args: [ --config, .config/gitleaks.toml ]
         stages: [ pre-commit ]
 
-  # - repo: https://github.com/qoomon/git-conventional-commits
-  #   rev: v2.9.0
-  #   hooks:
-  #     - id: conventional-commits
-  #       name: Conventional Commits
-  #       args: [ "--config", ".config/git-conventional-commits.yaml" ]
-  #       stages: [ commit-msg ]
+  - repo: https://github.com/qoomon/git-conventional-commits
+    rev: v2.9.0
+    hooks:
+      - id: conventional-commits
+        name: Conventional Commits
+        args: [ "--config", ".config/git-conventional-commits.yaml" ]
+        stages: [ commit-msg ]
