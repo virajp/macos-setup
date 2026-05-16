@@ -19,4 +19,5 @@ print_header "Listing processes for user $USER filtered by $usage_process ..."
 #   - time: cumulative CPU time
 #   - command: full command line
 # | sort -n: sort output numerically (by PID)
-ps -u $USER -o pid,%cpu,%mem,start,time,command | grep -E "PID|$usage_process" | grep -E -v "grep|mise/bin/mise|mise\/tasks" | sort -n
+# ps -u $USER -o pid,%cpu,%mem,start,time,command | grep -E "PID|$usage_process" | grep -E -v "grep|mise/bin/mise|mise\/tasks" | sort -n
+pstree -u $USER -g 3 -l 7 | grep -E "PID|$usage_process" | grep -E -v "grep|mise\/bin\/mise|mise\/tasks"
