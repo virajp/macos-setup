@@ -5,9 +5,10 @@
   "enabledPlugins": {},
   "forceLoginMethod": "claudeai",
   "includeGitInstructions": true,
-  "model": "sonnet",
+  "model": "sonnet[1m]",
   "permissions": {
     "allow": [
+      "Skill",
       "Bash(cat *)",
       "Bash(ls *)",
       "Bash(cd *)",
@@ -16,8 +17,7 @@
       "Bash(grep *)",
       "Bash(find *)",
       "Bash(git *)",
-      "Bash(mise *)",
-      "Skill(git-commit)"
+      "Bash(mise *)"
     ],
     "defaultMode": "acceptEdits",
     "deny": [
