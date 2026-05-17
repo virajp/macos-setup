@@ -20,11 +20,11 @@ suggestions before starting work.
 
 ## ALWAYS follow these RULES:
 
-- All repos enforce **conventional commits** via `git-conventional-commits` +
-  pre-commit hooks.
-- Refer to `git-commit` and `pre-commit` skills respectively
-- NEVER commit directly to `main` & `develop` branches.
-- ALWAYS use `git-worktrees`.
+- ALWAYS use `git` skill for any git interactions, including but not limited to
+  commits, logs, and status checks, branches, worktrees.
+- ALWAYS prefer using `mise` for anything unless the task is NOT available in
+  `mise`. All the repository has `mise` and tasks can be listed using
+  `mise tasks` command.
 
 ## 1. Think Before Coding
 
@@ -32,10 +32,10 @@ suggestions before starting work.
 
 Before implementing:
 
-- State your assumptions explicitly. If uncertain, ask.
+- State your assumptions explicitly. If uncertain, **ASK**.
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+- If something is unclear, stop. Name what's confusing. **ASK**.
 
 ## 2. Simplicity First
 
