@@ -57,3 +57,9 @@ For multi-step tasks, state a brief plan:
 ```
 
 Clarifying questions come **before** implementation, not after mistakes.
+
+## graphify
+
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge
+  graph. Trigger: `/graphify` When the user types `/graphify`, invoke the Skill
+  tool with `skill: "graphify"` before doing anything else.
