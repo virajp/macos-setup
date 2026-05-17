@@ -19,12 +19,12 @@ Explicitly called by user to start a project workflow. Never auto-triggered.
 
 Based on user intent, delegate to the appropriate skill:
 
-| Intent                                          | Skill to invoke          |
-| ----------------------------------------------- | ------------------------ |
-| Define a product feature (what & why)           | `/sparc:specification`   |
-| Create engineering / technical docs from a PRD  | `/sparc:architecture`    |
-| Create spec & implementation plan for a feature | `/sparc:spec-pseudocode` |
-| Build / code a feature from an existing spec    | `/sparc:tdd`             |
+| Intent                                          | Skill to invoke       |
+| ----------------------------------------------- | --------------------- |
+| Define a product feature (what & why)           | `/v-docs-product`     |
+| Create engineering / technical docs from a PRD  | `/v-docs-engineering` |
+| Create spec & implementation plan for a feature | `/v-spec-plan`        |
+| Build / code a feature from an existing spec    | `/v-coder`            |
 
 ## Clarifying Questions (if intent is unclear)
 
@@ -36,5 +36,5 @@ Ask the user:
 Route based on their answer:
 
 - Scratch → `/sparc:specification`
-- Have PRD → `/sparc:architecture` or `/sparc:spec-pseudocode`
+- Have PRD → `/sparc:architect` or `/sparc:spec-pseudocode`
 - Have spec → `/sparc:tdd`
