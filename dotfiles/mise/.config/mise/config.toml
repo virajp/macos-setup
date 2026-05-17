@@ -15,10 +15,9 @@ claude-code        = { version = "latest" }
 jq                 = { version = "latest" }
 node               = { postinstall = "npm uninstall --global npm", version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
-"pipx:kimi-cli"    = { uvx = true, version = "latest" }
+"pipx:graphifyy"   = { uvx = true, version = "latest" }
 python             = { version = "latest" }
 uv                 = { version = "latest" }
-# "pipx:graphifyy"   = { uvx = true, version = "latest" }
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"

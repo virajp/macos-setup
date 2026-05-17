@@ -5,7 +5,6 @@
 version: 1
 
 ignores:
-  - "dotfiles/ai-tools/.kimi/skills/**"
   - "dotfiles/ai-tools/.config/agents/skills/**"
   - "dotfiles/warp/.warp/typescript-language-server/package-lock.json"
 
