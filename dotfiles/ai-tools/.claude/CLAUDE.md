@@ -25,6 +25,9 @@ suggestions before starting work.
 - ALWAYS prefer using `mise` for anything unless the task is NOT available in
   `mise`. All the repository has `mise` and tasks can be listed using
   `mise tasks` command.
+- **Always use Context7 MCP** (`resolve-library-id` → `get-library-docs`) before
+  writing code with any external library, framework, or SDK — never rely on
+  training knowledge for APIs, method signatures, or config schemas.
 
 ## 1. Think Before Coding
 
