@@ -10,9 +10,6 @@ Bias toward caution over speed — use judgment for trivial tasks.
 - **libraries**: Always use Context7 MCP (`resolve-library-id` →
   `get-library-docs`) before writing code with any external library — never rely
   on training knowledge for APIs or config schemas
-- **multi-file tasks**: Use ruflo MCP tools (`memory_store`, `memory_search`,
-  `hooks_route`, `swarm_init`, `agent_spawn`) and check system-reminder tags for
-  `[INTELLIGENCE]` pattern suggestions before starting
 
 ## Think Before Coding
 

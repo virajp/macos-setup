@@ -3,6 +3,8 @@
   "cleanupPeriodDays": 30,
   "effortLevel": "xhigh",
   "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
     "warp@claude-code-warp": true
   },
   "env": {
@@ -37,16 +39,18 @@
   "model": "sonnet[1m]",
   "permissions": {
     "allow": [
+      "Skill",
       "Read",
       "Edit",
       "Write",
-      "Bash"
+      "Bash",
+      "WebFetch",
+      "Agent"
     ],
     "defaultMode": "acceptEdits",
     "deny": [
       "Bash(sudo *)",
       "Bash(su *)",
-      "Bash(rm -rf /*)",
       "Bash(ssh *)",
       "Bash(firebase *)",
       "Bash(gcloud *)",
