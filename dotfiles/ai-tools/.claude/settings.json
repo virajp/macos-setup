@@ -19,6 +19,20 @@
     }
   },
   "forceLoginMethod": "claudeai",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/hooks/npm-to-pnpm.sh",
+            "timeout": 5,
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ]
+  },
   "includeCoAuthoredBy": true,
   "model": "sonnet[1m]",
   "permissions": {
