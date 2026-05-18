@@ -35,8 +35,7 @@ osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-aistats = "bunx codeburn"
-cc      = "claude --allow-dangerously-skip-permissions"
+aistats = "pnpm dlx codeburn"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
