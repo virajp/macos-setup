@@ -63,7 +63,23 @@
         "backgroundColor": "bgBrightBlue"
       }
     ],
-    []
+    [
+      {
+        "id": "97d7b8d0-19fe-4b9b-9298-547096b397b1",
+        "type": "git-worktree",
+        "backgroundColor": "bgRed"
+      },
+      {
+        "id": "80154b21-2b4f-49cf-b44b-82b617dff1ed",
+        "type": "worktree-branch",
+        "backgroundColor": "bgBlue"
+      },
+      {
+        "id": "3e86f50a-97ce-4155-ae33-ee19d132068b",
+        "type": "git-changes",
+        "backgroundColor": "bgBrightGreen"
+      }
+    ]
   ],
   "flexMode": "full",
   "compactThreshold": 60,
@@ -71,6 +87,7 @@
   "defaultPadding": " ",
   "inheritSeparatorColors": false,
   "globalBold": false,
+  "gitCacheTtlSeconds": 5,
   "minimalistMode": false,
   "powerline": {
     "enabled": true,
