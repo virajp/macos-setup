@@ -4,7 +4,9 @@
   "effortLevel": "xhigh",
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
     "warp@claude-code-warp": true
   },
   "env": {
@@ -40,10 +42,6 @@
   "permissions": {
     "allow": [
       "Skill",
-      "Read",
-      "Edit",
-      "Write",
-      "Bash",
       "WebFetch",
       "Agent"
     ],
@@ -60,7 +58,7 @@
   "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
-    "command": "pnpm dlx ccstatusline",
+    "command": "ccstatusline",
     "padding": 0,
     "refreshInterval": 4,
     "type": "command"
