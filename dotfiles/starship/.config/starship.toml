@@ -127,7 +127,7 @@ symbol = ""
 
 [git_status]
 format            = '[[($all_status$ahead_behind )](fg:color_white bg:color_aqua)]($style)'
-ignore_submodules = true
+ignore_submodules = false
 style             = "bg:color_aqua"
 
 [nodejs]
