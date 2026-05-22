@@ -57,6 +57,18 @@ arguments), print the contents of the `## Usage` section above verbatim and
 stop. Do not run any commands, do not detect files, do not default the path to
 `.`. Just print the Usage block and return.
 
+**Fast path — existing graph:** Before doing anything else, check whether
+`graphify-out/graph.json` exists. The expected location is
+`graphify-out/graph.json` relative to the **current working directory** (i.e.
+the project root where you are running commands). If it exists AND the user's
+request is a natural-language question about the codebase (e.g. "How does X
+work?", "What calls Y?", "Trace the data flow through Z") and NOT an explicit
+rebuild command (`--update`, `--cluster-only`, or a bare path/URL that implies
+fresh extraction): **skip Steps 1–5 entirely and jump straight to
+`## For /graphify query`.** Run `graphify query "<question>"` immediately. Do
+not run detect. Do not check corpus size. Do not ask the user to narrow. The
+graph is already built — use it.
+
 If no path was given, use `.` (current directory). Do not ask the user for a
 path.
 
@@ -92,6 +104,31 @@ graphify merge-graphs \
 Graphify clones into `~/.graphify/repos/<owner>/<repo>` and reuses existing
 clones on repeat runs. Each node in the merged graph carries a `repo` attribute
 so you can filter by origin.
+
+**Multiple local subfolders (monorepo or multi-service layout):**
+
+The skill pipeline writes all intermediate and final outputs to `graphify-out/`
+in the current working directory. Running the skill on each subfolder separately
+will clobber the same output dir. Instead, use the CLI directly for each
+subfolder — it places `graphify-out/` *inside* the scanned path:
+
+```bash
+graphify extract ./core/     # → ./core/graphify-out/graph.json
+graphify extract ./service/  # → ./service/graphify-out/graph.json
+graphify extract ./platform/ # → ./platform/graphify-out/graph.json
+# Add --backend gemini|kimi|openai|deepseek|claude-cli depending on which API key you have set
+
+# Then merge at the project root:
+graphify merge-graphs \
+  ./core/graphify-out/graph.json \
+  ./service/graphify-out/graph.json \
+  ./platform/graphify-out/graph.json \
+  --out graphify-out/graph.json
+```
+
+Once `graphify-out/graph.json` exists, the fast path above takes over: any
+codebase question runs `graphify query` directly on the merged graph — no
+re-extraction, no size gate.
 
 ### Step 1 - Ensure graphify is installed
 
@@ -167,9 +204,22 @@ Then act on it:
 - If `total_files` is 0: stop with "No supported files found in [path]."
 - If `skipped_sensitive` is non-empty: mention file count skipped, not the file
   names.
-- If `total_words` > 2,000,000 OR `total_files` > 200: show the warning and the
-  top 5 subdirectories by file count, then ask which subfolder to run on. Wait
-  for the user's answer before proceeding.
+- If `total_words` > 2,000,000 OR `total_files` > 500: show the warning. Then
+  compute the top 5 first-level subdirectories by file count:
+  - Read `scan_root` from the detect JSON (always an absolute path to the
+    resolved INPUT_PATH).
+  - Concatenate all file lists across all types (`code`, `document`, `paper`,
+    `image`, `video`).
+  - Filter out any path that starts with `scan_root + "/graphify-out/"` to
+    exclude converted sidecars.
+  - For each file, strip the `scan_root` prefix and take the first path
+    component. Files directly in `scan_root` with no subdirectory count as
+    `(root)`.
+  - If all files are in `(root)` with no subdirectories, do not ask to narrow —
+    no subfolders exist. Instead suggest `--no-cluster` to skip the expensive
+    clustering step and proceed.
+  - Otherwise rank by count, show the top 5 with file counts, then ask which
+    subfolder to run on. Wait for the user's answer before proceeding.
 - Otherwise: proceed directly to Step 2.5 if video files were detected, or Step
   3 if not.
 
