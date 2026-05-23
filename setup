@@ -41,6 +41,9 @@ brew analytics off
 echo "🩺 Checking Homebrew health..."
 brew doctor
 
+# Export HOMEBREW config
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=/Library/Fonts"
+
 echo ""
 echo "🔍 Checking what needs to be installed from Brewfile..."
 if brew bundle check --file=~/Projects/github.com/virajp/macos-setup/Brewfile > /dev/null 2>&1; then
