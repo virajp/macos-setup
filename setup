@@ -46,11 +46,11 @@ export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=/Library/Font
 
 echo ""
 echo "🔍 Checking what needs to be installed from Brewfile..."
-if brew bundle check --file=~/Projects/github.com/virajp/macos-setup/Brewfile > /dev/null 2>&1; then
+if brew bundle check --file=${HOME}/Projects/github.com/virajp/macos-setup/Brewfile > /dev/null 2>&1; then
   echo "✅ All dependencies are already installed."
 else
   echo "📦 Installing/updating packages from Brewfile..."
-  brew bundle install --file=~/Projects/github.com/virajp/macos-setup/Brewfile --upgrade
+  brew bundle install --file=${HOME}/Projects/github.com/virajp/macos-setup/Brewfile --upgrade
 fi
 
 echo ""
