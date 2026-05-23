@@ -18,6 +18,11 @@ node               = { postinstall = "npm uninstall --global npm", version = "la
 "pipx:graphifyy"   = { uvx = true, version = "latest" }
 python             = { version = "latest" }
 uv                 = { version = "latest" }
+yq                 = { version = "latest" }
+
+# Linter & Formatters
+dprint = { version = "latest" }
+taplo  = { version = "latest" }
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
