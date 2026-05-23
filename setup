@@ -42,7 +42,7 @@ echo "🩺 Checking Homebrew health..."
 brew doctor
 
 # Export HOMEBREW config
-export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=/Library/Fonts"
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
 
 echo ""
 echo "🔍 Checking what needs to be installed from Brewfile..."
