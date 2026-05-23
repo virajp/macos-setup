@@ -47,7 +47,7 @@ if brew bundle check --file=~/Projects/github.com/virajp/macos-setup/Brewfile > 
   echo "✅ All dependencies are already installed."
 else
   echo "📦 Installing/updating packages from Brewfile..."
-  brew bundle install --file=Brewfile --upgrade
+  brew bundle install --file=~/Projects/github.com/virajp/macos-setup/Brewfile --upgrade
 fi
 
 echo ""
