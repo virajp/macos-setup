@@ -1,9 +1,5 @@
 # Taproom
 tap "gromgit/brewtils"
-# Archon
-tap "coleam00/archon"
-# Remote agentic coding platform - control AI assistants from anywhere
-brew "archon"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -104,8 +100,6 @@ cask "claude"
 # cask "conductor"
 # Find files, folders, or contents in any file
 cask "easyfind"
-# UI toolkit for building applications for mobile, web and desktop
-cask "flutter"
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
