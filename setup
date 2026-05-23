@@ -43,7 +43,7 @@ brew doctor
 
 echo ""
 echo "🔍 Checking what needs to be installed from Brewfile..."
-if brew bundle check --file=Brewfile > /dev/null 2>&1; then
+if brew bundle check --file=~/Projects/github.com/virajp/macos-setup/Brewfile > /dev/null 2>&1; then
   echo "✅ All dependencies are already installed."
 else
   echo "📦 Installing/updating packages from Brewfile..."
