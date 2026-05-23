@@ -38,3 +38,11 @@ sudo visudo
 # Add the following line under %admin line
 virajpatel ALL=(ALL) ALL
 ```
+
+### Step 4: Install XCode Command-Line Tools & Rosetta
+
+Go to terminal and run the following command:
+
+```shell
+softwareupdate --install --all --install-rosetta
+```
