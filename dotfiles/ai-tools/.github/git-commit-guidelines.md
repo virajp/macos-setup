@@ -24,11 +24,11 @@ or without a scope:
 
 **Important Note:**
 
-- Refer to `git-conventional-commits.yaml` for the authoritative list of allowed
-  types & scopes
+- Refer to `.config/git-conventional-commits.yaml` for the authoritative list of
+  allowed types & scopes
 - Scope is optional but if used, must be one of the configured scopes
 
-### Sample list of types (see config file for actual allowed types)
+### Sample list of types (see `.config/git-conventional-commits.yaml` file for actual allowed types)
 
 | Type       | When to use                                             |
 | ---------- | ------------------------------------------------------- |
@@ -44,8 +44,8 @@ or without a scope:
 
 ## Scopes
 
-**Do not invent scopes.**, MUST look in `git-conventional-commits.yaml` for the
-authoritative list of allowed scopes.
+**Do not invent scopes.**, MUST look in `.config/git-conventional-commits.yaml`
+for the authoritative list of allowed scopes.
 
 **Omit the scope** when a change touches multiple areas of the codebase or is
 general in nature. For example, a commit that updates the pre-commit hook
@@ -71,8 +71,8 @@ wip(worker): prototype notification activity
 2. Run `git status` to see what changed
 3. Stage only the relevant files (`git add <files>` — avoid `git add -A`)
 4. Run `git diff --cached` to review what will be committed
-5. Determine the type and scope from `git-conventional-commits.yaml` based on
-   the changes being made
+5. Determine the type and scope from `.config/git-conventional-commits.yaml`
+   based on the changes being made
 6. Write: `<type>(<scope>): <imperative description>` (with scope) or
    `<type>: <imperative description>` (without scope) as the commit message
 7. Run `mise code:precommit` to apply auto-fixes (linter, formatter, secrets
@@ -89,8 +89,7 @@ The repository runs these hooks automatically:
 - **conventional-commits validation** — rejects messages not matching allowed
   types; rejects unknown scope
 - Other hooks depending on the repository configuration, refer to
-  `.pre-commit-config.yaml` at the root of the repository or inside `.config`
-  folder as `pre-commit-config.yaml` for details
+  `.config/pre-commit-config.yaml` for details
 
 > Note: The repository may or may not have a `no-commit-to-branch` hook.
 
