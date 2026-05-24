@@ -10,4 +10,4 @@ print_header "Cleaning up .DS_Store files ..."
 find . -type f -name '.DS_Store' -ls -delete || true
 
 print_header "Preparing to stow dotfiles ..."
-mkdir -p "$HOME/.config" "$HOME/.claude" "$HOME/.gemini" "$HOME/.github"
+mkdir -p "$HOME/.ssh" "$HOME/.config" "$HOME/.claude" "$HOME/.gemini" "$HOME/.github" "$HOME/.config/fish"

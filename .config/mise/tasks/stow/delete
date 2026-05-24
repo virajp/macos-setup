@@ -3,8 +3,10 @@
 #MISE hide=false
 #MISE dir="dotfiles"
 
+#USAGE arg "[tool]" help="Only delete specific tool's dotfiles"
+
 set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
-print_header "Deleting stow-managed dotfiles ..."
-stow --delete --dir=. --target=$HOME --verbose */
+print_header "Deleting stow-managed dotfiles (${usage_tool:-all}) ..."
+stow --delete --dir=. --target=$HOME --verbose ${usage_tool:-*/}
