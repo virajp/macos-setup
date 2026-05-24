@@ -9,7 +9,7 @@ task_output         = "interleave"
 
 [tools]
 dprint     = { version = "latest" }
-node       = { postinstall = "npm uninstall --global npm", version = "latest" }
+node       = { version = "latest" }
 pnpm       = { version = "latest" }
 pre-commit = { version = "latest" }
 taplo      = { version = "latest" }
