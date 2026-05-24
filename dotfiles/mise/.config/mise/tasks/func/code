@@ -7,7 +7,7 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-if (( $+commands[code] )); then
+if command -v code &>/dev/null; then
   code "$MISE_ORIGINAL_CWD/$usage_folder"
 else
   echo "VSCode is not installed or not in PATH."
