@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#MISE description="Setup / Upgrade AI tools"
+#MISE hide=true
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+function updatePlugin() {
+  local plugin_name="$1"
+  local plugin_marketplace="$2"
+  local scope="$3"
+  local full_plugin_name="$plugin_name@$plugin_marketplace"
+
+  local installed_scope
+  installed_scope=$(claude plugin list --json | jq -r --arg id "$full_plugin_name" '.[] | select(.id == $id) | .scope')
+
+  if [[ -n "$installed_scope" ]]; then
+    print_header "Updating $full_plugin_name (scope: $installed_scope)..."
+    claude plugin update --scope "$installed_scope" "$full_plugin_name"
+  else
+    print_header "Installing $full_plugin_name (scope: $scope)..."
+    claude plugin install --scope "$scope" "$full_plugin_name"
+  fi
+}
+
+print_separator "="
+# Link Claude Code to ~/.local/bin/claude
+print_header "Linking Claude Code to ~/.local/bin/claude ..."
+mkdir -p ~/.local/bin
+ln -sf "$(mise which claude)" ~/.local/bin/claude
+
+print_header "Updating Claude marketplaces ..."
+claude plugin marketplace update
+
+print_header "Install Warp plugin ..."
+updatePlugin warp claude-code-warp user

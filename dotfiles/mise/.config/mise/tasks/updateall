@@ -48,9 +48,6 @@ mise run cleanupDS ~/Projects
 
 mise run upgrade:macos:download
 
-# Link Claude Code to ~/.local/bin/claude
-print_header "Linking Claude Code to ~/.local/bin/claude ..."
-mkdir -p ~/.local/bin
-ln -sf "$(mise which claude)" ~/.local/bin/claude
+mise run upgrade:ai
 
 print_header "Setup complete!"
