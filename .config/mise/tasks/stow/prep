@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Prepare the environment for stow-managed dotfiles"
+#MISE hide=true
+#MISE dir="dotfiles"
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Cleaning up .DS_Store files ..."
+find . -type f -name '.DS_Store' -ls -delete || true
+
+print_header "Preparing to stow dotfiles ..."
+mkdir -p "$HOME/.config" "$HOME/.claude" "$HOME/.gemini" "$HOME/.github"

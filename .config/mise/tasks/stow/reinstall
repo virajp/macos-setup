@@ -2,11 +2,10 @@
 #MISE description="Recreate symlinks for stow-managed dotfiles"
 #MISE hide=false
 #MISE dir="dotfiles"
+#MISE depends=["stow:prep"]
 
 set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
-find . -type f -name '.DS_Store' -ls -delete || true
-
 print_header "Reinstalling stow-managed dotfiles ..."
-stow --restow --dir=. --target=$HOME --verbose */
+stow --restow --dir=. --dotfiles --target=$HOME --verbose */
