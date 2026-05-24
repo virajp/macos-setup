@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Cleanup .DS_Store files from the system"
 #MISE hide=true
 #MISE dir="."
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 # If no argument is passed, use the current directory ($PWD) instead of $HOME
 FOLDER=${1:-$HOME}

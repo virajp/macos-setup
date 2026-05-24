@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE hide=true
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 # Display progress message with colored output
 print_header "Zipping $1 to $1.zip ..."

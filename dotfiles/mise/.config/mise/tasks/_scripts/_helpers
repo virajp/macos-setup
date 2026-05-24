@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE hide=true
 # Helper functions for mise tasks
 # Source this file in other tasks using: source "${SCRIPT_DIR}/_helpers"
@@ -56,10 +56,10 @@ print_success() {
 # @note Fish equivalent: repchar function in repchar.fish
 ##
 function print_separator() {
-  # Calculate how many times the string fits in terminal width
-  local LENGTH=$(($COLUMNS / ${#1}))
-  # Loop through and echo the character/string without newlines
-  for i in {2..$LENGTH}; do printf -- "$1"; done
-  # Add final newline
+  local COLS
+  COLS=$(stty size </dev/tty 2>/dev/null | awk '{print $2}')
+  COLS="${COLS:-80}"
+  local LENGTH=$(( COLS / ${#1} ))
+  for (( i = 1; i <= LENGTH; i++ )); do printf -- "$1"; done
   echo ""
 }

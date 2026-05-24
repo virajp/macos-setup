@@ -1,11 +1,11 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Open VSCode"
 #MISE hide=true
 
 #USAGE arg "<folder>" default="." help="Folder to open in VSCode"
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 if (( $+commands[code] )); then
   code "$MISE_ORIGINAL_CWD/$usage_folder"

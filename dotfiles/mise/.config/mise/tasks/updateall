@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="Upgrade all tools managed in the system"
 #MISE depends=["init"]
 #MISE hide=true
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 # Set global Git configuration for GPG SSH signing
 git config --global gpg.ssh.allowedSignersFile "$HOME/.ssh/allowed_signers"
@@ -49,6 +49,8 @@ mise run cleanupDS ~/Projects
 mise run upgrade:macos:download
 
 # Link Claude Code to ~/.local/bin/claude
+print_header "Linking Claude Code to ~/.local/bin/claude ..."
+mkdir -p ~/.local/bin
 ln -sf "$(mise which claude)" ~/.local/bin/claude
 
 print_header "Setup complete!"

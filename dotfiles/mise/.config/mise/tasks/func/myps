@@ -1,11 +1,11 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE description="List startup items (LaunchAgents & LaunchDaemons)"
 #MISE hide=true
 
 #USAGE arg "<process>" help="List processes with specified name"
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Listing processes for user $USER filtered by $usage_process ..."
 # Run ps command with:

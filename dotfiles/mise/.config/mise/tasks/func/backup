@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #MISE hide=true
 
 #USAGE arg "<folder>" help="Folder to backup" required
 
 set -e
-source "${0%/*}/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 # Generate timestamp for unique filename
 local STAMP=$(date "+%Y%m%d-%H%M%S")
