@@ -6,8 +6,9 @@ os                   = "macos"
 paranoid             = true
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
 
-# NodeJS settings
+# Package manager settings
 npm.package_manager = "pnpm"
+pipx.uvx            = true
 
 [tools]
 fnox  = { version = "latest" }

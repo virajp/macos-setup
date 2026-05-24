@@ -7,6 +7,10 @@ gpg_verify          = true
 paranoid            = true
 task_output         = "interleave"
 
+# Package manager settings
+npm.package_manager = "pnpm"
+pipx.uvx            = true
+
 [tools]
 dprint     = { version = "latest" }
 node       = { version = "latest" }
