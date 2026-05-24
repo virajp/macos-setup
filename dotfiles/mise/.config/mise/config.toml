@@ -6,6 +6,9 @@ os                   = "macos"
 paranoid             = true
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
 
+# NodeJS settings
+npm.package_manager = "pnpm"
+
 [tools]
 fnox  = { version = "latest" }
 usage = { version = "latest" }
@@ -13,7 +16,7 @@ usage = { version = "latest" }
 # AI Tools
 claude-code        = { version = "latest" }
 jq                 = { version = "latest" }
-node               = { postinstall = "npm uninstall --global npm", version = "latest" }
+node               = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 "pipx:graphifyy"   = { uvx = true, version = "latest" }
 python             = { version = "latest" }
