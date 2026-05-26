@@ -20,6 +20,7 @@ jq                 = { version = "latest" }
 node               = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
 "pipx:graphifyy"   = { uvx = true, version = "latest" }
+pnpm               = { version = "latest" }
 python             = { version = "latest" }
 uv                 = { version = "latest" }
 yq                 = { version = "latest" }
