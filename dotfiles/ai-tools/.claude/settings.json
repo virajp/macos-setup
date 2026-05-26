@@ -20,6 +20,12 @@
         "repo": "warpdotdev/claude-code-warp",
         "source": "github"
       }
+    },
+    "virajp-claude-plugins": {
+      "source": {
+        "repo": "virajp/claude-plugins",
+        "source": "github"
+      }
     }
   },
   "forceLoginMethod": "claudeai",
