@@ -5,28 +5,30 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-print_header "Upgrading Homebrew and all installed packages ..."
+print_header "Homebrew packages ..."
 
 # Check if brew is installed before attempting to update
-type brew >/dev/null 2>&1 || return 0
+if ! command -v brew >/dev/null 2>&1; then
+  print_error "Homebrew is not installed. Please install Homebrew first."
+  exit 1
+fi
 
 # Update Homebrew itself
+print_subheader "Updating Homebrew ..."
 brew update --auto-update --force # --verbose
 
-# Upgrade all installed formulaes
-print_subheader "Upgrading Homebrew formulaes ..."
-brew upgrade \
-  --force-bottle \
-  --overwrite \
-  --display-times \
-  --formulae || print_success "All formulaes are up to date!"
+# Install/Upgrade all packages from Brewfile
+print_subheader "Install/Upgrade all packages from Brewfile ..."
+brew bundle install \
+  --upgrade \
+  --force \
+  --file "~/brewfile"
 
-# Upgrade all installed casks
-print_subheader "Upgrading Homebrew casks ..."
-brew upgrade \
-  --display-times \
-  --greedy \
-  --casks || print_success "All casks are up to date!"
+# Remove packages NOT in Brewfile
+print_subheader "Deleting packages NOT in Brewfile ..."
+brew bundle cleanup \
+  --force \
+  --file "~/brewfile"
 
 # Remove unused dependencies
 print_subheader "Removing unused Homebrew dependencies ..."

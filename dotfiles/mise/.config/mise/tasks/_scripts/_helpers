@@ -10,6 +10,14 @@ readonly RED='\033[0;31m'
 readonly BOLD='\033[1m'
 readonly NORMAL='\033[0m'
 
+# Emojis
+readonly SUCCESS_EMOJI="✅"
+readonly ERROR_EMOJI="🚫"
+readonly SETTING_EMOJI="⚙️"
+readonly INSTALL_EMOJI="🚀"
+readonly PACKAGE_EMOJI="📦"
+readonly CHECK_EMOJI="🩺"
+
 # Print colored section header with new line
 print_header() {
   local msg="$1"
@@ -37,12 +45,12 @@ print_newline() {
 
 print_error() {
   local msg="$1"
-  echo -e "${RED}${BOLD}${msg}${NORMAL}"
+  echo -e "${ERROR_EMOJI} ${RED}${BOLD}${msg}${NORMAL}"
 }
 
 print_success() {
   local msg="$1"
-  echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
+  echo -e "${SUCCESS_EMOJI} ${GREEN}${BOLD}${msg}${NORMAL}"
 }
 
 ##
