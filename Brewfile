@@ -64,6 +64,8 @@ brew "mise"
 brew "prettyping"
 # Show ps output as a tree
 brew "pstree"
+# Search tool like grep, but faster
+brew "ripgrep"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -137,36 +139,34 @@ cask "warp"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 mas "1Password for Safari", id: 1569813296
-mas "Affinity Designer 2", id: 1616831348
-mas "Affinity Photo 2", id: 1616822987
+# mas "Affinity Designer 2", id: 1616831348
+# mas "Affinity Photo 2", id: 1616822987
 mas "Battery Health 2", id: 1120214373
 mas "Cardhop", id: 1290358394
-mas "Compressor", id: 424390742
+# mas "Compressor", id: 424390742
 mas "DaisyDisk", id: 411643860
 mas "Developer", id: 640199958
 mas "Disk Doctor", id: 455970963
 mas "Disk Map", id: 715464874
 mas "Duplicate Detective", id: 686428787
 mas "Final Cut Pro", id: 424389933
-mas "HP", id: 1474276998
-mas "Keynote", id: 409183694
+# mas "HP", id: 1474276998
+mas "Keynote", id: 361285480
 mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "MindNode Classic", id: 1289197285
-mas "Numbers", id: 409203825
+# mas "MindNode Classic", id: 1289197285
+mas "Numbers", id: 361304891
 mas "Okta Verify", id: 490179405
-mas "Pages", id: 409201541
+mas "Pages", id: 361309726
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
-mas "Swift Playground", id: 1496833156
 mas "Telegram", id: 747648890
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
-mas "UTM", id: 1538878817
-mas "VN", id: 1494451650
+# mas "VN", id: 1494451650
 mas "Xcode", id: 497799835
 vscode "astro-build.astro-vscode"
 vscode "bmalehorn.vscode-fish"
