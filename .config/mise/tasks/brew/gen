@@ -9,7 +9,7 @@ print_header "Generating Brewfile ..."
 brew bundle dump \
   --force \
   --describe \
-  --file "./Brewfile.gen"
+  --file "./brewfile.gen"
 
 print_header "Printing the diff ... "
-git diff --no-index Brewfile.gen Brewfile | diff-so-fancy
+diff -u ~/brewfile brewfile.gen | diff-so-fancy

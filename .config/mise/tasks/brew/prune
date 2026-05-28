@@ -6,7 +6,9 @@ set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Deleting packages NOT in Brewfile ..."
-brew bundle cleanup --force
+brew bundle cleanup \
+  --force \
+  --file "~/brewfile"
 
 print_header "Autoremoving packages ..."
 brew autoremove --verbose

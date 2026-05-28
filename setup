@@ -26,41 +26,57 @@
 # Author: Viraj Patel
 ##############################################################################
 
-if (( ! $+commands[brew] )); then
-  echo "🚀 Homebrew not found. Installing..."
+readonly SUCCESS_EMOJI="✅"
+readonly ERROR_EMOJI="🚫"
+readonly SETTING_EMOJI="⚙️"
+readonly INSTALL_EMOJI="🚀"
+readonly PACKAGE_EMOJI="📦"
+readonly CHECK_EMOJI="🩺"
+
+if ! command -v brew &> /dev/null; then
+  echo "${INSTALL_EMOJI} Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-  echo "✅ Homebrew is already installed."
+  echo "${SUCCESS_EMOJI} Homebrew is already installed."
 fi
 
 # Turn off homebrew analytics
-echo "⚙️ Turning off Homebrew analytics..."
+echo "${SETTING_EMOJI} Turning off Homebrew analytics..."
 brew analytics off
 
 # Check Homebrew health
-echo "🩺 Checking Homebrew health..."
+echo "${CHECK_EMOJI} Checking Homebrew health..."
 brew doctor
 
 # Export HOMEBREW config
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
 
 echo ""
-echo "🔍 Checking what needs to be installed from Brewfile..."
-if brew bundle check --file=${HOME}/Projects/github.com/virajp/macos-setup/Brewfile > /dev/null 2>&1; then
-  echo "✅ All dependencies are already installed."
-else
-  echo "📦 Installing/updating packages from Brewfile..."
-  brew bundle install --file=${HOME}/Projects/github.com/virajp/macos-setup/Brewfile --upgrade
+echo "${PACKAGE_EMOJI} Installing/updating packages from brewfile..."
+brew bundle install \
+  --upgrade \
+  --force \
+  --file=${HOME}/Projects/github.com/virajp/macos-setup/dotfiles/homebrew/brewfile
+
+# Check if mise & stow are installed, if not then raise error and exit
+if ! command -v mise &> /dev/null; then
+  echo "${ERROR_EMOJI} ERROR: mise not found. Please install it first and then re-run the setup."
+  exit 1
+fi
+if ! command -v stow &> /dev/null; then
+  echo "${ERROR_EMOJI} ERROR: stow not found. Please install it first and then re-run the setup."
+  exit 1
 fi
 
 echo ""
-echo "⚙️ Setting up dotfiles with stow..."
+echo "${SETTING_EMOJI} Setting up dotfiles with stow..."
 if command -v stow &> /dev/null; then
   mise --cd "${HOME}/Projects/github.com/virajp/macos-setup" run stow:install
-  echo "✅ Dotfiles symlinked successfully."
+  echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
 else
-  echo "⚠️ Warning: stow not found. Skipping dotfiles setup."
+  echo "${ERROR_EMOJI} ERROR: stow not found. Skipping dotfiles setup."
+  exit 1
 fi
 
 echo ""
-echo "✅ Setup complete!"
+echo "${SUCCESS_EMOJI} Setup complete!"
