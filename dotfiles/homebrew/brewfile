@@ -42,6 +42,8 @@ brew "gnupg"
 brew "gping"
 # Vulnerability scanner for container images and filesystems
 brew "grype"
+# Herdr tmux for AI coding agents
+brew "herdr"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Tools and libraries to manipulate images in select formats
