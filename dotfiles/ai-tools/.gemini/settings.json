@@ -24,7 +24,7 @@
     "enableAutoUpdate": false,
     "enableAutoUpdateNotification": false,
     "enableNotifications": true,
-    "preferredEditor": "code"
+    "preferredEditor": "vscode"
   },
   "ide": {
     "enabled": true
@@ -68,10 +68,16 @@
     "sandbox": "sandbox-exec"
   },
   "ui": {
+    "dynamicWindowTitle": true,
     "footer": {
-      "hideContextPercentage": false
+      "hideContextPercentage": false,
+      "hideCWD": false,
+      "hideModelInfo": false,
+      "hideSandboxStatus": false,
+      "showLabels": true
     },
     "showModelInfoInChat": true,
+    "showStatusInTitle": true,
     "terminalBuffer": true
   }
 }
