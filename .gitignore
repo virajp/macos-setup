@@ -32,3 +32,6 @@ brewfile.gen
 .omc/autopilot/
 # All nested .omc directories in sub-packages/sub-projects — ignore entirely
 */**/.omc/
+
+# Antigravity CLI
+.antigravitycli/

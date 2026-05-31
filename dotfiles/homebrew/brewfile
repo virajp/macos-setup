@@ -90,6 +90,8 @@ brew "zsh"
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
 cask "alfred"
+# Google's Antigravity CLI
+cask "antigravity-cli"
 # Tools for building Android applications
 cask "android-studio"
 # Web browser focusing on privacy
