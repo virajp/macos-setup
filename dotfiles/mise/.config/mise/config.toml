@@ -38,11 +38,11 @@ hide        = true
 run         = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
-cleanupDS          = "mise run --silent cleanupDS"
-cleanupDS-Projects = "mise run --silent cleanupDS ~/Projects"
-cleanupTelegram    = "mise run --silent cleanupTelegram"
-osx-upgrade        = "mise run --silent upgrade:macos:upgrade"
-updateall          = "mise run --silent updateall"
+cleanupDS          = "mise run cleanupDS"
+cleanupDS-Projects = "mise run cleanupDS ~/Projects"
+cleanupTelegram    = "mise run cleanupTelegram"
+osx-upgrade        = "mise run upgrade:macos:upgrade"
+updateall          = "mise run updateall"
 
 # AI Tools shortcuts
 aistats = "pnpm dlx codeburn"
@@ -52,20 +52,20 @@ code = "mise run --silent func:code"
 
 # Startup, Services and Process related shortcuts
 listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
-listStartupItems = "mise run --silent func:listStartupItems"
-myps             = "mise run --silent func:myps"
+listStartupItems = "mise run func:listStartupItems"
+myps             = "mise run func:myps"
 
 # IP related shortcuts
-gateway  = "mise run --silent ips:gateway"
-ii       = "mise run --silent ips:ii"
-ips      = "mise run --silent ips:ips"
-ipv4     = "mise run --silent ips:ipv4"
-ipv6     = "mise run --silent ips:ipv6"
-remoteip = "mise run --silent ips:remoteip"
+gateway  = "mise run ips:gateway"
+ii       = "mise run ips:ii"
+ips      = "mise run ips:ips"
+ipv4     = "mise run ips:ipv4"
+ipv6     = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
 
 # Backup shortcuts
-# backup = "mise run --silent func:backup"
-# zipf = "mise run --silent func:zip"
+# backup = "mise run func:backup"
+# zipf = "mise run func:zip"
 
 # Generic Aliases
 adb             = "$ANDROID_HOME/platform-tools/adb"
