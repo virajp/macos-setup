@@ -1,0 +1,26 @@
+onboarding = false
+
+[ui]
+agent_panel_scope                 = "current"
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "terminal"
+
+[ui.sound]
+enabled = true
+
+[theme]
+name = "catppuccin"
+
+[experimental]
+pane_history = true
+
+[terminal]
+new_cwd    = "follow"
+shell_mode = "auto"
+
+[keys]
+focus_agent    = "prefix+alt+1..9"
+next_agent     = "ctrl+]"
+previous_agent = "ctrl+["
