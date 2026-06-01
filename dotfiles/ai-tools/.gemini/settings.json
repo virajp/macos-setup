@@ -79,5 +79,13 @@
     "showModelInfoInChat": true,
     "showStatusInTitle": true,
     "terminalBuffer": true
+  },
+  "mcpServers": {
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    }
   }
 }
