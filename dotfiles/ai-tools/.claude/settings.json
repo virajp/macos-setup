@@ -1,10 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
-  "effortLevel": "xhigh",
+  "effortLevel": "medium",
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
+    "mempalace@mempalace": true,
     "superpowers@claude-plugins-official": true,
     "warp@claude-code-warp": false
   },
@@ -17,6 +18,12 @@
     "claude-code-warp": {
       "source": {
         "repo": "warpdotdev/claude-code-warp",
+        "source": "github"
+      }
+    },
+    "mempalace": {
+      "source": {
+        "repo": "MemPalace/mempalace",
         "source": "github"
       }
     },
@@ -33,7 +40,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' blocked",
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh blocked",
             "timeout": 10,
             "type": "command"
           }
@@ -41,11 +48,22 @@
         "matcher": "*"
       }
     ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "${HOME}/.claude/plugins/marketplaces/mempalace/hooks/mempal_precompact_hook.sh",
+            "timeout": 30,
+            "type": "command"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "hooks": [
           {
-            "command": "~/.claude/hooks/npm-to-pnpm.sh",
+            "command": "${HOME}/.claude/hooks/npm-to-pnpm.sh",
             "timeout": 5,
             "type": "command"
           }
@@ -55,7 +73,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' working",
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh working",
             "timeout": 10,
             "type": "command"
           }
@@ -76,7 +94,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' release",
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh release",
             "timeout": 10,
             "type": "command"
           }
@@ -88,7 +106,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' idle",
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh idle",
             "timeout": 10,
             "type": "command"
           }
@@ -100,7 +118,17 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' idle",
+            "command": "${HOME}/.claude/plugins/marketplaces/mempalace/hooks/mempal_save_hook.sh",
+            "timeout": 30,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      },
+      {
+        "hooks": [
+          {
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh idle",
             "timeout": 10,
             "type": "command"
           }
@@ -112,7 +140,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/Users/virajpatel/.claude/hooks/herdr-agent-state.sh' working",
+            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh working",
             "timeout": 10,
             "type": "command"
           }
