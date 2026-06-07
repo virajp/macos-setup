@@ -1,0 +1,192 @@
+#!/usr/bin/env zsh
+
+##############################################################################
+# macOS Setup - Script to configure macOS settings
+##############################################################################
+#
+# Description:
+#   Configure macOS settings (finder, dock, etc.) using `defaults` command.
+#
+# Usage:
+#   ./utils/macos-setup
+#
+# References:
+#   - https://www.defaults-write.com/ - A collection of `defaults` commands for macOS.
+#   - https://mac.install.guide/mac-setup/finder/ - Guide to configuring Finder settings on macOS.
+#
+# Commands:
+#   - `defaults read <domain> <key>`: Read a specific setting.
+#   - `defaults write <domain> <key> <value>`: Write a specific setting.
+#   - `killall <app>`: Restart an application to apply changes (e.g., `killall Finder`).
+#
+# Shortcuts:
+#   - `defaults read com.apple.finder`: Read all Finder settings.
+#   - `defaults read NSGlobalDomain`: Read all global settings.
+#
+# Author: Viraj Patel
+##############################################################################
+
+# ============================================================================
+# macOS Environment Architecture Automation
+# ============================================================================
+
+echo "Initializing Mac workstation environment optimization..."
+
+# ----------------------------------------------------------------------------
+# Finder Architecture
+# ----------------------------------------------------------------------------
+echo "Configuring Finder workspace rules..."
+
+# Use list view layout natively ("Nlsv")
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show interactive breadcrumb path bar and status bar metrics
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Hide hidden files by default (Toggle with Cmd+Shift+Dot on the fly)
+defaults write com.apple.finder AppleShowAllFiles false
+
+# Ensure all filename extensions are explicitly visible system-wide
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Default scope for searches: Limit strictly to the current folder ("SCcf")
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Keep directory folders pinned to the top when sorting alphabetically
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Desktop Cleansing: Hide all physical, external, removable, and server mounts
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
+# Strip confirmation friction: Disable file extension change and trash warning dialogs
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Automatically purge items from the Trash bin after 30 days
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
+# Establish User Home directory as default anchor path for all new Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://{$HOME}/"
+
+# Prevent metadata pollution: Disable hidden .DS_Store generation on Network and USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# ----------------------------------------------------------------------------
+# Dock & Workspace Aesthetics
+# ----------------------------------------------------------------------------
+echo "Calibrating Dock layout and spacing matrix..."
+
+# Pin Dock to the right screen boundary to save vertical coding estate
+defaults write com.apple.dock orientation -string "right"
+
+# Dynamic presentation: Set auto-hide to true and drop baseline icon scale to 38px
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock tilesize -int 38
+
+# Fisheye Magnification: Enabled with an expanded max-hover focus target of 71px
+defaults write com.apple.dock magnification -bool true
+defaults write com.apple.dock largesize -int 71
+
+# Hot Corners: Map Bottom-Right corner explicitly to trigger Quick Note (ID 14)
+defaults write com.apple.dock "wvous-br-corner" -int 14
+defaults write com.apple.dock "wvous-br-modifier" -int 0
+
+# ----------------------------------------------------------------------------
+# Window & Workspace Management
+# ----------------------------------------------------------------------------
+echo "Setting window grouping and focus policies..."
+
+# Restrict wallpaper canvas clicks to only function when Stage Manager is running
+defaults write com.apple.WindowManager ClickedWallpaperRevealsDesktop -int 2
+
+# Mission Control Optimization: Group window assets tightly by application profile
+defaults write com.apple.dock expose-group-apps -bool true
+
+# Prevent workspace chaos: Do not auto-rearrange Spaces based on recency metric
+defaults write com.apple.dock mru-spaces -bool false
+
+# ----------------------------------------------------------------------------
+# Trackpad Framework
+# ----------------------------------------------------------------------------
+echo "Locking down Tap-To-Click input surfaces..."
+
+# Enforce Tap-To-Click globally, internally, and across Bluetooth peripherals
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# ----------------------------------------------------------------------------
+# System Sync & Core Process Flushes
+# ----------------------------------------------------------------------------
+echo "Synchronizing system defaults and flushing graphics engines..."
+
+# Clear background configuration cache structures
+killall cfprefsd
+
+# Gracefully terminate and reload GUI subsystems to apply parameters cleanly
+for app in "Finder" "Dock" "SystemUIServer"; do
+    killall "$app" > /dev/null 2>&1
+done
+
+echo "Workstation script environment successfully deployed!"
+
+# ----------------------------------------------------------------------------
+# Battery & Power Infrastructure Configuration
+# ----------------------------------------------------------------------------
+echo "Baking custom Hardware Power Management profiles..."
+
+# Settings when running strictly on Battery Power (-b)
+# Conserves power with tight 5-minute timeouts, lowered screen brightness, and Low Power Mode
+sudo pmset -b displaysleep 5
+sudo pmset -b disksleep 5
+sudo pmset -b sleep 5
+sudo pmset -b womp 0
+sudo pmset -b powernap 0
+sudo pmset -b lessbright 1
+sudo pmset -b halfdim 0
+sudo pmset -b lowpowermode 1
+
+# Settings when connected to a Power Adapter (-c)
+# Expands timeouts to 30 minutes, keeps performance uncapped, and enables background processing
+sudo pmset -c displaysleep 30
+sudo pmset -c disksleep 30
+sudo pmset -c sleep 30
+sudo pmset -c womp 1
+sudo pmset -c powernap 1
+sudo pmset -c lessbright 0
+sudo pmset -c halfdim 0
+sudo pmset -c lowpowermode 0
+
+# Hardware Policy Settings across ALL Power States (-a)
+# Eliminates phantom wakes, handles custom deep-standby triggers, and disables TTY idle blockers
+sudo pmset -a proximitywake 0
+sudo pmset -a autorestart 1
+sudo pmset -a lidwake 1
+sudo pmset -a acwake 1
+sudo pmset -a ttyskeepawake 0
+sudo pmset -a standby 1
+sudo pmset -a standbydelayhigh 3600
+sudo pmset -a standbydelaylow 300
+sudo pmset -a tcpkeepalive 1
+
+# Apply hardware-level AutoBoot configuration via NVRAM logic
+echo "Setting firmware AutoBoot arguments..."
+sudo nvram AutoBoot=%01
+
+# Interface Optimizations: Clamp streaming bandwidth and media engines on battery
+defaults write com.apple.appleinterface videoStreamingOptimizeOnBattery -bool true
+
+# Optional: Hardware Charge Limit Enforcement (uncomment if using bclm via Homebrew)
+# if type -q bclm
+#     sudo bclm write 80
+# end
+
+# Clear background configuration engine cache
+killall cfprefsd
+echo "Power profiles calibrated and locked in successfully!"
