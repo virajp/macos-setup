@@ -79,4 +79,7 @@ else
 fi
 
 echo ""
+sudo ${HOME}/Projects/github.com/virajp/macos-setup/utils/macos-setup
+
+echo ""
 echo "${SUCCESS_EMOJI} Setup complete!"

@@ -71,7 +71,7 @@ brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Interactive TUI for Homebrew
-brew "gromgit/brewtils/taproom"
+# brew "gromgit/brewtils/taproom"
 #  CLI proxy to minimize LLM token consumption
 brew "rtk"
 # Display directories as trees (with optional color/HTML output)
