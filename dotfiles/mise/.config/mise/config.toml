@@ -19,6 +19,7 @@ claude-code        = { version = "latest" }
 jq                 = { version = "latest" }
 node               = { version = "latest" }
 "npm:ccstatusline" = { version = "latest" }
+opencode           = { version = "latest" }
 "pipx:graphifyy"   = { uvx = true, version = "latest" }
 "pipx:mempalace"   = { uvx = true, version = "latest" }
 pnpm               = { version = "latest" }
