@@ -4,14 +4,14 @@
   "effortLevel": "medium",
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
+    "dart-lsp@virajp-plugins": true,
     "frontend-design@claude-plugins-official": true,
     "kotlin-lsp@claude-plugins-official": true,
     "mempalace@mempalace": true,
+    "skills@virajp-plugins": true,
     "superpowers@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
-    "vlsp-dart@virajp-plugins": true,
-    "vlsp-ts-js@virajp-plugins": true,
-    "vskills@virajp-plugins": true,
+    "typescript-lsp@virajp-plugins": true,
     "warp@claude-code-warp": false
   },
   "env": {
