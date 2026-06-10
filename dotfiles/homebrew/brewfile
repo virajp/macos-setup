@@ -44,6 +44,8 @@ brew "gping"
 brew "grype"
 # Herdr tmux for AI coding agents
 brew "herdr"
+# Self-improving AI agent that creates skills from experience
+brew "hermes-agent"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Tools and libraries to manipulate images in select formats
