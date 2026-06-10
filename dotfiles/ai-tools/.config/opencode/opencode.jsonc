@@ -21,7 +21,7 @@
       "type": "local"
     }
   },
-  "model": "opencode/kimi-k2.6",
+  "model": "opencode/nemotron-3-ultra-free",
   "permission": {
     "apply_patch": "allow",
     "bash": "allow",
@@ -42,6 +42,7 @@
   "plugin": [
     "superpowers@git+https://github.com/obra/superpowers.git",
     "@warp-dot-dev/opencode-warp",
+    "@devtheops/opencode-plugin-mempalace",
     [
       "@devtheops/opencode-plugin-mempalace",
       {
