@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Upgrade all tools managed in the system"
-#MISE depends=["init"]
+#MISE depends=["init:dot"]
 #MISE hide=true
 
 set -e
@@ -43,6 +43,8 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 print_header "Disabling .DS_Store file creation on USB drives ..."
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+mise run upgrade:npm
 
 mise run cleanupDS ~/Projects
 

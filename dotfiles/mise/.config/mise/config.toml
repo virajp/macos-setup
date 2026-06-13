@@ -2,6 +2,7 @@
 all_compile          = false
 env_shell_expand     = true
 gpg_verify           = true
+minimum_release_age  = "4h"
 os                   = "macos"
 paranoid             = true
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
@@ -34,10 +35,10 @@ taplo  = { version = "latest" }
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
 
-[tasks.init]
-description = "Mark all files as executables"
+[tasks."init:dot"]
+description = "Initialize mise tasks"
 hide        = true
-run         = "find ~/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
 cleanupDS          = "mise run cleanupDS"
