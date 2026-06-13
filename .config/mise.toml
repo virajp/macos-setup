@@ -1,10 +1,9 @@
 [settings]
-# arch = "x86_64"
 activate_aggressive = true
 all_compile         = false
 env_shell_expand    = true
 gpg_verify          = true
-paranoid            = true
+raw                 = true
 task_output         = "interleave"
 
 # Package manager settings

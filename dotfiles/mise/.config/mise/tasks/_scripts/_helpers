@@ -21,14 +21,14 @@ readonly CHECK_EMOJI="🩺"
 # Print colored section header with new line
 print_header() {
   local msg="$1"
-  print_separator "="
+  line_sep "="
   echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
 }
 
 # Print colored section sub-header with new line
 print_subheader() {
   local msg="$1"
-  print_separator "-"
+  line_sep "-"
   echo -e "${GREEN}${BOLD}${msg}${NORMAL}"
 }
 
@@ -53,21 +53,12 @@ print_success() {
   echo -e "${SUCCESS_EMOJI} ${GREEN}${BOLD}${msg}${NORMAL}"
 }
 
-##
-# Repeats a character string across the terminal width
-# Useful for creating visual separators in terminal output
-#
-# @param $1 - Character or string to repeat
-# @return 0 on success
-# @example print_separator '='    # Creates a line of equals signs
-# @example print_separator '-'    # Creates a line of dashes
-# @note Fish equivalent: repchar function in repchar.fish
-##
-function print_separator() {
-  local COLS
-  COLS=$(stty size </dev/tty 2>/dev/null | awk '{print $2}')
-  COLS="${COLS:-80}"
-  local LENGTH=$(( COLS / ${#1} ))
-  for (( i = 1; i <= LENGTH; i++ )); do printf -- "$1"; done
-  echo ""
+# Print line separator
+line_sep() {
+  local COL
+  COL=$(stty size 2>/dev/null | awk '{print $2}')
+  # Build a string of spaces equal to width, then replace with '='
+  local line
+  printf -v line '%*s' "${COL:-80}" ''
+  printf '%s\n' "${line// /$1}"
 }

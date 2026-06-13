@@ -5,7 +5,7 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-print_separator "="
+line_sep "="
 print_wait "Checking Touch ID setup for shell ... "
 
 if grep -q "pam_tid.so" /etc/pam.d/sudo; then
