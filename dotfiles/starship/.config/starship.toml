@@ -131,43 +131,43 @@ ignore_submodules = false
 style             = "bg:color_aqua"
 
 [nodejs]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [dart]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [c]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [rust]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [golang]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [php]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [java]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [kotlin]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [haskell]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [python]
-format = '[[ $symbol( $version) ](fg:color_white bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
 style  = "bg:color_blue"
 
 [docker_context]
@@ -183,7 +183,7 @@ style    = "bg:color_white fg:color_aqua"
 
 [gcloud]
 disabled = false
-format   = '[[ $symbol $project ](fg:color_white bg:color_aqua)]($style)'
+format   = '[[ $symbol( $project) ](fg:color_white bg:color_aqua)]($style)'
 style    = "bg:color_red"
 symbol   = ""
 
@@ -191,7 +191,7 @@ symbol   = ""
 disabled    = false
 format      = '[[ $time ](fg:color_white bg:color_orange)]($style)'
 style       = "bg:color_orange"
-time_format = "%a %l:%M%P"
+time_format = "%a%l:%M%P"
 use_12hr    = true
 
 [line_break]
