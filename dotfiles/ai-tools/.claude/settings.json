@@ -155,7 +155,7 @@
     ]
   },
   "includeCoAuthoredBy": true,
-  "model": "sonnet[1m]",
+  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Skill",
