@@ -1,110 +1,120 @@
 {
-  "version": 3,
+  "colorLevel": 3,
+  "compactThreshold": 60,
+  "defaultPadding": " ",
+  "flexMode": "full",
+  "gitCacheTtlSeconds": 5,
+  "globalBold": false,
+  "inheritSeparatorColors": false,
   "lines": [
     [
       {
+        "backgroundColor": "bgBrightMagenta",
+        "id": "aec72c50-83cc-40b9-9178-6a9fd90858cc",
+        "type": "current-working-dir"
+      },
+      {
+        "backgroundColor": "bgCyan",
+        "id": "58461af1-578f-4382-a7b3-316d91dbcdfd",
+        "type": "git-branch"
+      },
+      {
+        "backgroundColor": "bgRed",
+        "id": "97d7b8d0-19fe-4b9b-9298-547096b397b1",
+        "type": "git-worktree"
+      },
+      {
+        "backgroundColor": "bgBlue",
+        "id": "80154b21-2b4f-49cf-b44b-82b617dff1ed",
+        "type": "worktree-branch"
+      },
+      {
+        "backgroundColor": "bgBrightGreen",
+        "id": "3e86f50a-97ce-4155-ae33-ee19d132068b",
+        "type": "git-changes"
+      }
+    ],
+    [
+      {
+        "color": "brightCyan",
         "id": "9f432879-d9a1-4f00-8f02-a1829ba2c18b",
-        "type": "tokens-total",
-        "color": "brightCyan"
+        "type": "tokens-total"
       },
       {
-        "id": "e35f27b1-14f7-45c0-bcdb-8cafaeec9445",
-        "type": "session-usage",
         "color": "yellow",
+        "id": "e35f27b1-14f7-45c0-bcdb-8cafaeec9445",
         "metadata": {
           "display": "time"
-        }
+        },
+        "type": "session-usage"
       },
       {
-        "id": "cadd379e-a93f-4ba3-a249-0bca29833032",
-        "type": "weekly-usage",
         "color": "brightMagenta",
+        "id": "cadd379e-a93f-4ba3-a249-0bca29833032",
         "metadata": {
           "display": "time"
-        }
+        },
+        "type": "weekly-usage"
       },
       {
-        "id": "eaf748d0-5e86-48fc-a972-4a2666c73b23",
-        "type": "context-bar",
         "color": "brightGreen",
+        "id": "eaf748d0-5e86-48fc-a972-4a2666c73b23",
         "metadata": {
           "display": "progress-short"
-        }
+        },
+        "type": "context-bar"
       }
     ],
     [
       {
+        "color": "white",
         "id": "1",
-        "type": "model",
-        "color": "white"
+        "type": "model"
       },
       {
+        "color": "white",
         "id": "5",
-        "type": "thinking-effort",
-        "color": "white"
+        "type": "thinking-effort"
       },
       {
+        "color": "brightWhite",
         "id": "3",
-        "type": "session-clock",
-        "color": "brightWhite"
+        "type": "session-clock"
       },
       {
-        "id": "b8737eac-a91f-4b6f-9edd-f194f3a140ab",
-        "type": "reset-timer",
         "color": "brightBlue",
+        "id": "b8737eac-a91f-4b6f-9edd-f194f3a140ab",
         "metadata": {
-          "display": "time",
-          "compact": "true"
-        }
+          "compact": "true",
+          "display": "time"
+        },
+        "type": "reset-timer"
       },
       {
+        "backgroundColor": "bgBrightBlue",
         "id": "0911780f-480b-417f-b541-f65b24cec9a6",
-        "type": "session-cost",
-        "backgroundColor": "bgBrightBlue"
-      }
-    ],
-    [
-      {
-        "id": "97d7b8d0-19fe-4b9b-9298-547096b397b1",
-        "type": "git-worktree",
-        "backgroundColor": "bgRed"
-      },
-      {
-        "id": "80154b21-2b4f-49cf-b44b-82b617dff1ed",
-        "type": "worktree-branch",
-        "backgroundColor": "bgBlue"
-      },
-      {
-        "id": "3e86f50a-97ce-4155-ae33-ee19d132068b",
-        "type": "git-changes",
-        "backgroundColor": "bgBrightGreen"
+        "type": "session-cost"
       }
     ]
   ],
-  "flexMode": "full",
-  "compactThreshold": 60,
-  "colorLevel": 3,
-  "defaultPadding": " ",
-  "inheritSeparatorColors": false,
-  "globalBold": false,
-  "gitCacheTtlSeconds": 5,
   "minimalistMode": false,
   "powerline": {
+    "autoAlign": false,
+    "continueThemeAcrossLines": true,
     "enabled": true,
-    "separators": [
+    "endCaps": [
       ""
     ],
     "separatorInvertBackground": [
       false
     ],
+    "separators": [
+      ""
+    ],
     "startCaps": [
       ""
     ],
-    "endCaps": [
-      ""
-    ],
-    "theme": "minimal",
-    "autoAlign": false,
-    "continueThemeAcrossLines": true
-  }
+    "theme": "minimal"
+  },
+  "version": 3
 }

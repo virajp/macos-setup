@@ -3,7 +3,10 @@
   "cleanupPeriodDays": 30,
   "effortLevel": "medium",
   "enabledPlugins": {
-    "mempalace@mempalace": true,
+    "context7@virajp-plugins": true,
+    "mempalace@virajp-plugins": true,
+    "superpowers@virajp-plugins": true,
+    "vwf@virajp-plugins": true,
     "warp@claude-code-warp": true
   },
   "env": {
@@ -18,27 +21,21 @@
         "source": "github"
       }
     },
-    "mempalace": {
+    "claude-plugins-official": {
       "source": {
-        "repo": "MemPalace/mempalace",
+        "repo": "anthropics/claude-plugins-official",
+        "source": "github"
+      }
+    },
+    "virajp-plugins": {
+      "source": {
+        "repo": "virajp/ai-plugins",
         "source": "github"
       }
     }
   },
   "forceLoginMethod": "claudeai",
   "hooks": {
-    "PermissionRequest": [],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "command": "${HOME}/.claude/plugins/marketplaces/mempalace/hooks/mempal_precompact_hook.sh",
-            "timeout": 30,
-            "type": "command"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "hooks": [
@@ -49,22 +46,7 @@
         ],
         "matcher": "Bash"
       }
-    ],
-    "SessionEnd": [],
-    "SessionStart": [],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "${HOME}/.claude/plugins/marketplaces/mempalace/hooks/mempal_save_hook.sh",
-            "timeout": 30,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
-    "UserPromptSubmit": []
+    ]
   },
   "includeCoAuthoredBy": true,
   "model": "sonnet[1m]",
@@ -90,7 +72,7 @@
   "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
-    "command": "ccstatusline",
+    "command": "pnpm dlx ccstatusline",
     "padding": 0,
     "refreshInterval": 4,
     "type": "command"
