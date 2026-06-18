@@ -3,16 +3,8 @@
   "cleanupPeriodDays": 30,
   "effortLevel": "medium",
   "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "dart-lsp@virajp-plugins": true,
-    "frontend-design@claude-plugins-official": true,
-    "kotlin-lsp@claude-plugins-official": true,
     "mempalace@mempalace": true,
-    "skills@virajp-plugins": true,
-    "superpowers@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "typescript-lsp@virajp-plugins": true,
-    "warp@claude-code-warp": false
+    "warp@claude-code-warp": true
   },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
@@ -31,28 +23,11 @@
         "repo": "MemPalace/mempalace",
         "source": "github"
       }
-    },
-    "virajp-plugins": {
-      "source": {
-        "repo": "virajp/claude-plugins",
-        "source": "github"
-      }
     }
   },
   "forceLoginMethod": "claudeai",
   "hooks": {
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh blocked",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
+    "PermissionRequest": [],
     "PreCompact": [
       {
         "hooks": [
@@ -68,26 +43,6 @@
       {
         "hooks": [
           {
-            "command": "${HOME}/.claude/hooks/npm-to-pnpm.sh",
-            "timeout": 5,
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      },
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh working",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      },
-      {
-        "hooks": [
-          {
             "command": "rtk hook claude",
             "type": "command"
           }
@@ -95,30 +50,8 @@
         "matcher": "Bash"
       }
     ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh release",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh idle",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
+    "SessionEnd": [],
+    "SessionStart": [],
     "Stop": [
       {
         "hooks": [
@@ -129,35 +62,17 @@
           }
         ],
         "matcher": "*"
-      },
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh idle",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
       }
     ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "command": "bash ${HOME}/.claude/hooks/herdr-agent-state.sh working",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
+    "UserPromptSubmit": []
   },
   "includeCoAuthoredBy": true,
   "model": "sonnet[1m]",
   "permissions": {
     "allow": [
+      "Read",
+      "Edit",
+      "Bash",
       "Skill",
       "WebFetch",
       "Agent"
