@@ -35,19 +35,7 @@
     }
   },
   "forceLoginMethod": "claudeai",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "rtk hook claude",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      }
-    ]
-  },
+  "hooks": {},
   "includeCoAuthoredBy": true,
   "model": "sonnet[1m]",
   "permissions": {
