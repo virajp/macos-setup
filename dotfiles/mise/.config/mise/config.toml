@@ -2,7 +2,7 @@
 all_compile          = false
 env_shell_expand     = true
 gpg_verify           = true
-minimum_release_age  = "4h"
+minimum_release_age  = "0h"
 os                   = "macos"
 paranoid             = true
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]

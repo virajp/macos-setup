@@ -6,6 +6,9 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
+# Kill keyboxd (gpg) to ensure that stale keys are refreshed
+gpgconf --kill all || true
+
 # Set global Git configuration for GPG SSH signing
 git config --global gpg.ssh.allowedSignersFile "$HOME/.ssh/allowed_signers"
 
