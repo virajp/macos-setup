@@ -30,8 +30,18 @@ print_subheader "Linking Claude Code to ~/.local/bin/claude ..."
 mkdir -p ~/.local/bin
 ln -sf "$(mise which claude)" ~/.local/bin/claude
 
+print_subheader "Adding external marketplaces ..."
+claude plugin marketplace add virajp/ai-plugins || true
+claude plugin marketplace add warpdotdev/claude-code-warp || true
+
 print_subheader "Updating Claude marketplaces ..."
 claude plugin marketplace update
 
+print_subheader "Install typescript/javascript plugin ..."
+updatePlugin typescript-lsp virajp-plugins user
+
 print_subheader "Install Warp plugin ..."
 updatePlugin warp claude-code-warp user
+
+print_subheader "Prune plugins ..."
+claude plugin autoremove --scope user --yes
