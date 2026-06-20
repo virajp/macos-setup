@@ -5,7 +5,6 @@
   "enabledPlugins": {
     "context7@virajp-plugins": true,
     "mempalace@virajp-plugins": true,
-    "superpowers@virajp-plugins": true,
     "vwf@virajp-plugins": true,
     "warp@claude-code-warp": true
   },
@@ -65,14 +64,15 @@
   },
   "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
+  "spinnerTipsEnabled": false,
   "statusLine": {
-    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/plugins/vwf/bin/statusline",
+    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/tools/statusline/statusline",
     "padding": 0,
     "refreshInterval": 1,
     "type": "command"
   },
   "subagentStatusLine": {
-    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/plugins/vwf/bin/statusline",
+    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/tools/statusline/statusline",
     "type": "command"
   },
   "terminalProgressBarEnabled": true,
