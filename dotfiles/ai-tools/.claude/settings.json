@@ -49,20 +49,30 @@
     ],
     "defaultMode": "acceptEdits",
     "deny": [
+      "Bash(* sudo *)",
       "Bash(sudo *)",
+      "Bash(* su *)",
       "Bash(su *)",
+      "Bash(* ssh *)",
       "Bash(ssh *)",
+      "Bash(* firebase *)",
       "Bash(firebase *)",
+      "Bash(* gcloud *)",
       "Bash(gcloud *)",
-      "Bash(doppler *)"
+      "Bash(doppler *)",
+      "Bash(* doppler *)"
     ]
   },
   "respectGitignore": true,
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
-    "command": "pnpm dlx ccstatusline",
+    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/plugins/vwf/bin/statusline",
     "padding": 0,
-    "refreshInterval": 4,
+    "refreshInterval": 1,
+    "type": "command"
+  },
+  "subagentStatusLine": {
+    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/plugins/vwf/bin/statusline",
     "type": "command"
   },
   "terminalProgressBarEnabled": true,
