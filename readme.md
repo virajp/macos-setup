@@ -1,8 +1,25 @@
 # macOS Setup
 
-Follow these steps to setup macOS.
+My personal macOS provisioning repo: a Homebrew `brewfile`, dotfiles managed
+with [GNU Stow](https://www.gnu.org/software/stow/), and a `mise` task runner
+that ties everything together.
 
-## Steps
+## Automated setup
+
+The [`./setup`](./setup) script is the main entrypoint. It installs Homebrew if
+missing, installs everything in
+[`dotfiles/homebrew/brewfile`](./dotfiles/homebrew/brewfile), symlinks the
+dotfiles via `mise run stow:install`, and applies the macOS defaults in
+[`utils/macos-setup`](./utils/macos-setup):
+
+```shell
+./setup
+```
+
+> Requires `mise` and `stow` (both in the brewfile). On a truly fresh machine,
+> bootstrap with the gist in [docs/setup.md](./docs/setup.md) first.
+
+## Manual steps
 
 - [Create account](./docs/account.md)
 - [Setup Hostname & Diskname](./docs/host.md)
@@ -11,6 +28,23 @@ Follow these steps to setup macOS.
 - [macOS: Settings](./docs/settings.md)
 - [Setup TouchID for sudo](./docs/touchid-sudo.md)
 - [Install tools](./docs/tools.md)
+- [AI tools](./docs/ai-tools/readme.md)
+
+## Common tasks
+
+Tasks are run with `mise` (list them with `mise tasks`):
+
+```shell
+mise run brew:gen        # regenerate the brewfile from installed packages
+mise run brew:check      # check the system against the brewfile
+mise run stow:install    # (re)symlink dotfiles
+mise run stow:simulate   # dry-run the symlinking
+mise run code:format     # format files (dprint/taplo)
+mise run code:lint       # lint files
+```
+
+See [dotfiles/CONFIG_DOCUMENTATION.md](./dotfiles/CONFIG_DOCUMENTATION.md) for
+how the dotfiles are organized.
 
 ## Final steps: Update tools & macOS
 

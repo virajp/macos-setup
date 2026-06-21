@@ -1,135 +1,77 @@
 # Configuration Documentation
 
 This document explains the less-obvious settings and customizations in the
-dotfiles configuration.
+dotfiles configuration. Each top-level directory under `dotfiles/` is a
+[GNU Stow](https://www.gnu.org/software/stow/) package whose contents are
+symlinked into `$HOME` (see [`readme.md`](./readme.md)).
 
 ## Directory Structure
 
-The `dotfiles/` directory contains configuration files organized by application:
+| Package       | What it configures                                                 |
+| ------------- | ------------------------------------------------------------------ |
+| `fish/`       | Fish shell — the default interactive shell (`conf.d/*.fish`)       |
+| `zsh/`        | Zsh configuration (legacy / fallback shell)                        |
+| `nushell/`    | Nushell configuration with a custom vendor autoload system         |
+| `starship/`   | Starship prompt (the active prompt, initialised from fish)         |
+| `oh-my-posh/` | Oh My Posh prompt themes (`shell.yaml`, `claude.yaml`) — alternate |
+| `ghostty/`    | Ghostty terminal configuration                                     |
+| `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab    |
+| `github/`     | GitHub CLI (`gh`) configuration and hosts                          |
+| `ssh/`        | SSH client config and commit-signing public keys                   |
+| `fnox/`       | Secret management via the macOS Keychain (see below)               |
+| `mise/`       | Global `mise` tool versions, env, and task runner shortcuts        |
+| `homebrew/`   | The `brewfile` (source of truth for installed packages)            |
+| `dprint/`     | `dprint` / `taplo` formatter configuration                         |
+| `gem/`        | RubyGems configuration                                             |
+| `1Password/`  | 1Password SSH agent configuration                                  |
+| `ai-tools/`   | Claude Code, OpenCode, Gemini CLI, and shared agent skills         |
 
-- `nushell/` - Modern shell configuration with custom vendor autoload system
-- `oh-my-posh/` - Custom prompt theme with gruvbox colors
-- `starship/` - Alternative prompt configuration (currently unused in favor of
-  oh-my-posh)
-- `warp/` - Terminal theme and keybindings
-- `gh/` - GitHub CLI configuration
-- `docker/` - Docker security profiles
-- `ssh/` - SSH client configuration
-- `git/` - Git configuration and aliases
-- `vscode/` - VS Code settings
+## Shells & Prompt
 
-## Key Customizations & WHY Comments
+The default interactive shell is **fish**; `zsh` and `nushell` are also kept in
+sync. Set fish as the login shell via the steps in
+[`docs/shell.md`](../docs/shell.md).
 
-### Nushell Configuration
+### Fish loading sequence
 
-#### Loading Sequence
+1. `conf.d/*.fish` — sorted by their numeric prefix (`01-env`, `02-path`, …)
+2. `config.fish` — main configuration
 
-Files are loaded in this order:
+### Prompt
 
-1. `env.nu` - Initial environment setup
-2. `config.nu` - Main configuration
-3. `vendor/autoload/*.nu` - All files in autoload directory (sorted by name)
-4. `login.nu` - Login-specific setup
+**Starship** is the active prompt (`06-prompt.fish` calls `starship init`). The
+Oh My Posh themes are kept as an alternative — the `oh-my-posh init` block in
+`06-prompt.fish` is commented out and can be swapped in if preferred.
 
-#### Notable Settings
+### Nushell vendor autoload
 
-**Custom Vendor Autoload System** (`vendor/autoload/`)
+Files in `vendor/autoload/` load in sorted order, e.g. `00-env.nu`,
+`01-aliases.nu`, `02-homebrew.nu`, `99-zoxide.nu`, `99-oh-my-posh.nu`.
 
-- `00-env.nu` - Environment variables loaded first
-- `01-aliases.nu` - Command aliases and shortcuts
-- `99-oh-my-posh.nu` - Prompt configuration (loaded last)
-- `99-zoxide.nu` - Smart directory jumping
+## Secret Management (fnox)
 
-**Environment Variables** (`00-env.nu`)
+Secrets are stored in the **macOS Keychain** and surfaced as environment
+variables by [`fnox`](https://github.com/jdx/fnox), activated in
+`fish/conf.d/52-fnox.fish` and wired into `mise` via the `fnox-env` plugin.
+`dotfiles/fnox/fnox.toml` defines the mapped secrets (e.g. `GITHUB_API_TOKEN`,
+`HOMEBREW_GITHUB_API_TOKEN`). There is no plaintext secret file in this repo.
 
-- `CLOUD_PATH`: iCloud Drive path for cross-device secret syncing
-- `CHROME_EXECUTABLE`: Uses Brave browser for Flutter web development
-- `DOCKER_DEFAULT_PLATFORM`: Forces AMD64 for production compatibility
-- Loads secrets from `iCloud/Secure/secrets.json`
+## Tooling via mise
 
-**Shell Features** (`config.nu`)
+`dotfiles/mise/.config/mise/config.toml` is the global `mise` config. It pins
+language/CLI tool versions, sets `pnpm` as the npm package manager, enables
+`uvx` for pipx, and defines a large set of `[shell_alias]` shortcuts — including
+`updateall`, `osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup
+tasks. The task scripts themselves live under `mise/.config/mise/tasks/`.
 
-- SQLite history with 5M record limit for performance
-- Trash integration instead of permanent deletion
-- Sublime Text as default editor
-- Custom datetime format
+## Git
 
-### Oh-My-Posh Configuration
+`git/.gitconfig` includes host-specific configs conditionally
+(`.gitconfig-github`, `.gitconfig-gitlab`) and uses a global ignore file
+(`.gitignore_global`). Commit signing keys live in `ssh/.ssh/` and are
+referenced via `ssh/.ssh/allowed_signers`.
 
-**Custom Theme** (`.config/oh-my-posh.yaml`)
+## Stow ignore rules
 
-- Gruvbox-inspired color palette
-- Multi-segment layout: time → git → path → languages → k8s → execution time
-- Custom path substitutions for common directories
-- Auto-update enabled for latest features
-
-**Integration** (`99-oh-my-posh.nu`)
-
-- Right prompt on last line for nushell compatibility
-- Custom config path instead of built-in themes
-- Python virtual environment prompt disabled
-
-### Tool-Specific Configurations
-
-**GitHub CLI** (`gh/config.yml`)
-
-- SSH protocol for better security
-- VS Code as default editor
-- Custom aliases for common operations
-
-**Warp Terminal** (`warp/themes/coolnight.yaml`)
-
-- Custom cyberpunk/synthwave inspired theme
-- High contrast colors for better readability
-
-**Starship** (`starship.toml`)
-
-- Alternative prompt configuration (backup)
-- Gruvbox color palette
-- Higher timeout for slow git operations
-- Custom directory substitutions with icons
-
-## Security Features
-
-1. **SSH Key Usage**: GitHub CLI configured for SSH over HTTPS
-2. **Secret Management**: Use doppler for secret management
-3. **Trash Safety**: Files moved to Trash instead of permanent deletion
-
-## Development Environment
-
-**Language Support**:
-
-- Node.js with development environment
-- Java with OpenJDK from Homebrew
-- Ruby with custom gem directory
-- Android development tools
-- Docker with BuildKit optimizations
-
-**Enhanced Tools**:
-
-- `eza` for better `ls` with icons and colors
-- `bat` for syntax-highlighted `cat`
-- `diff-so-fancy` for better git diffs
-- `zoxide` for smart directory navigation
-- `prettyping` for enhanced ping output
-
-## Path Configuration
-
-Custom PATH additions include:
-
-- Homebrew binaries (`/opt/homebrew/bin`, `/opt/homebrew/sbin`)
-- Language-specific tools (Ruby, Java, Node.js)
-- Android development tools
-- OrbStack container tools
-- Local user binaries
-
-## Color Schemes
-
-All tools use consistent gruvbox-inspired colors:
-
-- Background: Dark variants (#3c3836, #665c54)
-- Foreground: Light variants (#fbf1c7, #ffffff)
-- Accents: Blue (#458588), Aqua (#689d6a), Green (#98971a)
-- Alerts: Orange (#d65d0e), Red (#cc241d), Yellow (#d79921)
-
-This ensures visual consistency across terminal, prompt, and editor themes.
+`dotfiles/.stow-local-ignore` keeps stow from symlinking repo metadata (`.git`,
+`.gitignore`, `.DS_Store`, the ignore file itself, and `history.*` files).
