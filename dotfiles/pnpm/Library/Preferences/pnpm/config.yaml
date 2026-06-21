@@ -1,0 +1,16 @@
+# Global pnpm configuration (pnpm v11+).
+#
+# In pnpm v11, .npmrc holds ONLY registry/auth settings; everything else lives
+# in YAML (this global config.yaml, with camelCase keys). Registry tokens stay
+# in ~/.npmrc and ~/Library/Preferences/pnpm/auth.ini and are never committed.
+#
+# Path resolved via: pnpm config get globalconfig
+# Settings reference: https://pnpm.io/settings
+
+# Supply-chain safety: refuse to install package versions published less than
+# this many minutes ago (600 = 10h cooldown), mitigating compromised releases.
+minimumReleaseAge: 600
+# Exempt specific versions from the cooldown when an urgent fix is needed:
+minimumReleaseAgeExclude:
+  - "@askviraj/linter"
+  - "@askviraj/ai-plugins"

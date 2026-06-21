@@ -20,6 +20,7 @@ symlinked into `$HOME` (see [`readme.md`](./readme.md)).
 | `ssh/`        | SSH client config and commit-signing public keys                   |
 | `fnox/`       | Secret management via the macOS Keychain (see below)               |
 | `mise/`       | Global `mise` tool versions, env, and task runner shortcuts        |
+| `pnpm/`       | Global pnpm settings (`config.yaml`); auth stays in `~/.npmrc`     |
 | `homebrew/`   | The `brewfile` (source of truth for installed packages)            |
 | `dprint/`     | `dprint` / `taplo` formatter configuration                         |
 | `gem/`        | RubyGems configuration                                             |
