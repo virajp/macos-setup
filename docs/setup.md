@@ -1,8 +1,8 @@
 # Setup
 
 `Homebrew` is a package manager for `macOS`. All of the global tools and
-applications will be installed using `Homebrew`. For local tools (specific to
-respective projects) will be installed using `mise`.
+applications will be installed using `Homebrew`. For local or development tools
+(global or specific to projects) will be installed using `mise`.
 
 ## Setup
 

@@ -22,10 +22,9 @@ dotfiles via `mise run stow:install`, and applies the macOS defaults in
 ## Manual steps
 
 - [Create account](./docs/account.md)
-- [Setup Hostname & Diskname](./docs/host.md)
+- [Setup Hostname](./docs/host.md)
 - [Setup](./docs/setup.md)
 - [Configure Shell](./docs/shell.md)
-- [macOS: Settings](./docs/settings.md)
 - [Setup TouchID for sudo](./docs/touchid-sudo.md)
 - [Install tools](./docs/tools.md)
 - [AI tools](./docs/ai-tools/readme.md)

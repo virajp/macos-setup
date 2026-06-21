@@ -33,6 +33,23 @@
 echo "Initializing Mac workstation environment optimization..."
 
 # ----------------------------------------------------------------------------
+# General & Appearance (NSGlobalDomain)
+# ----------------------------------------------------------------------------
+echo "Applying global appearance and behavior preferences..."
+
+# Use the system-wide Dark appearance
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+# Do not minimize windows on a double-click of the title bar
+defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
+
+# Disable automatic capitalization while typing
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Reopen windows/apps where you left off after quit or restart
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool true
+
+# ----------------------------------------------------------------------------
 # Finder Architecture
 # ----------------------------------------------------------------------------
 echo "Configuring Finder workspace rules..."
@@ -80,6 +97,36 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Hide local desktop icons for a clean workspace (files remain in ~/Desktop)
+defaults write com.apple.finder CreateDesktop -bool false
+
+# Show the sidebar; hide the Recent Tags section within it
+defaults write com.apple.finder ShowSidebar -bool true
+defaults write com.apple.finder ShowRecentTags -bool false
+
+# Open folders in tabs and show the tab bar
+defaults write com.apple.finder FinderSpawnTab -bool false
+defaults write com.apple.finder ShowTabView -bool true
+
+# Keep folders on top while sorting on the desktop too
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
+
+# Search results in list view; group by Kind and arrange those groups by Name
+defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
+defaults write com.apple.finder FXPreferredGroupBy -string "Kind"
+defaults write com.apple.finder FXArrangeGroupViewBy -string "Name"
+
+# Allow quitting Finder via Cmd+Q
+defaults write com.apple.finder QuitMenuItem -bool false
+
+# Keep the confirmation before removing items from iCloud Drive
+defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
+
+# App-centric sidebar and iCloud Drive integration in Finder
+defaults write com.apple.finder FK_AppCentricShowSidebar -bool true
+defaults write com.apple.finder FXICloudDriveEnabled -bool true
+defaults write com.apple.finder FXICloudDriveDocuments -bool true
+
 # ----------------------------------------------------------------------------
 # Dock & Workspace Aesthetics
 # ----------------------------------------------------------------------------
@@ -99,6 +146,18 @@ defaults write com.apple.dock largesize -int 71
 # Hot Corners: Map Bottom-Right corner explicitly to trigger Quick Note (ID 14)
 defaults write com.apple.dock "wvous-br-corner" -int 14
 defaults write com.apple.dock "wvous-br-modifier" -int 0
+
+# Do not show recently-used apps in the Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Minimize windows into their application icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Show indicator lights for open applications
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Always prefer tabs when opening documents
+defaults write com.apple.dock windowtabbing -string "always"
 
 # ----------------------------------------------------------------------------
 # Window & Workspace Management
@@ -123,6 +182,9 @@ echo "Locking down Tap-To-Click input surfaces..."
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# Disable Force Click (firm-press lookup / haptic)
+defaults write NSGlobalDomain "com.apple.trackpad.forceClick" -bool false
 
 # ----------------------------------------------------------------------------
 # System Sync & Core Process Flushes

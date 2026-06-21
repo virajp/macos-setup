@@ -1,10 +1,5 @@
 # Install Tools via Homebrew
 
-## Flutter & tools
-
-> Refer to this document for Flutter installation:
-> [Flutter](https://github.com/95octane/wiki/blob/main/engineering/setup/flutter.md)
-
 ## Miscellaneous tools
 
 `Logitech-Options+`: Logitech Mouse Driver & Configuration. Note that the new
@@ -20,15 +15,19 @@ the section.
 
 ## Configure tools
 
+### Sublime
+
 ```shell
-# Configure Sublime-Text
 open "$HOME/Applications/Sublime Text.app"
-# Copy license from 1Password and apply
-
-# Install package control by pressing "cmd+shift+p" and selecting "Install Package Control"
-
-# Now install important packages in sublime (cmd + shift + P)
-# - Text Pastry
-# - HTML-CSS-JS Prettify
-# - Compare Side-by-Side
 ```
+
+> Copy license from 1Password and apply
+>
+> Install package control by pressing "cmd+shift+p" and selecting "Install
+> Package Control"
+>
+> Now install important packages in sublime (cmd + shift + P)
+>
+> - Text Pastry
+> - HTML-CSS-JS Prettify
+> - Compare Side-by-Side

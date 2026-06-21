@@ -12,8 +12,7 @@ day-to-day use.
 
 This is the recommended way to use macOS. You can create a `standard user` and
 use that for day-to-day use. For administration purpose, you will need to create
-additional account with `admin privileges`. Let's call the name of `admini user`
-as `admin`
+additional account with `admin privileges`.
 
 ### Step 1: Create a Standard User
 
@@ -44,5 +43,5 @@ virajpatel ALL=(ALL) ALL
 Go to terminal and run the following command:
 
 ```shell
-softwareupdate --install --all --install-rosetta
+softwareupdate --install --all --install-rosetta --agree-to-license
 ```
