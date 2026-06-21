@@ -26,6 +26,7 @@ hide        = true
 run         = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
-cc    = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+cc    = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model sonnet --effort high"
+cco   = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model opus --effort high"
 lint  = "mise run lint"
 setup = "mise run setup:all"

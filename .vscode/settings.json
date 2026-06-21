@@ -51,7 +51,7 @@
     "*.dart": "${capture}.g.dart",
     "*.js": "${capture}.js.map,${capture}.d.ts,${capture}.d.ts.map",
     "doppler.yaml": ".doppler.yaml",
-    "linter.yaml": "taplo.toml,pre-commit-config.yaml,git-conventional-commits.yaml,gitleaks.toml",
+    "linter.yaml": "taplo.toml,pre-commit-config.yaml,git-conventional-commits.yaml,gitleaks.toml,statusline.json,",
     "mise.toml": "miserc.toml,mise.*.toml,root.toml",
     "readme.md": "*.md,doppler.yaml,LICENSE,.pre-commit-config.yaml,.gitleaks.toml,skills-lock.json,analysis_options.yaml,git-conventional-commits.yaml,.prettierrc.yaml,.augment-guidelines,claude.md,.cursorrules,CODING_STANDARDS.md,PROJECT_STRUCTURE.md,.cursorignore,.markdownlint.yaml",
   },
