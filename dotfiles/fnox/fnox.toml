@@ -2,5 +2,6 @@
 keychain = { service = "fnox", type = "keychain" }
 
 [secrets]
+CONTEXT7_API_KEY          = { provider = "keychain", value = "CONTEXT7_API_KEY" }
 GITHUB_API_TOKEN          = { provider = "keychain", value = "GITHUB_API_TOKEN" }
 HOMEBREW_GITHUB_API_TOKEN = { provider = "keychain", value = "GITHUB_API_TOKEN" }
