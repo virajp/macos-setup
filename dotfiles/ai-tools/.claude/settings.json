@@ -4,7 +4,9 @@
   "effortLevel": "high",
   "enabledPlugins": {
     "context7@virajp-plugins": true,
+    "markdown@virajp-plugins": true,
     "mempalace@virajp-plugins": true,
+    "typescript-lsp@virajp-plugins": true,
     "vwf@virajp-plugins": true,
     "warp@claude-code-warp": true
   },
@@ -66,13 +68,13 @@
   "skipDangerousModePermissionPrompt": true,
   "spinnerTipsEnabled": false,
   "statusLine": {
-    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/tools/statusline/statusline",
+    "command": "${HOME}/.claude/scripts/statusline",
     "padding": 0,
-    "refreshInterval": 1,
+    "refreshInterval": 4,
     "type": "command"
   },
   "subagentStatusLine": {
-    "command": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins/tools/statusline/statusline",
+    "command": "${HOME}/.claude/scripts/statusline",
     "type": "command"
   },
   "terminalProgressBarEnabled": true,
