@@ -6,7 +6,6 @@
     "context7@virajp-plugins": true,
     "markdown@virajp-plugins": true,
     "mempalace@virajp-plugins": true,
-    "typescript-lsp@virajp-plugins": true,
     "typescript@virajp-plugins": true,
     "vwf@virajp-plugins": true,
     "warp@claude-code-warp": true
