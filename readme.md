@@ -16,8 +16,9 @@ dotfiles via `mise run stow:install`, and applies the macOS defaults in
 ./setup
 ```
 
-> Requires `mise` and `stow` (both in the brewfile). On a truly fresh machine,
-> bootstrap with the gist in [docs/setup.md](./docs/setup.md) first.
+> On a truly fresh machine, run the one-liner in
+> [docs/setup.md](./docs/setup.md) — it installs Homebrew and clones this repo
+> before running `./setup`.
 
 ## Manual steps
 

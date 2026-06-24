@@ -11,17 +11,20 @@
 #
 # Usage:
 #   ./setup
+#   # or bootstrap a fresh machine directly from the public repo:
+#   /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup)"
 #
 # Steps (Tasks):
 # - First check whether `brew` is installed, if not then install it
+# - Clone the repo to ~/Projects/github.com/virajp/macos-setup if it's missing
 # - Check whether everything is fine with brew using `brew doctor` command
 # - Check whether anything needs to be installed using `brew bundle check` command
 # - Install all tools from `Brewfile` using `brew bundle install --upgrade` command, if needed
 # - Use `stow` to create symlinks for dotfiles (if applicable)
 #
 # Note:
-#   This script must be run from the repository root directory where the
-#   Brewfile is located.
+#   Uses absolute paths to the repo, so it can be run from anywhere — including
+#   piped straight from curl on a fresh machine.
 #
 # Author: Viraj Patel
 ##############################################################################
@@ -33,11 +36,24 @@ readonly INSTALL_EMOJI="🚀"
 readonly PACKAGE_EMOJI="📦"
 readonly CHECK_EMOJI="🩺"
 
+readonly REPO_URL="https://github.com/virajp/macos-setup.git"
+readonly REPO_DIR="${HOME}/Projects/github.com/virajp/macos-setup"
+
 if ! command -v brew &> /dev/null; then
   echo "${INSTALL_EMOJI} Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo "${SUCCESS_EMOJI} Homebrew is already installed."
+fi
+
+# Clone the repo if it isn't present yet (e.g. bootstrapping a fresh machine by
+# piping this script straight from the public repo). Git ships with the Xcode
+# Command Line Tools that the Homebrew installer above pulls in.
+if [[ ! -d "${REPO_DIR}" ]]; then
+  echo "${INSTALL_EMOJI} Cloning macos-setup into ${REPO_DIR}..."
+  git clone "${REPO_URL}" "${REPO_DIR}"
+else
+  echo "${SUCCESS_EMOJI} macos-setup repo already present at ${REPO_DIR}."
 fi
 
 # Turn off homebrew analytics
@@ -56,7 +72,7 @@ echo "${PACKAGE_EMOJI} Installing/updating packages from brewfile..."
 brew bundle install \
   --upgrade \
   --force \
-  --file=${HOME}/Projects/github.com/virajp/macos-setup/dotfiles/homebrew/brewfile
+  --file=${REPO_DIR}/dotfiles/homebrew/brewfile
 
 # Check if mise & stow are installed, if not then raise error and exit
 if ! command -v mise &> /dev/null; then
@@ -71,7 +87,7 @@ fi
 echo ""
 echo "${SETTING_EMOJI} Setting up dotfiles with stow..."
 if command -v stow &> /dev/null; then
-  mise --cd "${HOME}/Projects/github.com/virajp/macos-setup" run stow:install
+  mise --cd "${REPO_DIR}" run stow:install
   echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
 else
   echo "${ERROR_EMOJI} ERROR: stow not found. Skipping dotfiles setup."
@@ -79,7 +95,7 @@ else
 fi
 
 echo ""
-sudo ${HOME}/Projects/github.com/virajp/macos-setup/utils/macos-setup
+sudo ${REPO_DIR}/utils/macos-setup
 
 echo ""
 echo "${SUCCESS_EMOJI} Setup complete!"

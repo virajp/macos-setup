@@ -6,13 +6,17 @@ applications will be installed using `Homebrew`. For local or development tools
 
 ## Setup
 
-To initiate the setup we will use the `gist` created on github
+The repo is public, so the [`setup`](../setup) script can be run directly from
+GitHub. It installs Homebrew (which pulls in the Xcode Command Line Tools),
+clones this repo to `~/Projects/github.com/virajp/macos-setup` if it isn't
+already present, then installs the brewfile, symlinks the dotfiles, and applies
+the macOS defaults.
 
 ```shell
-/bin/zsh -c "$(curl -fsSL https://gist.githubusercontent.com/virajp/c542ff926710ddbd2f65490c900018f5/raw/setup.sh)"
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup)"
 ```
 
 ## Reference
 
 - [Homebrew](https://brew.sh/)
-- [Gist](https://gist.github.com/virajp/c542ff926710ddbd2f65490c900018f5)
+- [`setup` script](../setup)
