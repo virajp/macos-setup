@@ -13,7 +13,7 @@ a Homebrew `brewfile`, dotfiles managed with GNU Stow, and a `mise` task runner.
 - `dotfiles/mise/.config/mise/` — global mise config + task scripts (shell
   aliases like `updateall`, `osx-upgrade`, IP helpers).
 - `.config/mise/tasks/` — repo-local mise tasks (`brew:*`, `stow:*`, `code:*`).
-- `docs/` — manual setup steps (`docs/archive/` holds retired per-tool guides).
+- `docs/` — manual setup steps.
 
 ## Commands
 
