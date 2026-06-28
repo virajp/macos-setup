@@ -124,6 +124,8 @@ cask "github"
 cask "handbrake-app"
 # Apple Device Configuration Profile Editor
 # cask "imazing-profile-editor"
+# Discover, download, and run local LLMs
+cask "lm-studio", args: { appdir: "/Applications" }
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files

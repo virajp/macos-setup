@@ -40,3 +40,7 @@ source ~/.config/zsh/upgrades.sh
 source ~/.config/zsh/95octane.sh
 
 # echo "Aliases, Functions, Upgrades, 95octane: $(date)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/virajpatel/.lmstudio/bin"
+# End of LM Studio CLI section
