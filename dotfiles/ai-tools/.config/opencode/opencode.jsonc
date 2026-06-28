@@ -40,21 +40,7 @@
     "write": "allow"
   },
   "plugin": [
-    "superpowers@git+https://github.com/obra/superpowers.git",
-    "@warp-dot-dev/opencode-warp",
-    "@devtheops/opencode-plugin-mempalace",
-    [
-      "@devtheops/opencode-plugin-mempalace",
-      {
-        "autoMine": true,
-        "flushOnExit": true,
-        "flushOnIdle": true,
-        "injectOnCompaction": true,
-        "injectWakeUp": true,
-        "maxWakeUpChars": 4000,
-        "threshold": 15
-      }
-    ]
+    "@warp-dot-dev/opencode-warp"
   ],
   "server": {
     "port": 4096
