@@ -1,3 +1,4 @@
+tap "jetbrains/utils"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -54,6 +55,8 @@ brew "imagemagick"
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Official Language Server Protocol for the Kotlin language
+brew "JetBrains/utils/kotlin-lsp"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Graphical front-end for GCC's coverage testing tool (gcov)
