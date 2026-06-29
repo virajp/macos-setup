@@ -1,4 +1,3 @@
-tap "jetbrains/utils"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -8,9 +7,9 @@ brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Powerful, clean, object-oriented scripting language
-brew "ruby"
+# brew "ruby"
 # Dependency manager for Cocoa projects
-brew "cocoapods"
+# brew "cocoapods"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -18,13 +17,13 @@ brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Tool for exploring each layer in a docker image
-brew "dive"
+# brew "dive"
 # Command-line DNS Client for Humans
 brew "doggo"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
-brew "fd"
+# brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Fort Knox for your secrets - flexible secret management tool
@@ -42,11 +41,11 @@ brew "gnupg"
 # Ping, but with a graph
 brew "gping"
 # Vulnerability scanner for container images and filesystems
-brew "grype"
+# brew "grype"
 # Herdr tmux for AI coding agents
 brew "herdr"
 # Self-improving AI agent that creates skills from experience
-brew "hermes-agent"
+# brew "hermes-agent"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Tools and libraries to manipulate images in select formats
@@ -55,8 +54,6 @@ brew "imagemagick"
 brew "ipcalc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Official Language Server Protocol for the Kotlin language
-brew "JetBrains/utils/kotlin-lsp"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Graphical front-end for GCC's coverage testing tool (gcov)
@@ -77,8 +74,6 @@ brew "starship"
 brew "stow"
 # Interactive TUI for Homebrew
 # brew "gromgit/brewtils/taproom"
-#  CLI proxy to minimize LLM token consumption
-brew "rtk"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Executes a program periodically, showing output fullscreen
@@ -173,7 +168,6 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 # mas "MindNode Classic", id: 1289197285
 mas "Numbers", id: 361304891
-mas "Okta Verify", id: 490179405
 mas "Pages", id: 361309726
 mas "PDF Protector", id: 566631581
 mas "PDF Squeezer", id: 1502111349
