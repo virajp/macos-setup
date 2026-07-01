@@ -4,6 +4,7 @@
   "effortLevel": "high",
   "enabledPlugins": {
     "context7@virajp-plugins": true,
+    "github-actions@virajp-plugins": true,
     "markdown@virajp-plugins": true,
     "mempalace@virajp-plugins": true,
     "mise@virajp-plugins": true,

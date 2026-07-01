@@ -10,6 +10,7 @@ Bias toward caution over speed — use judgment for trivial tasks.
 - **libraries**: Always use Context7 MCP (`resolve-library-id` →
   `get-library-docs`) before writing code with any external library — never rely
   on training knowledge for APIs or config schemas
+- ALWAYS ask questions, NEVER assume
 
 ## Think Before Coding
 
