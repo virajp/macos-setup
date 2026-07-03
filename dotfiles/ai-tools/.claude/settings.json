@@ -1,46 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "respectGitignore": true,
   "cleanupPeriodDays": 30,
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "context7@virajp-plugins": true,
-    "github-actions@virajp-plugins": true,
-    "markdown@virajp-plugins": true,
-    "mempalace@virajp-plugins": true,
-    "mise@virajp-plugins": true,
-    "typescript@virajp-plugins": true,
-    "vwf@virajp-plugins": true,
-    "warp@claude-code-warp": true
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_INSTALL_METHOD": "other",
     "DISABLE_AUTOUPDATER": "1"
   },
-  "extraKnownMarketplaces": {
-    "claude-code-warp": {
-      "source": {
-        "repo": "warpdotdev/claude-code-warp",
-        "source": "github"
-      }
-    },
-    "claude-plugins-official": {
-      "source": {
-        "repo": "anthropics/claude-plugins-official",
-        "source": "github"
-      }
-    },
-    "virajp-plugins": {
-      "source": {
-        "repo": "virajp/ai-plugins",
-        "source": "github"
-      }
-    }
-  },
-  "forceLoginMethod": "claudeai",
-  "hooks": {},
   "includeCoAuthoredBy": true,
-  "model": "sonnet[1m]",
   "permissions": {
     "allow": [
       "Read",
@@ -50,7 +17,6 @@
       "WebFetch",
       "Agent"
     ],
-    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(* sudo *)",
       "Bash(sudo *)",
@@ -64,21 +30,55 @@
       "Bash(gcloud *)",
       "Bash(doppler *)",
       "Bash(* doppler *)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
   },
-  "respectGitignore": true,
-  "skipDangerousModePermissionPrompt": true,
-  "spinnerTipsEnabled": false,
+  "model": "claude-fable-5[1m]",
+  "hooks": {},
   "statusLine": {
+    "type": "command",
     "command": "${HOME}/.claude/scripts/statusline",
     "padding": 0,
-    "refreshInterval": 4,
-    "type": "command"
+    "refreshInterval": 4
   },
   "subagentStatusLine": {
-    "command": "${HOME}/.claude/scripts/statusline",
-    "type": "command"
+    "type": "command",
+    "command": "${HOME}/.claude/scripts/statusline"
   },
-  "terminalProgressBarEnabled": true,
-  "theme": "dark"
+  "enabledPlugins": {
+    "context7@virajp-plugins": true,
+    "github-actions@virajp-plugins": true,
+    "markdown@virajp-plugins": true,
+    "mempalace@virajp-plugins": true,
+    "mise@virajp-plugins": true,
+    "typescript@virajp-plugins": true,
+    "vwf@virajp-plugins": true,
+    "warp@claude-code-warp": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "virajp-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "virajp/ai-plugins"
+      }
+    }
+  },
+  "forceLoginMethod": "claudeai",
+  "spinnerTipsEnabled": false,
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "terminalProgressBarEnabled": true
 }
