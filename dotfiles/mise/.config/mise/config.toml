@@ -10,6 +10,8 @@ trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
 # Package manager settings
 npm.package_manager = "pnpm"
 pipx.uvx            = true
+python.compile      = false
+python.uv_venv_auto = "create|source"
 
 [tools]
 fnox  = { version = "latest" }

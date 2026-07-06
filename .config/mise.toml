@@ -9,6 +9,8 @@ task_output         = "interleave"
 # Package manager settings
 npm.package_manager = "pnpm"
 pipx.uvx            = true
+python.compile      = false
+python.uv_venv_auto = "create|source"
 
 [tools]
 dprint     = { version = "latest" }
