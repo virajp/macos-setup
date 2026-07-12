@@ -46,14 +46,15 @@
     "command": "${HOME}/.claude/scripts/statusline"
   },
   "enabledPlugins": {
+    "warp@claude-code-warp": true,
     "context7@virajp-plugins": true,
-    "github-actions@virajp-plugins": true,
-    "markdown@virajp-plugins": true,
     "mempalace@virajp-plugins": true,
+    "markdown@virajp-plugins": true,
     "mise@virajp-plugins": true,
-    "typescript@virajp-plugins": true,
     "vwf@virajp-plugins": true,
-    "warp@claude-code-warp": true
+    "typescript@virajp-plugins": true,
+    "github-actions@virajp-plugins": true,
+    "claude-design@virajp-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
