@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
+  "disableArtifact": true,
+  "disableClaudeAiConnectors": true,
   "effortLevel": "high",
   "enabledPlugins": {
     "claude-design@virajp-plugins": true,
