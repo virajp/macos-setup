@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "agentPushNotifEnabled": true,
   "cleanupPeriodDays": 30,
   "disableArtifact": true,
   "disableClaudeAiConnectors": true,
@@ -43,6 +44,7 @@
   "forceLoginMethod": "claudeai",
   "hooks": {},
   "includeCoAuthoredBy": true,
+  "inputNeededNotifEnabled": true,
   "model": "opus[1m]",
   "permissions": {
     "allow": [
