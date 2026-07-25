@@ -34,6 +34,8 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# GitLab command-line tool
+brew "glab"
 # Assorted git-related scripts and tools
 brew "git-tools"
 # GNU Privacy Guard (OpenPGP)
