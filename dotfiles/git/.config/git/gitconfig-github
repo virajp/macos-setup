@@ -1,3 +1,4 @@
 [user]
+  name = Viraj Patel
   email = 3125954+virajp@users.noreply.github.com
   signingkey = ~/.ssh/github_signing.pub

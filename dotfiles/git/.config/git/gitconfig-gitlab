@@ -1,3 +1,4 @@
 [user]
+  name = Viraj Patel
   email = 35455-virajp@users.noreply.gitlab.com
   signingkey = ~/.ssh/gitlab_signing.pub

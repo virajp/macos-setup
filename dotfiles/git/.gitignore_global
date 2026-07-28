@@ -21,3 +21,8 @@ pip-log.txt
 ##################
 node_modules
 npm-debug.log
+
+##################
+# Extras         #
+##################
+*.bak
