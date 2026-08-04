@@ -4,7 +4,7 @@ all_compile         = false
 env_shell_expand    = true
 gpg_verify          = true
 raw                 = true
-task_output         = "interleave"
+task.output         = "interleave"
 
 # Package manager settings
 npm.package_manager = "pnpm"
