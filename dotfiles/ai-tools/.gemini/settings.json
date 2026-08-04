@@ -26,52 +26,7 @@
     "enableNotifications": true,
     "preferredEditor": "vscode"
   },
-  "hooks": {
-    "AfterAgent": [
-      {
-        "hooks": [
-          {
-            "command": "if [ -f '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -r '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -x '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ]; then /bin/sh '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
-            "timeout": 10000,
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "AfterTool": [
-      {
-        "hooks": [
-          {
-            "command": "if [ -f '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -r '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -x '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ]; then /bin/sh '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
-            "timeout": 10000,
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "BeforeAgent": [
-      {
-        "hooks": [
-          {
-            "command": "if [ -f '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -r '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -x '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ]; then /bin/sh '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
-            "timeout": 10000,
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "BeforeTool": [
-      {
-        "hooks": [
-          {
-            "command": "if [ -f '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -r '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ] && [ -x '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh' ]; then /bin/sh '/Users/virajpatel/.orca/agent-hooks/gemini-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
-            "timeout": 10000,
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
+  "hooks": {},
   "ide": {
     "enabled": true
   },
