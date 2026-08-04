@@ -59,7 +59,7 @@ function cleanupDS() {
   # -not -path './Library/*': exclude Library directory to avoid system issues
   # -ls: list files before deletion for transparency
   # -delete: remove the found files
-  find $ARGS -type f -name '.DS_Store' -not -path './Library/*' -ls -delete
+  find "$ARGS" -type f -name '.DS_Store' -not -path './Library/*' -ls -delete
 }
 
 # =============================================================================
