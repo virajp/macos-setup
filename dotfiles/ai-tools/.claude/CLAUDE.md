@@ -3,6 +3,15 @@
 Global conventions for all projects. Project-level CLAUDE.md overrides these.
 Bias toward caution over speed — use judgment for trivial tasks.
 
+## Stack
+
+- **fish**: This laptop uses fish shell. It also has `bash` and `zsh` installed,
+  but fish is the default.
+- **mise**: This laptop uses `mise` for tools installation, task management, and
+  project environment management. It also has `homebrew` installed, but it only
+  used for non-development tools or tools unavailable in `mise`. Use `mise` for
+  all development tools.
+
 ## Hard Rules
 
 - **git**: Always use the `git-workflow` skill for all git interactions
