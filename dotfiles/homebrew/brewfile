@@ -104,6 +104,10 @@ cask "android-studio"
 cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Codex (OpenAI)
+cask "codex"
+# Cursor
+cask "cursor"
 # Free app that makes your Internet safer
 # cask "cloudflare-warp"
 # Claude code parallelisation
