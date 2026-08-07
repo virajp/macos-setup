@@ -19,20 +19,20 @@ fnox  = { version = "latest" }
 usage = { version = "latest" }
 
 # Developer Tools
-bun    = { version = "latest" }
-jq     = { version = "latest" }
-node   = { version = "latest" }
-pnpm   = { version = "latest" }
-python = { version = "latest" }
-uv     = { version = "latest" }
-yq     = { version = "latest" }
+bun       = { version = "latest" }
+jq        = { version = "latest" }
+node      = { version = "latest" }
+pitchfork = { version = "latest" }
+pnpm      = { version = "latest" }
+python    = { version = "latest" }
+uv        = { version = "latest" }
+yq        = { version = "latest" }
 
 # AI Tools
 claude-code               = { version = "latest" }
 "github:can1357/oh-my-pi" = { version = "latest" }
 opencode                  = { version = "latest" }
 "pipx:graphifyy"          = { uvx = true, version = "latest" }
-"pipx:mempalace"          = { uvx = true, version = "latest" }
 rtk                       = { version = "latest" }
 
 # Linter & Formatters
@@ -55,10 +55,11 @@ osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-aistats = "pnpm dlx codeburn"
-cc      = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-ccf     = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-cco     = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+aistats   = "pnpm dlx codeburn"
+cc        = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+ccf       = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+cco       = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+mempalace = "mise run mempalace:status"
 
 # Development related shortcuts
 code = "mise run --silent func:code"

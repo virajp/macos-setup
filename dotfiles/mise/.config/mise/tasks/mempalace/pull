@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Build and pull the mempalace/qdrant images"
+#MISE hide=true
+#MISE depends=["mempalace:check"]
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Build local images ..."
+docker compose --file "${HOME}/.config/mempalace/docker-compose.yaml" build mempalace
+
+print_header "Pulling the dependencies ..."
+docker compose --file "${HOME}/.config/mempalace/docker-compose.yaml" pull --ignore-buildable

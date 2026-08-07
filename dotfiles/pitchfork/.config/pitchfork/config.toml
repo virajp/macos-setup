@@ -1,0 +1,7 @@
+# Global pitchfork daemons. See dotfiles/mempalace for the compose stack this
+# supervises, and docs/mempalace.md for one-time setup (`pitchfork boot enable`).
+
+[daemons.mempalace]
+boot_start = true
+ready_http = "http://127.0.0.1:8765/healthz"
+run        = "docker compose --file $HOME/.config/mempalace/docker-compose.yaml up"

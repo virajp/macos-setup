@@ -26,6 +26,8 @@ symlinked into `$HOME` (see [`readme.md`](./readme.md)).
 | `gem/`        | RubyGems configuration                                             |
 | `1Password/`  | 1Password SSH agent configuration                                  |
 | `ai-tools/`   | Claude Code, OpenCode, Gemini CLI, and shared agent skills         |
+| `mempalace/`  | mempalace/qdrant docker compose stack (see below)                  |
+| `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack           |
 
 ## Shells & Prompt
 
@@ -64,6 +66,23 @@ language/CLI tool versions, sets `pnpm` as the npm package manager, enables
 `uvx` for pipx, and defines a large set of `[shell_alias]` shortcuts — including
 `updateall`, `osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup
 tasks. The task scripts themselves live under `mise/.config/mise/tasks/`.
+
+## mempalace (MCP memory server)
+
+`dotfiles/mempalace/.config/mempalace/` holds the `docker compose` stack for the
+mempalace MCP server (HTTP, `127.0.0.1:8765`) and its qdrant backend, with data
+bind-mounted from `~/.local/share/mempalace` and `~/.local/share/qdrant`. The
+image is built locally from PyPI rather than pulled, since
+`ghcr.io/mempalace/mempalace` is not anonymously pullable.
+
+[Pitchfork](https://pitchfork.jdx.dev/) supervises the stack as a global daemon
+(`dotfiles/pitchfork/.config/pitchfork/config.toml`) and starts it at login.
+`mempalace:*` mise tasks (`dotfiles/mise/.config/mise/tasks/mempalace/`) wrap
+the pitchfork/compose lifecycle; `mempalace:update` rebuilds the images weekly
+and is called from `updateall`. There is deliberately no local `mempalace` CLI
+install — the `mempalace` shell alias runs `status` inside the container instead
+(see `docs/mempalace.md`'s "CLI access" section for why). See
+[`docs/mempalace.md`](../docs/mempalace.md) for one-time setup.
 
 ## Git
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#MISE description="Update mempalace/qdrant images (throttled to once a week)"
+
+#USAGE flag "-f --force" help="Force update regardless of last run time"
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+STAMP_FILE="/tmp/mise-mempalace-update.stamp"
+ONE_WEEK_SECONDS=$((7 * 24 * 60 * 60))
+
+if [ "${usage_force:-false}" = "true" ]; then
+  rm -f "$STAMP_FILE"
+elif [ -f "$STAMP_FILE" ]; then
+  NOW=$(date +%s)
+  LAST_RUN=$(date -r "$STAMP_FILE" +%s)
+  ELAPSED=$(( NOW - LAST_RUN ))
+
+  if [ "$ELAPSED" -lt "$ONE_WEEK_SECONDS" ]; then
+    REMAINING=$(( (ONE_WEEK_SECONDS - ELAPSED) / 3600 ))
+    print_header "Skipping mempalace update — last run was less than 1 week ago (${REMAINING}h remaining). Use --force to override."
+    exit 0
+  fi
+fi
+
+mise run mempalace:stop
+mise run mempalace:pull
+mise run mempalace:start
+
+touch "$STAMP_FILE"
+print_success "mempalace update complete!"

@@ -1,0 +1,56 @@
+name: mempalace
+
+services:
+  # Vector store behind mempalace.
+  qdrant:
+    image: docker.io/qdrant/qdrant:latest
+    pull_policy: missing
+    restart: always
+    # Not published: only mempalace reaches it, over the compose network.
+    # Uncomment to inspect Qdrant directly.
+    # ports:
+    #   - 6333:6333
+    volumes:
+      # Bind mount, not a named volume — `mempalace:stop` (via pitchfork)
+      # sends SIGTERM to `docker compose up`, which stops but never removes
+      # volumes; a bind mount is the safer choice regardless, since it
+      # survives even a manual `docker compose down --volumes`.
+      - "${HOME}/.local/share/qdrant:/qdrant/storage"
+
+  # MCP server over HTTP, because stdio keeps crashing in Claude Code.
+  # Connect with:
+  #   claude mcp add --transport http mempalace http://127.0.0.1:8765/mcp
+  mempalace:
+    image: mempalace
+    pull_policy: never
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - qdrant
+    # Bound to loopback on purpose. The server refuses a non-loopback bind
+    # without a bearer token unless told otherwise, and the container has to
+    # bind 0.0.0.0 to be reachable at all — so access control is the published
+    # interface here, not a token. Anything running locally can read and write
+    # this palace; do not widen this to 0.0.0.0.
+    ports:
+      - "127.0.0.1:8765:8765"
+    volumes:
+      - "${HOME}/.local/share/mempalace:/data"
+    environment:
+      MEMPALACE_BACKEND: qdrant
+      MEMPALACE_QDRANT_URL: http://qdrant:6333
+      MEMPALACE_MCP_HTTP_ALLOW_INSECURE_NO_TOKEN: "1"
+    healthcheck:
+      # The image has no curl; use python, which is always present. /healthz
+      # needs no auth.
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://127.0.0.1:8765/healthz').read().strip()==b'ok' else sys.exit(1)"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 40s

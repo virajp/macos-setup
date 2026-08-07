@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Start the mempalace stack via pitchfork"
+#MISE hide=true
+#MISE depends=["mempalace:check"]
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Starting mempalace ..."
+pitchfork start mempalace

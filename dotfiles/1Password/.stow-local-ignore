@@ -1,8 +1,5 @@
 # This file is used to ignore files in the stow command
 
-\.git
-\.gitignore
 \.DS_Store
 \.stow-local-ignore
-^history.*
 .*\.bak$
