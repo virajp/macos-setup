@@ -10,6 +10,7 @@ $os$time\
 [](fg:color_orange bg:color_aqua)\
 $git_branch\
 $git_status\
+${custom.submodule_status}\
 [](bg:color_yellow fg:color_aqua)\
 $directory\
 [](fg:color_yellow bg:color_blue)\
@@ -126,9 +127,22 @@ style  = "bg:color_aqua"
 symbol = ""
 
 [git_status]
-format            = '[[($all_status$ahead_behind )](fg:color_white bg:color_aqua)]($style)'
-ignore_submodules = false
+format = '[[($all_status$ahead_behind )](fg:color_white bg:color_aqua)]($style)'
+# libgit2 (used by starship) has known bugs misreporting clean submodules as
+# dirty, so submodule state is checked separately via real git in
+# [custom.submodule_status] instead.
+ignore_submodules = true
 style             = "bg:color_aqua"
+
+[custom.submodule_status]
+# Detects real submodule dirtiness via the git CLI (accurate) instead of
+# libgit2 (buggy for submodules) — see ignore_submodules above.
+command = "echo '! '"
+format = "[$output](fg:color_white bg:color_aqua)"
+shell = [ "--noprofile", "--norc", "bash" ]
+when = '''
+top=$(git rev-parse --show-toplevel 2>/dev/null) && [ -f "$top/.gitmodules" ] && git -C "$top" status --porcelain=v2 --ignore-submodules=none 2>/dev/null | awk '$1=="1" && $3 ~ /^S/{f=1} END{exit !f}'
+'''
 
 [nodejs]
 format = '[[ $symbol($version) ](fg:color_white bg:color_blue)]($style)'
