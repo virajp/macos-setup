@@ -100,6 +100,17 @@
         "matcher": "*"
       }
     ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "if [ -f '/Users/virajpatel/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/virajpatel/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/virajpatel/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/virajpatel/.orca/agent-hooks/claude-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10,
+            "type": "command"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
