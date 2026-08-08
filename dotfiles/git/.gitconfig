@@ -17,6 +17,10 @@
 	editor = $HOMEBREW_PREFIX/bin/code
 	excludesfile = /Users/virajpatel/.gitignore_global
 	filemode = false
+	# Caches untracked-file listings per directory in .git/index, keyed on
+	# directory mtime. Safe on APFS; unreliable on filesystems that don't
+	# bump directory mtime (some NFS/SMB mounts).
+	untrackedCache = true
 
 [push]
 	default = matching
