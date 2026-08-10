@@ -42,4 +42,4 @@ brewfile.gen
 .antigravitycli/
 
 # Graphify
-**/.graphify_version
+graphify-out/

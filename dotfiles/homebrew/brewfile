@@ -6,18 +6,12 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# Powerful, clean, object-oriented scripting language
-# brew "ruby"
-# Dependency manager for Cocoa projects
-# brew "cocoapods"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Tool for exploring each layer in a docker image
-# brew "dive"
 # Command-line DNS Client for Humans
 brew "doggo"
 # Modern, maintained replacement for ls
@@ -42,12 +36,6 @@ brew "git-tools"
 brew "gnupg"
 # Ping, but with a graph
 brew "gping"
-# Vulnerability scanner for container images and filesystems
-# brew "grype"
-# Herdr tmux for AI coding agents
-brew "herdr"
-# Self-improving AI agent that creates skills from experience
-# brew "hermes-agent"
 # Ping-like tool for HTTP requests
 brew "httping"
 # Tools and libraries to manipulate images in select formats
@@ -95,9 +83,9 @@ cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
 cask "alfred"
 # Google's Antigravity, Agent orchestration platform
-cask "antigravity"
+# cask "antigravity"
 # Google's Antigravity CLI, Terminal interface for Antigravity agents
-cask "antigravity-cli"
+# cask "antigravity-cli"
 # Tools for building Android applications
 cask "android-studio"
 # Web browser focusing on privacy
@@ -105,13 +93,11 @@ cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Codex (OpenAI)
-cask "codex"
+# cask "codex"
 # Cursor
-cask "cursor"
+# cask "cursor"
 # Free app that makes your Internet safer
 # cask "cloudflare-warp"
-# Claude code parallelisation
-# cask "conductor"
 # Find files, folders, or contents in any file
 cask "easyfind"
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
@@ -126,10 +112,8 @@ cask "ghostty"
 cask "github"
 # Open-source video transcoder
 cask "handbrake-app"
-# Apple Device Configuration Profile Editor
-# cask "imazing-profile-editor"
 # Discover, download, and run local LLMs
-cask "lm-studio", args: { appdir: "/Applications" }
+# cask "lm-studio", args: { appdir: "/Applications" }
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -141,7 +125,7 @@ cask "setapp"
 # Team communication and collaboration software
 cask "slack"
 # Mux and tag mp4 files
-cask "subler"
+# cask "subler"
 # Text editor for code, markup and prose
 cask "sublime-text"
 # Tool to explore all the running tasks (processes)
