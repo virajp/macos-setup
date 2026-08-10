@@ -47,7 +47,7 @@
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     ".envrc": ".env,.env.*,.nvmrc,.env.*.secrets,*.env",
-    ".gitignore": ".gitkeep,.dockerignore,.env,.prettierignore,.claudeignore,.pre-commit-config.yaml,analysis_options.yaml,git-conventional-commits.yaml,.gitleaks.toml,.gitleaksignore",
+    ".gitignore": ".gitkeep,.dockerignore,.env,.prettierignore,.claudeignore,.pre-commit-config.yaml,analysis_options.yaml,git-conventional-commits.yaml,.gitleaks.toml,.gitleaksignore,.gitattributes,.cursorignore,.markdownlint.yaml,.editorconfig,.prettierrc.yaml,.prettierignore",
     "*.dart": "${capture}.g.dart",
     "*.js": "${capture}.js.map,${capture}.d.ts,${capture}.d.ts.map",
     "doppler.yaml": ".doppler.yaml",
