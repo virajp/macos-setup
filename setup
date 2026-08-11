@@ -20,7 +20,7 @@
 # - Check whether everything is fine with brew using `brew doctor` command
 # - Check whether anything needs to be installed using `brew bundle check` command
 # - Install all tools from `Brewfile` using `brew bundle install --upgrade` command, if needed
-# - Use `stow` to create symlinks for dotfiles (if applicable)
+# - Use `mise` to create symlinks for dotfiles (if applicable)
 #
 # Note:
 #   Uses absolute paths to the repo, so it can be run from anywhere — including
@@ -74,25 +74,16 @@ brew bundle install \
   --force \
   --file=${REPO_DIR}/dotfiles/homebrew/brewfile
 
-# Check if mise & stow are installed, if not then raise error and exit
+# Check if mise is installed, if not then raise error and exit
 if ! command -v mise &> /dev/null; then
   echo "${ERROR_EMOJI} ERROR: mise not found. Please install it first and then re-run the setup."
   exit 1
 fi
-if ! command -v stow &> /dev/null; then
-  echo "${ERROR_EMOJI} ERROR: stow not found. Please install it first and then re-run the setup."
-  exit 1
-fi
 
 echo ""
-echo "${SETTING_EMOJI} Setting up dotfiles with stow..."
-if command -v stow &> /dev/null; then
-  mise --cd "${REPO_DIR}" run stow:install
-  echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
-else
-  echo "${ERROR_EMOJI} ERROR: stow not found. Skipping dotfiles setup."
-  exit 1
-fi
+echo "${SETTING_EMOJI} Setting up dotfiles with mise..."
+mise --cd "${REPO_DIR}" run dotfiles:install
+echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
 
 echo ""
 sudo ${REPO_DIR}/utils/macos-setup

@@ -5,8 +5,8 @@
 version: 1
 
 ignores:
-  - "dotfiles/ai-tools/.config/agents/skills/**"
-  - "dotfiles/warp/.warp/typescript-language-server/package-lock.json"
+  # Written by `gh` itself through the symlink — not ours to format.
+  - "dotfiles/github/hosts.yml"
 
 #
 # overrides:

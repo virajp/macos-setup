@@ -25,7 +25,7 @@ services:
     pull_policy: never
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: dockerfile.mempalace
     restart: always
     depends_on:
       - qdrant

@@ -5,31 +5,21 @@ liking.
 
 ## Installation
 
-I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles. To
-install these dotfiles, clone this repository and use stow to symlink the files
-to your home directory.
-
-> NOTE: Run the `stow` cli from `dotfiles` directory
+I use [mise](https://mise.jdx.dev/) to manage my dotfiles. `mise.toml` in this
+directory holds the `[dotfiles]` link map — which source file lands at which
+`$HOME` path, and in which mode (`symlink`, `symlink-each`).
 
 ```shell
-stow --dir=. --target=$HOME --verbose */
+mise run dotfiles:install   # create the symlinks
+mise run dotfiles:status    # show which symlinks are missing
+mise run dotfiles:delete    # remove the symlinks
 ```
 
-## Cleanup
+## Adding a dotfile
 
-To remove the symlinks, use the following command:
-
-```shell
-stow --delete --dir=. --target=$HOME --verbose */
-```
-
-## Simulate
-
-```shell
-stow --dir=. --target=$HOME --verbose --simulate */
-```
+Add the file under `dotfiles/<pkg>/`, add its entry to `mise.toml`, then run
+`mise run dotfiles:install`.
 
 ## Reference
 
-- [Documentation](https://www.gnu.org/software/stow/manual/stow.html)
-- [Using GNU Stow to manage your dotfiles](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/)
+- [mise bootstrap dotfiles](https://mise.jdx.dev/cli/bootstrap/dotfiles.html)

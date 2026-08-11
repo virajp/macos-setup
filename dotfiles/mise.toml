@@ -1,0 +1,65 @@
+[dotfiles]
+# ZSH
+"~/.config/zsh" = { mode = "symlink", source = "zsh/scripts" }
+"~/.zshrc"      = { mode = "symlink", source = "zsh/.zshrc" }
+
+# Fish
+"~/.config/fish/conf.d"      = { mode = "symlink", source = "fish/conf.d" }
+"~/.config/fish/config.fish" = { mode = "symlink", source = "fish/config.fish" }
+"~/.config/fish/functions"   = { mode = "symlink", source = "fish/functions" }
+
+# Claude
+"~/.claude/CLAUDE.md"     = { mode = "symlink", source = "ai-tools/claude/CLAUDE.md" }
+"~/.claude/settings.json" = { mode = "symlink", source = "ai-tools/claude/settings.json" }
+
+# GitHub Copilot
+"~/.github/git-commit-guidelines.md" = { mode = "symlink", source = "ai-tools/copilot/git-commit-guidelines.md" }
+
+# 1Password
+"~/.config/1Password/ssh/agent.toml" = { mode = "symlink", source = "1Password/agent.toml" }
+
+# dprint & Taplo
+"~/.config/dprint.json" = { mode = "symlink", source = "dprint/dprint.json" }
+"~/.config/taplo.toml"  = { mode = "symlink", source = "dprint/taplo.toml" }
+
+# fnox
+"~/fnox.toml" = { mode = "symlink", source = "fnox/fnox.toml" }
+
+# Gem
+"~/.gemrc" = { mode = "symlink", source = "gem/.gemrc" }
+
+# Ghostty
+"~/.config/ghostty/config" = { mode = "symlink", source = "ghostty/config" }
+
+# Git & SSH
+"~/.config/git"       = { mode = "symlink", source = "git/git" }
+"~/.gitconfig"        = { mode = "symlink", source = "git/root/gitconfig" }
+"~/.gitignore_global" = { mode = "symlink", source = "git/root/gitignore_global" }
+"~/.ssh"              = { mode = "symlink-each", source = "ssh" }
+
+# GitHub CLI
+"~/.config/gh" = { mode = "symlink-each", source = "github" }
+
+# Brewfil (homebrew)
+"~/.config/brewfile" = { mode = "symlink", source = "homebrew/brewfile" }
+
+# Mempalace (dockerfile & compose)
+"~/.config/mempalace" = { mode = "symlink", source = "mempalace" }
+
+# Mise (user level)
+"~/.config/mise" = { mode = "symlink", source = "mise" }
+
+# nushell
+"~/Library/Application Support/nushell" = { mode = "symlink", source = "nushell" }
+
+# oh-my-posh
+"~/.config/oh-my-posh" = { mode = "symlink", source = "oh-my-posh" }
+
+# Pitchfork
+"~/.config/pitchfork" = { mode = "symlink", source = "pitchfork" }
+
+# PNPM
+"~/Library/Preferences/pnpm/config.yaml" = { mode = "symlink", source = "pnpm/config.yaml" }
+
+# Starship
+"~/.config/starship.toml" = { mode = "symlink", source = "starship/starship.toml" }

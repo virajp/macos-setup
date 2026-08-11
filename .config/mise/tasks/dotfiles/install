@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#MISE description="Create symlinks for dotfiles"
+#MISE hide=false
+#MISE dir="dotfiles"
+#MISE depends=["dotfiles:prep"]
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Setup dotfiles ..."
+mise bootstrap dotfiles apply --yes

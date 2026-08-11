@@ -1,5 +1,0 @@
-# This file is used to ignore files in the stow command
-
-\.DS_Store
-\.stow-local-ignore
-.*\.bak$
