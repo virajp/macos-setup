@@ -186,15 +186,13 @@
     "command": "${HOME}/.claude/scripts/statusline"
   },
   "enabledPlugins": {
-    "claude-design@virajp-plugins": true,
-    "context7@virajp-plugins": true,
-    "github-actions@virajp-plugins": true,
-    "markdown@virajp-plugins": true,
-    "mempalace@virajp-plugins": true,
-    "mise@virajp-plugins": true,
+    "warp@claude-code-warp": true,
+    "andrej-karpathy-skills@virajp-plugins": true,
+    "cicd@virajp-plugins": true,
+    "design-tools@virajp-plugins": true,
+    "devtools@virajp-plugins": true,
     "typescript@virajp-plugins": true,
-    "vwf@virajp-plugins": true,
-    "warp@claude-code-warp": true
+    "vwf@virajp-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -211,8 +209,8 @@
     },
     "virajp-plugins": {
       "source": {
-        "source": "github",
-        "repo": "virajp/ai-plugins"
+        "source": "directory",
+        "path": "/Users/virajpatel/.local/share/virajp/ai-plugins/claude"
       }
     }
   },
