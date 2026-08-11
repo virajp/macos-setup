@@ -6,5 +6,9 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
+# Before starting, let's force start pitchfork supervisor
+print_header "Starting pitchfork supervisor ..."
+pitchfork supervisor start --force
+
 print_header "Starting mempalace ..."
 pitchfork start mempalace
