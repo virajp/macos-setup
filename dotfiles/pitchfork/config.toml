@@ -1,7 +1,20 @@
 # Global pitchfork daemons. See dotfiles/mempalace for the compose stack this
 # supervises, and docs/mempalace.md for one-time setup (`pitchfork boot enable`).
 
-[daemons.mempalace]
+[settings.general]
+mise = true
+
+[daemons.mempalace-qdrant]
 boot_start = true
-ready_http = "http://127.0.0.1:8765/healthz"
+port       = 6333
+ready_port = 6333
+retry      = true
 run        = "docker compose --file $HOME/.config/mempalace/docker-compose.yaml up"
+
+[daemons.mempalace-mcp]
+boot_start = true
+depends    = [ "mempalace-qdrant" ]
+port       = 8765
+ready_http = "http://127.0.0.1:8765/healthz"
+retry      = true
+run        = "mempalace-mcp --transport http --host 127.0.0.1 --port 8765 --palace $MEMPALACE_PALACE_PATH --backend $MEMPALACE_BACKEND --allow-insecure-no-token"

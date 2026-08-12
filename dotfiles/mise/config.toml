@@ -31,6 +31,7 @@ yq        = { version = "latest" }
 # AI Tools
 oh-my-pi         = { version = "latest" }
 "pipx:graphifyy" = { uvx = true, version = "latest" }
+"pipx:mempalace" = { uvx = true, version = "latest" }
 rtk              = { version = "latest" }
 
 # Linter & Formatters
@@ -145,5 +146,7 @@ RUNTIME_ENV = "development"
 
 # Mempalace Backend
 MEMPALACE_BACKEND                          = "qdrant"
+MEMPALACE_MAX_BACKUPS                      = 4
 MEMPALACE_MCP_HTTP_ALLOW_INSECURE_NO_TOKEN = "1"
-MEMPALACE_QDRANT_URL                       = "http://qdrant.mempalace.orb.local:6333"
+MEMPALACE_PALACE_PATH                      = "${HOME}/.local/share/mempalace"
+MEMPALACE_QDRANT_URL                       = "http://127.0.0.1:6333"

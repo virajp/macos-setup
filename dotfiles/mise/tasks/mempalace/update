@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Update mempalace/qdrant images (throttled to once a week)"
+#MISE description="Update qdrant image (throttled to once a week)"
 
 #USAGE flag "-f --force" help="Force update regardless of last run time"
 
@@ -28,4 +28,4 @@ mise run mempalace:pull
 mise run mempalace:start
 
 touch "$STAMP_FILE"
-print_success "mempalace update complete!"
+print_success "Update complete!"

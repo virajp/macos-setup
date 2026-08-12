@@ -11,4 +11,4 @@ print_header "Starting pitchfork supervisor ..."
 pitchfork supervisor start --force
 
 print_header "Starting mempalace ..."
-pitchfork start mempalace
+pitchfork start mempalace-mcp
