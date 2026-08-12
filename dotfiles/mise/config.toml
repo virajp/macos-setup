@@ -144,4 +144,6 @@ NODE_ENV    = "development"
 RUNTIME_ENV = "development"
 
 # Mempalace Backend
-MEMPALACE_QDRANT_URL = "http://qdrant.mempalace.orb.local:6333"
+MEMPALACE_BACKEND                          = "qdrant"
+MEMPALACE_MCP_HTTP_ALLOW_INSECURE_NO_TOKEN = "1"
+MEMPALACE_QDRANT_URL                       = "http://qdrant.mempalace.orb.local:6333"
