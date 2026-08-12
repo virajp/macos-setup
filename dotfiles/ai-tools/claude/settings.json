@@ -65,11 +65,11 @@
   "enabledPlugins": {
     "warp@claude-code-warp": true,
     "andrej-karpathy-skills@virajp-plugins": true,
+    "devtools@virajp-plugins": true,
+    "vwf@virajp-plugins": true,
     "cicd@virajp-plugins": true,
     "design-tools@virajp-plugins": true,
-    "devtools@virajp-plugins": true,
-    "typescript@virajp-plugins": true,
-    "vwf@virajp-plugins": true
+    "typescript@virajp-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {

@@ -29,7 +29,6 @@ uv        = { version = "latest" }
 yq        = { version = "latest" }
 
 # AI Tools
-claude-code      = { version = "latest" }
 oh-my-pi         = { version = "latest" }
 "pipx:graphifyy" = { uvx = true, version = "latest" }
 rtk              = { version = "latest" }
