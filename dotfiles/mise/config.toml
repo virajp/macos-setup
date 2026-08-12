@@ -53,11 +53,11 @@ osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-aistats   = "pnpm dlx codeburn"
-cc        = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-ccf       = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-cco       = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-mempalace = "mise run mempalace:status"
+aistats = "pnpm dlx codeburn"
+cc      = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+ccf     = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+cco     = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+# mempalace = "mise run mempalace:status"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
@@ -142,3 +142,6 @@ USE_GKE_GCLOUD_AUTH_PLUGIN = { tools = true, value = "true" }
 # Development tools
 NODE_ENV    = "development"
 RUNTIME_ENV = "development"
+
+# Mempalace Backend
+MEMPALACE_QDRANT_URL = "http://qdrant.mempalace.orb.local:6333"
