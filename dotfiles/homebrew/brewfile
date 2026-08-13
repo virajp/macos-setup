@@ -119,7 +119,7 @@ cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Replacement for Docker Desktop
-cask "orbstack"
+cask "orbstack", args: { appdir: "/Applications" }
 # Collection of apps available by subscription
 cask "setapp"
 # Team communication and collaboration software
