@@ -10,6 +10,7 @@
     "**/.turbo/",
     "**/*-lock.json",
     "**/*-lock.yaml",
+    "**/graphify-out/",
     "**/.claude/skills/flutter-interoperating-with-native-apis"
   ],
   "exec": {
