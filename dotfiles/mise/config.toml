@@ -19,6 +19,7 @@ fnox  = { version = "latest" }
 usage = { version = "latest" }
 
 # Developer Tools
+1password = { version = "latest" }
 bun       = { version = "latest" }
 jq        = { version = "latest" }
 node      = { version = "latest" }
