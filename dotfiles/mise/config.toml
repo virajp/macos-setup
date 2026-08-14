@@ -29,10 +29,11 @@ uv        = { version = "latest" }
 yq        = { version = "latest" }
 
 # AI Tools
-oh-my-pi         = { version = "latest" }
-"pipx:graphifyy" = { uvx = true, version = "latest" }
-"pipx:mempalace" = { uvx = true, version = "latest" }
-rtk              = { version = "latest" }
+"npm:@mermaid-js/mermaid-cli" = { version = "latest" }
+oh-my-pi                      = { version = "latest" }
+"pipx:graphifyy"              = { uvx = true, version = "latest" }
+"pipx:mempalace"              = { uvx = true, version = "latest" }
+rtk                           = { version = "latest" }
 
 # Linter & Formatters
 dprint = { version = "latest" }
