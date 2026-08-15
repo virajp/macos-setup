@@ -43,7 +43,7 @@ taplo  = { version = "latest" }
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
 
-[tasks."init:dot"]
+[tasks."global:init"]
 description = "Initialize mise tasks"
 hide        = true
 run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"

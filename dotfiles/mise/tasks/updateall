@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Upgrade all tools managed in the system"
-#MISE depends=["init:dot"]
+#MISE depends=["global:init"]
 #MISE hide=true
 
 set -e
@@ -56,5 +56,6 @@ mise run upgrade:macos:download
 mise run upgrade:ai
 
 mise run mempalace:update
+mise run mempalace:restart
 
 print_header "Setup complete!"
