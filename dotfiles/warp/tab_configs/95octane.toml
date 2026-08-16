@@ -1,0 +1,9 @@
+color = "red"
+name  = "95octane (Claude)" # label in the + menu
+title = "95octane (Claude)" # the tab title you're after
+
+[[panes]]
+commands  = [ "cc --continue" ]
+directory = "~/Projects/github.com/95octane/95octane"
+id        = "main"
+type      = "terminal"

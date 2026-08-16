@@ -63,3 +63,6 @@
 
 # Starship
 "~/.config/starship.toml" = { mode = "symlink", source = "starship/starship.toml" }
+
+# Warp (Tabs Config)
+"~/.warp/tab_configs" = { mode = "symlink", source = "warp/tab_configs" }
