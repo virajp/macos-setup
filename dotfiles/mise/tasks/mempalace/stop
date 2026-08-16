@@ -8,3 +8,4 @@ source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 print_header "Stopping mempalace ..."
 # Tolerate "not running" (e.g. first-ever run before it's ever been started).
 pitchfork stop mempalace-mcp || true
+pitchfork stop mempalace-qdrant || true

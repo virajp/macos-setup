@@ -28,5 +28,5 @@ set --global --export HOMEBREW_DISPLAY_INSTALL_TIMES true
 set --global --export HOMEBREW_FAIL_LOG_LINES 100
 set --global --export HOMEBREW_FORCE_BREWED_CURL true
 set --global --export HOMEBREW_FORCE_BREWED_GIT true
-set --global --export HOMEBREW_CASK_OPTS "--appdir=~/Applications --caskroom=$HOMEBREW_PREFIX/Caskroom"
+set --global --export HOMEBREW_CASK_OPTS "--appdir=~/Applications"
 set --global --export HOMEBREW_NO_ENV_HINTS 1

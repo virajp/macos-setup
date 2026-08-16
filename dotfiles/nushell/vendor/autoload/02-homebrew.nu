@@ -13,5 +13,5 @@ $env.HOMEBREW_DISPLAY_INSTALL_TIMES = true
 $env.HOMEBREW_FAIL_LOG_LINES = 100
 $env.HOMEBREW_FORCE_BREWED_CURL = true
 $env.HOMEBREW_FORCE_BREWED_GIT = true
-$env.HOMEBREW_CASK_OPTS = "--appdir=~/Applications --caskroom=/opt/homebrew/Caskroom"
+$env.HOMEBREW_CASK_OPTS = "--appdir=~/Applications"
 $env.HOMEBREW_NO_ENV_HINTS = 1

@@ -13,5 +13,5 @@ export HOMEBREW_DISPLAY_INSTALL_TIMES=true
 export HOMEBREW_FAIL_LOG_LINES=100
 export HOMEBREW_FORCE_BREWED_CURL=true
 export HOMEBREW_FORCE_BREWED_GIT=true
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=/opt/homebrew/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 export HOMEBREW_NO_ENV_HINTS=1
