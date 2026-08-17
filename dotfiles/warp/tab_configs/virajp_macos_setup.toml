@@ -3,7 +3,6 @@ name  = "MacOS Setup (Claude)" # label in the + menu
 title = "MacOS Setup (Claude)" # the tab title you're after
 
 [[panes]]
-commands  = [ "cc" ]
 directory = "~/Projects/github.com/virajp/macos-setup"
 id        = "main"
 type      = "terminal"

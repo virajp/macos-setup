@@ -3,7 +3,6 @@ name  = "IG (Claude)" # label in the + menu
 title = "IG (Claude)" # the tab title you're after
 
 [[panes]]
-commands  = [ "cc" ]
 directory = "~/Projects/gitlab.com/dnl/incident-guardian"
 id        = "main"
 type      = "terminal"

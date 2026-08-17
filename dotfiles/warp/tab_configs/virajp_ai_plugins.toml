@@ -3,7 +3,6 @@ name  = "AI Plugins (Claude)" # label in the + menu
 title = "AI Plugins (Claude)" # the tab title you're after
 
 [[panes]]
-commands  = [ "cc" ]
 directory = "~/Projects/github.com/virajp/ai-plugins"
 id        = "main"
 type      = "terminal"
