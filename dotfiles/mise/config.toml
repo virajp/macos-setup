@@ -56,7 +56,7 @@ osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-aistats = "pnpm dlx codeburn"
+aistats = "pnpx codeburn"
 cc      = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 ccf     = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 cco     = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
