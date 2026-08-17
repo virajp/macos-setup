@@ -10,6 +10,7 @@
 
 # Claude
 "~/.claude/CLAUDE.md"     = { mode = "symlink", source = "ai-tools/claude/CLAUDE.md" }
+"~/.claude/output-styles" = { mode = "symlink", source = "ai-tools/claude/output-styles" }
 "~/.claude/settings.json" = { mode = "symlink", source = "ai-tools/claude/settings.json" }
 
 # GitHub Copilot
