@@ -15,7 +15,7 @@ fi
 
 # Update Homebrew itself
 print_subheader "Updating Homebrew ..."
-brew update --auto-update --force # --verbose
+brew update --force # --verbose
 
 # Install/Upgrade all packages from Brewfile
 print_subheader "Install/Upgrade all packages from Brewfile ..."
