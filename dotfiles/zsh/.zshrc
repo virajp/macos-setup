@@ -18,15 +18,19 @@ source ~/.config/zsh/gcp.sh
 # echo "Setup environment variables: $(date)"
 
 # Path
-export PATH="${HOME}/.pub-cache/bin:${PATH}"
-export PATH="${GEM_HOME}/bin:${PATH}"
-export PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${PATH}"
-export PATH="${HOMEBREW_PREFIX}/opt/openjdk/bin:${PATH}"
 export PATH="${HOMEBREW_PREFIX}/opt/curl/bin:${PATH}"
-export PATH="${HOMEBREW_PREFIX}/opt/ruby/bin:${PATH}"
 
 # Created by `pipx` on 2024-03-15 06:20:45
 export PATH="${PATH}:/Users/virajpatel/.local/bin"
+
+# mise activate
+# Must run after `brew shellenv` and the PATH exports above: mise wins
+# precedence by prepending, so anything touching PATH after this steals it.
+# .zshenv handles the non-interactive (--shims) half; .zshrc is interactive-only.
+export MISE_ENV=dev
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
 # Initialisers
 source ~/.config/zsh/initialisers.sh

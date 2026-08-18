@@ -1,6 +1,7 @@
 [dotfiles]
 # ZSH
 "~/.config/zsh" = { mode = "symlink", source = "zsh/scripts" }
+"~/.zshenv"     = { mode = "symlink", source = "zsh/.zshenv" }
 "~/.zshrc"      = { mode = "symlink", source = "zsh/.zshrc" }
 
 # Fish
