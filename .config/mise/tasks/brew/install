@@ -9,7 +9,7 @@ print_header "Installing packages from Brewfile ..."
 brew bundle install \
   --upgrade \
   --force \
-  --file "~/brewfile"
+  --file "$HOME/.config/brewfile"
 
 print_header "Cleaning up Homebrew cache ..."
 brew cleanup --prune=all

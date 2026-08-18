@@ -12,4 +12,4 @@ brew bundle dump \
   --file "./brewfile.gen"
 
 print_header "Printing the diff ... "
-diff -u ~/brewfile brewfile.gen | diff-so-fancy
+diff -u "$HOME/.config/brewfile" brewfile.gen | diff-so-fancy

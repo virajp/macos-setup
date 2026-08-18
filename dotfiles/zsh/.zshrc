@@ -18,7 +18,7 @@ source ~/.config/zsh/zinit.sh
 export PATH="${HOMEBREW_PREFIX}/opt/curl/bin:${PATH}"
 
 # Created by `pipx` on 2024-03-15 06:20:45
-export PATH="${PATH}:/Users/virajpatel/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
 
 # mise activate
 # Must run after `brew shellenv` and the PATH exports above: mise wins

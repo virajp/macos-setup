@@ -9,8 +9,12 @@ source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 # Kill keyboxd (gpg) to ensure that stale keys are refreshed
 gpgconf --kill all || true
 
-# Set global Git configuration for GPG SSH signing
-git config --global gpg.ssh.allowedSignersFile "$HOME/.ssh/allowed_signers"
+# Set global Git configuration for GPG SSH signing.
+# Single-quoted so the literal ~ is written to ~/.gitconfig rather than an
+# expanded absolute path: that file is a symlink into this repo, so an
+# expanded $HOME would hardcode this machine's username into version control.
+# git expands ~ in config path values at read time.
+git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
 
 # Check for Touch ID setup for sudo authentication
 mise run upgrade:touch-id
@@ -39,7 +43,7 @@ print_header "Pruning unused versions of tools ..."
 mise prune --yes
 
 # Upgrade Homebrew and all installed packages
-mise upgrade:brew
+mise run upgrade:brew
 
 print_header "Disabling .DS_Store file creation on network drives ..."
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true

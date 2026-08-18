@@ -20,7 +20,9 @@ pre-commit = { version = "latest" }
 taplo      = { version = "latest" }
 
 [env]
-HOMEBREW_BUNDLE_FILE = "./Brewfile"
+# The brewfile lives at dotfiles/homebrew/brewfile and is symlinked to
+# ~/.config/brewfile by the [dotfiles] map. There is no ./Brewfile.
+HOMEBREW_BUNDLE_FILE = "{{env.HOME}}/.config/brewfile"
 
 [tasks.init]
 description = "Initialize mise tasks"
