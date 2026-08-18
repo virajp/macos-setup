@@ -6,9 +6,3 @@ title = "Statusline" # the tab title you're after
 directory = "~/Projects/github.com/virajp/claude-status"
 id        = "main"
 type      = "terminal"
-
-[[panes]]
-command   = [ "cc --continue" ]
-directory = "~/Projects/github.com/virajp/claude-status"
-id        = "claude"
-type      = "terminal"
