@@ -1,12 +1,9 @@
+# Only bootstrap variables belong here. Everything else lives in mise's [env]
+# block (dotfiles/mise/config.toml), which both fish and zsh pick up on
+# activation.
+#
+# GPG_TTY must be evaluated per-session against the live terminal, so mise
+# cannot provide it - its [env] is evaluated in a subprocess.
+
 # GPG
 export GPG_TTY="$(tty)"
-
-# iCloud Path
-export CLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-
-# Docker environment variables
-export DOCKER_BUILDKIT=1
-export COMPOSE_DOCKER_CLI_BUILD=1
-export DOCKER_DEFAULT_PLATFORM="linux/amd64"
-export DOCKER_HIDE_LEGACY_COMMANDS=1
-export BUILDKIT_PROGRESS="auto"

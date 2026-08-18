@@ -6,14 +6,11 @@
 # echo "Start: $(date)"
 
 # Setup all environment variables
+# Only bootstrap vars live here now; the rest come from mise's [env] block,
+# applied by `mise activate` below.
 source ~/.config/zsh/misc.sh
 source ~/.config/zsh/homebrew.sh
 source ~/.config/zsh/zinit.sh
-source ~/.config/zsh/dev.sh
-source ~/.config/zsh/gcp.sh
-
-# Import secrets (environment variables)
-# source "${CLOUD_PATH}/Secure/secrets.sh"
 
 # echo "Setup environment variables: $(date)"
 
@@ -40,10 +37,8 @@ source ~/.config/zsh/initialisers.sh
 # Aliases and functions
 source ~/.config/zsh/aliases.sh
 source ~/.config/zsh/functions.sh
-source ~/.config/zsh/upgrades.sh
-source ~/.config/zsh/95octane.sh
 
-# echo "Aliases, Functions, Upgrades, 95octane: $(date)"
+# echo "Aliases, Functions: $(date)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/virajpatel/.lmstudio/bin"

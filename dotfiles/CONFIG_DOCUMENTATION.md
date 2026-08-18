@@ -34,11 +34,18 @@ The default interactive shell is **fish**; `zsh` is kept in sync as a fallback.
 Set fish as the login shell via the steps in
 [`docs/shell.md`](../docs/shell.md).
 
-Both shells activate `mise` exactly once, with the same split: interactive
-shells get a full `mise activate`, non-interactive shells get `--shims`. In fish
-this is the if/else in `conf.d/51-mise.fish`; in zsh it is split across two
-files, because `.zshrc` is interactive-only — `.zshenv` handles the
-non-interactive half behind an `[[ ! -o interactive ]]` guard.
+Interactive shells get a full `mise activate`; non-interactive shells get
+`--shims`. In fish that is the if/else in `conf.d/51-mise.fish`, and it
+activates exactly once — `51-mise.fish` sets `MISE_FISH_AUTO_ACTIVATE=0` to
+suppress Homebrew's vendor snippet.
+
+zsh needs two files, because `.zshrc` is interactive-only: `.zshenv` loads shims
+unconditionally and `.zshrc` adds the full activate on top for interactive
+shells. The shims load is **not** redundant for interactive shells. zsh's
+`brew shellenv` runs `/usr/libexec/path_helper` (the fish variant does not),
+which rebuilds `PATH` and leaves mise-managed binaries unresolvable. The
+`fnox-env` mise plugin shells out to `fnox` while computing `[env]`, so without
+shims already on `PATH` it fails and **no secrets load at all**.
 
 `mise` must activate **after** `brew shellenv` in both shells. mise wins
 precedence by prepending to `PATH`, so anything that touches `PATH` afterwards

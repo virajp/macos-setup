@@ -83,7 +83,6 @@ remoteip = "mise run ips:remoteip"
 # zipf = "mise run func:zip"
 
 # Generic Aliases
-adb             = "$ANDROID_HOME/platform-tools/adb"
 cancelPrintJobs = "sudo cancel -a -x"
 cat             = "bat --tabs 2 --color always --decorations always --paging auto"
 cd              = "z"
@@ -94,7 +93,6 @@ diff            = "diff-so-fancy"
 dig             = "doggo"
 dns             = "scutil --dns"
 edit            = "subl"
-emulator        = "$ANDROID_HOME/emulator/emulator"
 findPid         = "lsof -t -c"
 finder          = "open -a Finder ./"
 flushdns        = "dscacheutil -flushcache"
@@ -132,19 +130,49 @@ k        = "kubectl"
 kc-local = "kubectl config use-context orbstack"
 kgc      = "kubectl config current-context"
 
-# 95octane Related Customisations
-cd95 = "cd $HOME/Projects/github.com/95octane"
-
 [env]
 # fnox plugin
 _.fnox-env = { tools = true }
 
 # GCP related
-USE_GKE_GCLOUD_AUTH_PLUGIN = { tools = true, value = "true" }
+CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
+USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
 
 # Development tools
-NODE_ENV    = "development"
-RUNTIME_ENV = "development"
+CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+DOTNET_CLI_TELEMETRY_OPTOUT = "true"
+HELM_EXPERIMENTAL_OCI       = "1"
+NODE_ENV                    = "development"
+PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
+RUNTIME_ENV                 = "development"
+
+# iCloud Drive
+CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+
+# Docker
+BUILDKIT_PROGRESS           = "auto"
+COMPOSE_DOCKER_CLI_BUILD    = "1"
+DOCKER_BUILDKIT             = "1"
+DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
+DOCKER_HIDE_LEGACY_COMMANDS = "1"
+
+# Homebrew behaviour (HOMEBREW_PREFIX stays in shell config: `brew shellenv`
+# needs it before mise activates)
+HOMEBREW_CASK_OPTS                  = "--appdir=~/Applications"
+HOMEBREW_CLEANUP_MAX_AGE_DAYS       = "7"
+HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS = "7"
+HOMEBREW_CURL_RETRIES               = "2"
+HOMEBREW_DISPLAY_INSTALL_TIMES      = "true"
+HOMEBREW_FAIL_LOG_LINES             = "100"
+HOMEBREW_FORCE_BREWED_CURL          = "true"
+HOMEBREW_FORCE_BREWED_GIT           = "true"
+HOMEBREW_NO_ANALYTICS               = "true"
+HOMEBREW_NO_ENV_HINTS               = "1"
+
+# Python (uv)
+UV_NO_CACHE          = "true"
+UV_NO_MANAGED_PYTHON = "true"
+UV_PYTHON_DOWNLOADS  = "never"
 
 # Mempalace Backend
 MEMPALACE_BACKEND                          = "qdrant"
