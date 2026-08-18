@@ -1,6 +1,3 @@
-## FZF initialiser
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # zoxide initialiser
 eval "$(zoxide init zsh)"
 

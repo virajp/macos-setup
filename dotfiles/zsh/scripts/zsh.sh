@@ -5,11 +5,12 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 # History
+# Deduplication is handled by the hist_ignore_*_dups options below; the
+# oh-my-zsh-only HISTDUP and HIST_STAMPS variables were removed, as oh-my-zsh
+# is not installed here (this setup uses zinit) and zsh itself ignores them.
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
-HIST_STAMPS="dd.mm.yyyy"
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -19,11 +20,8 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-COMPLETION_WAITING_DOTS="true"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# plugins=(git)
