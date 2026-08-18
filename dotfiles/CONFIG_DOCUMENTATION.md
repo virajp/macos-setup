@@ -62,9 +62,11 @@ Homebrew's `mise` formula ships `vendor_conf.d/mise-activate.fish`, which sorts
 after `51-mise.fish` and would re-run a full `mise activate`, overriding the
 shims branch. `51-mise.fish` sets `MISE_FISH_AUTO_ACTIVATE=0` to suppress it.
 
-`fish_add_path` writes to **universal** scope, which persists in
-`~/.config/fish/fish_variables` independently of any config file. Removing a
-`fish_add_path` line does not remove the path — that needs an explicit
+`fish_add_path` defaults to **universal** scope, which persists in
+`~/.config/fish/fish_variables` independently of any config file — so removing a
+`fish_add_path` line does not remove the path. `02-path.fish` therefore passes
+`--global`, which is rebuilt every startup and cannot accumulate stale entries.
+If a universal `fish_user_paths` ever reappears, clear it with
 `set --erase --universal fish_user_paths`.
 
 ### Prompt
@@ -76,10 +78,20 @@ Oh My Posh themes are kept as an alternative — the `oh-my-posh init` block in
 ## Secret Management (fnox)
 
 Secrets are stored in the **macOS Keychain** and surfaced as environment
-variables by [`fnox`](https://github.com/jdx/fnox), activated in
-`fish/conf.d/52-fnox.fish` and wired into `mise` via the `fnox-env` plugin.
-`dotfiles/fnox/fnox.toml` defines the mapped secrets (e.g. `GITHUB_API_TOKEN`,
+variables by [`fnox`](https://github.com/jdx/fnox), wired into `mise` via the
+`fnox-env` plugin (`_.fnox-env` in the `[env]` block). `dotfiles/fnox/fnox.toml`
+defines the mapped secrets (e.g. `GITHUB_API_TOKEN`,
 `HOMEBREW_GITHUB_API_TOKEN`). There is no plaintext secret file in this repo.
+
+Neither shell runs `fnox activate`: the mise plugin alone injects the secrets,
+in both shells and in `mise run` tasks. The trade-off is that `fnox deactivate`
+and `fnox shell` no longer apply — those relied on a shell function wrapper that
+`fnox activate` installed to eval their output. The `fnox` binary itself is
+still on `PATH` as a mise tool.
+
+Because the plugin shells out to `fnox` while computing `[env]`, `fnox` must
+already be resolvable when `mise activate` runs. That is why `.zshenv` loads
+mise shims unconditionally — see **Shells & Prompt** above.
 
 ## Tooling via mise
 
@@ -88,6 +100,20 @@ tool versions, sets `pnpm` as the npm package manager, enables `uvx` for pipx,
 and defines a large set of `[shell_alias]` shortcuts — including `updateall`,
 `osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup tasks. The task
 scripts themselves live under `mise/tasks/`.
+
+It is the single source of truth for **environment variables, aliases and shell
+functions**. Neither shell defines its own — there is no `aliases.sh` or
+`functions.sh`, and fish's `conf.d` carries only bootstrap variables. Some names
+differ from their old shell equivalents: `ips4` is now `ipv4`, `ips6` is `ipv6`,
+and `list-services` is `listServices`.
+
+**`PATH` is the deliberate exception** and stays in shell config
+(`fish/conf.d/02-path.fish`, `zsh/.zshrc`). mise prepends `[env] _.path` entries
+*ahead* of its own tool paths, so declaring a directory there shadows
+mise-managed tools with any copy living in it — `~/.local/bin` holds a
+standalone `uv` and `uvx`, and Homebrew's `bin` holds `jq` and `yq`. Keeping
+`PATH` in shell config, with `mise activate` running last, is what makes the
+mise-managed copies win.
 
 ## mempalace (MCP memory server)
 

@@ -38,7 +38,3 @@ source ~/.config/zsh/zsh.sh
 source ~/.config/zsh/initialisers.sh
 
 # echo "Initialisers: $(date)"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/virajpatel/.lmstudio/bin"
-# End of LM Studio CLI section

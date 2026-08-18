@@ -7,18 +7,22 @@
 #
 # Environment variables referenced:
 # - HOMEBREW_PREFIX: Homebrew installation prefix (defined in 01-env.fish)
-# - GEM_HOME: Ruby gems installation directory (defined in 03-dev.fish)
 # - HOME: User home directory (system variable)
 #
-# Path additions for development tools and utilities:
-# - Homebrew-installed curl, ruby, and openjdk binaries
-# - Flutter/Dart pub cache binaries
-# - Ruby gems binaries
-# - User-local binaries
+# PATH deliberately stays in shell config rather than moving to mise's
+# [env] _.path. mise prepends _.path entries AHEAD of its own tool paths, so
+# declaring ~/.local/bin there would shadow mise-managed tools with the
+# standalone copies that live in it (uv and uvx, today). Keeping these here
+# means mise activates afterwards and its tools correctly win.
+#
+# --global, not the default universal scope: universal entries persist in
+# ~/.config/fish/fish_variables independently of this file, so a path removed
+# here would survive forever. Global scope is rebuilt every startup.
+#
+# fish_add_path skips directories that do not exist, so stale entries simply
+# stop being added rather than accumulating.
 # =============================================================================
 
 # Path Management - Add development tool paths to Fish PATH
-fish_add_path "$HOMEBREW_PREFIX/opt/curl/bin"
-fish_add_path "$HOMEBREW_PREFIX/opt/ruby/bin"
-fish_add_path "$HOME/.pub-cache/bin"
-fish_add_path "$HOME/.local/bin"
+fish_add_path --global "$HOMEBREW_PREFIX/opt/curl/bin"
+fish_add_path --global "$HOME/.local/bin"
