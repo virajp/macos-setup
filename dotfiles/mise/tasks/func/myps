@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
-#MISE description="List startup items (LaunchAgents & LaunchDaemons)"
+#MISE description="List processes for the current user, optionally filtered"
 #MISE hide=true
 
-#USAGE arg "<process>" help="List processes with specified name"
+# Optional: with no argument every process for the user is listed, which is
+# what the shell `myps` alias relies on.
+#USAGE arg "[process]" default="" help="Filter processes by name"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-print_header "Listing processes for user $USER filtered by $usage_process ..."
+if [ -n "$usage_process" ]; then
+  print_header "Listing processes for user $USER filtered by $usage_process ..."
+else
+  print_header "Listing processes for user $USER ..."
+fi
 # Run ps command with:
 # $argv: any additional arguments passed to the function
 # -u $USER: filter to show only processes owned by current user
@@ -20,4 +26,11 @@ print_header "Listing processes for user $USER filtered by $usage_process ..."
 #   - command: full command line
 # | sort -n: sort output numerically (by PID)
 # ps -u $USER -o pid,%cpu,%mem,start,time,command | grep -E "PID|$usage_process" | grep -E -v "grep|mise/bin/mise|mise\/tasks" | sort -n
-pstree -u $USER -g 3 -l 7 | grep -E "PID|$usage_process" | grep -E -v "grep|mise\/bin\/mise|mise\/tasks"
+#
+# The filter grep is applied only when a name was given: BSD grep rejects the
+# empty alternation "PID|" that an unset $usage_process would produce.
+if [ -n "$usage_process" ]; then
+  pstree -u $USER -g 3 -l 7 | grep -E "PID|$usage_process" | grep -E -v "grep|mise\/bin\/mise|mise\/tasks"
+else
+  pstree -u $USER -g 3 -l 7 | grep -E -v "grep|mise\/bin\/mise|mise\/tasks"
+fi

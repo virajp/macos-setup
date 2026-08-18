@@ -23,22 +23,21 @@ export PATH="${PATH}:/Users/virajpatel/.local/bin"
 # mise activate
 # Must run after `brew shellenv` and the PATH exports above: mise wins
 # precedence by prepending, so anything touching PATH after this steals it.
-# .zshenv handles the non-interactive (--shims) half; .zshrc is interactive-only.
+# Aliases and functions arrive here too, from [shell_alias] and [tasks] -
+# which is why there is no longer an aliases.sh or functions.sh.
+# .zshenv loads shims first; see the comment there for why that is required.
 export MISE_ENV=dev
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
+# Shell options: history, keybindings, completion styling
+source ~/.config/zsh/zsh.sh
+
 # Initialisers
 source ~/.config/zsh/initialisers.sh
 
 # echo "Initialisers: $(date)"
-
-# Aliases and functions
-source ~/.config/zsh/aliases.sh
-source ~/.config/zsh/functions.sh
-
-# echo "Aliases, Functions: $(date)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/virajpatel/.lmstudio/bin"

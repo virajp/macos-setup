@@ -129,6 +129,7 @@ drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
 k        = "kubectl"
 kc-local = "kubectl config use-context orbstack"
 kgc      = "kubectl config current-context"
+kubectx  = "kubectl config get-contexts"
 
 [env]
 # fnox plugin
