@@ -11,7 +11,6 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 | ------------- | ------------------------------------------------------------------ |
 | `fish/`       | Fish shell — the default interactive shell (`conf.d/*.fish`)       |
 | `zsh/`        | Zsh configuration (legacy / fallback shell)                        |
-| `nushell/`    | Nushell configuration with a custom vendor autoload system         |
 | `starship/`   | Starship prompt (the active prompt, initialised from fish)         |
 | `oh-my-posh/` | Oh My Posh prompt themes (`shell.yaml`, `claude.yaml`) — alternate |
 | `ghostty/`    | Ghostty terminal configuration                                     |
@@ -31,25 +30,41 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 
 ## Shells & Prompt
 
-The default interactive shell is **fish**; `zsh` and `nushell` are also kept in
-sync. Set fish as the login shell via the steps in
+The default interactive shell is **fish**; `zsh` is kept in sync as a fallback.
+Set fish as the login shell via the steps in
 [`docs/shell.md`](../docs/shell.md).
+
+Both shells activate `mise` exactly once, with the same split: interactive
+shells get a full `mise activate`, non-interactive shells get `--shims`. In fish
+this is the if/else in `conf.d/51-mise.fish`; in zsh it is split across two
+files, because `.zshrc` is interactive-only — `.zshenv` handles the
+non-interactive half behind an `[[ ! -o interactive ]]` guard.
+
+`mise` must activate **after** `brew shellenv` in both shells. mise wins
+precedence by prepending to `PATH`, so anything that touches `PATH` afterwards
+takes it back — and tools present in both Homebrew and mise (`jq`, `yq`) would
+silently resolve to the Homebrew copy.
 
 ### Fish loading sequence
 
-1. `conf.d/*.fish` — sorted by their numeric prefix (`01-env`, `02-path`, …)
+1. `conf.d/*.fish` — sorted by filename across **all** conf.d directories,
+   including Homebrew's `vendor_conf.d`
 2. `config.fish` — main configuration
+
+Homebrew's `mise` formula ships `vendor_conf.d/mise-activate.fish`, which sorts
+after `51-mise.fish` and would re-run a full `mise activate`, overriding the
+shims branch. `51-mise.fish` sets `MISE_FISH_AUTO_ACTIVATE=0` to suppress it.
+
+`fish_add_path` writes to **universal** scope, which persists in
+`~/.config/fish/fish_variables` independently of any config file. Removing a
+`fish_add_path` line does not remove the path — that needs an explicit
+`set --erase --universal fish_user_paths`.
 
 ### Prompt
 
 **Starship** is the active prompt (`06-prompt.fish` calls `starship init`). The
 Oh My Posh themes are kept as an alternative — the `oh-my-posh init` block in
 `06-prompt.fish` is commented out and can be swapped in if preferred.
-
-### Nushell vendor autoload
-
-Files in `vendor/autoload/` load in sorted order, e.g. `00-env.nu`,
-`01-aliases.nu`, `02-homebrew.nu`, `99-zoxide.nu`, `99-oh-my-posh.nu`.
 
 ## Secret Management (fnox)
 

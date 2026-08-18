@@ -51,9 +51,6 @@
 # Mise (user level)
 "~/.config/mise" = { mode = "symlink", source = "mise" }
 
-# nushell
-"~/Library/Application Support/nushell" = { mode = "symlink", source = "nushell" }
-
 # oh-my-posh
 "~/.config/oh-my-posh" = { mode = "symlink", source = "oh-my-posh" }
 
