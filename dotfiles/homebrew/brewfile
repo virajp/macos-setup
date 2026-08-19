@@ -1,3 +1,6 @@
+tap "macpaw/taps", trusted: {
+  cask: ["cleanmymac-cli"]
+}
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -80,10 +83,6 @@ brew "zsh"
 cask "1password", args: { appdir: "/Applications" }
 # Application launcher and productivity software
 cask "alfred"
-# Google's Antigravity, Agent orchestration platform
-# cask "antigravity"
-# Google's Antigravity CLI, Terminal interface for Antigravity agents
-# cask "antigravity-cli"
 # Tools for building Android applications
 cask "android-studio"
 # Web browser focusing on privacy
@@ -92,10 +91,8 @@ cask "brave-browser"
 cask "claude"
 # Claude Code
 cask "claude-code"
-# Codex (OpenAI)
-# cask "codex"
-# Cursor
-cask "cursor"
+# CleanMyMac CLI
+cask "cleanmymac-cli"
 # Free app that makes your Internet safer
 # cask "cloudflare-warp"
 # Find files, folders, or contents in any file
@@ -150,13 +147,11 @@ mas "Disk Doctor", id: 455970963
 mas "Disk Map", id: 715464874
 mas "Duplicate Detective", id: 686428787
 mas "Final Cut Pro", id: 424389933
-# mas "HP", id: 1474276998
 mas "Keynote", id: 361285480
 mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-# mas "MindNode Classic", id: 1289197285
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "PDF Protector", id: 566631581
