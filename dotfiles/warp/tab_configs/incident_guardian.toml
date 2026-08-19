@@ -1,6 +1,6 @@
 color = "green"
-name  = "IG (Claude)" # label in the + menu
-title = "IG (Claude)" # the tab title you're after
+name  = "Incident Guardian" # label in the + menu
+title = "Incident Guardian" # the tab title you're after
 
 [[panes]]
 directory = "~/Projects/gitlab.com/dnl/incident-guardian"

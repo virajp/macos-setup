@@ -1,6 +1,6 @@
 color = "blue"
-name  = "Linter (Claude)" # label in the + menu
-title = "Linter (Claude)" # the tab title you're after
+name  = "Linter" # label in the + menu
+title = "Linter" # the tab title you're after
 
 [[panes]]
 directory = "~/Projects/github.com/virajp/linter"

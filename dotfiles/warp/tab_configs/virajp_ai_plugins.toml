@@ -1,6 +1,6 @@
 color = "yellow"
-name  = "AI Plugins (Claude)" # label in the + menu
-title = "AI Plugins (Claude)" # the tab title you're after
+name  = "AI Plugins" # label in the + menu
+title = "AI Plugins" # the tab title you're after
 
 [[panes]]
 directory = "~/Projects/github.com/virajp/ai-plugins"
