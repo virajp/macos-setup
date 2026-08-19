@@ -4,16 +4,22 @@
 [settings.general]
 mise = true
 
-[daemons.mempalace-qdrant]
+# [daemons.mempalace-qdrant]
+# boot_start = true
+# port       = 6333
+# ready_port = 6333
+# retry      = true
+# run        = "docker compose --file $HOME/.config/mempalace/docker-compose.yaml up"
+
+[daemons.qdrant-gate]
 boot_start = true
-port       = 6333
-ready_port = 6333
+ready_cmd  = { run = "nc -z -G 2 127.0.0.1 6333", timeout = "120s" }
 retry      = true
-run        = "docker compose --file $HOME/.config/mempalace/docker-compose.yaml up"
+run        = "exec tail -f /dev/null"
 
 [daemons.mempalace-mcp]
 boot_start = true
-depends    = [ "mempalace-qdrant" ]
+depends    = [ "qdrant-gate" ]
 port       = 8765
 ready_http = "http://127.0.0.1:8765/healthz"
 retry      = true

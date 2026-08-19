@@ -31,6 +31,7 @@ yq        = { version = "latest" }
 
 # AI Tools
 "npm:@mermaid-js/mermaid-cli" = { version = "latest" }
+"npm:codeburn"                = { version = "latest" }
 "pipx:graphifyy"              = { uvx = true, version = "latest" }
 "pipx:mempalace"              = { uvx = true, version = "latest" }
 rtk                           = { version = "latest" }
