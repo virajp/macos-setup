@@ -125,6 +125,8 @@ cask "slack"
 # cask "subler"
 # Text editor for code, markup and prose
 cask "sublime-text"
+# Terminal for orchestrating agents
+cask "superset"
 # Tool to explore all the running tasks (processes)
 cask "taskexplorer"
 # Open-source code editor
