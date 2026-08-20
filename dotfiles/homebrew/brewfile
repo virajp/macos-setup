@@ -1,6 +1,9 @@
 tap "macpaw/taps", trusted: {
   cask: ["cleanmymac-cli"]
 }
+tap "stablyai/orca", trusted: {
+  cask: ["orca"]
+}
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -92,7 +95,7 @@ cask "claude"
 # Claude Code
 cask "claude-code"
 # CleanMyMac CLI
-cask "cleanmymac-cli"
+cask "macpaw/taps/cleanmymac-cli"
 # Free app that makes your Internet safer
 # cask "cloudflare-warp"
 # Find files, folders, or contents in any file
@@ -117,6 +120,8 @@ cask "notion"
 cask "obsidian"
 # Replacement for Docker Desktop
 cask "orbstack", args: { appdir: "/Applications" }
+# IDE for orchestrating AI coding agents across terminals and worktrees
+cask "stablyai/orca/orca"
 # Collection of apps available by subscription
 cask "setapp"
 # Team communication and collaboration software
