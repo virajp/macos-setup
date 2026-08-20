@@ -30,9 +30,9 @@ hide        = true
 run         = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
-cc    = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'opus[1m]' --effort high"
-cch   = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'haiku[1m]' --effort high"
-cco   = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'opus[1m]' --effort high"
-ccs   = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'sonnet[1m]' --effort high"
+cc    = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'opus[1m]' --effort high"
+cch   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'haiku[1m]' --effort high"
+cco   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'opus[1m]' --effort high"
+ccs   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'sonnet[1m]' --effort high"
 lint  = "mise run lint"
 setup = "mise run setup:all"
