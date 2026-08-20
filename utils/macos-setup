@@ -143,8 +143,14 @@ defaults write com.apple.dock tilesize -int 38
 defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock largesize -int 71
 
-# Hot Corners: Map Bottom-Right corner explicitly to trigger Quick Note (ID 14)
-defaults write com.apple.dock "wvous-br-corner" -int 14
+# Hot Corners: Disable all four corners (ID 0 = no-op)
+defaults write com.apple.dock "wvous-tl-corner" -int 0
+defaults write com.apple.dock "wvous-tl-modifier" -int 0
+defaults write com.apple.dock "wvous-tr-corner" -int 0
+defaults write com.apple.dock "wvous-tr-modifier" -int 0
+defaults write com.apple.dock "wvous-bl-corner" -int 0
+defaults write com.apple.dock "wvous-bl-modifier" -int 0
+defaults write com.apple.dock "wvous-br-corner" -int 0
 defaults write com.apple.dock "wvous-br-modifier" -int 0
 
 # Do not show recently-used apps in the Dock
