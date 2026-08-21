@@ -26,3 +26,5 @@ npm-debug.log
 # Extras         #
 ##################
 *.bak
+
+**/.claude/settings.local.json
