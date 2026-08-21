@@ -16,6 +16,10 @@ Bias toward caution over speed — use judgment for trivial tasks.
 
 - **git**: Always use the `git-workflow` skill for all git interactions
 - **tasks**: Always prefer `mise` — list available tasks with `mise tasks`
+  - Task scripts live in `.config/mise/tasks/` at the repo root for repo-level
+    tasks, and `~/.config/mise/tasks/` for global tasks
+  - Only the `init` task is defined in mise's config file — it just makes the
+    task scripts executable
 - **libraries**: Always use Context7 MCP (`resolve-library-id` →
   `get-library-docs`) before writing code with any external library — never rely
   on training knowledge for APIs or config schemas
