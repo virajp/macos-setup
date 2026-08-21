@@ -8,6 +8,7 @@
     "CLAUDE_INSTALL_METHOD": "other",
     "DISABLE_AUTOUPDATER": "1"
   },
+  "outputStyle": "Terse",
   "includeCoAuthoredBy": true,
   "permissions": {
     "allow": [
