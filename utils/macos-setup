@@ -253,11 +253,6 @@ sudo nvram AutoBoot=%01
 # Interface Optimizations: Clamp streaming bandwidth and media engines on battery
 defaults write com.apple.appleinterface videoStreamingOptimizeOnBattery -bool true
 
-# Optional: Hardware Charge Limit Enforcement (uncomment if using bclm via Homebrew)
-# if type -q bclm
-#     sudo bclm write 80
-# end
-
 # Clear background configuration engine cache
 killall cfprefsd
 echo "Power profiles calibrated and locked in successfully!"

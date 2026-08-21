@@ -35,7 +35,6 @@ yq        = { version = "latest" }
 "pipx:graphifyy"              = { uvx = true, version = "latest" }
 "pipx:mempalace"              = { uvx = true, version = "latest" }
 rtk                           = { version = "latest" }
-# oh-my-pi                      = { version = "latest" }
 
 # Linter & Formatters
 dprint = { version = "latest" }
@@ -61,7 +60,6 @@ aistats = "mise x -- pnpx codeburn"
 cc      = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 ccf     = "claude --model 'fable[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 cco     = "claude --model 'opus[1m]' --effort 'high' --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-# mempalace = "mise run mempalace:status"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
@@ -78,10 +76,6 @@ ips      = "mise run ips:ips"
 ipv4     = "mise run ips:ipv4"
 ipv6     = "mise run ips:ipv6"
 remoteip = "mise run ips:remoteip"
-
-# Backup shortcuts
-# backup = "mise run func:backup"
-# zipf = "mise run func:zip"
 
 # Generic Aliases
 cancelPrintJobs = "sudo cancel -a -x"
