@@ -1,6 +1,6 @@
 color = "cyan"
-name  = "Statusline" # label in the + menu
-title = "Statusline" # the tab title you're after
+name  = "Claude Status" # label in the + menu
+title = "Claude Status" # the tab title you're after
 
 [[panes]]
 directory = "~/Projects/github.com/virajp/claude-status"
