@@ -1,17 +1,26 @@
 [settings]
+activate_aggressive  = true
 all_compile          = false
 env_shell_expand     = true
 gpg_verify           = true
 minimum_release_age  = "0h"
 os                   = "macos"
 paranoid             = true
+raw                  = true
+status.missing_tools = "always"
+task.output          = "interleave"
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
+
+# NodeJS settings
+node.compile = false
+
+# Python settings
+python.compile      = false
+python.uv_venv_auto = "create|source"
 
 # Package manager settings
 npm.package_manager = "pnpm"
 pipx.uvx            = true
-python.compile      = false
-python.uv_venv_auto = "create|source"
 
 [tools]
 # MISE tools
