@@ -45,12 +45,6 @@ mise prune --yes
 # Upgrade Homebrew and all installed packages
 mise run upgrade:brew
 
-print_header "Disabling .DS_Store file creation on network drives ..."
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-print_header "Disabling .DS_Store file creation on USB drives ..."
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
 mise run upgrade:npm
 
 mise run cleanupDS ~/Projects
@@ -61,5 +55,18 @@ mise run upgrade:ai
 
 mise run mempalace:update
 mise run mempalace:restart
+
+# Last on purpose: this prompts for sudo (pmset/nvram) and restarts Finder,
+# Dock and ControlCenter, so everything above it is already done by then.
+# macOS updates reset these settings, so re-applying them here is the fix.
+readonly MACOS_SETUP="${HOME}/Projects/github.com/virajp/macos-setup/utils/macos-setup"
+
+print_header "Applying macOS system settings ..."
+if [[ -x "${MACOS_SETUP}" ]]; then
+  "${MACOS_SETUP}"
+else
+  print_error "Not found: ${MACOS_SETUP}"
+  echo "Skipping macOS system settings."
+fi
 
 print_header "Setup complete!"

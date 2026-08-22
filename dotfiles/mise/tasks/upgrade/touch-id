@@ -1,23 +1,39 @@
 #!/usr/bin/env bash
-#MISE description="Check if Touch ID is configured for sudo authentication"
+#MISE description="Configure Touch ID for sudo authentication"
 #MISE hide=true
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-line_sep "="
-print_wait "Checking Touch ID setup for shell ... "
+# Touch ID for sudo is configured in /etc/pam.d/sudo_local, not /etc/pam.d/sudo.
+# macOS overwrites /etc/pam.d/sudo on every system update; sudo_local is the
+# drop-in it includes and is left untouched, so this only ever runs once.
 
-if grep -q "pam_tid.so" /etc/pam.d/sudo; then
+readonly PAM_SUDO="/etc/pam.d/sudo"
+readonly PAM_SUDO_LOCAL="/etc/pam.d/sudo_local"
+readonly PAM_TID_LINE="auth       sufficient     pam_tid.so"
+
+line_sep "="
+print_wait "Checking Touch ID setup for sudo ... "
+
+if grep -q "pam_tid.so" "${PAM_SUDO_LOCAL}" 2> /dev/null; then
   print_success "OK"
   exit 0
-else
+fi
+
+if ! grep -q "sudo_local" "${PAM_SUDO}"; then
   print_error "NOT OK"
-  echo "Please run the following commands to setup Touch ID for sudo:"
-  print_success "subl /etc/pam.d/sudo"
-  echo ""
-  echo "Add the following line to the top of the file:"
-  print_success "'auth       sufficient     pam_tid.so'"
-  echo ""
+  echo "${PAM_SUDO} does not include sudo_local — this macOS is too old."
+  echo "Add the following line to the top of ${PAM_SUDO} manually:"
+  print_success "'${PAM_TID_LINE}'"
   exit 1
 fi
+
+print_error "NOT SET"
+echo "Creating ${PAM_SUDO_LOCAL} (requires sudo) ..."
+echo "${PAM_TID_LINE}" | sudo tee "${PAM_SUDO_LOCAL}" > /dev/null
+sudo chmod 444 "${PAM_SUDO_LOCAL}"
+
+print_wait "Verifying Touch ID setup for sudo ... "
+grep -q "pam_tid.so" "${PAM_SUDO_LOCAL}"
+print_success "OK"
