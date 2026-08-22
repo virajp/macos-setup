@@ -62,7 +62,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
 # Hide hidden files by default (Toggle with Cmd+Shift+Dot on the fly)
-defaults write com.apple.finder AppleShowAllFiles false
+defaults write com.apple.finder AppleShowAllFiles -bool false
 
 # Ensure all filename extensions are explicitly visible system-wide
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -88,7 +88,7 @@ defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
 # Establish User Home directory as default anchor path for all new Finder windows
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
-defaults write com.apple.finder NewWindowTargetPath -string "file://{$HOME}/"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Prevent metadata pollution: Disable hidden .DS_Store generation on Network and USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -104,7 +104,7 @@ defaults write com.apple.finder CreateDesktop -bool false
 defaults write com.apple.finder ShowSidebar -bool true
 defaults write com.apple.finder ShowRecentTags -bool false
 
-# Open folders in tabs and show the tab bar
+# Open folders in new windows rather than tabs, but keep the tab bar visible
 defaults write com.apple.finder FinderSpawnTab -bool false
 defaults write com.apple.finder ShowTabView -bool true
 
@@ -116,7 +116,7 @@ defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
 defaults write com.apple.finder FXPreferredGroupBy -string "Kind"
 defaults write com.apple.finder FXArrangeGroupViewBy -string "Name"
 
-# Allow quitting Finder via Cmd+Q
+# Keep Finder always running: no Quit item in its menu (Cmd+Q stays disabled)
 defaults write com.apple.finder QuitMenuItem -bool false
 
 # Keep the confirmation before removing items from iCloud Drive
@@ -126,6 +126,7 @@ defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
 defaults write com.apple.finder FK_AppCentricShowSidebar -bool true
 defaults write com.apple.finder FXICloudDriveEnabled -bool true
 defaults write com.apple.finder FXICloudDriveDocuments -bool true
+defaults write com.apple.finder FXICloudDriveDesktop -bool true
 
 # ----------------------------------------------------------------------------
 # Dock & Workspace Aesthetics
@@ -179,6 +180,29 @@ defaults write com.apple.dock expose-group-apps -bool true
 # Prevent workspace chaos: Do not auto-rearrange Spaces based on recency metric
 defaults write com.apple.dock mru-spaces -bool false
 
+# Hide desktop items (Sonoma+ key; the Finder CreateDesktop key above is the
+# pre-Sonoma equivalent and both are set so either path works)
+defaults write com.apple.WindowManager HideDesktop -bool true
+
+# Show every window of an application at once when switching to it
+defaults write com.apple.WindowManager AppWindowGroupingBehavior -bool true
+
+# Window tiling: drop the gaps between tiled windows and disable the
+# drag-to-edge and drag-to-top tiling gestures entirely
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+
+# ----------------------------------------------------------------------------
+# Menu Bar Clock
+# ----------------------------------------------------------------------------
+echo "Formatting the menu bar clock..."
+
+# Show the day of week and AM/PM, but not the date
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+defaults write com.apple.menuextra.clock ShowAMPM -bool true
+defaults write com.apple.menuextra.clock ShowDate -int 0
+
 # ----------------------------------------------------------------------------
 # Trackpad Framework
 # ----------------------------------------------------------------------------
@@ -192,6 +216,10 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 # Disable Force Click (firm-press lookup / haptic)
 defaults write NSGlobalDomain "com.apple.trackpad.forceClick" -bool false
 
+# Disable the three-finger tap lookup gesture on both trackpad surfaces
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 0
+
 # ----------------------------------------------------------------------------
 # System Sync & Core Process Flushes
 # ----------------------------------------------------------------------------
@@ -201,7 +229,7 @@ echo "Synchronizing system defaults and flushing graphics engines..."
 killall cfprefsd
 
 # Gracefully terminate and reload GUI subsystems to apply parameters cleanly
-for app in "Finder" "Dock" "SystemUIServer"; do
+for app in "Finder" "Dock" "SystemUIServer" "ControlCenter"; do
     killall "$app" > /dev/null 2>&1
 done
 
