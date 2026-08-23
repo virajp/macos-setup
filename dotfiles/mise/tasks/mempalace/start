@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #MISE description="Start the mempalace stack via pitchfork"
-#MISE hide=true
 #MISE depends=["mempalace:check"]
 
 set -e

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #MISE description="Stop the mempalace stack"
-#MISE hide=true
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"

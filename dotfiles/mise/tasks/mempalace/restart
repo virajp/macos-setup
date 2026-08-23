@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #MISE description="Restart mempalace mcp"
-#MISE hide=true
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
