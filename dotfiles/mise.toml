@@ -34,9 +34,8 @@
 "~/.config/ghostty/config" = { mode = "symlink", source = "ghostty/config" }
 
 # Git & SSH
-"~/.config/git"       = { mode = "symlink", source = "git/git" }
-"~/.gitconfig"        = { mode = "symlink", source = "git/root/gitconfig" }
-"~/.gitignore_global" = { mode = "symlink", source = "git/root/gitignore_global" }
+"~/.gitconfig"        = { mode = "symlink", source = "git/gitconfig" }
+"~/.gitignore_global" = { mode = "symlink", source = "git/gitignore_global" }
 "~/.ssh"              = { mode = "symlink-each", source = "ssh" }
 
 # GitHub CLI
