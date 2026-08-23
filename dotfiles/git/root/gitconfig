@@ -1,16 +1,19 @@
 [user]
+  name = Viraj Patel
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo
+  email = 3125954+virajp@users.noreply.github.com
 
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-	path = ~/.config/git/gitconfig-github
+# [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+# 	path = ~/.config/git/gitconfig-github
 
-[includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
-	path = ~/.config/git/gitconfig-github
+# [includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
+# 	path = ~/.config/git/gitconfig-github
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
-	path = ~/.config/git/gitconfig-gitlab
+# [includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+# 	path = ~/.config/git/gitconfig-gitlab
 
-[includeIf "hasconfig:remote.*.url:https://gitlab.com/*/**"]
-	path = ~/.config/git/gitconfig-gitlab
+# [includeIf "hasconfig:remote.*.url:https://gitlab.com/*/**"]
+# 	path = ~/.config/git/gitconfig-gitlab
 
 [core]
 	autocrlf = input
