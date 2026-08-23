@@ -41,6 +41,7 @@ mise run dotfiles:install # (re)symlink dotfiles
 mise run dotfiles:status  # show which dotfile symlinks are missing
 mise run code:format     # format files (dprint/taplo)
 mise run code:lint       # lint files
+mise run system:symlinks # find broken symlinks in $HOME (--deep, --delete)
 ```
 
 See [dotfiles/CONFIG_DOCUMENTATION.md](./dotfiles/CONFIG_DOCUMENTATION.md) for

@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+#MISE description="Scan $HOME for broken symlinks"
+#MISE hide=false
+
+#USAGE flag "--deep" help="also scan Library, Downloads, Documents, Desktop, caches, node_modules, .git and app bundles"
+#USAGE flag "--delete" help="delete the broken symlinks found, after confirmation"
+#USAGE flag "--root <root>" help="directory to scan (defaults to $HOME)"
+
+set -euo pipefail
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+root="${usage_root:-$HOME}"
+root="${root/#\~/$HOME}"
+root="${root%/}"
+deep="${usage_deep:-false}"
+delete="${usage_delete:-false}"
+
+skipped="Library, Downloads, Documents, Desktop, caches, node_modules, .git and app bundles"
+
+prune=()
+if [[ "${deep}" != "true" ]]; then
+  prune=(
+    '('
+    -path "${root}/Library" -o
+    -path "${root}/Downloads" -o
+    -path "${root}/Documents" -o
+    -path "${root}/Desktop" -o
+    -name node_modules -o
+    -name .git -o
+    -name Caches -o
+    -name .Trash -o
+    -name '*.app'
+    ')' -prune -o
+  )
+fi
+
+# Progress is a single rewritten line, so only when stdout is a terminal
+interactive=false
+if [[ -t 1 ]]; then
+  interactive=true
+fi
+
+clear_line() {
+  "${interactive}" && printf '\r\033[K'
+  return 0
+}
+
+progress() {
+  "${interactive}" || return 0
+  local rel="${1#"${root}"/}"
+  ((${#rel} > 50)) && rel="…${rel: -49}"
+  printf '\r\033[K%b' "${CYAN}[${SECONDS}s] ${dirs} dirs, ${broken} broken — ${rel}${NORMAL}"
+  return 0
+}
+
+print_header "Scanning ${root} for broken symlinks ..."
+if [[ "${deep}" == "true" ]]; then
+  print_warn "deep mode: scanning everything — this is slow"
+else
+  print_warn "fast mode: skipping ${skipped} — pass --deep to include them"
+fi
+
+dirs=0
+broken=0
+links=()
+SECONDS=0
+
+# find emits directories (progress ticks) and broken symlinks, interleaved
+while IFS= read -r path; do
+  if [[ -d "${path}" ]]; then
+    dirs=$((dirs + 1))
+    ((dirs % 100 == 0)) && progress "${path}"
+  else
+    clear_line
+    print_error "${path}"
+    print_yellow "  -> $(readlink "${path}")"
+    links+=("${path}")
+    broken=$((broken + 1))
+  fi
+done < <(
+  find "${root}" -xdev ${prune[@]+"${prune[@]}"} \
+    '(' -type d -print -o -type l ! -exec test -e {} \; -print ')' 2>/dev/null
+)
+clear_line
+
+print_newline
+if ((broken == 0)); then
+  print_green "No broken symlinks found — ${dirs} directories in ${SECONDS}s."
+  exit 0
+fi
+print_warn "${broken} broken symlink(s) found — ${dirs} directories in ${SECONDS}s."
+
+[[ "${delete}" == "true" ]] || exit 0
+
+print_subheader "Deleting ${broken} broken symlink(s) — this cannot be undone"
+reply=""
+print_wait "Delete them? [y/N] "
+read -r reply || true
+print_newline
+if [[ ! "${reply}" =~ ^[Yy]$ ]]; then
+  print_yellow "Aborted. Nothing deleted."
+  exit 0
+fi
+
+removed=0
+for link in "${links[@]}"; do
+  if rm -- "${link}" 2>/dev/null; then
+    removed=$((removed + 1))
+  else
+    print_error "could not delete ${link}"
+  fi
+done
+print_green "Deleted ${removed} of ${broken} broken symlink(s)."
