@@ -4,6 +4,9 @@ tap "macpaw/taps", trusted: {
 tap "stablyai/orca", trusted: {
   cask: ["orca"]
 }
+tap "virajp/tap", trusted: {
+  formula: ["claude-status"]
+}
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Mozilla CA certificate store
@@ -12,6 +15,8 @@ brew "ca-certificates"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Claude Code Status written in Rust
+brew "claude-status"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -153,6 +158,7 @@ mas "Disk Map", id: 715464874
 mas "Duplicate Detective", id: 686428787
 mas "Final Cut Pro", id: 424389933
 mas "Keynote", id: 361285480
+mas "Kindle", id: 302584613
 mas "Magnet", id: 441258766
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
