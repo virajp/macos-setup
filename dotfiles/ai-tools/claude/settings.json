@@ -206,7 +206,7 @@
     "virajp-plugins": {
       "source": {
         "source": "directory",
-        "path": "/Users/virajpatel/.local/share/virajp/ai-plugins/claude"
+        "path": "/Users/virajpatel/Projects/github.com/virajp/ai-plugins"
       }
     }
   },
