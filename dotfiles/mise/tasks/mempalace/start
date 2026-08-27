@@ -5,9 +5,7 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-# Before starting, let's force start pitchfork supervisor
-print_header "Starting pitchfork supervisor ..."
-pitchfork supervisor start --force
-
 print_header "Starting mempalace ..."
+# Clear any disable left by mempalace:stop, which guards the on_exit hook.
+pitchfork enable mempalace-mcp
 pitchfork start mempalace-mcp

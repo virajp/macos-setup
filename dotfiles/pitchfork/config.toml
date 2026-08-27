@@ -24,3 +24,11 @@ port       = 8765
 ready_http = "http://127.0.0.1:8765/healthz"
 retry      = true
 run        = "mempalace-mcp --transport http --host 127.0.0.1 --port 8765 --palace $MEMPALACE_PALACE_PATH --backend $MEMPALACE_BACKEND --allow-insecure-no-token"
+
+# Restart on ANY termination, including the clean exit(0) the MemPalace MCP
+# server performs after 8h idle (MEMPALACE_MCP_IDLE_HOURS). `retry` only covers
+# failures, so without this the daemon stays down until started by hand.
+# Deliberate stops are guarded by `pitchfork disable` in the mempalace:stop
+# task, which makes this hook a no-op.
+[daemons.mempalace-mcp.hooks]
+on_exit = "pitchfork start global/mempalace-mcp"

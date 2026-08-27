@@ -5,4 +5,7 @@ set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Restarting mempalace mcp ..."
-mise x -- pitchfork restart global/mempalace-mcp
+# Routed through stop/start rather than `pitchfork restart` so the disable
+# guard applies -- otherwise the on_exit hook races our own start.
+mise run mempalace:stop
+mise run mempalace:start

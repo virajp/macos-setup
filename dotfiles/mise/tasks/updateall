@@ -38,6 +38,17 @@ mise install
 print_header "Upgrading mise tools ..."
 mise upgrade  || true
 
+# Pick up a freshly upgraded pitchfork: the supervisor keeps running the binary
+# it started with, so without this the CLI and supervisor drift apart and newer
+# config keys (e.g. the mempalace-mcp on_exit hook) are parsed by a stale
+# supervisor. Before the prune below, which can delete the old install dir.
+print_header "Restarting pitchfork supervisor ..."
+pitchfork supervisor start --force
+# --force kills the supervisor and leaves its daemons stopped; they are not
+# re-adopted (boot_start only applies when the supervisor runs in boot mode).
+# Bring them back now rather than leaving mempalace down for the rest of the run.
+pitchfork start -g
+
 # Prune all unused versions of tools
 print_header "Pruning unused versions of tools ..."
 mise prune --yes
