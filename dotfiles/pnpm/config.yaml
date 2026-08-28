@@ -14,3 +14,4 @@ minimumReleaseAge: 600
 minimumReleaseAgeExclude:
   - "@askviraj/linter"
   - "@askviraj/ai-plugins"
+  - "@virajp.dev/claude-status"
