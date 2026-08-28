@@ -47,7 +47,7 @@ pitchfork supervisor start --force
 # --force kills the supervisor and leaves its daemons stopped; they are not
 # re-adopted (boot_start only applies when the supervisor runs in boot mode).
 # Bring them back now rather than leaving mempalace down for the rest of the run.
-pitchfork start -g
+pitchfork start --global
 
 # Prune all unused versions of tools
 print_header "Pruning unused versions of tools ..."
