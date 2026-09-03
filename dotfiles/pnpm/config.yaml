@@ -10,6 +10,7 @@
 # Supply-chain safety: refuse to install package versions published less than
 # this many minutes ago (600 = 10h cooldown), mitigating compromised releases.
 minimumReleaseAge: 600
+
 # Exempt specific versions from the cooldown when an urgent fix is needed:
 minimumReleaseAgeExclude:
   - "@askviraj/linter"
