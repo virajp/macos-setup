@@ -98,7 +98,7 @@ cask "brave-browser"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Claude Code
-cask "claude-code"
+cask "claude-code@latest"
 # CleanMyMac CLI
 cask "macpaw/taps/cleanmymac-cli"
 # Free app that makes your Internet safer

@@ -17,6 +17,13 @@ fi
 print_subheader "Updating Homebrew ..."
 brew update --force # --verbose
 
+# Remove packages NOT in Brewfile
+print_subheader "Deleting packages NOT in Brewfile ..."
+brew bundle cleanup \
+  --force \
+  --verbose \
+  --file "~/.config/brewfile"
+
 # Install/Upgrade all packages from Brewfile
 print_subheader "Install/Upgrade all packages from Brewfile ..."
 brew bundle install \
@@ -27,13 +34,6 @@ brew bundle install \
 
 print_subheader "Upgrading all Homebrew packages ..."
 brew upgrade --display-times --yes --formulae --force-bottle
-
-# Remove packages NOT in Brewfile
-print_subheader "Deleting packages NOT in Brewfile ..."
-brew bundle cleanup \
-  --force \
-  --verbose \
-  --file "~/.config/brewfile"
 
 # Remove unused dependencies
 print_subheader "Removing unused Homebrew dependencies ..."
