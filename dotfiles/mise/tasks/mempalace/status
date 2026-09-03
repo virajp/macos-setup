@@ -4,4 +4,84 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-pitchfork status --json global/mempalace-mcp
+DAEMON="global/mempalace-mcp"
+GATE="global/qdrant-gate"
+HEALTH_URL="http://127.0.0.1:8765/healthz"
+
+# Colored dot followed by its label.
+dot() {
+  echo -e "${1}●${NORMAL} ${2}"
+}
+
+# Two-column row: padded label, then value (which may carry escapes).
+row() {
+  printf "  %-8s %b\n" "$1" "$2"
+}
+
+# Green only for a daemon that is actually up; stopped is a warning, the
+# rest (failed, errored, unknown) are errors.
+status_color() {
+  case "$1" in
+    running) printf '%s' "${GREEN}" ;;
+    stopped) printf '%s' "${YELLOW}" ;;
+    *) printf '%s' "${RED}" ;;
+  esac
+}
+
+print_header "mempalace status"
+
+if ! JSON=$(pitchfork status --json "${DAEMON}" 2> /dev/null); then
+  print_error "Daemon ${DAEMON} not found — run 'mise run mempalace:start'"
+  exit 1
+fi
+
+STATUS=$(jq -r '.status // "unknown"' <<< "${JSON}")
+PID=$(jq -r '.pid // empty' <<< "${JSON}")
+PORT=$(jq -r '(.port // []) | join(", ")' <<< "${JSON}")
+ACTIVE_PORT=$(jq -r '.active_port // empty' <<< "${JSON}")
+
+row "Daemon" "${BOLD}${DAEMON}${NORMAL}"
+row "Status" "$(dot "$(status_color "${STATUS}")" "${STATUS}")"
+
+# Health is the real signal: a "running" daemon that fails /healthz is degraded.
+HEALTH_CODE=$(curl -s -m 3 -o /dev/null -w '%{http_code}' "${HEALTH_URL}" || echo "000")
+case "${HEALTH_CODE}" in
+  200) row "Health" "$(dot "${GREEN}" "ok — ${HEALTH_URL}")" ;;
+  000) row "Health" "$(dot "${RED}" "unreachable — ${HEALTH_URL}")" ;;
+  *) row "Health" "$(dot "${YELLOW}" "http ${HEALTH_CODE} — ${HEALTH_URL}")" ;;
+esac
+
+if [ -n "${PID}" ]; then
+  row "PID" "${PID}"
+  PS_OUT=$(ps -o etime=,rss= -p "${PID}" 2> /dev/null || true)
+  if [ -n "${PS_OUT}" ]; then
+    read -r UPTIME RSS_KB <<< "${PS_OUT}"
+    row "Uptime" "${UPTIME}"
+    row "Memory" "$(awk -v kb="${RSS_KB}" 'BEGIN { printf "%.1f MB", kb / 1024 }')"
+  fi
+fi
+
+if [ -n "${PORT}" ]; then
+  if [ -n "${ACTIVE_PORT}" ]; then
+    PORT="${PORT} ${GREEN}(active)${NORMAL}"
+  fi
+  row "Port" "${PORT}"
+fi
+
+print_subheader "Dependencies"
+
+GATE_STATUS=$(pitchfork status --json "${GATE}" 2> /dev/null | jq -r '.status // "not found"' || echo "not found")
+row "gate" "$(dot "$(status_color "${GATE_STATUS}")" "${GATE} — ${GATE_STATUS}")"
+
+QDRANT=$(docker ps --filter 'name=^qdrant$' --format '{{.Status}}' 2> /dev/null || true)
+if [ -z "${QDRANT}" ]; then
+  row "qdrant" "$(dot "${RED}" "container not running — run 'mise run mempalace:start'")"
+elif [[ "${QDRANT}" == *unhealthy* ]]; then
+  row "qdrant" "$(dot "${RED}" "${QDRANT}")"
+elif [[ "${QDRANT}" == *healthy* ]]; then
+  row "qdrant" "$(dot "${GREEN}" "${QDRANT}")"
+else
+  row "qdrant" "$(dot "${YELLOW}" "${QDRANT}")"
+fi
+
+print_newline
