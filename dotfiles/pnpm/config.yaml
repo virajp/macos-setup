@@ -13,6 +13,5 @@ minimumReleaseAge: 600
 
 # Exempt specific versions from the cooldown when an urgent fix is needed:
 minimumReleaseAgeExclude:
-  - "@askviraj/linter"
-  - "@askviraj/ai-plugins"
-  - "@virajp.dev/claude-status"
+  - "@askviraj/*"
+  - "@virajp.dev/*"
