@@ -1,0 +1,8 @@
+color = "yellow"
+name  = "Claude Plugins" # label in the + menu
+title = "Claude Plugins" # the tab title you're after
+
+[[panes]]
+directory = "~/Projects/github.com/virajp/claude-plugins"
+id        = "main"
+type      = "terminal"
