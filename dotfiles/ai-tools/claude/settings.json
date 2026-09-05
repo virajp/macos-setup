@@ -8,7 +8,10 @@
     "CLAUDE_INSTALL_METHOD": "other",
     "DISABLE_AUTOUPDATER": "1"
   },
-  "includeCoAuthoredBy": true,
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "sessionUrl": false
+  },
   "permissions": {
     "allow": [
       "Read",
