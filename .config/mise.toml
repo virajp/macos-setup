@@ -34,5 +34,5 @@ cc    = "claude --name 'macos-setup' --remote-control --continue --allow-dangero
 cch   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'haiku[1m]' --effort high"
 cco   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'opus[1m]' --effort high"
 ccs   = "claude --name 'macos-setup' --remote-control --continue --allow-dangerously-skip-permissions --dangerously-skip-permissions --model 'sonnet[1m]' --effort high"
-lint  = "mise run lint"
+lint  = "mise run code:lint"
 setup = "mise run setup:all"

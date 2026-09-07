@@ -5,11 +5,17 @@
 set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
+# Scratch file, not a deliverable — pinned to the project root so it never lands
+# in whatever directory the task was invoked from, and removed on the way out.
+GENERATED="${MISE_PROJECT_ROOT}/brewfile.gen"
+trap 'rm -f "${GENERATED}"' EXIT
+
 print_header "Generating Brewfile ..."
+# Description comments are the default since Homebrew 6 — `--describe` was
+# removed, and `--no-describe` is now the switch that turns them off.
 brew bundle dump \
   --force \
-  --describe \
-  --file "./brewfile.gen"
+  --file "${GENERATED}"
 
 print_header "Printing the diff ... "
-diff -u "$HOME/.config/brewfile" brewfile.gen | diff-so-fancy
+diff -u "$HOME/.config/brewfile" "${GENERATED}" | diff-so-fancy

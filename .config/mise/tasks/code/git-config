@@ -20,18 +20,18 @@ LOCAL_CONFIG=$(git config --local --list | grep -E "^($FORBIDDEN)=" || true);
 if [ ! -z "$LOCAL_CONFIG" ]; then
   if [ "$FIXIT" = "true" ]; then
     print_header "Fixing";
-    for line in ${(f)LOCAL_CONFIG}; do
-      key=${line%=*}
+    while IFS= read -r line; do
+      key=${line%%=*}
       print_wait "- removing $key ... "
-      git config unset --local $key
+      git config unset --local "$key"
       print_header "OK"
-    done
+    done <<< "$LOCAL_CONFIG"
     exit 0
   else
     print_error "ERROR";
-    for line in ${(f)LOCAL_CONFIG}; do
+    while IFS= read -r line; do
       print_warn "- $line"
-    done
+    done <<< "$LOCAL_CONFIG"
     # print_error "Please use \`mise run code:git-config --fix\` to remove them";
     print_error "Please use \`mise run ${MISE_TASK_NAME} --fix\` to remove them";
     exit 1;

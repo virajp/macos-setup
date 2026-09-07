@@ -27,6 +27,7 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 | `ai-tools/`   | Claude Code (`claude/`) and GitHub Copilot (`copilot/`) config     |
 | `mempalace/`  | mempalace/qdrant docker compose stack (see below)                  |
 | `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack           |
+| `warp/`       | Warp terminal launch configurations (`tab_configs/*.toml`)         |
 
 ## Shells & Prompt
 

@@ -29,6 +29,8 @@
 # Author: Viraj Patel
 ##############################################################################
 
+set -euo pipefail
+
 readonly SUCCESS_EMOJI="✅"
 readonly ERROR_EMOJI="🚫"
 readonly SETTING_EMOJI="⚙️"
@@ -42,6 +44,9 @@ readonly REPO_DIR="${HOME}/Projects/github.com/virajp/macos-setup"
 if ! command -v brew &> /dev/null; then
   echo "${INSTALL_EMOJI} Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # The installer does not touch the current shell's PATH, so put brew on it
+  # before the commands below reach for it.
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo "${SUCCESS_EMOJI} Homebrew is already installed."
 fi
@@ -62,7 +67,7 @@ brew analytics off
 
 # Check Homebrew health
 echo "${CHECK_EMOJI} Checking Homebrew health..."
-brew doctor
+brew doctor || true
 
 # Export HOMEBREW config
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
@@ -72,7 +77,7 @@ echo "${PACKAGE_EMOJI} Installing/updating packages from brewfile..."
 brew bundle install \
   --upgrade \
   --force \
-  --file=${REPO_DIR}/dotfiles/homebrew/brewfile
+  --file="${REPO_DIR}/dotfiles/homebrew/brewfile"
 
 # Check if mise is installed, if not then raise error and exit
 if ! command -v mise &> /dev/null; then
@@ -86,7 +91,10 @@ mise --cd "${REPO_DIR}" run dotfiles:install
 echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
 
 echo ""
-sudo ${REPO_DIR}/utils/macos-setup
+# Not run under sudo: the script sudoes the pmset/nvram lines that need root
+# itself, and running the whole thing as root would write every `defaults`
+# key into root's preference domain instead of yours.
+"${REPO_DIR}/utils/macos-setup"
 
 echo ""
 echo "${SUCCESS_EMOJI} Setup complete!"
