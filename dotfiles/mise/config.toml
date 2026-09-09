@@ -66,11 +66,11 @@ updateall          = "mise run updateall"
 
 # AI Tools shortcuts
 aistats = "mise x -- pnpx codeburn"
-dcc     = "claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --remote-control --continue"
-dccf    = "dcc --model 'fable[1m]' --effort 'high'"
-dcch    = "dcc --model 'haiku[1m]' --effort 'high'"
-dcco    = "dcc --model 'opus[1m]' --effort 'high'"
-dccs    = "dcc --model 'sonnet[1m]' --effort 'high'"
+cc      = 'claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --remote-control --name "$(basename "$PWD")" --effort "high"'
+ccf     = "cc --model 'fable[1m]'"
+cch     = "cc --model 'haiku[1m]'"
+cco     = "cc --model 'opus[1m]'"
+ccs     = "cc --model 'sonnet[1m]'"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
