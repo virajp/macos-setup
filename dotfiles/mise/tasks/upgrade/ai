@@ -10,5 +10,13 @@ print_header "Upgrading AI tools ..."
 print_subheader "Adding marketplaces ..."
 pnpx @virajp.dev/claude-plugins --all
 
+print_subheader "Upgrading marketplaces ..."
+claude plugins marketplace update
+
+print_subheader "Upgrading plugins ..."
+while IFS= read -r plugin; do
+  claude plugin update "${plugin}" --yes
+done < <(claude plugins list --json | jq -r '.[] | select(.scope == "user") | .id')
+
 print_subheader "Prune plugins ..."
 claude plugin autoremove --scope user --yes
