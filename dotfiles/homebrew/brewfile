@@ -1,0 +1,84 @@
+# Casks and VS Code extensions only. Formulae and Mac App Store apps are
+# declared in dotfiles/mise.toml ([bootstrap.packages]) and installed by mise;
+# casks stay on Homebrew because mise's cask support is intentionally narrow.
+# Applied by the brew:casks task (post-packages hook) via `brew bundle`.
+# 1Password must live in /Applications; everything else goes to ~/Applications
+# via HOMEBREW_CASK_OPTS.
+tap "stablyai/orca", trusted: {
+  cask: ["orca"]
+}
+# Password manager that keeps all passwords secure behind one password
+cask "1password", args: { appdir: "/Applications" }
+# Application launcher and productivity software
+cask "alfred"
+# Tools for building Android applications
+cask "android-studio"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Claude Code
+cask "claude-code@latest"
+# Free app that makes your Internet safer
+# cask "cloudflare-warp"
+# Find files, folders, or contents in any file
+cask "easyfind"
+# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-iosevka-nerd-font"
+cask "font-iosevka-term-nerd-font"
+cask "font-meslo-lg-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Desktop client for GitHub repositories
+cask "github"
+# Open-source video transcoder
+cask "handbrake-app"
+# Discover, download, and run local LLMs
+# cask "lm-studio", args: { appdir: "/Applications" }
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Replacement for Docker Desktop
+cask "orbstack"
+# IDE for orchestrating AI coding agents across terminals and worktrees
+cask "stablyai/orca/orca"
+# Collection of apps available by subscription
+cask "setapp"
+# Team communication and collaboration software
+cask "slack"
+# Mux and tag mp4 files
+# cask "subler"
+# Text editor for code, markup and prose
+cask "sublime-text"
+# Tool to explore all the running tasks (processes)
+cask "taskexplorer"
+# Open-source code editor
+cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
+# Rust-based terminal
+cask "warp"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+vscode "astro-build.astro-vscode"
+vscode "bmalehorn.vscode-fish"
+vscode "bradlc.vscode-tailwindcss"
+vscode "christian-kohler.npm-intellisense"
+vscode "dart-code.dart-code"
+vscode "dart-code.flutter"
+vscode "dbaeumer.vscode-eslint"
+vscode "doppler.doppler-vscode"
+vscode "dprint.dprint"
+vscode "effectful-tech.effect-vscode"
+vscode "foxundermoon.shell-format"
+vscode "gruntfuggly.todo-tree"
+vscode "hverlin.mise-vscode"
+vscode "meganrogge.template-string-converter"
+vscode "oderwat.indent-rainbow"
+vscode "pkief.material-icon-theme"
+vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
+vscode "usernamehw.errorlens"

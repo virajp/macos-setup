@@ -1,81 +1,57 @@
-# Homebrew formulae, casks and Mac App Store apps. mise installs these itself
-# (bottles poured into /opt/homebrew, casks adopted when already present);
-# `brew` stays installed for upgrades and for 1password, which stays on the real
-# `brew` CLI (brew:extras task, run from the post-packages hook): it must live in
-# /Applications while everything else goes to ~/Applications, and mise only has
-# the global MISE_BREW_CASK_OPT_APPDIR. VS Code extensions (vscode:extensions)
-# have no mise manager and run from the same hook.
-# Third-party taps are deliberately absent: mise evaluates them with its own
-# Ruby DSL shim, which fails on real-world casks/formulae. claude-status comes
-# from npm (upgrade:ai), orca is installed by hand.
+# Homebrew formulae and Mac App Store apps, installed and managed by mise (it
+# pours the same bottles brew would, into the same /opt/homebrew Cellar, without
+# calling `brew`). Casks are Homebrew's job: mise's cask support is intentionally
+# narrow, so they live in homebrew/brewfile and the brew:casks task applies it
+# from the post-packages hook. Everything that is a versioned dev tool is a mise
+# [tools] entry in mise/config.toml instead, never a formula.
 [bootstrap.brew]
 adopt = true
 
+# Third-party taps need published API metadata (api/formula/<name>.json in the
+# tap repo); mise's Ruby shim cannot evaluate most raw formula/cask definitions.
+[bootstrap.brew.taps]
+"virajp/tap" = "https://github.com/virajp/homebrew-tap.git"
+
 [bootstrap.packages]
 # Formulaes
-"brew:bash"            = "latest" # Latest version of bash
-"brew:bat"             = "latest" # Alternative to cat
-"brew:btop"            = "latest" # Resource monitor for the terminal
-"brew:ca-certificates" = "latest" # Common CA certificates
-"brew:coreutils"       = "latest" # GNU core utilities
-"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
-"brew:diff-so-fancy"   = "latest" # Enhances git diff output
-"brew:doggo"           = "latest" # DNS lookup utility
-"brew:eza"             = "latest" # Modern replacement for 'ls'
-"brew:fish"            = "latest" # Friendly interactive shell
-"brew:fnox"            = "latest" # Version manager for multiple programming languages
-"brew:fzf"             = "latest" # Command-line fuzzy finder
-"brew:gh"              = "latest" # GitHub CLI tool
-"brew:git"             = "latest" # Distributed version control system
-"brew:git-tools"       = "latest" # Additional Git utilities
-"brew:glab"            = "latest" # GitLab CLI tool
-"brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
-"brew:gping"           = "latest" # Ping with a graph
-"brew:httping"         = "latest" # Ping a web server over HTTP
-"brew:imagemagick"     = "latest" # Image manipulation tool
-"brew:ipcalc"          = "latest" # IP address calculator
-"brew:jq"              = "latest" # Command-line JSON processor
-"brew:lazygit"         = "latest" # Simple terminal UI for git
-"brew:lcov"            = "latest" # Code coverage tool for C/C++
-"brew:mas"             = "latest" # Mac App Store command-line interface
-"brew:prettyping"      = "latest" # Enhanced ping with visual output
-"brew:pstree"          = "latest" # Display process tree
-"brew:ripgrep"         = "latest" # Fast search tool
-"brew:starship"        = "latest" # Cross-shell prompt
-"brew:tree"            = "latest" # Display directory tree
-"brew:watch"           = "latest" # Execute a command periodically and show output
-"brew:wget"            = "latest" # Network downloader
-"brew:yq"              = "latest" # YAML processor
-"brew:zinit"           = "latest" # Zsh plugin manager
-"brew:zoxide"          = "latest" # Fast directory jumper
-"brew:zsh"             = "latest" # Z shell
-
-# Casks (installed to MISE_BREW_CASK_OPT_APPDIR = ~/Applications)
-"brew-cask:alfred"                      = "latest" # Productivity app for macOS
-"brew-cask:android-studio"              = "latest" # IDE for Android development
-"brew-cask:brave-browser"               = "latest" # Privacy-focused web browser
-"brew-cask:claude"                      = "latest" # AI assistant app (Desktop App)
-"brew-cask:claude-code@latest"          = "latest" # AI coding assistant app
-"brew-cask:easyfind"                    = "latest" # File search utility for macOS
-"brew-cask:font-fira-code-nerd-font"    = "latest" # Fira Code Nerd Font
-"brew-cask:font-hack-nerd-font"         = "latest" # Hack Nerd Font
-"brew-cask:font-iosevka-nerd-font"      = "latest" # Iosevka Nerd Font
-"brew-cask:font-iosevka-term-nerd-font" = "latest" # Iosevka Term Nerd Font
-"brew-cask:font-meslo-lg-nerd-font"     = "latest" # Meslo LG Nerd Font
-"brew-cask:ghostty"                     = "latest" # Terminal emulator for macOS
-"brew-cask:github"                      = "latest" # GitHub desktop client
-"brew-cask:handbrake-app"               = "latest" # Video transcoder for macOS
-"brew-cask:notion"                      = "latest" # Note-taking and productivity app
-"brew-cask:obsidian"                    = "latest" # Knowledge management and note-taking app
-"brew-cask:orbstack"                    = "latest" # Docker Desktop replacement
-"brew-cask:setapp"                      = "latest" # Subscription service for macOS apps
-"brew-cask:slack"                       = "latest" # Team communication and collaboration app
-"brew-cask:sublime-text"                = "latest" # Text editor for code, markup, and prose
-"brew-cask:taskexplorer"                = "latest" # Task management app
-"brew-cask:visual-studio-code"          = "latest" # Source code editor
-"brew-cask:vlc"                         = "latest" # Media player
-"brew-cask:warp"                        = "latest" # Modern terminal for macOS
-"brew-cask:whatsapp"                    = "latest" # Messaging app
+"brew:bash"                     = "latest" # Latest version of bash
+"brew:bat"                      = "latest" # Alternative to cat
+"brew:btop"                     = "latest" # Resource monitor for the terminal
+"brew:ca-certificates"          = "latest" # Common CA certificates
+"brew:coreutils"                = "latest" # GNU core utilities
+"brew:curl"                     = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"            = "latest" # Enhances git diff output
+"brew:doggo"                    = "latest" # DNS lookup utility
+"brew:eza"                      = "latest" # Modern replacement for 'ls'
+"brew:fish"                     = "latest" # Friendly interactive shell
+"brew:fnox"                     = "latest" # Version manager for multiple programming languages
+"brew:fzf"                      = "latest" # Command-line fuzzy finder
+"brew:gh"                       = "latest" # GitHub CLI tool
+"brew:git"                      = "latest" # Distributed version control system
+"brew:git-tools"                = "latest" # Additional Git utilities
+"brew:glab"                     = "latest" # GitLab CLI tool
+"brew:gnupg"                    = "latest" # GNU Privacy Guard for encryption and signing
+"brew:gping"                    = "latest" # Ping with a graph
+"brew:httping"                  = "latest" # Ping a web server over HTTP
+"brew:imagemagick"              = "latest" # Image manipulation tool
+"brew:ipcalc"                   = "latest" # IP address calculator
+"brew:jq"                       = "latest" # Command-line JSON processor
+"brew:lazygit"                  = "latest" # Simple terminal UI for git
+"brew:lcov"                     = "latest" # Code coverage tool for C/C++
+"brew:mas"                      = "latest" # Mac App Store command-line interface
+"brew:mise"                     = "latest" # Polyglot tool/task/env manager (also manages this file)
+"brew:prettyping"               = "latest" # Enhanced ping with visual output
+"brew:pstree"                   = "latest" # Display process tree
+"brew:ripgrep"                  = "latest" # Fast search tool
+"brew:starship"                 = "latest" # Cross-shell prompt
+"brew:tree"                     = "latest" # Display directory tree
+"brew:virajp/tap/claude-status" = "latest" # Claude Code status line
+"brew:watch"                    = "latest" # Execute a command periodically and show output
+"brew:wget"                     = "latest" # Network downloader
+"brew:yq"                       = "latest" # YAML processor
+"brew:zinit"                    = "latest" # Zsh plugin manager
+"brew:zoxide"                   = "latest" # Fast directory jumper
+"brew:zsh"                      = "latest" # Z shell
 
 # Mac App Store (keyed by ADAM id)
 "mas:1120214373" = "latest" # Battery Health 2
@@ -224,7 +200,7 @@ post-defaults = [
 "killall SystemUIServer || true",
 "killall ControlCenter || true",
 ]
-post-packages = [ "mise run brew:extras", "mise run vscode:extensions" ]
+post-packages = "mise run brew:casks"
 
 # Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
 # sudo_local is the drop-in it includes and survives them.
@@ -242,9 +218,9 @@ login_shell = "/opt/homebrew/bin/fish"
 # qdrant vector store behind mempalace (needs OrbStack running). Pitchfork
 # (dotfiles/pitchfork) still supervises mempalace-mcp itself; it only waits for
 # this container's port. project_dir must be a literal absolute path (mise
-# expands neither ~ nor $HOME nor templates here), hence the username.
+# expands neither ~ nor $HOME nor templates here), hence the username. No
+# depends_on: orbstack is a cask, installed by brew:casks, not a declared package.
 [bootstrap.compose.mempalace]
-depends_on   = [ "package:brew-cask:orbstack" ]
 files        = [ "docker-compose.yaml" ]
 project_dir  = "/Users/virajpatel/Projects/github.com/virajp/macos-setup/dotfiles/mempalace"
 project_name = "mempalace"
@@ -297,6 +273,9 @@ run         = "mise run macos:power"
 
 # GitHub CLI
 "~/.config/gh" = { mode = "symlink-each", source = "github" }
+
+# Brewfile (casks + VS Code extensions, applied by brew:casks)
+"~/.config/brewfile" = { mode = "symlink", source = "homebrew/brewfile" }
 
 # Mempalace (dockerfile & compose)
 "~/.config/mempalace" = { mode = "symlink", source = "mempalace" }

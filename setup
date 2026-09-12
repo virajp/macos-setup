@@ -75,11 +75,10 @@ if ! command -v mise &> /dev/null; then
   brew install mise
 fi
 
-# Casks land in ~/Applications (1password is the exception, see the brew:extras
-# task). Only needed on a fresh machine: once the dotfiles are linked, the
-# global mise [env] block sets both.
+# Casks land in ~/Applications (1password is the exception, see the Brewfile).
+# Only needed on a fresh machine: once the dotfiles are linked, the global mise
+# [env] block sets it.
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
-export MISE_BREW_CASK_OPT_APPDIR="${HOME}/Applications"
 
 # `mise bootstrap` does not auto-trust config the way `mise run`/`install` do,
 # and the global config that whitelists ~/Projects is not linked yet.
@@ -87,7 +86,7 @@ mise trust "${REPO_DIR}/.config/mise.toml"
 mise trust "${REPO_DIR}/dotfiles/mise.toml"
 
 echo ""
-echo "${PACKAGE_EMOJI} Running mise bootstrap (packages, dotfiles, macOS defaults, ...)..."
+echo "${PACKAGE_EMOJI} Running mise bootstrap (formulae, casks, dotfiles, macOS defaults, ...)..."
 # Not run under sudo: mise elevates only where needed (/etc/pam.d, /etc/shells,
 # and the pmset/nvram task), and running the whole thing as root would write
 # every `defaults` key into root's preference domain instead of yours.

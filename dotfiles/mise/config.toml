@@ -182,7 +182,6 @@ HOMEBREW_FORCE_BREWED_CURL          = "true"
 HOMEBREW_FORCE_BREWED_GIT           = "true"
 HOMEBREW_NO_ANALYTICS               = "true"
 HOMEBREW_NO_ENV_HINTS               = "1"
-MISE_BREW_CASK_OPT_APPDIR           = "${HOME}/Applications"
 
 # Python (uv)
 UV_NO_CACHE          = "true"

@@ -10,10 +10,10 @@ rest.
 
 The [`./setup`](./setup) script is the main entrypoint. It installs Homebrew and
 `mise` if missing, then runs `mise bootstrap` on `dotfiles/mise.toml` — Homebrew
-formulae/casks and App Store apps (`[bootstrap.packages]`), dotfile symlinks
-(`[dotfiles]`), macOS `defaults` (`[bootstrap.macos.defaults]`), the fish login
-shell, Touch ID for sudo, and the pmset/nvram power profile (`macos:power`
-task):
+formulae and App Store apps (`[bootstrap.packages]`), casks and VS Code
+extensions via the Brewfile (`brew:casks`), dotfile symlinks (`[dotfiles]`),
+macOS `defaults` (`[bootstrap.macos.defaults]`), the fish login shell, Touch ID
+for sudo, and the pmset/nvram power profile (`macos:power` task):
 
 ```shell
 ./setup

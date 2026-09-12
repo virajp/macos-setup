@@ -1,12 +1,13 @@
 # Setup
 
-Global tools and applications (Homebrew formulae, casks, Mac App Store apps) are
-declared in `[bootstrap.packages]` of
-[`dotfiles/mise.toml`](../dotfiles/mise.toml) and installed by
+Homebrew formulae and Mac App Store apps are declared in `[bootstrap.packages]`
+of [`dotfiles/mise.toml`](../dotfiles/mise.toml) and installed by
 [`mise bootstrap`](https://mise.jdx.dev/bootstrap.html), which pours Homebrew
-bottles itself. `Homebrew` stays installed for `brew services` and the few
-packages in the `brew:extras` task. Development tools (global or per project)
-are `mise` `[tools]`.
+bottles itself. Casks (GUI apps, fonts) and VS Code extensions stay on
+`Homebrew`, declared in
+[`dotfiles/homebrew/brewfile`](../dotfiles/homebrew/brewfile) and applied by the
+`brew:casks` task. Development tools (global or per project) are `mise`
+`[tools]`.
 
 ## Setup
 

@@ -7,26 +7,27 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 
 ## Directory Structure
 
-| Package       | What it configures                                                 |
-| ------------- | ------------------------------------------------------------------ |
-| `fish/`       | Fish shell — the default interactive shell (`conf.d/*.fish`)       |
-| `zsh/`        | Zsh configuration (legacy / fallback shell)                        |
-| `starship/`   | Starship prompt (the active prompt, initialised from fish)         |
-| `oh-my-posh/` | Oh My Posh prompt themes (`shell.yaml`, `claude.yaml`) — alternate |
-| `ghostty/`    | Ghostty terminal configuration                                     |
-| `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab    |
-| `github/`     | GitHub CLI (`gh`) configuration and hosts                          |
-| `ssh/`        | SSH client config and commit-signing public keys                   |
-| `fnox/`       | Secret management via the macOS Keychain (see below)               |
-| `mise/`       | Global `mise` tool versions, env, and task runner shortcuts        |
-| `pnpm/`       | Global pnpm settings (`config.yaml`); auth stays in `~/.npmrc`     |
-| `dprint/`     | `dprint` / `taplo` formatter configuration                         |
-| `gem/`        | RubyGems configuration                                             |
-| `1Password/`  | 1Password SSH agent configuration                                  |
-| `ai-tools/`   | Claude Code (`claude/`) and GitHub Copilot (`copilot/`) config     |
-| `mempalace/`  | mempalace/qdrant docker compose stack (see below)                  |
-| `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack           |
-| `warp/`       | Warp terminal launch configurations (`tab_configs/*.toml`)         |
+| Package       | What it configures                                                  |
+| ------------- | ------------------------------------------------------------------- |
+| `fish/`       | Fish shell — the default interactive shell (`conf.d/*.fish`)        |
+| `zsh/`        | Zsh configuration (legacy / fallback shell)                         |
+| `starship/`   | Starship prompt (the active prompt, initialised from fish)          |
+| `oh-my-posh/` | Oh My Posh prompt themes (`shell.yaml`, `claude.yaml`) — alternate  |
+| `ghostty/`    | Ghostty terminal configuration                                      |
+| `homebrew/`   | The `brewfile` — casks and VS Code extensions (formulae are mise's) |
+| `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab     |
+| `github/`     | GitHub CLI (`gh`) configuration and hosts                           |
+| `ssh/`        | SSH client config and commit-signing public keys                    |
+| `fnox/`       | Secret management via the macOS Keychain (see below)                |
+| `mise/`       | Global `mise` tool versions, env, and task runner shortcuts         |
+| `pnpm/`       | Global pnpm settings (`config.yaml`); auth stays in `~/.npmrc`      |
+| `dprint/`     | `dprint` / `taplo` formatter configuration                          |
+| `gem/`        | RubyGems configuration                                              |
+| `1Password/`  | 1Password SSH agent configuration                                   |
+| `ai-tools/`   | Claude Code (`claude/`) and GitHub Copilot (`copilot/`) config      |
+| `mempalace/`  | mempalace/qdrant docker compose stack (see below)                   |
+| `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack            |
+| `warp/`       | Warp terminal launch configurations (`tab_configs/*.toml`)          |
 
 ## Shells & Prompt
 
@@ -144,15 +145,15 @@ referenced via `ssh/allowed_signers`.
 `dotfiles/mise.toml` is what `mise --cd dotfiles bootstrap` applies, in
 [mise's phase order](https://mise.jdx.dev/bootstrap.html):
 
-- `[bootstrap.packages]` — Homebrew formulae (`brew:`), casks (`brew-cask:`) and
-  Mac App Store apps (`mas:<adam id>`). mise pours bottles itself and adopts
-  casks already present (`bootstrap.brew.adopt = true`); casks go to
-  `MISE_BREW_CASK_OPT_APPDIR` (`~/Applications`, set in the global `[env]`). The
-  `post-packages` hook then runs `brew:extras` (1password, which must live in
-  `/Applications`) and `vscode:extensions`. No third-party taps: mise evaluates
-  those with its own Ruby DSL shim, which fails on real casks (`orca` uses
-  `appdir`, `claude-status` has no parsable version) — so claude-status comes
-  from npm (`upgrade:ai`) and orca is installed by hand.
+- `[bootstrap.packages]` — Homebrew formulae (`brew:`) and Mac App Store apps
+  (`mas:<adam id>`). mise pours the same bottles brew would into the shared
+  `/opt/homebrew` Cellar without calling `brew`; `brew list`/`upgrade` still see
+  them. Third-party tap formulae work only when the tap publishes
+  `api/formula/<name>.json` (`virajp/tap` does). The `post-packages` hook then
+  runs `brew:casks`, which applies `homebrew/brewfile` — casks and VS Code
+  extensions, which stay on Homebrew because mise's cask support is
+  intentionally narrow (no `postflight`, no per-cask `appdir`). Ownership rule:
+  casks → Homebrew, formulae/mas → mise, versioned dev tools → `[tools]`.
 - `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
 - `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
   `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,

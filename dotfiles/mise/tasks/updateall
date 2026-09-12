@@ -16,9 +16,10 @@ gpgconf --kill all || true
 # git expands ~ in config path values at read time.
 git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
 
-# Upgrade mise first to ensure we have the latest features and fixes
+# Upgrade mise first to ensure we have the latest features and fixes. mise
+# manages its own formula ([bootstrap.packages] in the setup repo).
 print_header "Upgrading MISE ..."
-brew upgrade --formulae mise --yes
+mise --cd "${HOME}/Projects/github.com/virajp/macos-setup/dotfiles" bootstrap packages upgrade brew:mise --yes
 
 # Reshim mise to ensure all tools are available
 print_header "Reshimming mise ..."

@@ -17,11 +17,10 @@ fi
 print_subheader "Updating Homebrew ..."
 brew update --force # --verbose
 
-# Packages are declared in [bootstrap.packages] of the setup repo
+# Formulae and mas apps are mise's ([bootstrap.packages] in the setup repo);
+# casks and VS Code extensions are brew's (Brewfile, via brew:casks)
 readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
 
-# Formulae only: brew-installed casks are never pruned by mise (1password from
-# brew:extras is brew-installed on purpose)
 print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
 mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages prune --manager brew --yes
 
@@ -29,10 +28,7 @@ print_subheader "Install/Upgrade all declared packages ..."
 mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages apply --yes
 mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages upgrade --yes
 
-print_subheader "Upgrading all Homebrew packages ..."
-brew upgrade --display-times --yes --formulae --force-bottle
-# Casks installed by brew stay brew-managed (mise leaves them unchanged)
-brew upgrade --display-times --yes --cask
+mise --cd "${SETUP_REPO}" run brew:casks
 
 # Remove unused dependencies
 print_subheader "Removing unused Homebrew dependencies ..."
