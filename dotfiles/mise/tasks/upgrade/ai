@@ -7,9 +7,6 @@ source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Upgrading AI tools ..."
 
-print_subheader "Installing claude-status ..."
-pnpx @virajp.dev/claude-status --install --configure
-
 print_subheader "Adding marketplaces ..."
 pnpx @virajp.dev/claude-plugins --all
 
