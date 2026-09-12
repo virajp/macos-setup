@@ -12,83 +12,77 @@
 adopt = true
 
 [bootstrap.packages]
-# Formulae
-"brew:bash"            = "latest"
-"brew:bat"             = "latest"
-"brew:btop"            = "latest"
-"brew:ca-certificates" = "latest"
-"brew:coreutils"       = "latest"
-"brew:curl"            = "latest"
-"brew:diff-so-fancy"   = "latest"
-"brew:doggo"           = "latest"
-"brew:eza"             = "latest"
-"brew:fish"            = "latest"
-"brew:fnox"            = "latest"
-"brew:fzf"             = "latest"
-"brew:gh"              = "latest"
-"brew:git"             = "latest"
-"brew:git-tools"       = "latest"
-"brew:glab"            = "latest"
-"brew:gnupg"           = "latest"
-"brew:gping"           = "latest"
-"brew:httping"         = "latest"
-"brew:imagemagick"     = "latest"
-"brew:ipcalc"          = "latest"
-"brew:jq"              = "latest"
-"brew:lazygit"         = "latest"
-"brew:lcov"            = "latest"
-"brew:mas"             = "latest"
-"brew:mise"            = "latest"
-"brew:prettyping"      = "latest"
-"brew:pstree"          = "latest"
-"brew:ripgrep"         = "latest"
-"brew:starship"        = "latest"
-"brew:tailscale"       = "latest"
-"brew:tree"            = "latest"
-"brew:watch"           = "latest"
-"brew:wget"            = "latest"
-"brew:yq"              = "latest"
-"brew:zinit"           = "latest"
-"brew:zoxide"          = "latest"
-"brew:zsh"             = "latest"
+# Formulaes
+"brew:bash"            = "latest" # Latest version of bash
+"brew:bat"             = "latest" # Alternative to cat
+"brew:btop"            = "latest" # Resource monitor for the terminal
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"   = "latest" # Enhances git diff output
+"brew:doggo"           = "latest" # DNS lookup utility
+"brew:eza"             = "latest" # Modern replacement for 'ls'
+"brew:fish"            = "latest" # Friendly interactive shell
+"brew:fnox"            = "latest" # Version manager for multiple programming languages
+"brew:fzf"             = "latest" # Command-line fuzzy finder
+"brew:gh"              = "latest" # GitHub CLI tool
+"brew:git"             = "latest" # Distributed version control system
+"brew:git-tools"       = "latest" # Additional Git utilities
+"brew:glab"            = "latest" # GitLab CLI tool
+"brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
+"brew:gping"           = "latest" # Ping with a graph
+"brew:httping"         = "latest" # Ping a web server over HTTP
+"brew:imagemagick"     = "latest" # Image manipulation tool
+"brew:ipcalc"          = "latest" # IP address calculator
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:lazygit"         = "latest" # Simple terminal UI for git
+"brew:lcov"            = "latest" # Code coverage tool for C/C++
+"brew:mas"             = "latest" # Mac App Store command-line interface
+"brew:prettyping"      = "latest" # Enhanced ping with visual output
+"brew:pstree"          = "latest" # Display process tree
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:starship"        = "latest" # Cross-shell prompt
+"brew:tailscale"       = "latest" # VPN service
+"brew:tree"            = "latest" # Display directory tree
+"brew:watch"           = "latest" # Execute a command periodically and show output
+"brew:wget"            = "latest" # Network downloader
+"brew:yq"              = "latest" # YAML processor
+"brew:zinit"           = "latest" # Zsh plugin manager
+"brew:zoxide"          = "latest" # Fast directory jumper
+"brew:zsh"             = "latest" # Z shell
 
 # Casks (installed to MISE_BREW_CASK_OPT_APPDIR = ~/Applications)
-"brew-cask:alfred"                      = "latest"
-"brew-cask:android-studio"              = "latest"
-"brew-cask:brave-browser"               = "latest"
-"brew-cask:claude"                      = "latest"
-"brew-cask:claude-code@latest"          = "latest"
-"brew-cask:easyfind"                    = "latest"
-"brew-cask:font-fira-code-nerd-font"    = "latest"
-"brew-cask:font-hack-nerd-font"         = "latest"
-"brew-cask:font-iosevka-nerd-font"      = "latest"
-"brew-cask:font-iosevka-term-nerd-font" = "latest"
-"brew-cask:font-meslo-lg-nerd-font"     = "latest"
-"brew-cask:ghostty"                     = "latest"
-"brew-cask:github"                      = "latest"
-"brew-cask:handbrake-app"               = "latest"
-# "brew-cask:lm-studio"                  = "latest"
-"brew-cask:notion"   = "latest"
-"brew-cask:obsidian" = "latest"
-"brew-cask:setapp"   = "latest"
-"brew-cask:slack"    = "latest"
-# "brew-cask:subler"                     = "latest"
-"brew-cask:sublime-text"       = "latest"
-"brew-cask:taskexplorer"       = "latest"
-"brew-cask:visual-studio-code" = "latest"
-"brew-cask:vlc"                = "latest"
-"brew-cask:warp"               = "latest"
-"brew-cask:whatsapp"           = "latest"
+"brew-cask:alfred"                      = "latest" # Productivity app for macOS
+"brew-cask:android-studio"              = "latest" # IDE for Android development
+"brew-cask:brave-browser"               = "latest" # Privacy-focused web browser
+"brew-cask:claude"                      = "latest" # AI assistant app (Desktop App)
+"brew-cask:claude-code@latest"          = "latest" # AI coding assistant app
+"brew-cask:easyfind"                    = "latest" # File search utility for macOS
+"brew-cask:font-fira-code-nerd-font"    = "latest" # Fira Code Nerd Font
+"brew-cask:font-hack-nerd-font"         = "latest" # Hack Nerd Font
+"brew-cask:font-iosevka-nerd-font"      = "latest" # Iosevka Nerd Font
+"brew-cask:font-iosevka-term-nerd-font" = "latest" # Iosevka Term Nerd Font
+"brew-cask:font-meslo-lg-nerd-font"     = "latest" # Meslo LG Nerd Font
+"brew-cask:ghostty"                     = "latest" # Terminal emulator for macOS
+"brew-cask:github"                      = "latest" # GitHub desktop client
+"brew-cask:handbrake-app"               = "latest" # Video transcoder for macOS
+"brew-cask:notion"                      = "latest" # Note-taking and productivity app
+"brew-cask:obsidian"                    = "latest" # Knowledge management and note-taking app
+"brew-cask:setapp"                      = "latest" # Subscription service for macOS apps
+"brew-cask:slack"                       = "latest" # Team communication and collaboration app
+"brew-cask:sublime-text"                = "latest" # Text editor for code, markup, and prose
+"brew-cask:taskexplorer"                = "latest" # Task management app
+"brew-cask:visual-studio-code"          = "latest" # Source code editor
+"brew-cask:vlc"                         = "latest" # Media player
+"brew-cask:warp"                        = "latest" # Modern terminal for macOS
+"brew-cask:whatsapp"                    = "latest" # Messaging app
 
 # Mac App Store (keyed by ADAM id)
-"mas:1569813296" = "latest" # 1Password for Safari
-# "mas:1616831348" = "latest" # Affinity Designer 2
-# "mas:1616822987" = "latest" # Affinity Photo 2
 "mas:1120214373" = "latest" # Battery Health 2
 "mas:1290358394" = "latest" # Cardhop
-# "mas:424390742"  = "latest" # Compressor
 "mas:1450874784" = "latest" # Transporter
 "mas:1502111349" = "latest" # PDF Squeezer
+"mas:1569813296" = "latest" # 1Password for Safari
 "mas:302584613"  = "latest" # Kindle
 "mas:361285480"  = "latest" # Keynote
 "mas:361304891"  = "latest" # Numbers
@@ -101,14 +95,17 @@ adopt = true
 "mas:462054704"  = "latest" # Microsoft Word
 "mas:462058435"  = "latest" # Microsoft Excel
 "mas:462062816"  = "latest" # Microsoft PowerPoint
+"mas:497799835"  = "latest" # Xcode
 "mas:566631581"  = "latest" # PDF Protector
 "mas:640199958"  = "latest" # Developer
 "mas:686428787"  = "latest" # Duplicate Detective
 "mas:715464874"  = "latest" # Disk Map
 "mas:747648890"  = "latest" # Telegram
 "mas:899247664"  = "latest" # TestFlight
+# "mas:1616831348" = "latest" # Affinity Designer 2
+# "mas:1616822987" = "latest" # Affinity Photo 2
+# "mas:424390742"  = "latest" # Compressor
 # "mas:1494451650" = "latest" # VN
-"mas:497799835" = "latest" # Xcode
 
 # macOS settings, applied with `mise bootstrap macos defaults apply`. References:
 #   - https://www.defaults-write.com/
@@ -121,63 +118,62 @@ adopt = true
 [bootstrap.macos.defaults.NSGlobalDomain]
 AppleInterfaceStyle              = "Dark" # system-wide Dark appearance
 AppleMiniaturizeOnDoubleClick    = false  # no minimize on title-bar double-click
-AppleShowAllExtensions           = true
-NSAutomaticCapitalizationEnabled = false
+AppleShowAllExtensions           = true   # show all file extensions
+NSAutomaticCapitalizationEnabled = false  # disable automatic capitalization
 NSQuitAlwaysKeepsWindows         = true   # reopen windows after quit/restart
 "com.apple.mouse.tapBehavior"    = 1      # tap-to-click
-"com.apple.trackpad.forceClick"  = false
+"com.apple.trackpad.forceClick"  = false  # disable force click
 
 # Finder
 [bootstrap.macos.defaults."com.apple.finder"]
-AppleShowAllFiles              = false  # toggle with Cmd+Shift+.
-CreateDesktop                  = false  # hide desktop icons (pre-Sonoma key)
-FK_AppCentricShowSidebar       = true
-FXArrangeGroupViewBy           = "Name"
-FXDefaultSearchScope           = "SCcf" # search the current folder
-FXEnableExtensionChangeWarning = false
-# FXEnableRemoveFromICloudDriveWarning: not declared — true is the default and
-# Finder drops the key on restart, so it would always report as unset.
-FXICloudDriveDesktop            = true
-FXICloudDriveDocuments          = true
-FXICloudDriveEnabled            = true
-FXPreferredGroupBy              = "Kind"
-FXPreferredSearchViewStyle      = "Nlsv"
-FXPreferredViewStyle            = "Nlsv" # list view
+AppleShowAllFiles               = false  # toggle with Cmd+Shift+.
+CreateDesktop                   = false  # hide desktop icons (pre-Sonoma key)
+FK_AppCentricShowSidebar        = true   # show sidebar in app-centric view
+FXArrangeGroupViewBy            = "Name" # arrange groups by name
+FXDefaultSearchScope            = "SCcf" # search the current folder
+FXEnableExtensionChangeWarning  = false  # disable the warning when changing file extensions
+FXICloudDriveDesktop            = true   # enable iCloud Drive for Desktop
+FXICloudDriveDocuments          = true   # enable iCloud Drive for Documents
+FXICloudDriveEnabled            = true   # enable iCloud Drive overall
+FXPreferredGroupBy              = "Kind" # group files by kind in Finder
+FXPreferredSearchViewStyle      = "Nlsv" # use list view for search results
+FXPreferredViewStyle            = "Nlsv" # list view for Finder windows
 FXRemoveOldTrashItems           = true   # purge trash after 30 days
 FinderSpawnTab                  = false  # folders open in windows, not tabs
 NewWindowTarget                 = "PfHm" # new windows open at $HOME (path set in post-defaults hook)
-QuitMenuItem                    = false
-ShowExternalHardDrivesOnDesktop = false
-ShowHardDrivesOnDesktop         = false
-ShowMountedServersOnDesktop     = false
-ShowPathbar                     = true
-ShowRecentTags                  = false
-ShowRemovableMediaOnDesktop     = false
-ShowSidebar                     = true
-ShowStatusBar                   = true
-ShowTabView                     = true
-WarnOnEmptyTrash                = false
-_FXSortFoldersFirst             = true
-_FXSortFoldersFirstOnDesktop    = true
+QuitMenuItem                    = false  # don't show the Quit option in Finder's menu
+ShowExternalHardDrivesOnDesktop = false  # don't show external drives on the desktop
+ShowHardDrivesOnDesktop         = false  # don't show internal drives on the desktop
+ShowMountedServersOnDesktop     = false  # don't show mounted servers on the desktop
+ShowPathbar                     = true   # show the path bar in Finder windows
+ShowRecentTags                  = false  # don't show recent tags in Finder's sidebar
+ShowRemovableMediaOnDesktop     = false  # don't show removable media on the desktop
+ShowSidebar                     = true   # show the sidebar in Finder windows
+ShowStatusBar                   = true   # show the status bar in Finder windows
+ShowTabView                     = true   # show the tab view in Finder windows
+WarnOnEmptyTrash                = false  # don't warn before emptying the trash
+_FXSortFoldersFirst             = true   # sort folders first in Finder windows
+_FXSortFoldersFirstOnDesktop    = true   # sort folders first on the desktop
 
 # No .DS_Store on network and USB volumes
 [bootstrap.macos.defaults."com.apple.desktopservices"]
-DSDontWriteNetworkStores = true
-DSDontWriteUSBStores     = true
+DSDontWriteNetworkStores = true # don't create .DS_Store files on network volumes
+DSDontWriteUSBStores     = true # don't create .DS_Store files on USB volumes
 
 # Dock & Mission Control
 [bootstrap.macos.defaults."com.apple.dock"]
-autohide                = true
+autohide                = true     # automatically hide and show the Dock
 expose-group-apps       = true     # group windows by app in Mission Control
-largesize               = 71
-magnification           = true
-minimize-to-application = true
+largesize               = 71       # size of the large Dock items
+magnification           = true     # enable Dock magnification
+minimize-to-application = true     # minimize windows into their application's Dock icon
 mru-spaces              = false    # don't rearrange Spaces by recent use
-orientation             = "right"
-show-process-indicators = true
-show-recents            = false
-tilesize                = 38
-windowtabbing           = "always"
+orientation             = "right"  # position of the Dock on the screen
+show-process-indicators = true     # show indicators for running applications in the Dock
+show-recents            = false    # don't show recent applications in the Dock
+tilesize                = 38       # size of the Dock tiles
+windowtabbing           = "always" # always show window tabs in the Dock
+
 # Hot corners: all four disabled (0 = no-op)
 wvous-bl-corner   = 0
 wvous-bl-modifier = 0
@@ -192,29 +188,29 @@ wvous-tr-modifier = 0
 [bootstrap.macos.defaults."com.apple.WindowManager"]
 AppWindowGroupingBehavior      = true  # show all of an app's windows on switch
 ClickedWallpaperRevealsDesktop = 2     # only with Stage Manager
-EnableTiledWindowMargins       = false
-EnableTilingByEdgeDrag         = false
-EnableTopTilingByEdgeDrag      = false
+EnableTiledWindowMargins       = false # disable tiled window margins
+EnableTilingByEdgeDrag         = false # disable tiling by edge drag
+EnableTopTilingByEdgeDrag      = false # disable top tiling by edge drag
 HideDesktop                    = true  # Sonoma+ equivalent of CreateDesktop=false
 
 # Menu bar clock: day of week and AM/PM, no date
 [bootstrap.macos.defaults."com.apple.menuextra.clock"]
-ShowAMPM      = true
-ShowDate      = 0
-ShowDayOfWeek = true
+ShowAMPM      = true # show AM/PM in the menu bar clock
+ShowDate      = 0    # don't show the date in the menu bar clock
+ShowDayOfWeek = true # show the day of the week in the menu bar clock
 
 # Trackpad: tap-to-click on, three-finger tap lookup off (internal + Bluetooth)
 [bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
-Clicking                      = true
-TrackpadThreeFingerTapGesture = 0
+Clicking                      = true # enable tap-to-click
+TrackpadThreeFingerTapGesture = 0    # disable three-finger tap lookup
 
 [bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
-Clicking                      = true
-TrackpadThreeFingerTapGesture = 0
+Clicking                      = true # enable tap-to-click
+TrackpadThreeFingerTapGesture = 0    # disable three-finger tap lookup
 
 # Clamp streaming quality on battery
 [bootstrap.macos.defaults."com.apple.appleinterface"]
-videoStreamingOptimizeOnBattery = true
+videoStreamingOptimizeOnBattery = true # clamp streaming quality on battery
 
 [bootstrap.hooks]
 post-defaults = [
