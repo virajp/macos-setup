@@ -75,9 +75,9 @@ if ! command -v mise &> /dev/null; then
   brew install mise
 fi
 
-# Casks land in ~/Applications (1password/orbstack are the exception, see the
-# brew:system-casks task). Only needed on a fresh machine: once the dotfiles
-# are linked, the global mise [env] block sets both.
+# Casks land in ~/Applications (1password is the exception, see the brew:extras
+# task). Only needed on a fresh machine: once the dotfiles are linked, the
+# global mise [env] block sets both.
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
 export MISE_BREW_CASK_OPT_APPDIR="${HOME}/Applications"
 

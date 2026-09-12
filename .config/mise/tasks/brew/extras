@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-#MISE description="Install the casks that must live in /Applications (see dotfiles/mise.toml)"
+#MISE description="Install 1Password with brew: it must live in /Applications (see dotfiles/mise.toml)"
 #MISE hide=true
 
 # Run from the post-packages hook in dotfiles/mise.toml. mise only has the
-# global MISE_BREW_CASK_OPT_APPDIR (~/Applications); these two need /Applications.
+# global MISE_BREW_CASK_OPT_APPDIR (~/Applications); 1Password needs /Applications.
 
 set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
-system_casks=(1password orbstack)
-
 print_header "Installing brew-managed casks ..."
-for cask in "${system_casks[@]}"; do
-  brew list --cask "${cask}" > /dev/null 2>&1 && continue
-  brew install --cask --appdir=/Applications "${cask}"
-done
+brew list --cask 1password > /dev/null 2>&1 \
+  || brew install --cask --appdir=/Applications 1password

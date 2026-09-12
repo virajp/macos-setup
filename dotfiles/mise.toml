@@ -1,10 +1,10 @@
 # Homebrew formulae, casks and Mac App Store apps. mise installs these itself
 # (bottles poured into /opt/homebrew, casks adopted when already present);
-# `brew` stays installed for `brew services` (tailscale) and upgrades.
-# 1password and orbstack stay on the real `brew` CLI (brew:extras task, run from
-# the post-packages hook): they must live in /Applications, which mise cannot
-# express per-cask (only MISE_BREW_CASK_OPT_APPDIR). VS Code extensions
-# (vscode:extensions) have no mise manager and run from the same hook.
+# `brew` stays installed for upgrades and for 1password, which stays on the real
+# `brew` CLI (brew:extras task, run from the post-packages hook): it must live in
+# /Applications while everything else goes to ~/Applications, and mise only has
+# the global MISE_BREW_CASK_OPT_APPDIR. VS Code extensions (vscode:extensions)
+# have no mise manager and run from the same hook.
 # Third-party taps are deliberately absent: mise evaluates them with its own
 # Ruby DSL shim, which fails on real-world casks/formulae. claude-status comes
 # from npm (upgrade:ai), orca is installed by hand.
@@ -42,7 +42,6 @@ adopt = true
 "brew:pstree"          = "latest" # Display process tree
 "brew:ripgrep"         = "latest" # Fast search tool
 "brew:starship"        = "latest" # Cross-shell prompt
-"brew:tailscale"       = "latest" # VPN service
 "brew:tree"            = "latest" # Display directory tree
 "brew:watch"           = "latest" # Execute a command periodically and show output
 "brew:wget"            = "latest" # Network downloader
@@ -68,6 +67,7 @@ adopt = true
 "brew-cask:handbrake-app"               = "latest" # Video transcoder for macOS
 "brew-cask:notion"                      = "latest" # Note-taking and productivity app
 "brew-cask:obsidian"                    = "latest" # Knowledge management and note-taking app
+"brew-cask:orbstack"                    = "latest" # Docker Desktop replacement
 "brew-cask:setapp"                      = "latest" # Subscription service for macOS apps
 "brew-cask:slack"                       = "latest" # Team communication and collaboration app
 "brew-cask:sublime-text"                = "latest" # Text editor for code, markup, and prose
@@ -81,6 +81,7 @@ adopt = true
 "mas:1120214373" = "latest" # Battery Health 2
 "mas:1290358394" = "latest" # Cardhop
 "mas:1450874784" = "latest" # Transporter
+"mas:1475387142" = "latest" # Tailscale
 "mas:1502111349" = "latest" # PDF Squeezer
 "mas:1569813296" = "latest" # 1Password for Safari
 "mas:302584613"  = "latest" # Kindle
@@ -241,9 +242,9 @@ login_shell = "/opt/homebrew/bin/fish"
 # qdrant vector store behind mempalace (needs OrbStack running). Pitchfork
 # (dotfiles/pitchfork) still supervises mempalace-mcp itself; it only waits for
 # this container's port. project_dir must be a literal absolute path (mise
-# expands neither ~ nor $HOME nor templates here), hence the username. No
-# depends_on: orbstack is installed by brew:extras, not a declared package.
+# expands neither ~ nor $HOME nor templates here), hence the username.
 [bootstrap.compose.mempalace]
+depends_on   = [ "package:brew-cask:orbstack" ]
 files        = [ "docker-compose.yaml" ]
 project_dir  = "/Users/virajpatel/Projects/github.com/virajp/macos-setup/dotfiles/mempalace"
 project_name = "mempalace"

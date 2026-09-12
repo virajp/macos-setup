@@ -148,11 +148,11 @@ referenced via `ssh/allowed_signers`.
   Mac App Store apps (`mas:<adam id>`). mise pours bottles itself and adopts
   casks already present (`bootstrap.brew.adopt = true`); casks go to
   `MISE_BREW_CASK_OPT_APPDIR` (`~/Applications`, set in the global `[env]`). The
-  `post-packages` hook then runs `brew:extras` (1password/orbstack, which must
-  live in `/Applications`) and `vscode:extensions`. No third-party taps: mise
-  evaluates those with its own Ruby DSL shim, which fails on real casks (`orca`
-  uses `appdir`, `claude-status` has no parsable version) — so claude-status
-  comes from npm (`upgrade:ai`) and orca is installed by hand.
+  `post-packages` hook then runs `brew:extras` (1password, which must live in
+  `/Applications`) and `vscode:extensions`. No third-party taps: mise evaluates
+  those with its own Ruby DSL shim, which fails on real casks (`orca` uses
+  `appdir`, `claude-status` has no parsable version) — so claude-status comes
+  from npm (`upgrade:ai`) and orca is installed by hand.
 - `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
 - `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
   `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,
