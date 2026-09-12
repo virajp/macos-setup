@@ -81,12 +81,24 @@ fi
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
 export MISE_BREW_CASK_OPT_APPDIR="${HOME}/Applications"
 
+# `mise bootstrap` does not auto-trust config the way `mise run`/`install` do,
+# and the global config that whitelists ~/Projects is not linked yet.
+mise trust "${REPO_DIR}/.config/mise.toml"
+mise trust "${REPO_DIR}/dotfiles/mise.toml"
+
 echo ""
 echo "${PACKAGE_EMOJI} Running mise bootstrap (packages, dotfiles, macOS defaults, ...)..."
 # Not run under sudo: mise elevates only where needed (/etc/pam.d, /etc/shells,
 # and the pmset/nvram task), and running the whole thing as root would write
 # every `defaults` key into root's preference domain instead of yours.
 mise --cd "${REPO_DIR}/dotfiles" bootstrap --yes
+
+# The global config (~/.config/mise/config.toml) only exists once the dotfiles
+# phase above has linked it, and the run that linked it had already loaded its
+# config. A fresh process now sees it and installs the global [tools].
+echo ""
+echo "${PACKAGE_EMOJI} Installing global mise tools..."
+mise --cd "${REPO_DIR}/dotfiles" bootstrap --only tools --yes
 
 echo ""
 echo "${SUCCESS_EMOJI} Setup complete!"
