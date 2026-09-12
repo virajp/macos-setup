@@ -7,7 +7,9 @@ liking.
 
 I use [mise](https://mise.jdx.dev/) to manage my dotfiles. `mise.toml` in this
 directory holds the `[dotfiles]` link map — which source file lands at which
-`$HOME` path, and in which mode (`symlink`, `symlink-each`).
+`$HOME` path, and in which mode (`symlink`, `symlink-each`, `line`) — next to
+the rest of the machine declaration (`[bootstrap.*]`, see
+[CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
 
 ```shell
 mise run dotfiles:install   # create the symlinks

@@ -16,9 +16,6 @@ gpgconf --kill all || true
 # git expands ~ in config path values at read time.
 git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
 
-# Check for Touch ID setup for sudo authentication
-mise run upgrade:touch-id
-
 # Upgrade mise first to ensure we have the latest features and fixes
 print_header "Upgrading MISE ..."
 brew upgrade --formulae mise --yes
@@ -71,13 +68,13 @@ mise run mempalace:restart
 # Last on purpose: this prompts for sudo (pmset/nvram) and restarts Finder,
 # Dock and ControlCenter, so everything above it is already done by then.
 # macOS updates reset these settings, so re-applying them here is the fix.
-readonly MACOS_SETUP="${HOME}/Projects/github.com/virajp/macos-setup/utils/macos-setup"
+readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
 
 print_header "Applying macOS system settings ..."
-if [[ -x "${MACOS_SETUP}" ]]; then
-  "${MACOS_SETUP}"
+if [[ -d "${SETUP_REPO}/dotfiles" ]]; then
+  mise --cd "${SETUP_REPO}/dotfiles" bootstrap --only defaults,task --yes
 else
-  print_error "Not found: ${MACOS_SETUP}"
+  print_error "Not found: ${SETUP_REPO}"
   echo "Skipping macOS system settings."
 fi
 

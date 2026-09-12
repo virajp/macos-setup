@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#MISE description="Install the packages that stay on the brew CLI (see dotfiles/mise.toml)"
+#MISE hide=true
+
+# Run from the post-packages hook in dotfiles/mise.toml. A package is here
+# instead of [bootstrap.packages] when:
+#   - it must live in /Applications (1password, orbstack) — mise only has the
+#     global MISE_BREW_CASK_OPT_APPDIR
+#   - it comes from a tap without published API metadata (claude-status,
+#     cleanmymac-cli, orca): mise's Ruby shim cannot evaluate those definitions
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+system_casks=(1password orbstack)
+tap_formulae=(virajp/tap/claude-status)
+tap_casks=(macpaw/taps/cleanmymac-cli stablyai/orca/orca)
+
+print_header "Installing brew-managed extras ..."
+for cask in "${system_casks[@]}"; do
+  brew list --cask "${cask}" > /dev/null 2>&1 && continue
+  brew install --cask --appdir=/Applications "${cask}"
+done
+for formula in "${tap_formulae[@]}"; do
+  brew list --formula "${formula##*/}" > /dev/null 2>&1 && continue
+  brew install "${formula}"
+done
+for cask in "${tap_casks[@]}"; do
+  brew list --cask "${cask##*/}" > /dev/null 2>&1 && continue
+  brew install --cask "${cask}"
+done

@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
 ##############################################################################
-# macOS Setup - Install all the tools using homebrew
+# macOS Setup - Install Homebrew + mise, then `mise bootstrap` the machine
 ##############################################################################
 #
 # Description:
-#   Installs all the tools on fresh laptop or even already setup laptop
-#   This script requires homebrew so it will first detect whether it exists
-#   and if it doesn't, it will install it and then install all tools
+#   Provisions a fresh laptop (or re-converges an existing one). Homebrew and
+#   mise are the only things installed by hand here; everything else -
+#   packages, dotfiles, macOS defaults, login shell, Touch ID - is declared in
+#   dotfiles/mise.toml and applied by `mise bootstrap`.
 #
 # Usage:
 #   ./setup
@@ -18,9 +19,8 @@
 # - First check whether `brew` is installed, if not then install it
 # - Clone the repo to ~/Projects/github.com/virajp/macos-setup if it's missing
 # - Check whether everything is fine with brew using `brew doctor` command
-# - Check whether anything needs to be installed using `brew bundle check` command
-# - Install all tools from `Brewfile` using `brew bundle install --upgrade` command, if needed
-# - Use `mise` to create symlinks for dotfiles (if applicable)
+# - Install `mise` with brew if it is missing
+# - Run `mise bootstrap` against dotfiles/mise.toml
 #
 # Note:
 #   Uses absolute paths to the repo, so it can be run from anywhere — including
@@ -69,32 +69,24 @@ brew analytics off
 echo "${CHECK_EMOJI} Checking Homebrew health..."
 brew doctor || true
 
-# Export HOMEBREW config
-export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
-
-echo ""
-echo "${PACKAGE_EMOJI} Installing/updating packages from brewfile..."
-brew bundle install \
-  --upgrade \
-  --force \
-  --file="${REPO_DIR}/dotfiles/homebrew/brewfile"
-
-# Check if mise is installed, if not then raise error and exit
+# Install mise if it is missing; it drives the rest of the setup.
 if ! command -v mise &> /dev/null; then
-  echo "${ERROR_EMOJI} ERROR: mise not found. Please install it first and then re-run the setup."
-  exit 1
+  echo "${INSTALL_EMOJI} mise not found. Installing..."
+  brew install mise
 fi
 
-echo ""
-echo "${SETTING_EMOJI} Setting up dotfiles with mise..."
-mise --cd "${REPO_DIR}" run dotfiles:install
-echo "${SUCCESS_EMOJI} Dotfiles symlinked successfully."
+# Casks land in ~/Applications (1password/orbstack are the exception, see the
+# brew:system-casks task). Only needed on a fresh machine: once the dotfiles
+# are linked, the global mise [env] block sets both.
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
+export MISE_BREW_CASK_OPT_APPDIR="${HOME}/Applications"
 
 echo ""
-# Not run under sudo: the script sudoes the pmset/nvram lines that need root
-# itself, and running the whole thing as root would write every `defaults`
-# key into root's preference domain instead of yours.
-"${REPO_DIR}/utils/macos-setup"
+echo "${PACKAGE_EMOJI} Running mise bootstrap (packages, dotfiles, macOS defaults, ...)..."
+# Not run under sudo: mise elevates only where needed (/etc/pam.d, /etc/shells,
+# and the pmset/nvram task), and running the whole thing as root would write
+# every `defaults` key into root's preference domain instead of yours.
+mise --cd "${REPO_DIR}/dotfiles" bootstrap --yes
 
 echo ""
 echo "${SUCCESS_EMOJI} Setup complete!"

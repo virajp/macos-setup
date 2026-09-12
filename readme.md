@@ -1,19 +1,25 @@
 # macOS Setup
 
-My personal macOS provisioning repo: a Homebrew `brewfile`, dotfiles managed
-with [mise](https://mise.jdx.dev/), and a `mise` task runner that ties
-everything together.
+My personal macOS provisioning repo, driven by
+[`mise bootstrap`](https://mise.jdx.dev/bootstrap.html): packages, dotfiles,
+macOS defaults, login shell and Touch ID are all declared in
+[`dotfiles/mise.toml`](./dotfiles/mise.toml), plus a `mise` task runner for the
+rest.
 
 ## Automated setup
 
-The [`./setup`](./setup) script is the main entrypoint. It installs Homebrew if
-missing, installs everything in
-[`dotfiles/homebrew/brewfile`](./dotfiles/homebrew/brewfile), symlinks the
-dotfiles via `mise run dotfiles:install`, and applies the macOS defaults in
-[`utils/macos-setup`](./utils/macos-setup):
+The [`./setup`](./setup) script is the main entrypoint. It installs Homebrew and
+`mise` if missing, then runs `mise bootstrap` on `dotfiles/mise.toml` — Homebrew
+formulae/casks and App Store apps (`[bootstrap.packages]`), dotfile symlinks
+(`[dotfiles]`), macOS `defaults` (`[bootstrap.macos.defaults]`), the fish login
+shell, Touch ID for sudo, and the pmset/nvram power profile (`macos:power`
+task):
 
 ```shell
 ./setup
+# or, once set up, converge directly:
+mise --cd dotfiles bootstrap            # --dry-run to preview
+mise --cd dotfiles bootstrap status     # what differs
 ```
 
 > On a truly fresh machine, run the one-liner in
@@ -25,7 +31,6 @@ dotfiles via `mise run dotfiles:install`, and applies the macOS defaults in
 - [Create account](./docs/account.md)
 - [Setup Hostname](./docs/host.md)
 - [Setup](./docs/setup.md)
-- [Configure Shell](./docs/shell.md)
 - [Setup TouchID for sudo](./docs/touchid-sudo.md)
 - [Install tools](./docs/tools.md)
 - [AI tools](./docs/ai-tools/readme.md)
@@ -35,8 +40,8 @@ dotfiles via `mise run dotfiles:install`, and applies the macOS defaults in
 Tasks are run with `mise` (list them with `mise tasks`):
 
 ```shell
-mise run brew:gen        # regenerate the brewfile from installed packages
-mise run brew:check      # check the system against the brewfile
+mise --cd dotfiles bootstrap packages status   # system vs [bootstrap.packages]
+mise --cd dotfiles bootstrap packages apply    # install what is missing
 mise run dotfiles:install # (re)symlink dotfiles
 mise run dotfiles:status  # show which dotfile symlinks are missing
 mise run code:format     # format files (dprint/taplo)

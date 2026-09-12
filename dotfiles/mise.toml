@@ -1,3 +1,257 @@
+# Homebrew formulae, casks and Mac App Store apps. mise installs these itself
+# (bottles poured into /opt/homebrew, casks adopted when already present);
+# `brew` stays installed for `brew services` (tailscale) and upgrades.
+# A few stay on the real `brew` CLI (brew:extras task, run from the
+# post-packages hook): 1password and orbstack must live in /Applications, which
+# mise cannot express per-cask (only MISE_BREW_CASK_OPT_APPDIR); claude-status,
+# cleanmymac-cli and orca come from taps without published API metadata, which
+# mise's Ruby formula/cask shim cannot evaluate. VS Code extensions
+# (vscode:extensions) have no mise manager and run from the same hook.
+# Because of those, `mise bootstrap packages prune` is NOT safe here: it would
+# treat the tap formula as undeclared.
+[bootstrap.brew]
+adopt = true
+
+[bootstrap.packages]
+# Formulae
+"brew:bash"            = "latest"
+"brew:bat"             = "latest"
+"brew:btop"            = "latest"
+"brew:ca-certificates" = "latest"
+"brew:coreutils"       = "latest"
+"brew:curl"            = "latest"
+"brew:diff-so-fancy"   = "latest"
+"brew:doggo"           = "latest"
+"brew:eza"             = "latest"
+# "brew:fd"                       = "latest"
+"brew:fish"        = "latest"
+"brew:fnox"        = "latest"
+"brew:fzf"         = "latest"
+"brew:gh"          = "latest"
+"brew:git"         = "latest"
+"brew:git-tools"   = "latest"
+"brew:glab"        = "latest"
+"brew:gnupg"       = "latest"
+"brew:gping"       = "latest"
+"brew:httping"     = "latest"
+"brew:imagemagick" = "latest"
+"brew:ipcalc"      = "latest"
+"brew:jq"          = "latest"
+"brew:lazygit"     = "latest"
+"brew:lcov"        = "latest"
+"brew:mas"         = "latest"
+"brew:mise"        = "latest"
+"brew:prettyping"  = "latest"
+"brew:pstree"      = "latest"
+"brew:ripgrep"     = "latest"
+"brew:starship"    = "latest"
+"brew:tailscale"   = "latest"
+"brew:tree"        = "latest"
+"brew:watch"       = "latest"
+"brew:wget"        = "latest"
+"brew:yq"          = "latest"
+"brew:zinit"       = "latest"
+"brew:zoxide"      = "latest"
+"brew:zsh"         = "latest"
+# "brew:gromgit/brewtils/taproom" = "latest"
+
+# Casks (installed to MISE_BREW_CASK_OPT_APPDIR = ~/Applications)
+"brew-cask:alfred"             = "latest"
+"brew-cask:android-studio"     = "latest"
+"brew-cask:brave-browser"      = "latest"
+"brew-cask:claude"             = "latest"
+"brew-cask:claude-code@latest" = "latest"
+# "brew-cask:cloudflare-warp"            = "latest"
+"brew-cask:easyfind"                    = "latest"
+"brew-cask:font-fira-code-nerd-font"    = "latest"
+"brew-cask:font-hack-nerd-font"         = "latest"
+"brew-cask:font-iosevka-nerd-font"      = "latest"
+"brew-cask:font-iosevka-term-nerd-font" = "latest"
+"brew-cask:font-meslo-lg-nerd-font"     = "latest"
+"brew-cask:ghostty"                     = "latest"
+"brew-cask:github"                      = "latest"
+"brew-cask:handbrake-app"               = "latest"
+# "brew-cask:lm-studio"                  = "latest"
+"brew-cask:notion"   = "latest"
+"brew-cask:obsidian" = "latest"
+"brew-cask:setapp"   = "latest"
+"brew-cask:slack"    = "latest"
+# "brew-cask:subler"                     = "latest"
+"brew-cask:sublime-text"       = "latest"
+"brew-cask:taskexplorer"       = "latest"
+"brew-cask:visual-studio-code" = "latest"
+"brew-cask:vlc"                = "latest"
+"brew-cask:warp"               = "latest"
+"brew-cask:whatsapp"           = "latest"
+
+# Mac App Store (keyed by ADAM id)
+"mas:1569813296" = "latest" # 1Password for Safari
+# "mas:1616831348" = "latest" # Affinity Designer 2
+# "mas:1616822987" = "latest" # Affinity Photo 2
+"mas:1120214373" = "latest" # Battery Health 2
+"mas:1290358394" = "latest" # Cardhop
+# "mas:424390742"  = "latest" # Compressor
+"mas:1450874784" = "latest" # Transporter
+"mas:1502111349" = "latest" # PDF Squeezer
+"mas:302584613"  = "latest" # Kindle
+"mas:361285480"  = "latest" # Keynote
+"mas:361304891"  = "latest" # Numbers
+"mas:361309726"  = "latest" # Pages
+"mas:411643860"  = "latest" # DaisyDisk
+"mas:424389933"  = "latest" # Final Cut Pro
+"mas:425424353"  = "latest" # The Unarchiver
+"mas:441258766"  = "latest" # Magnet
+"mas:455970963"  = "latest" # Disk Doctor
+"mas:462054704"  = "latest" # Microsoft Word
+"mas:462058435"  = "latest" # Microsoft Excel
+"mas:462062816"  = "latest" # Microsoft PowerPoint
+"mas:566631581"  = "latest" # PDF Protector
+"mas:640199958"  = "latest" # Developer
+"mas:686428787"  = "latest" # Duplicate Detective
+"mas:715464874"  = "latest" # Disk Map
+"mas:747648890"  = "latest" # Telegram
+"mas:899247664"  = "latest" # TestFlight
+# "mas:1494451650" = "latest" # VN
+"mas:497799835" = "latest" # Xcode
+
+# macOS settings, applied with `mise bootstrap macos defaults apply`. References:
+#   - https://www.defaults-write.com/
+#   - https://mac.install.guide/mac-setup/finder/
+# `defaults read <domain> [<key>]` shows the live value. pmset/nvram live in the
+# macos:power task (run as the `bootstrap` task below) — mise only does
+# `defaults`, and it never restarts apps itself, hence the post-defaults hook.
+
+# General & Appearance
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleInterfaceStyle              = "Dark" # system-wide Dark appearance
+AppleMiniaturizeOnDoubleClick    = false  # no minimize on title-bar double-click
+AppleShowAllExtensions           = true
+NSAutomaticCapitalizationEnabled = false
+NSQuitAlwaysKeepsWindows         = true   # reopen windows after quit/restart
+"com.apple.mouse.tapBehavior"    = 1      # tap-to-click
+"com.apple.trackpad.forceClick"  = false
+
+# Finder
+[bootstrap.macos.defaults."com.apple.finder"]
+AppleShowAllFiles              = false  # toggle with Cmd+Shift+.
+CreateDesktop                  = false  # hide desktop icons (pre-Sonoma key)
+FK_AppCentricShowSidebar       = true
+FXArrangeGroupViewBy           = "Name"
+FXDefaultSearchScope           = "SCcf" # search the current folder
+FXEnableExtensionChangeWarning = false
+# FXEnableRemoveFromICloudDriveWarning: not declared — true is the default and
+# Finder drops the key on restart, so it would always report as unset.
+FXICloudDriveDesktop            = true
+FXICloudDriveDocuments          = true
+FXICloudDriveEnabled            = true
+FXPreferredGroupBy              = "Kind"
+FXPreferredSearchViewStyle      = "Nlsv"
+FXPreferredViewStyle            = "Nlsv" # list view
+FXRemoveOldTrashItems           = true   # purge trash after 30 days
+FinderSpawnTab                  = false  # folders open in windows, not tabs
+NewWindowTarget                 = "PfHm" # new windows open at $HOME (path set in post-defaults hook)
+QuitMenuItem                    = false
+ShowExternalHardDrivesOnDesktop = false
+ShowHardDrivesOnDesktop         = false
+ShowMountedServersOnDesktop     = false
+ShowPathbar                     = true
+ShowRecentTags                  = false
+ShowRemovableMediaOnDesktop     = false
+ShowSidebar                     = true
+ShowStatusBar                   = true
+ShowTabView                     = true
+WarnOnEmptyTrash                = false
+_FXSortFoldersFirst             = true
+_FXSortFoldersFirstOnDesktop    = true
+
+# No .DS_Store on network and USB volumes
+[bootstrap.macos.defaults."com.apple.desktopservices"]
+DSDontWriteNetworkStores = true
+DSDontWriteUSBStores     = true
+
+# Dock & Mission Control
+[bootstrap.macos.defaults."com.apple.dock"]
+autohide                = true
+expose-group-apps       = true     # group windows by app in Mission Control
+largesize               = 71
+magnification           = true
+minimize-to-application = true
+mru-spaces              = false    # don't rearrange Spaces by recent use
+orientation             = "right"
+show-process-indicators = true
+show-recents            = false
+tilesize                = 38
+windowtabbing           = "always"
+# Hot corners: all four disabled (0 = no-op)
+wvous-bl-corner   = 0
+wvous-bl-modifier = 0
+wvous-br-corner   = 0
+wvous-br-modifier = 0
+wvous-tl-corner   = 0
+wvous-tl-modifier = 0
+wvous-tr-corner   = 0
+wvous-tr-modifier = 0
+
+# Window management
+[bootstrap.macos.defaults."com.apple.WindowManager"]
+AppWindowGroupingBehavior      = true  # show all of an app's windows on switch
+ClickedWallpaperRevealsDesktop = 2     # only with Stage Manager
+EnableTiledWindowMargins       = false
+EnableTilingByEdgeDrag         = false
+EnableTopTilingByEdgeDrag      = false
+HideDesktop                    = true  # Sonoma+ equivalent of CreateDesktop=false
+
+# Menu bar clock: day of week and AM/PM, no date
+[bootstrap.macos.defaults."com.apple.menuextra.clock"]
+ShowAMPM      = true
+ShowDate      = 0
+ShowDayOfWeek = true
+
+# Trackpad: tap-to-click on, three-finger tap lookup off (internal + Bluetooth)
+[bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
+Clicking                      = true
+TrackpadThreeFingerTapGesture = 0
+
+[bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
+Clicking                      = true
+TrackpadThreeFingerTapGesture = 0
+
+# Clamp streaming quality on battery
+[bootstrap.macos.defaults."com.apple.appleinterface"]
+videoStreamingOptimizeOnBattery = true
+
+[bootstrap.hooks]
+post-defaults = [
+# defaults values are not templated, and $HOME must not be hardcoded
+'defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"',
+"chflags nohidden ~/Library",
+"killall cfprefsd || true",
+"killall Finder || true",
+"killall Dock || true",
+"killall SystemUIServer || true",
+"killall ControlCenter || true",
+]
+post-packages = [ "mise run brew:extras", "mise run vscode:extensions" ]
+
+# Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
+# sudo_local is the drop-in it includes and survives them.
+[bootstrap.files."/etc/pam.d/sudo_local"]
+content = "auth       sufficient     pam_tid.so\n"
+group   = "wheel"
+mode    = "0444"
+owner   = "root"
+
+# fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
+# zsh are added to /etc/shells by the line entries at the end of [dotfiles].
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"
+
+# Runs last in `mise bootstrap`: prompts for sudo (pmset/nvram)
+[tasks.bootstrap]
+description = "Apply the pmset/nvram power profile"
+hide        = true
+run         = "mise run macos:power"
+
 [dotfiles]
 # ZSH
 "~/.config/zsh" = { mode = "symlink", source = "zsh/scripts" }
@@ -41,9 +295,6 @@
 # GitHub CLI
 "~/.config/gh" = { mode = "symlink-each", source = "github" }
 
-# Brewfil (homebrew)
-"~/.config/brewfile" = { mode = "symlink", source = "homebrew/brewfile" }
-
 # Mempalace (dockerfile & compose)
 "~/.config/mempalace" = { mode = "symlink", source = "mempalace" }
 
@@ -64,3 +315,7 @@
 
 # Warp (Tabs Config)
 "~/.warp/tab_configs" = { mode = "symlink", source = "warp/tab_configs" }
+
+# Homebrew shells in /etc/shells (fish is handled by [bootstrap.user])
+"/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }
+"/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }

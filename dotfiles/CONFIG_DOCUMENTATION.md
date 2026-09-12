@@ -20,7 +20,6 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 | `fnox/`       | Secret management via the macOS Keychain (see below)               |
 | `mise/`       | Global `mise` tool versions, env, and task runner shortcuts        |
 | `pnpm/`       | Global pnpm settings (`config.yaml`); auth stays in `~/.npmrc`     |
-| `homebrew/`   | The `brewfile` (source of truth for installed packages)            |
 | `dprint/`     | `dprint` / `taplo` formatter configuration                         |
 | `gem/`        | RubyGems configuration                                             |
 | `1Password/`  | 1Password SSH agent configuration                                  |
@@ -32,8 +31,8 @@ app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
 ## Shells & Prompt
 
 The default interactive shell is **fish**; `zsh` is kept in sync as a fallback.
-Set fish as the login shell via the steps in
-[`docs/shell.md`](../docs/shell.md).
+`mise bootstrap` makes fish the login shell (`[bootstrap.user]`) and adds the
+Homebrew shells to `/etc/shells` (see [`docs/shell.md`](../docs/shell.md)).
 
 Interactive shells get a full `mise activate`; non-interactive shells get
 `--shims`. In fish that is the if/else in `conf.d/51-mise.fish`, and it
@@ -140,10 +139,49 @@ one-time setup.
 (`git/root/gitignore_global`). Commit signing keys live in `ssh/` and are
 referenced via `ssh/allowed_signers`.
 
-## Link map
+## Machine declaration (`mise.toml`)
 
-`dotfiles/mise.toml` is the single source of truth for what gets linked where.
-Only paths listed there are symlinked, so repo metadata is never linked by
-accident. `mode = "symlink"` links the source itself; `mode = "symlink-each"`
-links each entry inside the source directory individually (used for `~/.ssh` and
-`~/.config/gh`, where other tools write sibling files).
+`dotfiles/mise.toml` is what `mise --cd dotfiles bootstrap` applies, in
+[mise's phase order](https://mise.jdx.dev/bootstrap.html):
+
+- `[bootstrap.packages]` — Homebrew formulae (`brew:`), casks (`brew-cask:`) and
+  Mac App Store apps (`mas:<adam id>`). mise pours bottles itself and adopts
+  casks already present (`bootstrap.brew.adopt = true`); casks go to
+  `MISE_BREW_CASK_OPT_APPDIR` (`~/Applications`, set in the global `[env]`). The
+  `post-packages` hook then runs `brew:extras` (1password/orbstack, which must
+  live in `/Applications`, and the tap items mise's Ruby shim cannot evaluate)
+  and `vscode:extensions`. **Do not run `packages prune`** — it would remove
+  those undeclared tap items.
+- `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
+- `[dotfiles]` — the link map (below), plus `line` entries adding Homebrew's
+  bash and zsh to `/etc/shells`.
+- `[bootstrap.macos.defaults]` — every `defaults write` the old
+  `utils/macos-setup` script ran, one table per domain. mise never restarts
+  apps, so the `post-defaults` hook does the `killall`s (and
+  `chflags nohidden ~/Library`, and the one `$HOME`-dependent Finder key, since
+  defaults values are not templated).
+- `[bootstrap.user]` — fish as login shell.
+- `[tasks.bootstrap]` — runs `macos:power` (`.config/mise/tasks/macos/power`):
+  `pmset`/`nvram`, which mise has no declaration for; prompts for `sudo`.
+
+`updateall` re-runs the defaults and power parts
+(`bootstrap --only defaults,task`) because macOS updates reset them, and
+`upgrade:brew` runs `packages apply` + `packages upgrade`.
+
+Not migrated on purpose: `mise activate` stays in `51-mise.fish`/`.zshrc`
+(`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split),
+pitchfork keeps its own LaunchAgent, and qdrant is not a `[bootstrap.compose]`
+project because `project_dir` must be a literal absolute path (username in the
+repo).
+
+The global config (`mise/config.toml`) declares the `mise-history` watcher
+service; it only records checkpoints for `mode = "track"` entries, of which
+there are none yet.
+
+### Link map
+
+Only paths listed in `[dotfiles]` are symlinked, so repo metadata is never
+linked by accident. `mode = "symlink"` links the source itself;
+`mode = "symlink-each"` links each entry inside the source directory
+individually (used for `~/.ssh` and `~/.config/gh`, where other tools write
+sibling files).
