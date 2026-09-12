@@ -17,6 +17,10 @@ fi
 print_subheader "Updating Homebrew ..."
 brew update --force # --verbose
 
+# Tailscale runs as a root service and needs special handling before the
+# generic upgrade/cleanup below would otherwise fail on its root-owned keg.
+mise run upgrade:tailscale
+
 # Remove packages NOT in Brewfile
 print_subheader "Deleting packages NOT in Brewfile ..."
 brew bundle cleanup \
