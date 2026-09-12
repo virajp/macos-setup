@@ -44,6 +44,7 @@ adopt = true
 "brew:pstree"                   = "latest" # Display process tree
 "brew:ripgrep"                  = "latest" # Fast search tool
 "brew:starship"                 = "latest" # Cross-shell prompt
+"brew:tailscale"                = "latest" # CLI only (tailscale ssh); the daemon is the App Store app
 "brew:tree"                     = "latest" # Display directory tree
 "brew:virajp/tap/claude-status" = "latest" # Claude Code status line
 "brew:watch"                    = "latest" # Execute a command periodically and show output
