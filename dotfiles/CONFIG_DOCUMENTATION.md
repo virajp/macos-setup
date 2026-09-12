@@ -153,6 +153,9 @@ referenced via `ssh/allowed_signers`.
   and `vscode:extensions`. **Do not run `packages prune`** — it would remove
   those undeclared tap items.
 - `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
+- `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
+  `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,
+  so this is the one place the username appears in the repo.
 - `[dotfiles]` — the link map (below), plus `line` entries adding Homebrew's
   bash and zsh to `/etc/shells`.
 - `[bootstrap.macos.defaults]` — every `defaults write` the old
@@ -170,13 +173,7 @@ referenced via `ssh/allowed_signers`.
 
 Not migrated on purpose: `mise activate` stays in `51-mise.fish`/`.zshrc`
 (`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split),
-pitchfork keeps its own LaunchAgent, and qdrant is not a `[bootstrap.compose]`
-project because `project_dir` must be a literal absolute path (username in the
-repo).
-
-The global config (`mise/config.toml`) declares the `mise-history` watcher
-service; it only records checkpoints for `mode = "track"` entries, of which
-there are none yet.
+and pitchfork keeps its own LaunchAgent.
 
 ### Link map
 

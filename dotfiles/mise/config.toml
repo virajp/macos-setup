@@ -52,11 +52,6 @@ taplo  = { version = "latest" }
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
 
-# Saves checkpoints of `mode = "track"` [dotfiles] entries as they change.
-# No-op until such entries exist (the symlinked dotfiles are already in git).
-[bootstrap.services.mise-history]
-builtin = "history-watch"
-
 [tasks."global:init"]
 description = "Initialize mise tasks"
 hide        = true
