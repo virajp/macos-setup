@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#MISE description="Start tailscaled as a root brew service (prompts for sudo)"
+#MISE hide=true
+
+# Run from the post-packages hook in dotfiles/mise.toml. The formula itself is
+# mise's; only the daemon goes through `brew services`, because tailscaled needs
+# root for the utun interface and mise has no privileged services on macOS.
+# Idempotent: `brew services start` is a no-op when the service is running.
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+print_header "Starting tailscaled (root brew service) ..."
+sudo brew services start tailscale

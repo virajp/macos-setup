@@ -21,6 +21,10 @@ brew update --force # --verbose
 # casks and VS Code extensions are brew's (Brewfile, via brew:casks)
 readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
 
+# Tailscale runs as a root service and needs special handling before the
+# generic upgrade below would otherwise fail on its root-owned keg.
+mise run upgrade:tailscale
+
 print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
 mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages prune --manager brew --yes
 

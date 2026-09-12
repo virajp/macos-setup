@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+#MISE description="Upgrade Tailscale (mise-poured formula, runs as a root brew service)"
+#MISE hide=true
+
+# The formula is mise's ([bootstrap.packages]); only the daemon goes through
+# `brew services`, because tailscaled needs root for the utun interface and mise
+# has no privileged services on macOS. The App Store build is sandboxed and
+# cannot run the Tailscale SSH server, which is why the formula's daemon is used.
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
+
+print_header "Tailscale ..."
+
+# Check if tailscale is installed before attempting to upgrade
+if ! brew list --formulae tailscale >/dev/null 2>&1; then
+  print_error "Tailscale formula is not installed. Skipping."
+  exit 0
+fi
+
+# No upgrade available: just make sure the service is running
+if [[ -z "$(brew outdated --formulae tailscale)" ]]; then
+  print_subheader "Tailscale is up to date, ensuring service is running ..."
+  sudo brew services start tailscale
+  exit 0
+fi
+
+print_subheader "Stopping Tailscale service ..."
+sudo brew services stop tailscale
+
+# The service runs as root, so its keg ends up root-owned and `brew cleanup`
+# cannot remove it. Hand the keg back to the user before upgrading.
+# Resolve the versioned keg from the binary symlink, e.g.
+# /opt/homebrew/Cellar/tailscale/1.102.4/bin/tailscale -> .../tailscale/1.102.4
+keg="$(dirname "$(dirname "$(readlink "$(command -v tailscale)")")")"
+print_subheader "Restoring ownership of ${keg} ..."
+sudo chown -R "${USER}:staff" "${keg}"
+
+print_subheader "Upgrading Tailscale ..."
+mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages upgrade brew:tailscale --yes
+
+print_subheader "Cleaning up old Tailscale versions ..."
+brew cleanup tailscale
+
+print_subheader "Starting Tailscale service ..."
+sudo brew services start tailscale

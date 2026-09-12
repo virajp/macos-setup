@@ -16,14 +16,15 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   source file lands at which `$HOME` path, in which mode). Run it with
   `mise --cd dotfiles bootstrap`.
 - `.config/mise/tasks/macos/power` — `pmset`/`nvram` (no mise equivalent), run
-  as the `bootstrap` task. `brew:casks` applies the Brewfile from the
+  as the `bootstrap` task. `brew:casks` applies the Brewfile and
+  `tailscale:daemon` starts the root `tailscaled` service from the
   `post-packages` hook.
 - `dotfiles/homebrew/brewfile` — casks and VS Code extensions only; these stay
   on Homebrew (mise's cask support is narrow). Formulae never go here.
 - `dotfiles/mise/` — global mise config + task scripts (shell aliases like
   `updateall`, `osx-upgrade`, IP helpers).
 - `.config/mise/tasks/` — repo-local mise tasks (`dotfiles:*`, `code:*`,
-  `macos:*`, `brew:casks`).
+  `macos:*`, `brew:casks`, `tailscale:daemon`).
 - `docs/` — manual setup steps.
 
 ## Commands

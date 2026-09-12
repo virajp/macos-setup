@@ -44,7 +44,7 @@ adopt = true
 "brew:pstree"                   = "latest" # Display process tree
 "brew:ripgrep"                  = "latest" # Fast search tool
 "brew:starship"                 = "latest" # Cross-shell prompt
-"brew:tailscale"                = "latest" # CLI only (tailscale ssh); the daemon is the App Store app
+"brew:tailscale"                = "latest" # tailscaled runs as a root brew service (tailscale:daemon hook)
 "brew:tree"                     = "latest" # Display directory tree
 "brew:virajp/tap/claude-status" = "latest" # Claude Code status line
 "brew:watch"                    = "latest" # Execute a command periodically and show output
@@ -58,7 +58,6 @@ adopt = true
 "mas:1120214373" = "latest" # Battery Health 2
 "mas:1290358394" = "latest" # Cardhop
 "mas:1450874784" = "latest" # Transporter
-"mas:1475387142" = "latest" # Tailscale
 "mas:1502111349" = "latest" # PDF Squeezer
 "mas:1569813296" = "latest" # 1Password for Safari
 "mas:302584613"  = "latest" # Kindle
@@ -201,7 +200,7 @@ post-defaults = [
 "killall SystemUIServer || true",
 "killall ControlCenter || true",
 ]
-post-packages = "mise run brew:casks"
+post-packages = [ "mise run brew:casks", "mise run tailscale:daemon" ]
 
 # Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
 # sudo_local is the drop-in it includes and survives them.
