@@ -41,10 +41,24 @@ mise upgrade  || true
 # config keys (e.g. the mempalace-mcp on_exit hook) are parsed by a stale
 # supervisor. Before the prune below, which can delete the old install dir.
 print_header "Restarting pitchfork supervisor ..."
-pitchfork supervisor start --force
-# --force kills the supervisor and leaves its daemons stopped; they are not
-# re-adopted (boot_start only applies when the supervisor runs in boot mode).
-# Bring them back now rather than leaving mempalace down for the rest of the run.
+# Not `supervisor start --force`: that kills the old supervisor and starts the
+# new one at once, and the dying process unlinks the socket the new one has
+# just created ("failed to connect to supervisor ... No such file or
+# directory"). Stop, wait for the socket to go away, then start.
+readonly PITCHFORK_SOCK="${HOME}/.local/state/pitchfork/sock/main.sock"
+pitchfork supervisor stop || true
+for _ in $(seq 1 50); do
+  [[ -S "${PITCHFORK_SOCK}" ]] || break
+  sleep 0.2
+done
+pitchfork supervisor start
+for _ in $(seq 1 50); do
+  [[ -S "${PITCHFORK_SOCK}" ]] && break
+  sleep 0.2
+done
+# Stopping the supervisor leaves its daemons stopped; they are not re-adopted
+# (boot_start only applies when the supervisor runs in boot mode). Bring them
+# back now rather than leaving mempalace down for the rest of the run.
 print_header "Starting global pitchfork daemons ..."
 pitchfork start --global
 
