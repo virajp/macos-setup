@@ -1,14 +1,13 @@
 # Homebrew formulae, casks and Mac App Store apps. mise installs these itself
 # (bottles poured into /opt/homebrew, casks adopted when already present);
 # `brew` stays installed for `brew services` (tailscale) and upgrades.
-# A few stay on the real `brew` CLI (brew:extras task, run from the
-# post-packages hook): 1password and orbstack must live in /Applications, which
-# mise cannot express per-cask (only MISE_BREW_CASK_OPT_APPDIR); claude-status,
-# cleanmymac-cli and orca come from taps without published API metadata, which
-# mise's Ruby formula/cask shim cannot evaluate. VS Code extensions
+# 1password and orbstack stay on the real `brew` CLI (brew:extras task, run from
+# the post-packages hook): they must live in /Applications, which mise cannot
+# express per-cask (only MISE_BREW_CASK_OPT_APPDIR). VS Code extensions
 # (vscode:extensions) have no mise manager and run from the same hook.
-# Because of those, `mise bootstrap packages prune` is NOT safe here: it would
-# treat the tap formula as undeclared.
+# Third-party taps are deliberately absent: mise evaluates them with its own
+# Ruby DSL shim, which fails on real-world casks/formulae. claude-status comes
+# from npm (upgrade:ai), orca is installed by hand.
 [bootstrap.brew]
 adopt = true
 

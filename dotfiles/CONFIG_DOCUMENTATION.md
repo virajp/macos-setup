@@ -149,9 +149,10 @@ referenced via `ssh/allowed_signers`.
   casks already present (`bootstrap.brew.adopt = true`); casks go to
   `MISE_BREW_CASK_OPT_APPDIR` (`~/Applications`, set in the global `[env]`). The
   `post-packages` hook then runs `brew:extras` (1password/orbstack, which must
-  live in `/Applications`, and the tap items mise's Ruby shim cannot evaluate)
-  and `vscode:extensions`. **Do not run `packages prune`** — it would remove
-  those undeclared tap items.
+  live in `/Applications`) and `vscode:extensions`. No third-party taps: mise
+  evaluates those with its own Ruby DSL shim, which fails on real casks (`orca`
+  uses `appdir`, `claude-status` has no parsable version) — so claude-status
+  comes from npm (`upgrade:ai`) and orca is installed by hand.
 - `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
 - `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
   `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,

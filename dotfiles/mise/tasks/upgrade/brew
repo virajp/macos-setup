@@ -21,10 +21,13 @@ brew update --force # --verbose
 # generic upgrade/cleanup below would otherwise fail on its root-owned keg.
 mise run upgrade:tailscale
 
-# Packages are declared in [bootstrap.packages] of the setup repo. No prune:
-# the tap items installed by brew:extras are undeclared there (see the comment
-# in dotfiles/mise.toml), so `packages prune` would remove them.
+# Packages are declared in [bootstrap.packages] of the setup repo
 readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
+
+# Formulae only: brew-installed casks are never pruned by mise (the two from
+# brew:extras are brew-installed on purpose)
+print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
+mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages prune --manager brew --yes
 
 print_subheader "Install/Upgrade all declared packages ..."
 mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages apply --yes

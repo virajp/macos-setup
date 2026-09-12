@@ -50,8 +50,8 @@ mise run code:lint        # lint
   `dotfiles/mise.toml`, then `dotfiles:install`.
 - **Packages**: add `"brew:<formula>"`, `"brew-cask:<cask>"` or `"mas:<id>"` to
   `[bootstrap.packages]` in `dotfiles/mise.toml`, then
-  `mise --cd dotfiles bootstrap packages apply`. Never run
-  `mise bootstrap packages prune` — the tap items from `brew:extras` are not
-  declared there and would be removed.
+  `mise --cd dotfiles bootstrap packages apply`. No third-party taps: mise's
+  Ruby shim cannot evaluate them (claude-status comes from npm via `upgrade:ai`,
+  orca is installed by hand).
 - Keep `dotfiles/CONFIG_DOCUMENTATION.md` accurate when adding/removing
   packages.
