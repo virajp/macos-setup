@@ -1,8 +1,0 @@
-color = "cyan"
-name  = "Claude Status" # label in the + menu
-title = "Claude Status" # the tab title you're after
-
-[[panes]]
-directory = "~/Projects/github.com/virajp/claude-status"
-id        = "main"
-type      = "terminal"

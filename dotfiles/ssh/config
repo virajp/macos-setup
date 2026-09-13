@@ -3,16 +3,13 @@
 # This won't be added again if you remove it.
 Include ~/.orbstack/ssh/config
 
-Host 10.0.0.100
-  User sshd
-  PasswordAuthentication yes
-  PreferredAuthentications password
-  PubkeyAuthentication no
+# Machine-local hosts (LAN boxes, per-host auth overrides). Untracked on purpose:
+# this file is public. Missing file is fine — ssh ignores an unmatched Include.
+Include ~/.ssh/config.local
 
 Host *
   User virajp
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
+  StrictHostKeyChecking accept-new
   CheckHostIP yes
   TCPKeepAlive yes
   AddKeysToAgent yes

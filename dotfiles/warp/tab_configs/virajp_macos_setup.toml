@@ -1,8 +1,0 @@
-color = "blue"
-name  = "MacOS Setup" # label in the + menu
-title = "MacOS Setup" # the tab title you're after
-
-[[panes]]
-directory = "~/Projects/github.com/virajp/macos-setup"
-id        = "main"
-type      = "terminal"

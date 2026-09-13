@@ -26,7 +26,7 @@
 	untrackedCache = true
 
 [push]
-	default = matching
+	default = current
 
 [pull]
 	rebase = false
@@ -83,7 +83,7 @@
 	c = checkout
 	b = branch
 	rb = rebase
-	p = push --all --atomic --verbose
+	p = push --verbose
 
 [commit]
 	template = ~/.stCommitMsg
