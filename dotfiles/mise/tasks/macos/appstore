@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Make sure an Apple Account is signed in before mas installs run"
+#MISE description="Make sure mas is installed and an Apple Account is signed in before mas installs run"
 #MISE hide=true
 
 # Run from the pre-packages hook (conf.d/macos.toml). `mas install` fails when
@@ -11,6 +11,15 @@
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+
+# mise's App Store manager looks for the `mas` binary on PATH when the packages
+# phase starts and silently skips every App Store app ("skipped (mas not
+# found)") when it is missing. brew:mas is declared, but it would be poured in
+# the same phase - too late - so on a fresh machine install it here first.
+if ! command -v mas > /dev/null 2>&1; then
+  print_header "Installing mas (needed before the App Store packages) ..."
+  brew install mas
+fi
 
 if defaults read MobileMeAccounts Accounts 2> /dev/null | grep -q AccountID; then
   exit 0

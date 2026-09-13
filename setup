@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 ##############################################################################
 # macOS Setup - Install Homebrew + mise, then `mise bootstrap` the machine
@@ -14,94 +14,131 @@
 # Usage:
 #   ./setup
 #   # or bootstrap a fresh machine directly from the public repo:
-#   /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup)"
+#   curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup | sh
+#   # a fork: GITHUB_USER=<you> curl ... | sh
 #
-# Steps (Tasks):
-# - First check whether `brew` is installed, if not then install it
-# - Clone the repo to ~/Projects/github.com/virajp/macos-setup if it's missing
-# - Check whether everything is fine with brew using `brew doctor` command
-# - Install `mise` with brew if it is missing
+# Steps:
+# - Install Homebrew if it is missing (this also installs the Xcode Command
+#   Line Tools, which bring `git`)
+# - Clone the repo to ~/Projects/github.com/${GITHUB_USER}/macos-setup if it
+#   is not there yet
+# - `brew analytics off`, `brew doctor`
+# - Install `mise`
 # - Link ~/.config/mise to dotfiles/mise so the global config exists
-# - Run `mise bootstrap`
+# - Run `mise bootstrap` (skipping the compose phase until Docker is up)
 #
-# Note:
-#   Uses absolute paths to the repo, so it can be run from anywhere — including
-#   piped straight from curl on a fresh machine.
+# Notes:
+#   Written as a function that is called on the last line, so the whole file
+#   is parsed before anything runs - required for `curl | sh`, where the shell
+#   reads the script from stdin and any command that reads stdin (the Homebrew
+#   installer, sudo fallbacks, the App Store check) would otherwise eat it.
+#   Uses absolute paths to the repo, so it can be run from anywhere.
+#   /bin/bash is used, not zsh: it is what macOS runs `sh` as, and it is
+#   always present on a fresh machine.
 #
 # Author: Viraj Patel
 ##############################################################################
 
 set -euo pipefail
 
-readonly SUCCESS_EMOJI="✅"
-readonly ERROR_EMOJI="🚫"
-readonly SETTING_EMOJI="⚙️"
-readonly INSTALL_EMOJI="🚀"
-readonly PACKAGE_EMOJI="📦"
-readonly CHECK_EMOJI="🩺"
+main() {
+  local SUCCESS_EMOJI="✅"
+  local ERROR_EMOJI="🚫"
+  local SETTING_EMOJI="⚙️"
+  local INSTALL_EMOJI="🚀"
+  local PACKAGE_EMOJI="📦"
+  local CHECK_EMOJI="🩺"
 
-readonly REPO_URL="https://github.com/virajp/macos-setup.git"
-readonly REPO_DIR="${HOME}/Projects/github.com/virajp/macos-setup"
+  local GITHUB_USER="${GITHUB_USER:-virajp}"
+  local REPO_URL="https://github.com/${GITHUB_USER}/macos-setup.git"
+  local REPO_DIR="${HOME}/Projects/github.com/${GITHUB_USER}/macos-setup"
+  local MISE_CONFIG_DIR="${HOME}/.config/mise"
 
-if ! command -v brew &> /dev/null; then
-  echo "${INSTALL_EMOJI} Homebrew not found. Installing..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # The installer does not touch the current shell's PATH, so put brew on it
-  # before the commands below reach for it.
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  echo "${SUCCESS_EMOJI} Homebrew is already installed."
-fi
-
-# Clone the repo if it isn't present yet (e.g. bootstrapping a fresh machine by
-# piping this script straight from the public repo). Git ships with the Xcode
-# Command Line Tools that the Homebrew installer above pulls in.
-if [[ ! -d "${REPO_DIR}" ]]; then
-  echo "${INSTALL_EMOJI} Cloning macos-setup into ${REPO_DIR}..."
-  git clone "${REPO_URL}" "${REPO_DIR}"
-else
-  echo "${SUCCESS_EMOJI} macos-setup repo already present at ${REPO_DIR}."
-fi
-
-# Turn off homebrew analytics
-echo "${SETTING_EMOJI} Turning off Homebrew analytics..."
-brew analytics off
-
-# Check Homebrew health
-echo "${CHECK_EMOJI} Checking Homebrew health..."
-brew doctor || true
-
-# Install mise if it is missing; it drives the rest of the setup.
-if ! command -v mise &> /dev/null; then
-  echo "${INSTALL_EMOJI} mise not found. Installing..."
-  brew install mise
-fi
-
-# Casks land in ~/Applications (1password is the exception, see the Brewfile).
-# Only needed on a fresh machine: once the dotfiles are linked, the global mise
-# [env] block sets it.
-export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
-
-# The whole machine declaration is the global mise config, which the dotfiles
-# phase would link only mid-run. Create that one link up front so the first
-# `mise bootstrap` already reads it (the [dotfiles] entry for ~/.config/mise
-# then finds it applied).
-readonly MISE_CONFIG_DIR="${HOME}/.config/mise"
-if [[ ! -L "${MISE_CONFIG_DIR}" ]]; then
-  echo "${SETTING_EMOJI} Linking ${MISE_CONFIG_DIR} -> ${REPO_DIR}/dotfiles/mise..."
-  mkdir -p "${HOME}/.config"
-  if [[ -e "${MISE_CONFIG_DIR}" ]]; then
-    mv "${MISE_CONFIG_DIR}" "${MISE_CONFIG_DIR}.bak-$(date +%s)"
+  # When piped (`curl ... | sh`) stdin is the script itself. Everything below is
+  # already parsed, so hand stdin back to the terminal for the prompts
+  # (Homebrew's "Press RETURN", sudo, the App Store sign-in check).
+  if [[ ! -t 0 && -r /dev/tty ]]; then
+    exec < /dev/tty
   fi
-  ln -s "${REPO_DIR}/dotfiles/mise" "${MISE_CONFIG_DIR}"
-fi
 
-echo ""
-echo "${PACKAGE_EMOJI} Running mise bootstrap (formulae, casks, dotfiles, macOS defaults, ...)..."
-# Not run under sudo: mise elevates only where needed (/etc/pam.d, /etc/shells,
-# and the pmset/nvram task), and running the whole thing as root would write
-# every `defaults` key into root's preference domain instead of yours.
-mise bootstrap --yes
+  if ! command -v brew &> /dev/null; then
+    echo "${INSTALL_EMOJI} Homebrew not found. Installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # The installer does not touch the current shell's PATH, so put brew on it
+    # before the commands below reach for it.
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    echo "${SUCCESS_EMOJI} Homebrew is already installed."
+  fi
 
-echo ""
-echo "${SUCCESS_EMOJI} Setup complete!"
+  # Clone the repo if it isn't present yet. Git ships with the Xcode Command
+  # Line Tools that the Homebrew installer above pulls in.
+  if [[ ! -d "${REPO_DIR}" ]]; then
+    echo "${INSTALL_EMOJI} Cloning macos-setup into ${REPO_DIR}..."
+    mkdir -p "$(dirname "${REPO_DIR}")"
+    git clone "${REPO_URL}" "${REPO_DIR}"
+  else
+    echo "${SUCCESS_EMOJI} macos-setup repo already present at ${REPO_DIR}."
+  fi
+
+  # Turn off homebrew analytics
+  echo "${SETTING_EMOJI} Turning off Homebrew analytics..."
+  brew analytics off
+
+  # Check Homebrew health
+  echo "${CHECK_EMOJI} Checking Homebrew health..."
+  brew doctor || true
+
+  # mise drives the rest of the setup.
+  if ! command -v mise &> /dev/null; then
+    echo "${INSTALL_EMOJI} mise not found. Installing..."
+    brew install mise
+  fi
+
+  # Casks land in ~/Applications (1password is the exception, see the Brewfile).
+  # Only needed on a fresh machine: once the dotfiles are linked, the global mise
+  # [env] block sets it.
+  export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications --fontdir=${HOME}/Library/Fonts"
+
+  # The whole machine declaration is the global mise config, which the dotfiles
+  # phase would link only mid-run. Create that one link up front so the first
+  # `mise bootstrap` already reads it (the [dotfiles] entry for ~/.config/mise
+  # then finds it applied).
+  if [[ ! -L "${MISE_CONFIG_DIR}" ]]; then
+    echo "${SETTING_EMOJI} Linking ${MISE_CONFIG_DIR} -> ${REPO_DIR}/dotfiles/mise..."
+    mkdir -p "${HOME}/.config"
+    if [[ -e "${MISE_CONFIG_DIR}" ]]; then
+      mv "${MISE_CONFIG_DIR}" "${MISE_CONFIG_DIR}.bak-$(date +%s)"
+    fi
+    ln -s "${REPO_DIR}/dotfiles/mise" "${MISE_CONFIG_DIR}"
+  fi
+
+  # The qdrant compose project needs a running Docker engine. On a fresh machine
+  # OrbStack has only just been installed and never launched, and a failing
+  # phase aborts every phase after it (dotfiles, defaults, login shell, ...).
+  local -a bootstrap_flags=(--yes)
+  if ! docker info &> /dev/null; then
+    echo "${ERROR_EMOJI} Docker is not running; skipping the compose phase."
+    echo "   Launch OrbStack once, then run: mise bootstrap --only compose"
+    bootstrap_flags+=(--skip compose)
+  fi
+
+  echo ""
+  echo "${PACKAGE_EMOJI} Running mise bootstrap (formulae, casks, dotfiles, macOS defaults, ...)..."
+  # From $HOME so only the global config is read, not whatever project config
+  # the caller's directory happens to carry. Not run under sudo: mise elevates
+  # only where needed (/etc/pam.d, /etc/shells, chsh, the pmset/nvram task),
+  # and running the whole thing as root would write every `defaults` key into
+  # root's preference domain instead of yours.
+  cd "${HOME}"
+  mise bootstrap "${bootstrap_flags[@]}"
+
+  echo ""
+  echo "${SUCCESS_EMOJI} Setup complete!"
+  echo "   Next: open a new terminal (fish is the login shell now), then:"
+  echo "   - tailscale up            # this node is new to the tailnet"
+  echo "   - pitchfork boot enable   # start mempalace at login (docs/mempalace.md)"
+  echo "   - launch OrbStack once, then: mise bootstrap --only compose"
+}
+
+main "$@"

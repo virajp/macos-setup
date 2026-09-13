@@ -20,8 +20,24 @@ macOS defaults, fish as login shell, Touch ID for sudo, and the pmset/nvram
 power profile (this last part prompts for `sudo`).
 
 ```shell
-/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup)"
+curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup | sh
 ```
+
+The script hands stdin back to the terminal before it starts, so the prompts
+(Homebrew's "Press RETURN", `sudo`, the App Store sign-in check) work while
+piped. `GITHUB_USER=<you> curl … | sh` clones a fork instead.
+
+Afterwards, in a new terminal (fish is the login shell now):
+
+```shell
+tailscale up            # this node is new to the tailnet
+pitchfork boot enable   # start mempalace at login, see mempalace.md
+# launch OrbStack once, then bring up qdrant:
+mise bootstrap --only compose
+```
+
+The compose phase is skipped on the first run when Docker is not reachable —
+OrbStack has just been installed and never launched.
 
 ## Reference
 

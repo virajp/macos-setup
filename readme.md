@@ -23,8 +23,8 @@ mise bootstrap status     # what differs
 ```
 
 > On a truly fresh machine, run the one-liner in
-> [docs/setup.md](./docs/setup.md) — it installs Homebrew and clones this repo
-> before running `./setup`.
+> [docs/setup.md](./docs/setup.md) (`curl … | sh`) — it installs Homebrew and
+> clones this repo before doing the same.
 
 ## Manual steps
 
