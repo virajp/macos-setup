@@ -148,17 +148,19 @@ referenced via `ssh/allowed_signers`.
 - `[bootstrap.packages]` — Homebrew formulae (`brew:`) and Mac App Store apps
   (`mas:<adam id>`). mise pours the same bottles brew would into the shared
   `/opt/homebrew` Cellar without calling `brew`; `brew list`/`upgrade` still see
-  them. Third-party tap formulae work only when the tap publishes
-  `api/formula/<name>.json` (`virajp/tap` does). The `post-packages` hook then
-  runs `brew:casks`, which applies `homebrew/brewfile` — casks and VS Code
-  extensions, which stay on Homebrew because mise's cask support is
-  intentionally narrow (no `postflight`, no per-cask `appdir`). Ownership rule:
-  casks → Homebrew, formulae/mas → mise, versioned dev tools → `[tools]`. One
-  formula needs more: `tailscaled` must run as root (utun) and mise has no
-  privileged services on macOS, so the `tailscale:daemon` hook task starts it
-  with `sudo brew services`, and `upgrade:tailscale` hands the root-owned keg
-  back before `packages upgrade` can replace it. (The App Store build is
-  sandboxed and cannot run the Tailscale SSH server.)
+  them. The `pre-packages` hook (`macos:appstore`) checks that an Apple Account
+  is signed in, since `mas install` fails otherwise and would abort the run (mas
+  7 has no sign-in query, so this is a heuristic). Third-party tap formulae work
+  only when the tap publishes `api/formula/<name>.json` (`virajp/tap` does). The
+  `post-packages` hook then runs `brew:casks`, which applies `homebrew/brewfile`
+  — casks and VS Code extensions, which stay on Homebrew because mise's cask
+  support is intentionally narrow (no `postflight`, no per-cask `appdir`).
+  Ownership rule: casks → Homebrew, formulae/mas → mise, versioned dev tools →
+  `[tools]`. One formula needs more: `tailscaled` must run as root (utun) and
+  mise has no privileged services on macOS, so the `tailscale:daemon` hook task
+  starts it with `sudo brew services`, and `upgrade:tailscale` hands the
+  root-owned keg back before `packages upgrade` can replace it. (The App Store
+  build is sandboxed and cannot run the Tailscale SSH server.)
 - `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
 - `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
   `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,
