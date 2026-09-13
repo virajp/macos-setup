@@ -2,8 +2,8 @@
 
 This document explains the less-obvious settings and customizations in the
 dotfiles configuration. Each top-level directory under `dotfiles/` groups one
-app's config; the `[dotfiles]` map in `mise/conf.d/dotfiles.toml` symlinks them
-into `$HOME` (see [`readme.md`](./readme.md)).
+app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
+(see [`readme.md`](./readme.md)).
 
 ## Directory Structure
 
@@ -145,7 +145,13 @@ referenced via `ssh/allowed_signers`.
 `dotfiles/mise/` is the global mise config (linked to `~/.config/mise`).
 `config.toml` holds settings, tools, env and aliases; `conf.d/*.toml` holds what
 `mise bootstrap` applies — from any directory, since it is global — in
-[mise's phase order](https://mise.jdx.dev/bootstrap.html):
+[mise's phase order](https://mise.jdx.dev/bootstrap.html). The `[dotfiles]` link
+map is the deliberate exception: it lives in `dotfiles/mise.toml`, a project
+config, because it changes with the repo rather than the machine — and because a
+source path relative to a file read through the `~/.config/mise` symlink is
+normalised lexically by mise for `symlink-each` entries (`../../ssh` →
+`~/.config/ssh`), which once removed the `~/.ssh` and `~/.config/gh` links.
+Apply it with `mise run dotfiles:install`.
 
 - `[bootstrap.packages]` (`packages.toml`) — Homebrew formulae (`brew:`) and Mac
   App Store apps (`mas:<adam id>`). mise pours the same bottles brew would into
@@ -169,8 +175,8 @@ referenced via `ssh/allowed_signers`.
 - `[bootstrap.compose]` (`system.toml`) — the qdrant container from `mempalace/`
   (project `mempalace`), after OrbStack. `project_dir` has to be a literal
   absolute path, so this is the one place the username appears in the repo.
-- `[dotfiles]` (`dotfiles.toml`) — the link map (below), plus `line` entries
-  adding Homebrew's bash and zsh to `/etc/shells`.
+- `[dotfiles]` `line` entries (`system.toml`) — Homebrew's bash and zsh in
+  `/etc/shells`.
 - `[bootstrap.macos.defaults]` (`macos.toml`) — every `defaults write` the old
   `utils/macos-setup` script ran, one table per domain. mise never restarts
   apps, so the `post-defaults` hook does the `killall`s (and
@@ -193,9 +199,8 @@ and pitchfork keeps its own LaunchAgent.
 
 ### Link map
 
-Only paths listed in `[dotfiles]` (`mise/conf.d/dotfiles.toml`) are symlinked,
-so repo metadata is never linked by accident. Sources are relative to that
-directory, hence the `../../<pkg>/...` prefix. `mode = "symlink"` links the
-source itself; `mode = "symlink-each"` links each entry inside the source
-directory individually (used for `~/.ssh` and `~/.config/gh`, where other tools
-write sibling files).
+Only paths listed in `[dotfiles]` (`dotfiles/mise.toml`) are symlinked, so repo
+metadata is never linked by accident. Sources are relative to `dotfiles/`.
+`mode = "symlink"` links the source itself; `mode = "symlink-each"` links each
+entry inside the source directory individually (used for `~/.ssh` and
+`~/.config/gh`, where other tools write sibling files).

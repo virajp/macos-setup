@@ -11,15 +11,16 @@ runner for the rest.
 The [`./setup`](./setup) script is the main entrypoint. It installs Homebrew and
 `mise` if missing, links `~/.config/mise`, then runs `mise bootstrap` — Homebrew
 formulae and App Store apps (`[bootstrap.packages]`), casks and VS Code
-extensions via the Brewfile (`brew:casks`), dotfile symlinks (`[dotfiles]`),
-macOS `defaults` (`[bootstrap.macos.defaults]`), the fish login shell, Touch ID
-for sudo, and the pmset/nvram power profile (`macos:power` task):
+extensions via the Brewfile (`brew:casks`), macOS `defaults`
+(`[bootstrap.macos.defaults]`), the fish login shell, Touch ID for sudo, and the
+pmset/nvram power profile (`macos:power` task):
 
 ```shell
 ./setup
 # or, once set up, converge directly:
 mise bootstrap            # from any directory; --dry-run to preview
 mise bootstrap status     # what differs
+mise run dotfiles:install # (re)link the dotfiles — a repo task, not part of bootstrap
 ```
 
 > On a truly fresh machine, run the one-liner in
@@ -42,8 +43,8 @@ Tasks are run with `mise` (list them with `mise tasks`):
 ```shell
 mise bootstrap packages status  # system vs [bootstrap.packages]
 mise bootstrap packages apply   # install what is missing
-mise bootstrap dotfiles apply   # (re)symlink dotfiles
-mise bootstrap dotfiles status  # show which dotfile symlinks are missing
+mise run dotfiles:install       # (re)symlink dotfiles
+mise run dotfiles:status        # show which dotfile symlinks are missing
 mise run code:format     # format files (dprint/taplo)
 mise run code:lint       # lint files
 mise run system:symlinks # find broken symlinks in $HOME (--deep, --delete)

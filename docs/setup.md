@@ -15,9 +15,10 @@ The repo is public, so the [`setup`](../setup) script can be run directly from
 GitHub. It installs Homebrew (which pulls in the Xcode Command Line Tools) and
 `mise`, clones this repo to `~/Projects/github.com/virajp/macos-setup` if it
 isn't already present, links `~/.config/mise` to `dotfiles/mise` so the global
-config exists, then runs `mise bootstrap --yes`: packages, dotfile symlinks,
-macOS defaults, fish as login shell, Touch ID for sudo, and the pmset/nvram
-power profile (this last part prompts for `sudo`).
+config exists, runs `mise bootstrap --yes` — packages, macOS defaults, fish as
+login shell, Touch ID for sudo, and the pmset/nvram power profile (this last
+part prompts for `sudo`) — and finally `mise run dotfiles:install` to link the
+dotfiles.
 
 ```shell
 curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup | sh

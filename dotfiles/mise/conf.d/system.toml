@@ -10,7 +10,7 @@ mode    = "0444"
 owner   = "root"
 
 # fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
-# zsh are added to /etc/shells by the line entries at the end of [dotfiles].
+# zsh are added to /etc/shells by the line entries below.
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
 
@@ -23,3 +23,8 @@ login_shell = "/opt/homebrew/bin/fish"
 files        = [ "docker-compose.yaml" ]
 project_dir  = "/Users/virajpatel/Projects/github.com/virajp/macos-setup/dotfiles/mempalace"
 project_name = "mempalace"
+
+[dotfiles]
+# Homebrew shells in /etc/shells (fish is handled by [bootstrap.user])
+"/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }
+"/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }

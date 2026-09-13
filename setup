@@ -26,6 +26,7 @@
 # - Install `mise`
 # - Link ~/.config/mise to dotfiles/mise so the global config exists
 # - Run `mise bootstrap` (skipping the compose phase until Docker is up)
+# - Link the dotfiles (`mise run dotfiles:install`)
 #
 # Notes:
 #   Written as a function that is called (and exited) on the last line, so the
@@ -126,7 +127,7 @@ main() {
   fi
 
   echo ""
-  echo "${PACKAGE_EMOJI} Running mise bootstrap (formulae, casks, dotfiles, macOS defaults, ...)..."
+  echo "${PACKAGE_EMOJI} Running mise bootstrap (formulae, casks, macOS defaults, ...)..."
   # From $HOME so only the global config is read, not whatever project config
   # the caller's directory happens to carry. Not run under sudo: mise elevates
   # only where needed (/etc/pam.d, /etc/shells, chsh, the pmset/nvram task),
@@ -134,6 +135,13 @@ main() {
   # root's preference domain instead of yours.
   cd "${HOME}"
   mise bootstrap "${bootstrap_flags[@]}"
+
+  # The dotfiles link map is a project config in dotfiles/ (it changes with the
+  # repo, not with the machine), so it is applied from there, not by the global
+  # bootstrap above.
+  echo ""
+  echo "${SETTING_EMOJI} Linking dotfiles..."
+  mise --cd "${REPO_DIR}" run dotfiles:install
 
   echo ""
   echo "${SUCCESS_EMOJI} Setup complete!"
