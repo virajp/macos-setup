@@ -140,8 +140,15 @@ main() {
   echo "   - tailscale up            # this node is new to the tailnet"
   echo "   - pitchfork boot enable   # start mempalace at login (docs/mempalace.md)"
   echo "   - launch OrbStack once, then: mise bootstrap --only compose"
+  echo ""
+  echo "${SETTING_EMOJI} This shell still has the old login shell and PATH, so it is parked here."
+  echo "   Close this window and open a new terminal."
+  # Deliberately never returns: the parent shell of a `curl | sh` run has none
+  # of the new environment, and anything typed into it would only misbehave.
+  while :; do sleep 3600; done
 }
 
-# `exit` on the same line: once main has moved stdin to the terminal, a piped
-# bash would otherwise read its next script line from the terminal and hang.
+# `exit` on the same line: main parks on success, but if it fails, a piped bash
+# would otherwise read its next script line from the terminal — executing
+# whatever is typed, with no prompt.
 main "$@"; exit "$?"
