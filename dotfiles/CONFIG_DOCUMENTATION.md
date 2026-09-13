@@ -123,6 +123,17 @@ Claude Code runs in the `auto` permission mode (`permissions.defaultMode` in
 set. Secrets reach the shell through fnox, so a session that could run anything
 unprompted would have them too.
 
+The `cc*` aliases all run one global task, `func:claude`
+(`mise/tasks/func/claude`): `cc` with the default model, `ccf`/`cco`/`ccs`/`cch`
+pinned to Fable, Opus, Sonnet and Haiku. It starts
+`claude --remote-control
+--effort high` with the session named after the current
+folder, or `<folder>-<name>` when a bare first argument is given — `cc review`
+in `macos-setup/` is the session `macos-setup-review`. Only `--model` is parsed
+by the task (it is the flag the aliases put before the name); every other
+argument passes through to `claude`, so `cc review --continue` and
+`cc --continue` both work, and a later `--effort` overrides the default.
+
 ## mempalace (MCP memory server)
 
 `dotfiles/mempalace/` holds the `docker compose` stack for the mempalace MCP
