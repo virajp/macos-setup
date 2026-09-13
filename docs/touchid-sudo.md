@@ -1,8 +1,8 @@
 # Setup TouchID for sudo
 
-> NOTE: This is automated — `mise bootstrap` declares the file in
-> `[bootstrap.files."/etc/pam.d/sudo_local"]` (`dotfiles/mise.toml`) and writes
-> it (with `sudo`) when it differs; a no-op afterwards.
+> NOTE: This is automated — `mise bootstrap` (and `updateall`) declares the file
+> in `[bootstrap.files."/etc/pam.d/sudo_local"]` (`dotfiles/mise.toml`) and
+> writes it (with `sudo`) when it differs; a no-op afterwards.
 
 Touch ID for `sudo` is configured in `/etc/pam.d/sudo_local`, not
 `/etc/pam.d/sudo`. macOS overwrites `/etc/pam.d/sudo` on every system update;

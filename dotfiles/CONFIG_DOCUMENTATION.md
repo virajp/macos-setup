@@ -174,9 +174,9 @@ referenced via `ssh/allowed_signers`.
 - `[tasks.bootstrap]` — runs `macos:power` (`.config/mise/tasks/macos/power`):
   `pmset`/`nvram`, which mise has no declaration for; prompts for `sudo`.
 
-`updateall` re-runs the defaults and power parts
-(`bootstrap --only defaults,task`) because macOS updates reset them, and
-`upgrade:brew` runs `packages apply` + `packages upgrade`.
+`updateall` re-runs the Touch ID file, defaults and power parts
+(`bootstrap --only files,defaults,task`) because macOS updates can reset them,
+and `upgrade:brew` runs `packages prune` + `apply` + `upgrade` and `brew:casks`.
 
 Not migrated on purpose: `mise activate` stays in `51-mise.fish`/`.zshrc`
 (`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split),

@@ -83,11 +83,13 @@ mise run mempalace:restart
 # Last on purpose: this prompts for sudo (pmset/nvram) and restarts Finder,
 # Dock and ControlCenter, so everything above it is already done by then.
 # macOS updates reset these settings, so re-applying them here is the fix.
+# `files` re-checks /etc/pam.d/sudo_local (Touch ID for sudo); it only writes,
+# and only then prompts, when the file differs.
 readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
 
 print_header "Applying macOS system settings ..."
 if [[ -d "${SETUP_REPO}/dotfiles" ]]; then
-  mise --cd "${SETUP_REPO}/dotfiles" bootstrap --only defaults,task --yes
+  mise --cd "${SETUP_REPO}/dotfiles" bootstrap --only files,defaults,task --yes
 else
   print_error "Not found: ${SETUP_REPO}"
   echo "Skipping macOS system settings."
