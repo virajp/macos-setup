@@ -49,6 +49,7 @@ main() {
   local INSTALL_EMOJI="🚀"
   local PACKAGE_EMOJI="📦"
   local CHECK_EMOJI="🩺"
+  local WARNING_EMOJI="⚠️"
 
   local GITHUB_USER="${GITHUB_USER:-virajp}"
   local REPO_URL="https://github.com/${GITHUB_USER}/macos-setup.git"
@@ -141,7 +142,8 @@ main() {
   echo "   - pitchfork boot enable   # start mempalace at login (docs/mempalace.md)"
   echo "   - launch OrbStack once, then: mise bootstrap --only compose"
   echo ""
-  echo "${SETTING_EMOJI} This shell still has the old login shell and PATH, so it is parked here."
+  echo "${WARNING_EMOJI} WARNING: do not use this terminal any further."
+  echo "   It still has the old login shell and PATH, so it is parked here."
   echo "   Close this window and open a new terminal."
   # Deliberately never returns: the parent shell of a `curl | sh` run has none
   # of the new environment, and anything typed into it would only misbehave.
