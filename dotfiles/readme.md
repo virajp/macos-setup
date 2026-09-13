@@ -5,23 +5,29 @@ liking.
 
 ## Installation
 
-I use [mise](https://mise.jdx.dev/) to manage my dotfiles. `mise.toml` in this
-directory holds the `[dotfiles]` link map — which source file lands at which
-`$HOME` path, and in which mode (`symlink`, `symlink-each`, `line`) — next to
-the rest of the machine declaration (`[bootstrap.*]`, see
-[CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
+I use [mise](https://mise.jdx.dev/) to manage my dotfiles.
+`mise/conf.d/dotfiles.toml` holds the `[dotfiles]` link map — which source file
+lands at which `$HOME` path, and in which mode (`symlink`, `symlink-each`,
+`line`). It is part of the global mise config (`mise/` is linked to
+`~/.config/mise`), so these work from any directory:
 
 ```shell
-mise run dotfiles:install   # create the symlinks
-mise run dotfiles:status    # show which symlinks are missing
-mise run dotfiles:delete    # remove the symlinks
+mise bootstrap dotfiles apply     # create the symlinks
+mise bootstrap dotfiles status    # show which symlinks are missing
+mise bootstrap dotfiles unapply   # remove the symlinks
 ```
+
+The rest of the machine declaration (`[bootstrap.*]`) lives in the sibling
+`mise/conf.d/*.toml` files, see
+[CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md).
 
 ## Adding a dotfile
 
-Add the file under `dotfiles/<pkg>/`, add its entry to `mise.toml`, then run
-`mise run dotfiles:install`.
+Add the file under `dotfiles/<pkg>/`, add its entry to
+`mise/conf.d/dotfiles.toml` (source paths are relative to that directory, so
+`../../<pkg>/<file>`), then run `mise bootstrap dotfiles apply`.
 
 ## Reference
 
-- [mise bootstrap dotfiles](https://mise.jdx.dev/cli/bootstrap/dotfiles.html)
+- [mise dotfiles](https://mise.jdx.dev/dotfiles.html)
+- [mise bootstrap](https://mise.jdx.dev/bootstrap.html)

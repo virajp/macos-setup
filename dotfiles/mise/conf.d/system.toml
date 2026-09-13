@@ -1,0 +1,25 @@
+# Global mise config, loaded from ~/.config/mise/conf.d/. Machine state applied
+# by `mise bootstrap` (from any directory); settings/tools/env stay in
+# ../config.toml.
+# Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
+# sudo_local is the drop-in it includes and survives them.
+[bootstrap.files."/etc/pam.d/sudo_local"]
+content = "auth       sufficient     pam_tid.so\n"
+group   = "wheel"
+mode    = "0444"
+owner   = "root"
+
+# fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
+# zsh are added to /etc/shells by the line entries at the end of [dotfiles].
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"
+
+# qdrant vector store behind mempalace (needs OrbStack running). Pitchfork
+# (dotfiles/pitchfork) still supervises mempalace-mcp itself; it only waits for
+# this container's port. project_dir must be a literal absolute path (mise
+# expands neither ~ nor $HOME nor templates here), hence the username. No
+# depends_on: orbstack is a cask, installed by brew:casks, not a declared package.
+[bootstrap.compose.mempalace]
+files        = [ "docker-compose.yaml" ]
+project_dir  = "/Users/virajpatel/Projects/github.com/virajp/macos-setup/dotfiles/mempalace"
+project_name = "mempalace"

@@ -1,0 +1,127 @@
+# Global mise config, loaded from ~/.config/mise/conf.d/. Machine state applied
+# by `mise bootstrap` (from any directory); settings/tools/env stay in
+# ../config.toml.
+# macOS settings, applied with `mise bootstrap macos defaults apply`. References:
+#   - https://www.defaults-write.com/
+#   - https://mac.install.guide/mac-setup/finder/
+# `defaults read <domain> [<key>]` shows the live value. pmset/nvram live in the
+# macos:power task (run as the `bootstrap` task below) — mise only does
+# `defaults`, and it never restarts apps itself, hence the post-defaults hook.
+
+# General & Appearance
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleInterfaceStyle              = "Dark" # system-wide Dark appearance
+AppleMiniaturizeOnDoubleClick    = false  # no minimize on title-bar double-click
+AppleShowAllExtensions           = true   # show all file extensions
+NSAutomaticCapitalizationEnabled = false  # disable automatic capitalization
+NSQuitAlwaysKeepsWindows         = true   # reopen windows after quit/restart
+"com.apple.mouse.tapBehavior"    = 1      # tap-to-click
+"com.apple.trackpad.forceClick"  = false  # disable force click
+
+# Finder
+[bootstrap.macos.defaults."com.apple.finder"]
+AppleShowAllFiles               = false  # toggle with Cmd+Shift+.
+CreateDesktop                   = false  # hide desktop icons (pre-Sonoma key)
+FK_AppCentricShowSidebar        = true   # show sidebar in app-centric view
+FXArrangeGroupViewBy            = "Name" # arrange groups by name
+FXDefaultSearchScope            = "SCcf" # search the current folder
+FXEnableExtensionChangeWarning  = false  # disable the warning when changing file extensions
+FXICloudDriveDesktop            = true   # enable iCloud Drive for Desktop
+FXICloudDriveDocuments          = true   # enable iCloud Drive for Documents
+FXICloudDriveEnabled            = true   # enable iCloud Drive overall
+FXPreferredGroupBy              = "Kind" # group files by kind in Finder
+FXPreferredSearchViewStyle      = "Nlsv" # use list view for search results
+FXPreferredViewStyle            = "Nlsv" # list view for Finder windows
+FXRemoveOldTrashItems           = true   # purge trash after 30 days
+FinderSpawnTab                  = false  # folders open in windows, not tabs
+NewWindowTarget                 = "PfHm" # new windows open at $HOME (path set in post-defaults hook)
+QuitMenuItem                    = false  # don't show the Quit option in Finder's menu
+ShowExternalHardDrivesOnDesktop = false  # don't show external drives on the desktop
+ShowHardDrivesOnDesktop         = false  # don't show internal drives on the desktop
+ShowMountedServersOnDesktop     = false  # don't show mounted servers on the desktop
+ShowPathbar                     = true   # show the path bar in Finder windows
+ShowRecentTags                  = false  # don't show recent tags in Finder's sidebar
+ShowRemovableMediaOnDesktop     = false  # don't show removable media on the desktop
+ShowSidebar                     = true   # show the sidebar in Finder windows
+ShowStatusBar                   = true   # show the status bar in Finder windows
+ShowTabView                     = true   # show the tab view in Finder windows
+WarnOnEmptyTrash                = false  # don't warn before emptying the trash
+_FXSortFoldersFirst             = true   # sort folders first in Finder windows
+_FXSortFoldersFirstOnDesktop    = true   # sort folders first on the desktop
+
+# No .DS_Store on network and USB volumes
+[bootstrap.macos.defaults."com.apple.desktopservices"]
+DSDontWriteNetworkStores = true # don't create .DS_Store files on network volumes
+DSDontWriteUSBStores     = true # don't create .DS_Store files on USB volumes
+
+# Dock & Mission Control
+[bootstrap.macos.defaults."com.apple.dock"]
+autohide                = true     # automatically hide and show the Dock
+expose-group-apps       = true     # group windows by app in Mission Control
+largesize               = 71       # size of the large Dock items
+magnification           = true     # enable Dock magnification
+minimize-to-application = true     # minimize windows into their application's Dock icon
+mru-spaces              = false    # don't rearrange Spaces by recent use
+orientation             = "right"  # position of the Dock on the screen
+show-process-indicators = true     # show indicators for running applications in the Dock
+show-recents            = false    # don't show recent applications in the Dock
+tilesize                = 38       # size of the Dock tiles
+windowtabbing           = "always" # always show window tabs in the Dock
+
+# Hot corners: all four disabled (0 = no-op)
+wvous-bl-corner   = 0
+wvous-bl-modifier = 0
+wvous-br-corner   = 0
+wvous-br-modifier = 0
+wvous-tl-corner   = 0
+wvous-tl-modifier = 0
+wvous-tr-corner   = 0
+wvous-tr-modifier = 0
+
+# Window management
+[bootstrap.macos.defaults."com.apple.WindowManager"]
+AppWindowGroupingBehavior      = true  # show all of an app's windows on switch
+ClickedWallpaperRevealsDesktop = 2     # only with Stage Manager
+EnableTiledWindowMargins       = false # disable tiled window margins
+EnableTilingByEdgeDrag         = false # disable tiling by edge drag
+EnableTopTilingByEdgeDrag      = false # disable top tiling by edge drag
+HideDesktop                    = true  # Sonoma+ equivalent of CreateDesktop=false
+
+# Menu bar clock: day of week and AM/PM, no date
+[bootstrap.macos.defaults."com.apple.menuextra.clock"]
+ShowAMPM      = true # show AM/PM in the menu bar clock
+ShowDate      = 0    # don't show the date in the menu bar clock
+ShowDayOfWeek = true # show the day of the week in the menu bar clock
+
+# Trackpad: tap-to-click on, three-finger tap lookup off (internal + Bluetooth)
+[bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
+Clicking                      = true # enable tap-to-click
+TrackpadThreeFingerTapGesture = 0    # disable three-finger tap lookup
+
+[bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
+Clicking                      = true # enable tap-to-click
+TrackpadThreeFingerTapGesture = 0    # disable three-finger tap lookup
+
+# Clamp streaming quality on battery
+[bootstrap.macos.defaults."com.apple.appleinterface"]
+videoStreamingOptimizeOnBattery = true # clamp streaming quality on battery
+
+[bootstrap.hooks]
+post-defaults = [
+# defaults values are not templated, and $HOME must not be hardcoded
+'defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"',
+"chflags nohidden ~/Library",
+"killall cfprefsd || true",
+"killall Finder || true",
+"killall Dock || true",
+"killall SystemUIServer || true",
+"killall ControlCenter || true",
+]
+post-packages = [ "mise run brew:casks", "mise run tailscale:daemon" ]
+pre-packages = "mise run macos:appstore"
+
+# Runs last in `mise bootstrap`: prompts for sudo (pmset/nvram)
+[tasks.bootstrap]
+description = "Apply the pmset/nvram power profile"
+hide        = true
+run         = "mise run macos:power"

@@ -1,5 +1,5 @@
 # Casks and VS Code extensions only. Formulae and Mac App Store apps are
-# declared in dotfiles/mise.toml ([bootstrap.packages]) and installed by mise;
+# declared in mise/conf.d/packages.toml ([bootstrap.packages]) and installed by mise;
 # casks stay on Homebrew because mise's cask support is intentionally narrow.
 # Applied by the brew:casks task (post-packages hook) via `brew bundle`.
 # 1Password must live in /Applications; everything else goes to ~/Applications

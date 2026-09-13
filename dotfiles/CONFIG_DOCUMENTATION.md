@@ -2,8 +2,8 @@
 
 This document explains the less-obvious settings and customizations in the
 dotfiles configuration. Each top-level directory under `dotfiles/` groups one
-app's config; `mise.toml`'s `[dotfiles]` map symlinks them into `$HOME` (see
-[`readme.md`](./readme.md)).
+app's config; the `[dotfiles]` map in `mise/conf.d/dotfiles.toml` symlinks them
+into `$HOME` (see [`readme.md`](./readme.md)).
 
 ## Directory Structure
 
@@ -140,18 +140,21 @@ one-time setup.
 (`git/root/gitignore_global`). Commit signing keys live in `ssh/` and are
 referenced via `ssh/allowed_signers`.
 
-## Machine declaration (`mise.toml`)
+## Machine declaration (`mise/conf.d/`)
 
-`dotfiles/mise.toml` is what `mise --cd dotfiles bootstrap` applies, in
+`dotfiles/mise/` is the global mise config (linked to `~/.config/mise`).
+`config.toml` holds settings, tools, env and aliases; `conf.d/*.toml` holds what
+`mise bootstrap` applies — from any directory, since it is global — in
 [mise's phase order](https://mise.jdx.dev/bootstrap.html):
 
-- `[bootstrap.packages]` — Homebrew formulae (`brew:`) and Mac App Store apps
-  (`mas:<adam id>`). mise pours the same bottles brew would into the shared
-  `/opt/homebrew` Cellar without calling `brew`; `brew list`/`upgrade` still see
-  them. The `pre-packages` hook (`macos:appstore`) checks that an Apple Account
-  is signed in, since `mas install` fails otherwise and would abort the run (mas
-  7 has no sign-in query, so this is a heuristic). Third-party tap formulae work
-  only when the tap publishes `api/formula/<name>.json` (`virajp/tap` does). The
+- `[bootstrap.packages]` (`packages.toml`) — Homebrew formulae (`brew:`) and Mac
+  App Store apps (`mas:<adam id>`). mise pours the same bottles brew would into
+  the shared `/opt/homebrew` Cellar without calling `brew`;
+  `brew list`/`upgrade` still see them. The `pre-packages` hook
+  (`macos:appstore`) checks that an Apple Account is signed in, since
+  `mas install` fails otherwise and would abort the run (mas 7 has no sign-in
+  query, so this is a heuristic). Third-party tap formulae work only when the
+  tap publishes `api/formula/<name>.json` (`virajp/tap` does). The
   `post-packages` hook then runs `brew:casks`, which applies `homebrew/brewfile`
   — casks and VS Code extensions, which stay on Homebrew because mise's cask
   support is intentionally narrow (no `postflight`, no per-cask `appdir`).
@@ -161,20 +164,22 @@ referenced via `ssh/allowed_signers`.
   starts it with `sudo brew services`, and `upgrade:tailscale` hands the
   root-owned keg back before `packages upgrade` can replace it. (The App Store
   build is sandboxed and cannot run the Tailscale SSH server.)
-- `[bootstrap.files]` — `/etc/pam.d/sudo_local` (Touch ID for sudo).
-- `[bootstrap.compose]` — the qdrant container from `mempalace/` (project
-  `mempalace`), after OrbStack. `project_dir` has to be a literal absolute path,
-  so this is the one place the username appears in the repo.
-- `[dotfiles]` — the link map (below), plus `line` entries adding Homebrew's
-  bash and zsh to `/etc/shells`.
-- `[bootstrap.macos.defaults]` — every `defaults write` the old
+- `[bootstrap.files]` (`system.toml`) — `/etc/pam.d/sudo_local` (Touch ID for
+  sudo).
+- `[bootstrap.compose]` (`system.toml`) — the qdrant container from `mempalace/`
+  (project `mempalace`), after OrbStack. `project_dir` has to be a literal
+  absolute path, so this is the one place the username appears in the repo.
+- `[dotfiles]` (`dotfiles.toml`) — the link map (below), plus `line` entries
+  adding Homebrew's bash and zsh to `/etc/shells`.
+- `[bootstrap.macos.defaults]` (`macos.toml`) — every `defaults write` the old
   `utils/macos-setup` script ran, one table per domain. mise never restarts
   apps, so the `post-defaults` hook does the `killall`s (and
   `chflags nohidden ~/Library`, and the one `$HOME`-dependent Finder key, since
   defaults values are not templated).
-- `[bootstrap.user]` — fish as login shell.
-- `[tasks.bootstrap]` — runs `macos:power` (`.config/mise/tasks/macos/power`):
-  `pmset`/`nvram`, which mise has no declaration for; prompts for `sudo`.
+- `[bootstrap.user]` (`system.toml`) — fish as login shell.
+- `[tasks.bootstrap]` (`macos.toml`) — runs `macos:power`
+  (`mise/tasks/macos/power`): `pmset`/`nvram`, which mise has no declaration
+  for; prompts for `sudo`.
 
 `updateall` re-runs the Touch ID file, defaults and power parts
 (`bootstrap --only files,defaults,task`) because macOS updates can reset them,
@@ -186,8 +191,9 @@ and pitchfork keeps its own LaunchAgent.
 
 ### Link map
 
-Only paths listed in `[dotfiles]` are symlinked, so repo metadata is never
-linked by accident. `mode = "symlink"` links the source itself;
-`mode = "symlink-each"` links each entry inside the source directory
-individually (used for `~/.ssh` and `~/.config/gh`, where other tools write
-sibling files).
+Only paths listed in `[dotfiles]` (`mise/conf.d/dotfiles.toml`) are symlinked,
+so repo metadata is never linked by accident. Sources are relative to that
+directory, hence the `../../<pkg>/...` prefix. `mode = "symlink"` links the
+source itself; `mode = "symlink-each"` links each entry inside the source
+directory individually (used for `~/.ssh` and `~/.config/gh`, where other tools
+write sibling files).

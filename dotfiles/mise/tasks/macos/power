@@ -2,13 +2,13 @@
 #MISE description="Apply the pmset/nvram power profile (prompts for sudo)"
 #MISE hide=true
 
-# Everything `defaults`-based lives in [bootstrap.macos.defaults] in
-# dotfiles/mise.toml; mise bootstrap has no pmset/nvram support, so this task
+# Everything `defaults`-based lives in [bootstrap.macos.defaults]
+# (conf.d/macos.toml); mise bootstrap has no pmset/nvram support, so this task
 # carries those and runs as the `bootstrap` task at the end of `mise bootstrap`.
 # macOS updates reset these settings, so `updateall` re-applies them too.
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Baking custom Hardware Power Management profiles..."
 

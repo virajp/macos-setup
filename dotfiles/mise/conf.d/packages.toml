@@ -1,0 +1,88 @@
+# Global mise config, loaded from ~/.config/mise/conf.d/. Machine state applied
+# by `mise bootstrap` (from any directory); settings/tools/env stay in
+# ../config.toml.
+# Homebrew formulae and Mac App Store apps, installed and managed by mise (it
+# pours the same bottles brew would, into the same /opt/homebrew Cellar, without
+# calling `brew`). Casks are Homebrew's job: mise's cask support is intentionally
+# narrow, so they live in homebrew/brewfile and the brew:casks task applies it
+# from the post-packages hook. Everything that is a versioned dev tool is a mise
+# [tools] entry in mise/config.toml instead, never a formula.
+[bootstrap.brew]
+adopt = true
+
+# Third-party taps need published API metadata (api/formula/<name>.json in the
+# tap repo); mise's Ruby shim cannot evaluate most raw formula/cask definitions.
+[bootstrap.brew.taps]
+"virajp/tap" = "https://github.com/virajp/homebrew-tap.git"
+
+[bootstrap.packages]
+# Formulaes
+"brew:bash"                     = "latest" # Latest version of bash
+"brew:bat"                      = "latest" # Alternative to cat
+"brew:btop"                     = "latest" # Resource monitor for the terminal
+"brew:ca-certificates"          = "latest" # Common CA certificates
+"brew:coreutils"                = "latest" # GNU core utilities
+"brew:curl"                     = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"            = "latest" # Enhances git diff output
+"brew:doggo"                    = "latest" # DNS lookup utility
+"brew:eza"                      = "latest" # Modern replacement for 'ls'
+"brew:fish"                     = "latest" # Friendly interactive shell
+"brew:fnox"                     = "latest" # Version manager for multiple programming languages
+"brew:fzf"                      = "latest" # Command-line fuzzy finder
+"brew:gh"                       = "latest" # GitHub CLI tool
+"brew:git"                      = "latest" # Distributed version control system
+"brew:git-tools"                = "latest" # Additional Git utilities
+"brew:glab"                     = "latest" # GitLab CLI tool
+"brew:gnupg"                    = "latest" # GNU Privacy Guard for encryption and signing
+"brew:gping"                    = "latest" # Ping with a graph
+"brew:httping"                  = "latest" # Ping a web server over HTTP
+"brew:imagemagick"              = "latest" # Image manipulation tool
+"brew:ipcalc"                   = "latest" # IP address calculator
+"brew:jq"                       = "latest" # Command-line JSON processor
+"brew:lazygit"                  = "latest" # Simple terminal UI for git
+"brew:lcov"                     = "latest" # Code coverage tool for C/C++
+"brew:mas"                      = "latest" # Mac App Store command-line interface
+"brew:mise"                     = "latest" # Polyglot tool/task/env manager (also manages this file)
+"brew:prettyping"               = "latest" # Enhanced ping with visual output
+"brew:pstree"                   = "latest" # Display process tree
+"brew:ripgrep"                  = "latest" # Fast search tool
+"brew:starship"                 = "latest" # Cross-shell prompt
+"brew:tailscale"                = "latest" # tailscaled runs as a root brew service (tailscale:daemon hook)
+"brew:tree"                     = "latest" # Display directory tree
+"brew:virajp/tap/claude-status" = "latest" # Claude Code status line
+"brew:watch"                    = "latest" # Execute a command periodically and show output
+"brew:wget"                     = "latest" # Network downloader
+"brew:yq"                       = "latest" # YAML processor
+"brew:zinit"                    = "latest" # Zsh plugin manager
+"brew:zoxide"                   = "latest" # Fast directory jumper
+"brew:zsh"                      = "latest" # Z shell
+
+# Mac App Store (keyed by ADAM id)
+"mas:1120214373" = "latest" # Battery Health 2
+"mas:1290358394" = "latest" # Cardhop
+"mas:1450874784" = "latest" # Transporter
+"mas:1502111349" = "latest" # PDF Squeezer
+"mas:1569813296" = "latest" # 1Password for Safari
+"mas:302584613"  = "latest" # Kindle
+"mas:361285480"  = "latest" # Keynote
+"mas:361304891"  = "latest" # Numbers
+"mas:361309726"  = "latest" # Pages
+"mas:411643860"  = "latest" # DaisyDisk
+"mas:424389933"  = "latest" # Final Cut Pro
+"mas:425424353"  = "latest" # The Unarchiver
+"mas:441258766"  = "latest" # Magnet
+"mas:455970963"  = "latest" # Disk Doctor
+"mas:462054704"  = "latest" # Microsoft Word
+"mas:462058435"  = "latest" # Microsoft Excel
+"mas:462062816"  = "latest" # Microsoft PowerPoint
+"mas:497799835"  = "latest" # Xcode
+"mas:566631581"  = "latest" # PDF Protector
+"mas:640199958"  = "latest" # Developer
+"mas:686428787"  = "latest" # Duplicate Detective
+"mas:715464874"  = "latest" # Disk Map
+"mas:747648890"  = "latest" # Telegram
+"mas:899247664"  = "latest" # TestFlight
+# "mas:1616831348" = "latest" # Affinity Designer 2
+# "mas:1616822987" = "latest" # Affinity Photo 2
+# "mas:424390742"  = "latest" # Compressor
+# "mas:1494451650" = "latest" # VN

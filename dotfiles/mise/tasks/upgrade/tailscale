@@ -10,8 +10,6 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
-readonly SETUP_REPO="${HOME}/Projects/github.com/virajp/macos-setup"
-
 print_header "Tailscale ..."
 
 # Check if tailscale is installed before attempting to upgrade
@@ -39,7 +37,7 @@ print_subheader "Restoring ownership of ${keg} ..."
 sudo chown -R "${USER}:staff" "${keg}"
 
 print_subheader "Upgrading Tailscale ..."
-mise --cd "${SETUP_REPO}/dotfiles" bootstrap packages upgrade brew:tailscale --yes
+mise bootstrap packages upgrade brew:tailscale --yes
 
 print_subheader "Cleaning up old Tailscale versions ..."
 brew cleanup tailscale

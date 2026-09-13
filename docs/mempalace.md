@@ -6,7 +6,7 @@ via `dotfiles/pitchfork/`). After this, `updateall` keeps the images current
 weekly and pitchfork keeps the stack running across reboots.
 
 ```shell
-mise run dotfiles:install
+mise bootstrap dotfiles apply
 mise install
 pitchfork boot enable
 mise run mempalace:pull
