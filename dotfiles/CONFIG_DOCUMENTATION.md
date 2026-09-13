@@ -17,7 +17,7 @@ app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
 | `homebrew/`   | The `brewfile` — casks and VS Code extensions (formulae are mise's) |
 | `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab     |
 | `github/`     | GitHub CLI (`gh`) configuration (`hosts.yml` stays untracked)       |
-| `ssh/`        | SSH client config and commit-signing public keys                    |
+| `ssh/`        | SSH client config and commit-signing public keys (see below)        |
 | `fnox/`       | Secret management via the macOS Keychain (see below)                |
 | `mise/`       | Global `mise` tool versions, env, and task runner shortcuts         |
 | `pnpm/`       | Global pnpm settings (`config.yaml`); auth stays in `~/.npmrc`      |
@@ -115,6 +115,14 @@ standalone `uv` and `uvx`, and Homebrew's `bin` holds `jq` and `yq`. Keeping
 `PATH` in shell config, with `mise activate` running last, is what makes the
 mise-managed copies win.
 
+## AI tools
+
+Claude Code runs in the `auto` permission mode (`permissions.defaultMode` in
+`ai-tools/claude/settings.json`); the `cc*` aliases never pass
+`--dangerously-skip-permissions`, and `skipDangerousModePermissionPrompt` is not
+set. Secrets reach the shell through fnox, so a session that could run anything
+unprompted would have them too.
+
 ## mempalace (MCP memory server)
 
 `dotfiles/mempalace/` holds the `docker compose` stack for the mempalace MCP
@@ -138,6 +146,23 @@ one-time setup.
 (`git/git/gitconfig-github`, `gitconfig-gitlab`) and uses a global ignore file
 (`git/root/gitignore_global`). Commit signing keys live in `ssh/` and are
 referenced via `ssh/allowed_signers`.
+
+`push.default` is `current`, and the push aliases (`p` in gitconfig, `gp` in
+mise) push only the current branch — never `--all`. With public repos, a `--all`
+push would publish every local scratch branch, whatever it carries.
+
+## SSH & GitHub CLI
+
+`ssh/config` verifies host keys (`StrictHostKeyChecking accept-new`: first
+contact is recorded in `~/.ssh/known_hosts`, a changed key is refused). It
+includes `~/.ssh/config.local` for machine-local hosts — LAN boxes, per-host
+auth overrides — which is untracked on purpose, since this repo is public. A
+missing include is ignored by ssh.
+
+Only `github/config.yml` is linked into `~/.config/gh`. `hosts.yml` is machine
+state `gh auth login` writes, and while macOS `gh` keeps the token in the
+Keychain by default, `--insecure-storage` or a Keychain failure writes it into
+the file — so it is never tracked here.
 
 ## Machine declaration (`mise/conf.d/`)
 
@@ -201,5 +226,7 @@ and pitchfork keeps its own LaunchAgent.
 Only paths listed in `[dotfiles]` (`dotfiles/mise.toml`) are symlinked, so repo
 metadata is never linked by accident. Sources are relative to `dotfiles/`.
 `mode = "symlink"` links the source itself; `mode = "symlink-each"` links each
-entry inside the source directory individually (used for `~/.ssh` and
-`~/.config/gh`, where other tools write sibling files).
+entry inside the source directory individually (used for `~/.ssh`, where ssh and
+the 1Password agent write sibling files). `~/.config/gh` is deliberately not
+`symlink-each`: only `config.yml` is linked, so `gh`-written `hosts.yml` cannot
+land in the repo (see **SSH & GitHub CLI**).
