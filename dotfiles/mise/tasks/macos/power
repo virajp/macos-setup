@@ -50,4 +50,4 @@ sudo pmset -a tcpkeepalive 1
 print_subheader "Setting firmware AutoBoot arguments..."
 sudo nvram AutoBoot=%01
 
-print_green "Power profiles calibrated and locked in successfully!"
+print_success "Power profiles calibrated and locked in successfully!"

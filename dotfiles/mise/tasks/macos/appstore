@@ -16,7 +16,7 @@ if defaults read MobileMeAccounts Accounts 2> /dev/null | grep -q AccountID; the
   exit 0
 fi
 
-print_warn "No Apple Account is signed in on this Mac; App Store installs (mas) will fail."
+print_error "No Apple Account is signed in on this Mac; App Store installs (mas) will fail."
 open -a "App Store" || true
 if [[ -t 0 ]]; then
   print_wait "Sign in to the App Store, then press Enter to continue ... "
