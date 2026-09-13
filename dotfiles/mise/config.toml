@@ -66,12 +66,11 @@ updateall          = "mise run updateall"
 
 # AI Tools shortcuts
 aistats = "mise x -- pnpx codeburn"
-cc      = "ccn --continue"
-ccf     = "cc --model 'fable[1m]'"
-cch     = "cc --model 'haiku[1m]'"
-ccn     = 'claude --remote-control --name "$(basename "$PWD")" --effort "high"'
-cco     = "cc --model 'opus[1m]'"
-ccs     = "cc --model 'sonnet[1m]'"
+cc      = "mise run --silent func:claude"
+ccf     = "mise run --silent func:claude --model 'fable[1m]'"
+cch     = "mise run --silent func:claude --model 'haiku[1m]'"
+cco     = "mise run --silent func:claude --model 'opus[1m]'"
+ccs     = "mise run --silent func:claude --model 'sonnet[1m]'"
 
 # Development related shortcuts
 code = "mise run --silent func:code"
