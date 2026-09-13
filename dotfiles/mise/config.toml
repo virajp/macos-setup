@@ -69,7 +69,7 @@ aistats = "mise x -- pnpx codeburn"
 cc      = "ccn --continue"
 ccf     = "cc --model 'fable[1m]'"
 cch     = "cc --model 'haiku[1m]'"
-ccn     = 'claude --allow-dangerously-skip-permissions --dangerously-skip-permissions --remote-control --name "$(basename "$PWD")" --effort "high"'
+ccn     = 'claude --remote-control --name "$(basename "$PWD")" --effort "high"'
 cco     = "cc --model 'opus[1m]'"
 ccs     = "cc --model 'sonnet[1m]'"
 

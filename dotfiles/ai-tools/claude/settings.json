@@ -230,7 +230,6 @@
   "spinnerTipsEnabled": false,
   "effortLevel": "high",
   "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "terminalProgressBarEnabled": true,
   "inputNeededNotifEnabled": true,
