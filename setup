@@ -28,10 +28,11 @@
 # - Run `mise bootstrap` (skipping the compose phase until Docker is up)
 #
 # Notes:
-#   Written as a function that is called on the last line, so the whole file
-#   is parsed before anything runs - required for `curl | sh`, where the shell
-#   reads the script from stdin and any command that reads stdin (the Homebrew
-#   installer, sudo fallbacks, the App Store check) would otherwise eat it.
+#   Written as a function that is called (and exited) on the last line, so the
+#   whole file is parsed before anything runs - required for `curl | sh`,
+#   where the shell reads the script from stdin and any command that reads
+#   stdin (the Homebrew installer, sudo fallbacks, the App Store check) would
+#   otherwise eat it.
 #   Uses absolute paths to the repo, so it can be run from anywhere.
 #   /bin/bash is used, not zsh: it is what macOS runs `sh` as, and it is
 #   always present on a fresh machine.
@@ -141,4 +142,6 @@ main() {
   echo "   - launch OrbStack once, then: mise bootstrap --only compose"
 }
 
-main "$@"
+# `exit` on the same line: once main has moved stdin to the terminal, a piped
+# bash would otherwise read its next script line from the terminal and hang.
+main "$@"; exit "$?"
