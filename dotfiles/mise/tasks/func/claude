@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#MISE description="Start Claude Code (Remote Control), session named after the current folder"
+#MISE hide=true
+#MISE dir="{{cwd}}"
+#
+# Usage: mise run func:claude [--model <model>] [name] [claude args...]
+#
+# The session name is the current folder, or "<folder>-<name>" when a bare
+# argument follows the flags the cc* aliases inject. Only --model is parsed
+# here (it is the one flag an alias puts before the name); everything else is
+# passed to claude untouched (after --effort high, so a later --effort wins), so
+# `cc review --continue` and `cc --continue` both do what they look like.
+
+set -euo pipefail
+
+model=""
+if [[ ${1:-} == "--model" && $# -ge 2 ]]; then
+  model="$2"
+  shift 2
+fi
+
+session="$(basename "$PWD")"
+if [[ $# -gt 0 && "$1" != -* ]]; then
+  session+="-$1"
+  shift
+fi
+
+args=(--remote-control --name "$session" --effort high)
+if [[ -n "$model" ]]; then
+  args+=(--model "$model")
+fi
+
+exec claude "${args[@]}" "$@"
