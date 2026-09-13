@@ -201,6 +201,7 @@ post-defaults = [
 "killall ControlCenter || true",
 ]
 post-packages = [ "mise run brew:casks", "mise run tailscale:daemon" ]
+pre-packages = "mise run macos:appstore"
 
 # Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
 # sudo_local is the drop-in it includes and survives them.

@@ -16,7 +16,8 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   source file lands at which `$HOME` path, in which mode). Run it with
   `mise --cd dotfiles bootstrap`.
 - `.config/mise/tasks/macos/power` — `pmset`/`nvram` (no mise equivalent), run
-  as the `bootstrap` task. `brew:casks` applies the Brewfile and
+  as the `bootstrap` task. `macos:appstore` (pre-packages hook) checks an Apple
+  Account is signed in before `mas` runs; `brew:casks` applies the Brewfile and
   `tailscale:daemon` starts the root `tailscaled` service from the
   `post-packages` hook.
 - `dotfiles/homebrew/brewfile` — casks and VS Code extensions only; these stay

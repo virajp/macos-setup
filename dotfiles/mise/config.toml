@@ -182,6 +182,9 @@ HOMEBREW_FORCE_BREWED_CURL          = "true"
 HOMEBREW_FORCE_BREWED_GIT           = "true"
 HOMEBREW_NO_ANALYTICS               = "true"
 HOMEBREW_NO_ENV_HINTS               = "1"
+# Casks + VS Code extensions live here (dotfiles/homebrew/brewfile); formulae
+# are mise's ([bootstrap.packages]). Lets bare `brew bundle ...` work anywhere.
+HOMEBREW_BUNDLE_FILE = "${HOME}/.config/brewfile"
 
 # Python (uv)
 UV_NO_CACHE          = "true"

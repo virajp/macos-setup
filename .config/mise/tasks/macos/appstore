@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#MISE description="Make sure an Apple Account is signed in before mas installs run"
+#MISE hide=true
+
+# Run from the pre-packages hook in dotfiles/mise.toml. `mas install` fails
+# when nobody is signed into the App Store, which aborts the packages phase and
+# everything after it on a fresh machine. mas 7 dropped `mas account` (Apple
+# removed the API in Monterey), so the best available signal is whether the Mac
+# has an Apple Account at all: MobileMeAccounts is written when one is signed
+# in via System Settings, and the App Store uses the same account by default.
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+
+if defaults read MobileMeAccounts Accounts 2> /dev/null | grep -q AccountID; then
+  exit 0
+fi
+
+print_warn "No Apple Account is signed in on this Mac; App Store installs (mas) will fail."
+open -a "App Store" || true
+if [[ -t 0 ]]; then
+  print_wait "Sign in to the App Store, then press Enter to continue ... "
+  read -r _
+else
+  print_error "Non-interactive run: continuing, expect mas installs to fail."
+fi
