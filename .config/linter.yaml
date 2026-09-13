@@ -4,9 +4,7 @@
 
 version: 1
 
-ignores:
-  # Written by `gh` itself through the symlink — not ours to format.
-  - "dotfiles/github/hosts.yml"
+ignores: []
 
 #
 # overrides:

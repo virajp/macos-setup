@@ -121,7 +121,7 @@ tl = "eza --tree --color=always --all --group-directories-first --sort name --lo
 
 # Git Related Aliases
 gc    = 'git commit -a -m'
-gp    = 'git push --all --atomic --verbose'
+gp    = 'git push --verbose'
 gpull = 'git pull --all --verbose --progress'
 gs    = 'git status -sb'
 

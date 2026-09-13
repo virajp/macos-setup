@@ -1,8 +1,0 @@
-color = "blue"
-name  = "Linter" # label in the + menu
-title = "Linter" # the tab title you're after
-
-[[panes]]
-directory = "~/Projects/github.com/virajp/linter"
-id        = "main"
-type      = "terminal"

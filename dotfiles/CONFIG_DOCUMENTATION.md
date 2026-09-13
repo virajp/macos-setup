@@ -16,7 +16,7 @@ app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
 | `ghostty/`    | Ghostty terminal configuration                                      |
 | `homebrew/`   | The `brewfile` — casks and VS Code extensions (formulae are mise's) |
 | `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab     |
-| `github/`     | GitHub CLI (`gh`) configuration and hosts                           |
+| `github/`     | GitHub CLI (`gh`) configuration (`hosts.yml` stays untracked)       |
 | `ssh/`        | SSH client config and commit-signing public keys                    |
 | `fnox/`       | Secret management via the macOS Keychain (see below)                |
 | `mise/`       | Global `mise` tool versions, env, and task runner shortcuts         |
@@ -27,7 +27,6 @@ app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
 | `ai-tools/`   | Claude Code (`claude/`) and GitHub Copilot (`copilot/`) config      |
 | `mempalace/`  | mempalace/qdrant docker compose stack (see below)                   |
 | `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack            |
-| `warp/`       | Warp terminal launch configurations (`tab_configs/*.toml`)          |
 
 ## Shells & Prompt
 

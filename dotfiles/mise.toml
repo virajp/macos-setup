@@ -46,7 +46,7 @@
 "~/.ssh"              = { mode = "symlink-each", source = "ssh" }
 
 # GitHub CLI
-"~/.config/gh" = { mode = "symlink-each", source = "github" }
+"~/.config/gh/config.yml" = { mode = "symlink", source = "github/config.yml" }
 
 # Brewfile (casks + VS Code extensions, applied by brew:casks)
 "~/.config/brewfile" = { mode = "symlink", source = "homebrew/brewfile" }
@@ -68,6 +68,3 @@
 
 # Starship
 "~/.config/starship.toml" = { mode = "symlink", source = "starship/starship.toml" }
-
-# Warp (Tabs Config)
-"~/.warp/tab_configs" = { mode = "symlink", source = "warp/tab_configs" }

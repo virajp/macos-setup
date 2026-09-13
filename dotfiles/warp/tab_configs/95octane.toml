@@ -1,8 +1,0 @@
-color = "red"
-name  = "95octane" # label in the + menu
-title = "95octane" # the tab title you're after
-
-[[panes]]
-directory = "~/Projects/github.com/95octane/95octane"
-id        = "main"
-type      = "terminal"
