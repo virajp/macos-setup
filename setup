@@ -142,6 +142,8 @@ main() {
   echo "   - pitchfork boot enable   # start mempalace at login (docs/mempalace.md)"
   echo "   - launch OrbStack once, then: mise bootstrap --only compose"
   echo ""
+  printf '%*s\n' "${COLUMNS:-80}" '' | tr ' ' '='
+  echo ""
   echo "${WARNING_EMOJI} WARNING: do not use this terminal any further."
   echo "   It still has the old login shell and PATH, so it is parked here."
   echo "   Close this window and open a new terminal."
