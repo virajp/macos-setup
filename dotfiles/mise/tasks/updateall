@@ -3,6 +3,8 @@
 #MISE depends=["global:init"]
 #MISE hide=true
 
+#USAGE flag "-f --force" help="Run the weekly steps (macOS settings, power profile, mempalace images) even if they ran less than a week ago"
+
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/_helpers"
 
@@ -77,15 +79,39 @@ mise run upgrade:macos:download
 
 mise run upgrade:ai
 
-mise run mempalace:update
+# Weekly steps below. The stamp lives in /tmp on purpose: macOS clears it on
+# reboot, and a macOS update (which resets these settings) always reboots, so
+# the first updateall after an update re-applies them regardless of the week.
+readonly WEEKLY_STAMP="/tmp/mise-updateall-weekly.stamp"
+readonly ONE_WEEK_SECONDS=$((7 * 24 * 60 * 60))
+run_weekly=true
+if [[ "${usage_force:-false}" == "true" ]]; then
+  rm -f "${WEEKLY_STAMP}"
+elif [[ -f "${WEEKLY_STAMP}" ]]; then
+  elapsed=$(( $(date +%s) - $(date -r "${WEEKLY_STAMP}" +%s) ))
+  if (( elapsed < ONE_WEEK_SECONDS )); then
+    run_weekly=false
+    print_header "Skipping weekly steps — last run $(( elapsed / 3600 ))h ago; use --force to override."
+  fi
+fi
+
+# mempalace:update keeps its own weekly stamp; only an explicit --force here
+# overrides it.
+if [[ "${usage_force:-false}" == "true" ]]; then
+  mise run mempalace:update --force
+else
+  mise run mempalace:update
+fi
 mise run mempalace:restart
 
-# Last on purpose: this prompts for sudo (pmset/nvram) and restarts Finder,
-# Dock and ControlCenter, so everything above it is already done by then.
-# macOS updates reset these settings, so re-applying them here is the fix.
-# `files` re-checks /etc/pam.d/sudo_local (Touch ID for sudo); it only writes,
-# and only then prompts, when the file differs.
-print_header "Applying macOS system settings ..."
-mise bootstrap --only files,defaults,task --yes
+# Weekly, and last on purpose: this prompts for sudo (pmset/nvram) and restarts
+# Finder, Dock and ControlCenter, so everything above it is already done by
+# then. `files` re-checks /etc/pam.d/sudo_local (Touch ID for sudo), `defaults`
+# the macOS settings, `task` the pmset/nvram power profile.
+if [[ "${run_weekly}" == "true" ]]; then
+  print_header "Applying macOS system settings ..."
+  mise bootstrap --only files,defaults,task --yes
+  touch "${WEEKLY_STAMP}"
+fi
 
 print_header "Setup complete!"

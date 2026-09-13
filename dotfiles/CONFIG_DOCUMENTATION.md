@@ -182,8 +182,10 @@ referenced via `ssh/allowed_signers`.
   for; prompts for `sudo`.
 
 `updateall` re-runs the Touch ID file, defaults and power parts
-(`bootstrap --only files,defaults,task`) because macOS updates can reset them,
-and `upgrade:brew` runs `packages prune` + `apply` + `upgrade` and `brew:casks`.
+(`bootstrap --only files,defaults,task`) once a week — a stamp in `/tmp`, so a
+reboot (every macOS update has one) resets the week; `updateall --force` runs it
+now — and `upgrade:brew` runs `packages prune` + `apply` + `upgrade` and
+`brew:casks`.
 
 Not migrated on purpose: `mise activate` stays in `51-mise.fish`/`.zshrc`
 (`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split),

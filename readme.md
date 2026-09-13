@@ -55,8 +55,9 @@ how the dotfiles are organized.
 ## Final steps: Update tools & macOS
 
 ```shell
-# Update everything
+# Update everything (the macOS settings / power profile part runs weekly)
 updateall
+updateall --force   # run the weekly part now
 
 # Update macOS (works on zsh & fish only)
 osx-upgrade
