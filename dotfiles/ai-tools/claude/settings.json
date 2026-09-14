@@ -238,17 +238,17 @@
     }
   },
   "forceLoginMethod": "claudeai",
+  "outputStyle": "Terse",
   "spinnerTipsEnabled": false,
   "effortLevel": "medium",
-  "tui": "fullscreen",
-  "theme": "dark",
-  "terminalProgressBarEnabled": true,
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "outputStyle": "Terse",
   "modelSettings": {
     "claude-opus-5": {
       "effortLevel": "medium"
     }
-  }
+  },
+  "tui": "fullscreen",
+  "theme": "dark",
+  "terminalProgressBarEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
