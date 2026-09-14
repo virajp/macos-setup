@@ -22,6 +22,8 @@
       "WebFetch",
       "Agent",
       "Bash(mise x -- mise run *)",
+      "Bash(git worktree remove:*)",
+      "Bash(git branch -d:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_context7_context7__query-docs"
