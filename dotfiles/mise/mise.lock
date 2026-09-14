@@ -76,19 +76,11 @@ specifiers = ["latest"]
 version = "0.9.61"
 backend = "pipx:graphifyy"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-graphifyy/0.9.61~4cab81f3", digest = "sha256:29c0fd76d5f22848ad7d916aec30f90f20cecf44eb39a6fb8bd7ea295a879202" }
-
-[tools."pipx:graphifyy".options]
-uvx = "true"
 
 [[tools."pipx:mempalace"]]
 version = "3.9.0"
 backend = "pipx:mempalace"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-mempalace/3.9.0~318f0c0e", digest = "sha256:c0af664ceaecba7b6d1f3e387f2e66f73636ee530207c4c5b22c681c9837baa2" }
-
-[tools."pipx:mempalace".options]
-uvx = "true"
 
 [[tools.pitchfork]]
 version = "2.25.0"

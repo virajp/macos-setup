@@ -96,10 +96,11 @@ mise shims unconditionally — see **Shells & Prompt** above.
 ## Tooling via mise
 
 `dotfiles/mise/config.toml` is the global `mise` config. It pins language/CLI
-tool versions, sets `pnpm` as the npm package manager, enables `uvx` for pipx,
-and defines a large set of `[shell_alias]` shortcuts — including `updateall`,
-`osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup tasks. The task
-scripts themselves live under `mise/tasks/`.
+tool versions, sets `pnpm` as the npm package manager, installs `pipx:*` tools
+with pipx rather than uv (`brew:pipx`; uv graph installs churned, see mise
+2026.9.7), and defines a large set of `[shell_alias]` shortcuts — including
+`updateall`, `osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup
+tasks. The task scripts themselves live under `mise/tasks/`.
 
 It is the single source of truth for **environment variables, aliases and shell
 functions**. Neither shell defines its own — there is no `aliases.sh` or
