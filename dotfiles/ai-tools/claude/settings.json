@@ -21,9 +21,10 @@
       "Skill",
       "WebFetch",
       "Agent",
-      "Bash(mise x -- mise run *)",
-      "Bash(git worktree remove:*)",
-      "Bash(git branch -d:*)",
+      "Bash(pnpm:*)",
+      "Bash(mise:*)",
+      "Bash(git:*)",
+      "Bash(rtk ls *)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_context7_context7__query-docs"
@@ -243,5 +244,11 @@
   "theme": "dark",
   "terminalProgressBarEnabled": true,
   "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "outputStyle": "Terse",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  }
 }
