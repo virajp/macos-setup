@@ -238,7 +238,7 @@
   },
   "forceLoginMethod": "claudeai",
   "spinnerTipsEnabled": false,
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "tui": "fullscreen",
   "theme": "dark",
   "terminalProgressBarEnabled": true,
