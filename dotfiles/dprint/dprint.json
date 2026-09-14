@@ -11,6 +11,8 @@
     "**/*-lock.json",
     "**/*-lock.yaml",
     "**/graphify-out/",
+    "**/.mise/locks/",
+    "**/mise/locks/",
     "**/.claude/skills/flutter-interoperating-with-native-apis"
   ],
   "exec": {
