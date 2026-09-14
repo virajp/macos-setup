@@ -22,7 +22,7 @@ python.uv_venv_auto = "create|source"
 
 # Package manager settings
 npm.package_manager = "pnpm"
-pipx.uvx            = true
+pipx.uvx            = false
 
 [tools]
 # MISE tools
@@ -43,8 +43,8 @@ yq        = { version = "latest" }
 # AI Tools
 "npm:@mermaid-js/mermaid-cli" = { version = "latest" }
 "npm:codeburn"                = { version = "latest" }
-"pipx:graphifyy"              = { uvx = true, version = "latest" }
-"pipx:mempalace"              = { uvx = true, version = "latest" }
+"pipx:graphifyy"              = { version = "latest" }
+"pipx:mempalace"              = { version = "latest" }
 rtk                           = { version = "latest" }
 
 # Linter & Formatters

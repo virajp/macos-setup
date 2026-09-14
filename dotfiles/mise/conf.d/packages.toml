@@ -43,6 +43,7 @@ adopt = true
 "brew:lcov"                     = "latest" # Code coverage tool for C/C++
 "brew:mas"                      = "latest" # Mac App Store command-line interface
 "brew:mise"                     = "latest" # Polyglot tool/task/env manager (also manages this file)
+"brew:pipx"                     = "latest" # Installs the pipx:* tools in [tools] (uv graph installs disabled)
 "brew:prettyping"               = "latest" # Enhanced ping with visual output
 "brew:pstree"                   = "latest" # Display process tree
 "brew:ripgrep"                  = "latest" # Fast search tool
