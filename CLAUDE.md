@@ -11,11 +11,13 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   …).
 - `dotfiles/mise/` — the global mise config, linked to `~/.config/mise`.
   `config.toml` holds settings, `[tools]`, `[env]` and shell aliases;
-  `conf.d/*.toml` holds the machine declaration `mise bootstrap` applies (from
-  any directory): `packages.toml` (`[bootstrap.packages]` — Homebrew formulae
-  and App Store apps), `macos.toml` (`[bootstrap.macos.defaults]`, hooks, the
-  `bootstrap` task), `system.toml` (`[bootstrap.files]` Touch ID,
-  `[bootstrap.user]` login shell + `/etc/shells` lines, `[bootstrap.compose]`).
+  `mise.lock` + `locks/` pin what `latest` resolved to (`lockfile = true`;
+  `updateall`'s `mise upgrade` moves them — commit the diff); `conf.d/*.toml`
+  holds the machine declaration `mise bootstrap` applies (from any directory):
+  `packages.toml` (`[bootstrap.packages]` — Homebrew formulae and App Store
+  apps), `macos.toml` (`[bootstrap.macos.defaults]`, hooks, the `bootstrap`
+  task), `system.toml` (`[bootstrap.files]` Touch ID, `[bootstrap.user]` login
+  shell + `/etc/shells` lines, `[bootstrap.compose]`).
 - `dotfiles/mise.toml` — the `[dotfiles]` link map: which source file lands at
   which `$HOME` path, in which mode. A project config on purpose (it changes
   with the repo, not the machine), applied with `mise run dotfiles:install`;
