@@ -75,7 +75,7 @@ cco     = "mise run --silent func:claude --model 'opus[1m]'"
 ccs     = "mise run --silent func:claude --model 'sonnet[1m]'"
 
 # Development related shortcuts
-code = "mise run --silent func:code"
+# code = "mise run --silent func:code --"
 
 # Startup, Services and Process related shortcuts
 listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
