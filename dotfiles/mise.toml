@@ -32,7 +32,7 @@
 "~/.config/taplo.toml"  = { mode = "symlink", source = "dprint/taplo.toml" }
 
 # fnox
-"~/fnox.toml" = { mode = "symlink", source = "fnox/fnox.toml" }
+"~/.config/fnox/config.toml" = { mode = "symlink", source = "fnox/fnox.toml" }
 
 # Gem
 "~/.gemrc" = { mode = "symlink", source = "gem/.gemrc" }
