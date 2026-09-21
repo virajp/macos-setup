@@ -1,7 +1,9 @@
+env = "exec"
+
 [providers]
 keychain = { service = "fnox", type = "keychain" }
 
 [secrets]
-CONTEXT7_API_KEY          = { provider = "keychain", value = "global/CONTEXT7_API_KEY" }
-GITHUB_API_TOKEN          = { provider = "keychain", value = "global/GITHUB_API_TOKEN" }
-HOMEBREW_GITHUB_API_TOKEN = { provider = "keychain", value = "global/GITHUB_API_TOKEN" }
+CONTEXT7_API_KEY          = { env = true, provider = "keychain", value = "global/CONTEXT7_API_KEY" }
+GITHUB_API_TOKEN          = { env = true, provider = "keychain", value = "global/GITHUB_API_TOKEN" }
+HOMEBREW_GITHUB_API_TOKEN = { env = true, provider = "keychain", value = "global/GITHUB_API_TOKEN" }
