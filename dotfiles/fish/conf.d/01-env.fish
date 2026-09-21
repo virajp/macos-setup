@@ -20,3 +20,6 @@ set --global --export GPG_TTY (tty)
 
 # Set HOMEBREW_PREFIX environment variable
 set --global --export HOMEBREW_PREFIX /opt/homebrew
+
+# fnox config dir
+set --global --export FNOX_CONFIG_DIR $HOME/.config/fnox

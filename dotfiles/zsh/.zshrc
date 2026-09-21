@@ -31,6 +31,9 @@ if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
+# fnox config dir
+export FNOX_CONFIG_DIR="$HOME/.config/fnox"
+
 # Shell options: history, keybindings, completion styling
 source ~/.config/zsh/zsh.sh
 
