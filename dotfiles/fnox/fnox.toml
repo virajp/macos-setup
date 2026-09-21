@@ -1,9 +1,17 @@
-env = "exec"
+# Nothing is exported to the shell. Each consumer gets exactly one secret:
+#   mise      -> [settings.github] credential_command = "fnox get GITHUB_API_TOKEN"
+#   brew      -> `fnox exec -P brew -- brew` (shell alias + upgrade tasks)
+#   context7  -> CONTEXT7_RUNNER="fnox exec -P context7 -- pnpm dlx" (claude settings.json)
+env = false
 
 [providers]
 global = { prefix = "global/", service = "fnox", type = "keychain" }
 
 [secrets]
-CONTEXT7_API_KEY          = { env = true, provider = "global", value = "CONTEXT7_API_KEY" }
-GITHUB_API_TOKEN          = { env = true, provider = "global", value = "GITHUB_API_TOKEN" }
-HOMEBREW_GITHUB_API_TOKEN = { env = true, provider = "global", value = "GITHUB_API_TOKEN" }
+GITHUB_API_TOKEN = { provider = "global", value = "GITHUB_API_TOKEN" }
+
+[profiles.brew.secrets]
+HOMEBREW_GITHUB_API_TOKEN = { env = "exec", provider = "global", value = "GITHUB_API_TOKEN" }
+
+[profiles.context7.secrets]
+CONTEXT7_API_KEY = { env = "exec", provider = "global", value = "CONTEXT7_API_KEY" }

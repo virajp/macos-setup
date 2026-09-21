@@ -43,9 +43,8 @@ zsh needs two files, because `.zshrc` is interactive-only: `.zshenv` loads shims
 unconditionally and `.zshrc` adds the full activate on top for interactive
 shells. The shims load is **not** redundant for interactive shells. zsh's
 `brew shellenv` runs `/usr/libexec/path_helper` (the fish variant does not),
-which rebuilds `PATH` and leaves mise-managed binaries unresolvable. The
-`fnox-env` mise plugin shells out to `fnox` while computing `[env]`, so without
-shims already on `PATH` it fails and **no secrets load at all**.
+which rebuilds `PATH` and leaves mise-managed binaries unresolvable until
+`.zshrc` runs the full activate.
 
 `mise` must activate **after** `brew shellenv` in both shells. mise wins
 precedence by prepending to `PATH`, so anything that touches `PATH` afterwards
@@ -77,21 +76,22 @@ Oh My Posh themes are kept as an alternative — the `oh-my-posh init` block in
 
 ## Secret Management (fnox)
 
-Secrets are stored in the **macOS Keychain** and surfaced as environment
-variables by [`fnox`](https://github.com/jdx/fnox), wired into `mise` via the
-`fnox-env` plugin (`_.fnox-env` in the `[env]` block). `dotfiles/fnox/fnox.toml`
-defines the mapped secrets (e.g. `GITHUB_API_TOKEN`,
-`HOMEBREW_GITHUB_API_TOKEN`). There is no plaintext secret file in this repo.
+Secrets are stored in the **macOS Keychain** and read by
+[`fnox`](https://github.com/jdx/fnox); `dotfiles/fnox/fnox.toml` maps them.
+There is no plaintext secret file in this repo, and **nothing is exported to the
+shell** (`env = false`): neither shell runs `fnox activate` and mise's `[env]`
+carries no secrets. Each consumer is handed exactly one secret:
 
-Neither shell runs `fnox activate`: the mise plugin alone injects the secrets,
-in both shells and in `mise run` tasks. The trade-off is that `fnox deactivate`
-and `fnox shell` no longer apply — those relied on a shell function wrapper that
-`fnox activate` installed to eval their output. The `fnox` binary itself is
-still on `PATH` as a mise tool.
+| Consumer               | How                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| `mise` (GitHub API)    | `[settings.github] credential_command = "fnox get GITHUB_API_TOKEN"`            |
+| `brew` (GitHub API)    | `brew` shell alias → `fnox exec -P brew -- brew` (also in `upgrade:brew`)       |
+| Context7 MCP in Claude | `CONTEXT7_RUNNER="fnox exec -P context7 -- pnpm dlx"` in `claude/settings.json` |
 
-Because the plugin shells out to `fnox` while computing `[env]`, `fnox` must
-already be resolvable when `mise activate` runs. That is why `.zshenv` loads
-mise shims unconditionally — see **Shells & Prompt** above.
+The `brew` and `context7` fnox profiles each hold a single `env = "exec"`
+secret, so `fnox exec -P <profile>` injects only that variable into the child
+process. `brew` invoked by mise itself (`mise bootstrap packages …`) bypasses
+the alias and runs unauthenticated, which only matters for GitHub rate limits.
 
 ## Tooling via mise
 

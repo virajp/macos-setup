@@ -11,9 +11,7 @@
 #   2. Interactive shells need it too, and not just for tools: zsh's
 #      `brew shellenv` runs /usr/libexec/path_helper (the fish variant does
 #      not), which rebuilds PATH and leaves mise-managed binaries
-#      unresolvable. The fnox-env mise plugin shells out to `fnox` while
-#      computing [env], so without shims already on PATH it fails and NO
-#      secrets load. Loading shims here makes `fnox` resolvable.
+#      unresolvable until .zshrc runs the full activate.
 #
 # .zshrc then runs a full `mise activate` for interactive shells, which
 # supersedes the shims for tool resolution and applies the [env] block.

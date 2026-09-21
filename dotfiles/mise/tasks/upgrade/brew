@@ -15,7 +15,7 @@ fi
 
 # Update Homebrew itself
 print_subheader "Updating Homebrew ..."
-brew update --force # --verbose
+fnox exec -P brew -- brew update --force # --verbose
 
 # Formulae and mas apps are mise's ([bootstrap.packages], conf.d/packages.toml);
 # casks and VS Code extensions are brew's (Brewfile, via brew:casks)

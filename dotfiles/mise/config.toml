@@ -24,6 +24,9 @@ python.uv_venv_auto = "create|source"
 npm.package_manager = "pnpm"
 pipx.uvx            = false
 
+[settings.github]
+credential_command = "fnox get GITHUB_API_TOKEN"
+
 [tools]
 # MISE tools
 fnox  = { minimum_release_age = "0h", version = "latest" }
@@ -51,15 +54,13 @@ rtk                           = { version = "latest" }
 dprint = { version = "latest" }
 taplo  = { version = "latest" }
 
-[plugins]
-fnox-env = "https://github.com/jdx/mise-env-fnox"
-
 [tasks."global:init"]
 description = "Initialize mise tasks"
 hide        = true
 run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
+brew               = "fnox exec -P brew -- brew"
 cleanupDS          = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
 cleanupTelegram    = "mise run cleanupTelegram"
@@ -140,9 +141,6 @@ kgc      = "kubectl config current-context"
 kubectx  = "kubectl config get-contexts"
 
 [env]
-# fnox plugin
-_.fnox-env = { tools = true }
-
 # GitHub related
 GITHUB_EMAIL       = "3125954+virajp@users.noreply.github.com"
 GITHUB_SIGNING_KEY = "~/.ssh/signingkeys/github.pub"
