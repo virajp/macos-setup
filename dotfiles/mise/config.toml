@@ -144,10 +144,14 @@ kubectx  = "kubectl config get-contexts"
 _.fnox-env = { tools = true }
 
 # GitHub related
-GITHUB_EMAIL = "3125954+virajp@users.noreply.github.com"
+GITHUB_EMAIL       = "3125954+virajp@users.noreply.github.com"
+GITHUB_SIGNING_KEY = "~/.ssh/signingkeys/github.pub"
+GITHUB_USER_NAME   = "virajp"
 
 # GitLab related
-GITLAB_EMAIL = "35455-virajp@users.noreply.gitlab.com"
+GITLAB_EMAIL       = "35455-virajp@users.noreply.gitlab.com"
+GITLAB_SIGNING_KEY = "~/.ssh/signingkeys/gitlab.pub"
+GITLAB_USER_NAME   = "virajp"
 
 # GCP related
 CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
