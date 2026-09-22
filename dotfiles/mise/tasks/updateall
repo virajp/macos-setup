@@ -18,6 +18,9 @@ gpgconf --kill all || true
 # git expands ~ in config path values at read time.
 git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
 
+print_header "Updating homebrew ..."
+brew update
+
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages], conf.d/packages.toml).
 print_header "Upgrading MISE ..."
