@@ -103,5 +103,12 @@ Clarifying questions come **before** implementation, not after mistakes.
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge
   graph. Trigger: `/graphify` When the user types `/graphify`, invoke the Skill
   tool with `skill: "graphify"` before doing anything else.
+- **Graph refresh**: never `graphify hook install` (its raw git hooks pin a
+  Python path and break on upgrade). Run it as a pre-commit `post-commit` stage
+  hook (`graphify-refresh` → `mise x -- mise run code:graph`); copy the task
+  from `95octane/.config/mise/tasks/code/graph`. Migrating a repo:
+  `graphify hook uninstall`, add `post-commit` to `default_install_hook_types`,
+  `pre-commit install --hook-type post-commit`, drop the `merge=graphify` line
+  from `.gitattributes`
 
 @RTK.md
