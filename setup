@@ -147,7 +147,6 @@ main() {
   echo "${SUCCESS_EMOJI} Setup complete!"
   echo "   Next: open a new terminal (fish is the login shell now), then:"
   echo "   - tailscale up            # this node is new to the tailnet"
-  echo "   - pitchfork boot enable   # start mempalace at login (docs/mempalace.md)"
   echo "   - launch OrbStack once, then: mise bootstrap --only compose"
   echo ""
   printf '%*s\n' "${COLUMNS:-80}" '' | tr ' ' '='

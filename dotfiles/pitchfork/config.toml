@@ -1,5 +1,0 @@
-# Global pitchfork daemons. See dotfiles/mempalace for the compose stack this
-# supervises, and docs/mempalace.md for one-time setup (`pitchfork boot enable`).
-
-[settings.general]
-mise = true

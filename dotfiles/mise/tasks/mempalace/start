@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Start the mempalace stack via pitchfork"
+#MISE description="Start the mempalace qdrant stack"
 #MISE depends=["mempalace:check"]
 
 set -e

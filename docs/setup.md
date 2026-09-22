@@ -32,7 +32,6 @@ Afterwards, in a new terminal (fish is the login shell now):
 
 ```shell
 tailscale up            # this node is new to the tailnet
-pitchfork boot enable   # start mempalace at login, see mempalace.md
 # launch OrbStack once, then bring up qdrant:
 mise bootstrap --only compose
 ```

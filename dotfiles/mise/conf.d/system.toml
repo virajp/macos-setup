@@ -14,11 +14,10 @@ owner   = "root"
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
 
-# qdrant vector store behind mempalace (needs OrbStack running). Pitchfork
-# (dotfiles/pitchfork) still supervises mempalace-mcp itself; it only waits for
-# this container's port. project_dir must be a literal absolute path (mise
-# expands neither ~ nor $HOME nor templates here), hence the username. No
-# depends_on: orbstack is a cask, installed by brew:casks, not a declared package.
+# qdrant vector store behind mempalace (needs OrbStack running). project_dir
+# must be a literal absolute path (mise expands neither ~ nor $HOME nor
+# templates here), hence the username. No depends_on: orbstack is a cask,
+# installed by brew:casks, not a declared package.
 [bootstrap.compose.mempalace]
 files        = [ "docker-compose.yaml" ]
 project_dir  = "/Users/virajpatel/.config/mempalace"

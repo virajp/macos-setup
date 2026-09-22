@@ -25,8 +25,7 @@ app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
 | `gem/`        | RubyGems configuration                                              |
 | `1Password/`  | 1Password SSH agent configuration                                   |
 | `ai-tools/`   | Claude Code (`claude/`) and GitHub Copilot (`copilot/`) config      |
-| `mempalace/`  | mempalace/qdrant docker compose stack (see below)                   |
-| `pitchfork/`  | Pitchfork daemon config — supervises the mempalace stack            |
+| `mempalace/`  | qdrant docker compose stack behind mempalace (see below)            |
 
 ## Shells & Prompt
 
@@ -137,20 +136,16 @@ argument passes through to `claude`, so `cc review --continue` and
 
 ## mempalace (MCP memory server)
 
-`dotfiles/mempalace/` holds the `docker compose` stack for the mempalace MCP
-server (HTTP, `127.0.0.1:8765`) and its qdrant backend, with data bind-mounted
-from `~/.local/share/mempalace` and `~/.local/share/qdrant`. The image is built
-locally from PyPI rather than pulled, since `ghcr.io/mempalace/mempalace` is not
-anonymously pullable.
-
-[Pitchfork](https://pitchfork.jdx.dev/) supervises the stack as a global daemon
-(`dotfiles/pitchfork/config.toml`) and starts it at login. `mempalace:*` mise
-tasks (`dotfiles/mise/tasks/mempalace/`) wrap the pitchfork/compose lifecycle;
-`mempalace:update` rebuilds the images weekly and is called from `updateall`.
-There is deliberately no local `mempalace` CLI install — the `mempalace` shell
-alias runs `status` inside the container instead (see `docs/mempalace.md`'s "CLI
-access" section for why). See [`docs/mempalace.md`](../docs/mempalace.md) for
-one-time setup.
+`dotfiles/mempalace/` holds the `docker compose` stack for mempalace's qdrant
+backend (`127.0.0.1:6333`, data bind-mounted from `~/.local/share/qdrant`);
+`mise bootstrap` keeps it running (`[bootstrap.compose.mempalace]` in
+`conf.d/system.toml`). The MCP server is `mempalace-mcp` from the
+`pipx:mempalace` mise tool, started by Claude Code over stdio through the `vwf`
+plugin, with its `MEMPALACE_*` env in `ai-tools/claude/settings.json` (palace
+data in `~/.local/share/mempalace`). `mempalace:*` mise tasks
+(`dotfiles/mise/tasks/mempalace/`) wrap the compose lifecycle;
+`mempalace:update` pulls the qdrant image weekly from `updateall`. See
+[`docs/mempalace.md`](../docs/mempalace.md) for one-time setup.
 
 ## Git
 
@@ -230,8 +225,7 @@ now — and `upgrade:brew` runs `packages prune` + `apply` + `upgrade` and
 `brew:casks`.
 
 Not migrated on purpose: `mise activate` stays in `51-mise.fish`/`.zshrc`
-(`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split),
-and pitchfork keeps its own LaunchAgent.
+(`[bootstrap.mise_shell_activate]` would lose the interactive/`--shims` split).
 
 ### Link map
 

@@ -1,42 +1,33 @@
-# mempalace
-
-One-time setup for the mempalace MCP server + qdrant stack
-(`dotfiles/mempalace/`, supervised by [pitchfork](https://pitchfork.jdx.dev/)
-via `dotfiles/pitchfork/`). After this, `updateall` keeps the images current
-weekly and pitchfork keeps the stack running across reboots.
-
-```shell
-mise run dotfiles:install
-mise install
-pitchfork boot enable
-mise run mempalace:pull
-mise run mempalace:start
-```
-
-Verify it's serving:
-
-```shell
-curl -sf http://127.0.0.1:8765/healthz
-```
-
-Claude Code's `mempalace` MCP connection (registered by the `vwf` plugin at
-`http://127.0.0.1:8765/mcp`) should now show as connected — no MCP config
-changes are needed on this machine.
-
-## CLI access
-
-There is no local `mempalace` CLI install (the previous `pipx:mempalace` mise
-tool was removed — its `mempalace-mcp` binary backed an unrelated stdio MCP
-server, and its bare `mempalace status` command reads a *different*, purely
-local palace at `~/.mempalace/palace`; it can't see the qdrant-backed data at
-all, by design of the tool — `status` never consults the backend config).
-
-The `mempalace` shell alias (and equivalent `mise run mempalace:status` task)
-instead runs `status` **inside the container**, where it correctly reflects the
-live qdrant-backed data:
-
-```shell
-mempalace
-```
-
-No other subcommand is wired up — this alias is status-only on purpose.
+[38;2;131;148;150m─────┬──────────────────────────────────────────────────────────────────────────[0m
+[38;2;131;148;150m│ [0m[1mSTDIN[0m
+[38;2;131;148;150m─────┼──────────────────────────────────────────────────────────────────────────[0m
+[38;2;131;148;150m 1[0m [38;2;131;148;150m│[0m [38;2;248;248;242m#
+mempalace[0m [38;2;131;148;150m 2[0m [38;2;131;148;150m│[0m
+[38;2;131;148;150m 3[0m [38;2;131;148;150m│[0m [38;2;248;248;242mOne-time
+setup for mempalace's qdrant backend (`dotfiles/mempalace/`, a docker[0m
+[38;2;131;148;150m 4[0m [38;2;131;148;150m│[0m [38;2;248;248;242mcompose
+stack declared in `[bootstrap.compose.mempalace]`). After this,[0m
+[38;2;131;148;150m 5[0m [38;2;131;148;150m│[0m
+[38;2;248;248;242m`updateall` pulls the qdrant image weekly.[0m
+[38;2;131;148;150m 6[0m [38;2;131;148;150m│[0m [38;2;131;148;150m 7[0m
+[38;2;131;148;150m│[0m
+[38;2;248;248;242m`shell[0m
+[38;2;131;148;150m   8[0m [38;2;131;148;150m│[0m [38;2;248;248;242mmise run dotfiles:install[0m
+[38;2;131;148;150m   9[0m [38;2;131;148;150m│[0m [38;2;248;248;242mmise install[0m
+[38;2;131;148;150m  10[0m [38;2;131;148;150m│[0m [38;2;248;248;242mmise run mempalace:start[0m
+[38;2;131;148;150m  11[0m [38;2;131;148;150m│[0m [38;2;248;248;242m`[0m
+[38;2;131;148;150m 12[0m [38;2;131;148;150m│[0m [38;2;131;148;150m 13[0m
+[38;2;131;148;150m│[0m [38;2;248;248;242mVerify qdrant is serving:[0m
+[38;2;131;148;150m 14[0m [38;2;131;148;150m│[0m [38;2;131;148;150m 15[0m
+[38;2;131;148;150m│[0m
+[38;2;248;248;242m`shell[0m
+[38;2;131;148;150m  16[0m [38;2;131;148;150m│[0m [38;2;248;248;242mcurl -sf http://127.0.0.1:6333/healthz[0m
+[38;2;131;148;150m  17[0m [38;2;131;148;150m│[0m [38;2;248;248;242m`[0m
+[38;2;131;148;150m 18[0m [38;2;131;148;150m│[0m [38;2;131;148;150m 19[0m
+[38;2;131;148;150m│[0m [38;2;248;248;242mThe MCP server needs no setup: the
+`vwf` plugin has Claude Code start[0m [38;2;131;148;150m 20[0m
+[38;2;131;148;150m│[0m [38;2;248;248;242m`mempalace-mcp` (from the
+`pipx:mempalace` mise tool) over stdio, configured by[0m [38;2;131;148;150m
+21[0m [38;2;131;148;150m│[0m [38;2;248;248;242mthe `MEMPALACE_*` env in
+`dotfiles/ai-tools/claude/settings.json`.[0m
+[38;2;131;148;150m─────┴──────────────────────────────────────────────────────────────────────────[0m
