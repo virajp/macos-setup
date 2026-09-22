@@ -3,32 +3,3 @@
 
 [settings.general]
 mise = true
-
-# [daemons.mempalace-qdrant]
-# boot_start = true
-# port       = 6333
-# ready_port = 6333
-# retry      = true
-# run        = "docker compose --file $HOME/.config/mempalace/docker-compose.yaml up"
-
-[daemons.qdrant-gate]
-boot_start = true
-ready_cmd  = { run = "nc -z -G 2 127.0.0.1 6333", timeout = "120s" }
-retry      = true
-run        = "exec tail -f /dev/null"
-
-[daemons.mempalace-mcp]
-boot_start = true
-depends    = [ "qdrant-gate" ]
-port       = 8765
-ready_http = "http://127.0.0.1:8765/healthz"
-retry      = true
-run        = "mempalace-mcp --transport http --host 127.0.0.1 --port 8765 --palace $MEMPALACE_PALACE_PATH --backend $MEMPALACE_BACKEND --allow-insecure-no-token"
-
-# Restart on ANY termination, including the clean exit(0) the MemPalace MCP
-# server performs after 8h idle (MEMPALACE_MCP_IDLE_HOURS). `retry` only covers
-# failures, so without this the daemon stays down until started by hand.
-# Deliberate stops are guarded by `pitchfork disable` in the mempalace:stop
-# task, which makes this hook a no-op.
-[daemons.mempalace-mcp.hooks]
-on_exit = "pitchfork start global/mempalace-mcp"

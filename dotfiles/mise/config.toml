@@ -193,10 +193,3 @@ HOMEBREW_BUNDLE_FILE = "${HOME}/.config/brewfile"
 UV_NO_CACHE          = "true"
 UV_NO_MANAGED_PYTHON = "true"
 UV_PYTHON_DOWNLOADS  = "never"
-
-# Mempalace Backend
-MEMPALACE_BACKEND                          = "qdrant"
-MEMPALACE_MAX_BACKUPS                      = 4
-MEMPALACE_MCP_HTTP_ALLOW_INSECURE_NO_TOKEN = "1"
-MEMPALACE_PALACE_PATH                      = "${HOME}/.local/share/mempalace"
-MEMPALACE_QDRANT_URL                       = "http://127.0.0.1:6333"

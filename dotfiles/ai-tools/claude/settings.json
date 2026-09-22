@@ -9,7 +9,13 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_INSTALL_METHOD": "other",
     "CONTEXT7_RUNNER": "fnox exec -P context7 -- pnpm dlx",
-    "DISABLE_AUTOUPDATER": "1"
+    "DISABLE_AUTOUPDATER": "1",
+    "MEMPALACE_BACKEND": "qdrant",
+    "MEMPALACE_MAX_BACKUPS": "4",
+    "MEMPALACE_MCP_HTTP_ALLOW_INSECURE_NO_TOKEN": "1",
+    "MEMPALACE_PALACE_PATH": "~/.local/share/mempalace",
+    "MEMPALACE_QDRANT_URL": "http://127.0.0.1:6333",
+    "MEMPALACE_MCP_IDLE_HOURS": "0"
   },
   "attribution": {
     "commit": "",
