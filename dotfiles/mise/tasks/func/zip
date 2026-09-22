@@ -2,7 +2,7 @@
 #MISE hide=true
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # Display progress message with colored output
 print_header "Zipping $1 to $1.zip ..."

@@ -21,8 +21,10 @@ login_shell = "/opt/homebrew/bin/fish"
 # depends_on: orbstack is a cask, installed by brew:casks, not a declared package.
 [bootstrap.compose.mempalace]
 files        = [ "docker-compose.yaml" ]
-project_dir  = "/Users/virajpatel/Projects/github.com/virajp/macos-setup/dotfiles/mempalace"
+project_dir  = "/Users/virajpatel/.config/mempalace"
 project_name = "mempalace"
+state        = "running"
+sudo         = false
 
 [dotfiles]
 # Homebrew shells in /etc/shells (fish is handled by [bootstrap.user])

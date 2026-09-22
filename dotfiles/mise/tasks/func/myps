@@ -7,7 +7,7 @@
 #USAGE arg "[process]" default="" help="Filter processes by name"
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 if [ -n "$usage_process" ]; then
   print_header "Listing processes for user $USER filtered by $usage_process ..."

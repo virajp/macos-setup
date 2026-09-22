@@ -2,10 +2,8 @@
 #MISE description="Restart mempalace mcp"
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-print_header "Restarting mempalace mcp ..."
-# Routed through stop/start rather than `pitchfork restart` so the disable
-# guard applies -- otherwise the on_exit hook races our own start.
+print_header "Restarting qdrant (mempalace) ..."
 mise run mempalace:stop
 mise run mempalace:start

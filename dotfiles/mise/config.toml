@@ -37,7 +37,6 @@ usage = { minimum_release_age = "0h", version = "latest" }
 bun       = { minimum_release_age = "0h", version = "latest" }
 jq        = { version = "latest" }
 node      = { minimum_release_age = "0h", version = "latest" }
-pitchfork = { minimum_release_age = "0h", version = "latest" }
 pnpm      = { minimum_release_age = "0h", version = "latest" }
 python    = { minimum_release_age = "0h", version = "latest" }
 uv        = { minimum_release_age = "0h", version = "latest" }

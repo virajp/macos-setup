@@ -3,7 +3,7 @@
 #MISE hide=true
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # Check if the docker command line tool even exists
 if ! command -v docker &> /dev/null; then

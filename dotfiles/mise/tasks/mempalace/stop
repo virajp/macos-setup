@@ -2,11 +2,7 @@
 #MISE description="Stop the mempalace stack"
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-print_header "Stopping mempalace ..."
-# Suppress the on_exit hook in pitchfork's config, which would otherwise
-# restart the daemon we are deliberately stopping. mempalace:start re-enables.
-pitchfork disable mempalace-mcp || true
-# Tolerate "not running" (e.g. first-ever run before it's ever been started).
-pitchfork stop mempalace-mcp || true
+print_header "Stopping qdrant (mempalace) ..."
+docker compose --file "${HOME}/.config/mempalace/docker-compose.yaml" down

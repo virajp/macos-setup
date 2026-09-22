@@ -9,7 +9,7 @@
 # re-bootstraps the daemon even when it is up, which drops the tunnel.
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 if pgrep -x tailscaled > /dev/null; then
   print_header "tailscaled is already running."

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Upgrade pnpm"
+#MISE hide=true
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
+
+# Check if pnpm is installed before attempting to update
+type pnpm >/dev/null 2>&1 || return 0
+
+# Upgrade global pnpm packages
+print_subheader "Upgrading global pnpm packages ..."
+pnpm upgrade --global

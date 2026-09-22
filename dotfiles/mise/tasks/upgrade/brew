@@ -3,7 +3,7 @@
 #MISE hide=true
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Homebrew packages ..."
 
@@ -15,7 +15,7 @@ fi
 
 # Update Homebrew itself
 print_subheader "Updating Homebrew ..."
-fnox exec -P brew -- brew update --force # --verbose
+brew update --force # --verbose
 
 # Formulae and mas apps are mise's ([bootstrap.packages], conf.d/packages.toml);
 # casks and VS Code extensions are brew's (Brewfile, via brew:casks)
@@ -28,7 +28,7 @@ print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
 mise bootstrap packages prune --manager brew --yes
 
 print_subheader "Install/Upgrade all declared packages ..."
-mise bootstrap packages apply --yes
+mise bootstrap packages apply --update --yes
 mise bootstrap packages upgrade --yes
 
 mise run brew:casks

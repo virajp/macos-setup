@@ -6,7 +6,20 @@
 #USAGE flag "-f --force" help="Run the weekly steps (macOS settings, power profile, mempalace images) even if they ran less than a week ago"
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
+
+# Determine if weekly steps should be run based on the weekly stamp
+# and the --force flag
+readonly WEEKLY_STAMP="/tmp/mise-updateall-weekly.stamp"
+if [[ "${usage_force:-false}" == "true" ]]; then
+  rm -f "${WEEKLY_STAMP}"
+  run_weekly="true"
+else
+  run_weekly=$(check_weekly_stamp "${WEEKLY_STAMP}")
+  if [[ "${run_weekly:-false}" == "false" ]]; then
+    print_header "Skipping weekly steps — last run $(( elapsed / 3600 ))h ago; use --force to override."
+  fi
+fi
 
 # Kill keyboxd (gpg) to ensure that stale keys are refreshed
 gpgconf --kill all || true
@@ -17,9 +30,6 @@ gpgconf --kill all || true
 # expanded $HOME would hardcode this machine's username into version control.
 # git expands ~ in config path values at read time.
 git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
-
-print_header "Updating homebrew ..."
-brew update
 
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages], conf.d/packages.toml).
@@ -36,85 +46,43 @@ mise doctor --quiet --silent > /dev/null
 
 # Install & upgrade mise
 print_header "Setting up MISE ..."
-mise install
+mise install --locked
 
 print_header "Upgrading mise tools ..."
 mise upgrade  || true
-
-# Pick up a freshly upgraded pitchfork: the supervisor keeps running the binary
-# it started with, so without this the CLI and supervisor drift apart and newer
-# config keys (e.g. the mempalace-mcp on_exit hook) are parsed by a stale
-# supervisor. Before the prune below, which can delete the old install dir.
-print_header "Restarting pitchfork supervisor ..."
-# Not `supervisor start --force`: that kills the old supervisor and starts the
-# new one at once, and the dying process unlinks the socket the new one has
-# just created ("failed to connect to supervisor ... No such file or
-# directory"). Stop, wait for the socket to go away, then start.
-readonly PITCHFORK_SOCK="${HOME}/.local/state/pitchfork/sock/main.sock"
-pitchfork supervisor stop || true
-for _ in $(seq 1 50); do
-  [[ -S "${PITCHFORK_SOCK}" ]] || break
-  sleep 0.2
-done
-pitchfork supervisor start
-for _ in $(seq 1 50); do
-  [[ -S "${PITCHFORK_SOCK}" ]] && break
-  sleep 0.2
-done
-# Stopping the supervisor leaves its daemons stopped; they are not re-adopted
-# (boot_start only applies when the supervisor runs in boot mode). Bring them
-# back now rather than leaving mempalace down for the rest of the run.
-print_header "Starting global pitchfork daemons ..."
-pitchfork start --global
 
 # Prune all unused versions of tools
 print_header "Pruning unused versions of tools ..."
 mise prune --yes
 
 # Upgrade Homebrew and all installed packages
-mise run upgrade:brew
+fnox exec --profile brew -- mise run upgrade:brew
 
 mise run upgrade:npm
-
-mise run cleanupDS ~/Projects
-
-mise run upgrade:macos:download
+mise run upgrade:pnpm
 
 mise run upgrade:ai
-
-# Weekly steps below. The stamp lives in /tmp on purpose: macOS clears it on
-# reboot, and a macOS update (which resets these settings) always reboots, so
-# the first updateall after an update re-applies them regardless of the week.
-readonly WEEKLY_STAMP="/tmp/mise-updateall-weekly.stamp"
-readonly ONE_WEEK_SECONDS=$((7 * 24 * 60 * 60))
-run_weekly=true
-if [[ "${usage_force:-false}" == "true" ]]; then
-  rm -f "${WEEKLY_STAMP}"
-elif [[ -f "${WEEKLY_STAMP}" ]]; then
-  elapsed=$(( $(date +%s) - $(date -r "${WEEKLY_STAMP}" +%s) ))
-  if (( elapsed < ONE_WEEK_SECONDS )); then
-    run_weekly=false
-    print_header "Skipping weekly steps — last run $(( elapsed / 3600 ))h ago; use --force to override."
-  fi
-fi
-
-# mempalace:update keeps its own weekly stamp; only an explicit --force here
-# overrides it.
-if [[ "${usage_force:-false}" == "true" ]]; then
-  mise run mempalace:update --force
-else
-  mise run mempalace:update
-fi
-mise run mempalace:restart
 
 # Weekly, and last on purpose: this prompts for sudo (pmset/nvram) and restarts
 # Finder, Dock and ControlCenter, so everything above it is already done by
 # then. `files` re-checks /etc/pam.d/sudo_local (Touch ID for sudo), `defaults`
 # the macOS settings, `task` the pmset/nvram power profile.
 if [[ "${run_weekly}" == "true" ]]; then
+  # Apply macOS system settings
   print_header "Applying macOS system settings ..."
   mise bootstrap --only files,defaults,task --yes
+
+  # Update qdrant (mempalace)
+  mise run mempalace:update
+
+  # Update the weekly stamp to indicate that the weekly steps have been run
   touch "${WEEKLY_STAMP}"
 fi
+
+# Upgrade macOS
+mise run upgrade:macos:download
+
+# Clean up unnecessary .DS_Store files from ~/Projects folder
+mise run cleanupDS ~/Projects
 
 print_header "Setup complete!"

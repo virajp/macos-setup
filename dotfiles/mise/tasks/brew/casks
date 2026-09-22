@@ -7,7 +7,7 @@
 # so cleanup is scoped to those types and never touches formulae.
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 readonly BREWFILE="${HOME}/.config/brewfile"
 

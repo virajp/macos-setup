@@ -4,7 +4,7 @@
 #MISE dir="."
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Quit Telegram ..."
 osascript -e 'quit app "Telegram"'

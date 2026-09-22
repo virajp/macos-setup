@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
-#MISE description="Upgrade grype database"
+#MISE description="Upgrade npm"
 #MISE hide=true
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-print_header "Configuring npmrc ..."
-# Check if grype is installed before attempting to update
+# Check if npm is installed before attempting to update
 type npm >/dev/null 2>&1 || return 0
+
 # Configure NPM global settings
+print_header "Configuring npmrc ..."
 npm config --global set fund=false
+
+# Upgrade global npm packages
+print_subheader "Upgrading global npm packages ..."
+npm upgrade --global

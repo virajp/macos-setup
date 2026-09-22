@@ -8,7 +8,7 @@
 # cannot run the Tailscale SSH server, which is why the formula's daemon is used.
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Tailscale ..."
 

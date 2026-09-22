@@ -4,7 +4,7 @@
 #MISE dir="."
 
 set -e
-source "${HOME}/.config/mise/tasks/_scripts/_helpers"
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # If no argument is passed, use the current directory ($PWD) instead of $HOME
 FOLDER=${1:-$HOME}
