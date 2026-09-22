@@ -12,7 +12,8 @@ prefix  = "global/"
 service = "fnox"
 type    = "keychain"
 
-[secrets.GITHUB_API_TOKEN]
+[profiles.brew.secrets.GITHUB_API_TOKEN]
+env      = "exec"
 provider = "global"
 value    = "GITHUB_API_TOKEN"
 
