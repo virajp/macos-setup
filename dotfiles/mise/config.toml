@@ -68,7 +68,7 @@ osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
 # AI Tools shortcuts
-aistats = "mise x -- pnpx codeburn"
+aistats = "mise x -- codeburn report --period 30days --format tui"
 cc      = "mise run --silent func:claude"
 ccf     = "mise run --silent func:claude --model 'fable[1m]'"
 cch     = "mise run --silent func:claude --model 'haiku[1m]'"
