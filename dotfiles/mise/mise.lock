@@ -47,6 +47,7 @@ specifiers = ["latest"]
 checksum = "sha256:f9e752812791f258e89ff88a7affd05c793b0db3d929718651eae7df5f19eb2e"
 url = "https://github.com/dprint/dprint/releases/download/0.57.4/dprint-aarch64-apple-darwin.zip"
 url_api = "https://api.github.com/repos/dprint/dprint/releases/assets/546351171"
+provenance = "github-attestations"
 
 [[tools.fnox]]
 version = "1.35.3"
@@ -100,16 +101,6 @@ specifiers = ["latest"]
 version = "3.10.0"
 backend = "pipx:mempalace"
 specifiers = ["latest"]
-
-[[tools.pitchfork]]
-version = "2.27.0"
-backend = "packslip:github.com/jdx/pitchfork"
-specifiers = ["latest"]
-
-[tools.pitchfork."platforms.macos-arm64"]
-checksum = "sha256:77491f4d803039ae4cf346c292db62b9b5aad971cc0850413917ef92cf335901"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.27.0/pitchfork-aarch64-apple-darwin.tar.gz"
-signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
 
 [[tools.pnpm]]
 version = "12.5.1"
