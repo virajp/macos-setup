@@ -3,6 +3,7 @@
     "lineWidth": 80
   },
   "excludes": [
+    "**/.claude/",
     "**/node_modules/",
     "**/dist/",
     "**/build/",
