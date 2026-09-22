@@ -50,6 +50,9 @@ mise doctor --quiet --silent > /dev/null
 
 # Install & upgrade mise
 print_header "Setting up MISE ..."
+# Lock newly added [tools] first so --locked doesn't fail on them; existing
+# locked versions are kept (mise upgrade below moves them).
+mise lock --global
 mise install --locked
 
 print_header "Upgrading mise tools ..."
