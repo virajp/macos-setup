@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #MISE hide=true
 # Helper functions for mise tasks
-# Source this file in other tasks using: source "${SCRIPT_DIR}/_helpers"
+# Source this file in other tasks using: source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # Color codes
 readonly GREEN='\033[0;32m'
@@ -61,18 +61,4 @@ line_sep() {
   local line
   printf -v line '%*s' "${COL:-80}" ''
   printf '%s\n' "${line// /$1}"
-}
-
-# Check for weekly stamp
-# Weekly steps below. The stamp lives in /tmp on purpose: macOS clears it on
-# reboot, and a macOS update (which resets these settings) always reboots, so
-# the first updateall after an update re-applies them regardless of the week.
-check_weekly_stamp() {
-  readonly ONE_WEEK_SECONDS=$((7 * 24 * 60 * 60))
-  elapsed=$(( $(date +%s) - $(date -r "${1}" +%s) ))
-  if (( elapsed < ONE_WEEK_SECONDS )); then
-    echo "false"
-  else
-    echo "true"
-  fi
 }

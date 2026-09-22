@@ -8,15 +8,19 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-# Determine if weekly steps should be run based on the weekly stamp
-# and the --force flag
+# Weekly steps run when the stamp is missing or over a week old. The stamp
+# lives in /tmp on purpose: macOS clears it on reboot, and a macOS update (which
+# resets these settings) always reboots, so the first updateall after an update
+# re-applies them regardless of the week.
 readonly WEEKLY_STAMP="/tmp/mise-updateall-weekly.stamp"
+readonly ONE_WEEK_SECONDS=$((7 * 24 * 60 * 60))
+run_weekly="true"
 if [[ "${usage_force:-false}" == "true" ]]; then
   rm -f "${WEEKLY_STAMP}"
-  run_weekly="true"
-else
-  run_weekly=$(check_weekly_stamp "${WEEKLY_STAMP}")
-  if [[ "${run_weekly:-false}" == "false" ]]; then
+elif [[ -f "${WEEKLY_STAMP}" ]]; then
+  elapsed=$(( $(date +%s) - $(date -r "${WEEKLY_STAMP}" +%s) ))
+  if (( elapsed < ONE_WEEK_SECONDS )); then
+    run_weekly="false"
     print_header "Skipping weekly steps — last run $(( elapsed / 3600 ))h ago; use --force to override."
   fi
 fi
