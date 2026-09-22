@@ -70,7 +70,7 @@ url_api = "https://api.github.com/repos/jqlang/jq/releases/assets/453012783"
 provenance = "github-attestations"
 
 [[tools.node]]
-version = "26.9.0"
+version = "26.10.0"
 backend = "core:node"
 specifiers = ["latest"]
 
@@ -78,8 +78,8 @@ specifiers = ["latest"]
 compile = "false"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:6f3de7ed853ee283b4bf24b6e426618f1d357401ce5815db1866eb85eb4b05d9"
-url = "https://nodejs.org/dist/v26.9.0/node-v26.9.0-darwin-arm64.tar.gz"
+checksum = "sha256:751fdf7439f115d87ee2a8f3f18c065b6151852068e3e666ac60ac2996f75ac9"
+url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-darwin-arm64.tar.gz"
 
 [[tools."npm:@mermaid-js/mermaid-cli"]]
 version = "11.17.0"
@@ -87,7 +87,7 @@ backend = "npm:@mermaid-js/mermaid-cli"
 specifiers = ["latest"]
 
 [[tools."npm:codeburn"]]
-version = "0.9.24"
+version = "0.9.25"
 backend = "npm:codeburn"
 specifiers = ["latest"]
 
