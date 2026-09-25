@@ -1,10 +1,8 @@
 #:schema https://fnox.jdx.dev/schema.json
 
-# Nothing is exported to the shell. Each consumer gets exactly one secret:
-#   mise      -> [settings.github] credential_command = "fnox get GITHUB_API_TOKEN"
-#   brew      -> `fnox exec -P brew -- brew` (shell alias + upgrade tasks)
-#   context7  -> CONTEXT7_RUNNER="fnox exec -P context7 -- pnpm dlx" (claude settings.json)
-env        = false
+# Nothing is exported to the shell
+env = false
+# If a secret is missing, this determines the behavior
 if_missing = "error"
 
 [providers.global]
@@ -30,3 +28,8 @@ value    = "GITHUB_API_TOKEN"
 env      = "exec"
 provider = "global"
 value    = "CONTEXT7_API_KEY"
+
+[profiles.mempalace.secrets.HF_TOKEN]
+env      = "exec"
+provider = "global"
+value    = "HF_TOKEN"
