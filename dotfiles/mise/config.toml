@@ -73,6 +73,7 @@ ccf     = "mise run --silent func:claude --model 'fable[1m]'"
 cch     = "mise run --silent func:claude --model 'haiku[1m]'"
 cco     = "mise run --silent func:claude --model 'opus[1m]'"
 ccs     = "mise run --silent func:claude --model 'sonnet[1m]'"
+mp      = "mise x -- fnox exec --profile mempalace -- mempalace"
 
 # Development related shortcuts
 # code = "mise run --silent func:code --"
