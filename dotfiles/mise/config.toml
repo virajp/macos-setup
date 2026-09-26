@@ -92,8 +92,8 @@ ipv6     = "mise run ips:ipv6"
 remoteip = "mise run ips:remoteip"
 
 # Generic Aliases
+bat             = "bat --tabs 2"
 cancelPrintJobs = "sudo cancel -a -x"
-cat             = "bat --tabs 2 --color always --decorations always --paging auto"
 cd              = "z"
 cdcd            = "cd '$CLOUD_PATH'"
 cdgh            = "cd '$HOME/Projects/github.com'"

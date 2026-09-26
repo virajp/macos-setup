@@ -23,8 +23,8 @@ Bias toward caution over speed — use judgment for trivial tasks.
 - **libraries**: Always use Context7 MCP (`resolve-library-id` →
   `get-library-docs`) before writing code with any external library — never rely
   on training knowledge for APIs or config schemas
-- **shell**: core commands are aliased to modern replacements (`cat`→`bat`,
-  `ls`→`eza`, `cd`→`z`) — prefix with `command` whenever output is parsed or
+- **shell**: core commands are aliased to modern replacements (`ls`→`eza`,
+  `cd`→`z`, `cat`→`bat`) — prefix with `command` whenever output is parsed or
   standard flags are needed. See [Shell Aliases](#shell-aliases)
 - ALWAYS ask questions, NEVER assume
 
@@ -37,17 +37,16 @@ the interactive prompt.
 
 Aliases that shadow standard commands (use `command <name>` to bypass):
 
-| Alias                  | Actually runs   | Gotcha                                        |
-| ---------------------- | --------------- | --------------------------------------------- |
-| `cat`                  | `bat`           | ANSI color, decorations, paging — never parse |
-| `ls`, `ld`, `lf`, `lg` | `eza`           | icons and columns differ from coreutils       |
-| `td`, `tg`, `tl`       | `eza --tree`    | recursive by default                          |
-| `cd`                   | `z` (zoxide)    | jumps by frecency, not by literal path        |
-| `diff`                 | `diff-so-fancy` | no unified diff, no diff exit codes           |
-| `ping`                 | `prettyping`    |                                               |
-| `dig`                  | `doggo`         |                                               |
-| `edit`                 | `subl`          | opens a GUI editor                            |
-| `plist`                | `plutil -p`     |                                               |
+| Alias                  | Actually runs   | Gotcha                                  |
+| ---------------------- | --------------- | --------------------------------------- |
+| `ls`, `ld`, `lf`, `lg` | `eza`           | icons and columns differ from coreutils |
+| `td`, `tg`, `tl`       | `eza --tree`    | recursive by default                    |
+| `cd`                   | `z` (zoxide)    | jumps by frecency, not by literal path  |
+| `diff`                 | `diff-so-fancy` | no unified diff, no diff exit codes     |
+| `ping`                 | `prettyping`    |                                         |
+| `dig`                  | `doggo`         |                                         |
+| `edit`                 | `subl`          | opens a GUI editor                      |
+| `plist`                | `plutil -p`     |                                         |
 
 The rest shadow nothing and are safe: git (`gc`, `gp`, `gpull`, `gs`), docker
 (`dclean`, `dlist`, `dprune`, `dpull`, `drun` — `dpull`/`drun` force
