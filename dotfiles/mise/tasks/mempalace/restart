@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#MISE description="Restart mempalace mcp"
+#MISE description="Restart qdrant (mempalace)"
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

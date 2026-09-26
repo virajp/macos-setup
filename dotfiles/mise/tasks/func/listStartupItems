@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="List startup items (LaunchAgents & LaunchDaemons)"
 #MISE hide=true
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Check that docker is installed and reachable"
 #MISE hide=true
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Upgrade Tailscale (mise-poured formula, runs as a root brew service)"
 #MISE hide=true
+#MISE dir="~"
 
 # The formula is mise's ([bootstrap.packages]); only the daemon goes through
 # `brew services`, because tailscaled needs root for the utun interface and mise

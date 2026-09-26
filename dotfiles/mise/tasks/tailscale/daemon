@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Start tailscaled as a root brew service (prompts for sudo)"
 #MISE hide=true
+#MISE dir="~"
 
 # Run from the post-packages hook (conf.d/macos.toml). The formula itself is
 # mise's; only the daemon goes through `brew services`, because tailscaled needs

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Make sure mas is installed and an Apple Account is signed in before mas installs run"
 #MISE hide=true
+#MISE dir="~"
 
 # Run from the pre-packages hook (conf.d/macos.toml). `mas install` fails when
 # nobody is signed into the App Store, which aborts the packages phase and

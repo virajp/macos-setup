@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Cleanup Telegram cache"
 #MISE hide=true
-#MISE dir="."
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

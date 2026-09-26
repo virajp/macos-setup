@@ -98,7 +98,7 @@ backend = "npm:codeburn"
 specifiers = ["latest"]
 
 [[tools."pipx:graphifyy"]]
-version = "0.9.65"
+version = "0.9.68"
 backend = "pipx:graphifyy"
 specifiers = ["latest"]
 
@@ -108,14 +108,14 @@ backend = "pipx:mempalace"
 specifiers = ["latest"]
 
 [[tools.pnpm]]
-version = "12.5.1"
+version = "12.6.0"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:776b26182ea825d5846dc236d29773cf4b7568b7f0abe145c328a342284c8b75"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.5.1/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/573486213"
+checksum = "sha256:1030f38e14fa2e6c87fe6ab0313a3bf3b794a961504f4439bad2ca2110d3583e"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.6.0/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/581813250"
 provenance = "github-attestations"
 
 [[tools.python]]
@@ -129,19 +129,14 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.rtk]]
-version = "0.49.0"
+version = "0.50.0"
 backend = "aqua:rtk-ai/rtk"
 specifiers = ["latest"]
 
-[tools.rtk."platforms.linux-x64"]
-checksum = "sha256:7278231dfd7e6a730a4ab7f847b195bcf02289c2d57622b0dab75a6411100c8f"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.49.0/rtk-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/556881350"
-
 [tools.rtk."platforms.macos-arm64"]
-checksum = "sha256:bbbfebabb22686993a80da731aa4d5d35116fb8ae24abb00608efa028e13ae01"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.49.0/rtk-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/556881349"
+checksum = "sha256:fe54761a9950266e3a78ddb66a8af5e067251169da306a288e0751de63d836fe"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.50.0/rtk-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/585679940"
 
 [[tools.taplo]]
 version = "0.10.0"
@@ -154,29 +149,24 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aa
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
 
 [[tools.usage]]
-version = "6.11.0"
+version = "6.11.1"
 backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
-[tools.usage."platforms.linux-x64"]
-checksum = "sha256:2ebc293d1645a80e3b7c4d87cd2cca35d34c6582733260fe1d13e537bb3d1e2e"
-url = "https://github.com/jdx/usage/releases/download/v6.11.0/usage-x86_64-unknown-linux-gnu.tar.gz"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
 [tools.usage."platforms.macos-arm64"]
-checksum = "sha256:0277664d5a7f615ec427cfc312e175684f027bf69e43e76964f086aaf5e51d3f"
-url = "https://github.com/jdx/usage/releases/download/v6.11.0/usage-universal-apple-darwin.tar.gz"
+checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
+url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
-version = "0.12.17"
+version = "0.12.19"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:85f00cbdc6dd3e97eba4c31b4d014375a9fdfe8f570023b84e5102fc3456896b"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.17/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/573252913"
+checksum = "sha256:a9a8df1eedeb192f2e47e40e2faabfb387db4b850209118786d42f89dde3e0ba"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587158826"
 provenance = "github-attestations"
 
 [[tools.yq]]

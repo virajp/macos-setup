@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Apply the pmset/nvram power profile (prompts for sudo)"
 #MISE hide=true
+#MISE dir="~"
 
 # Everything `defaults`-based lives in [bootstrap.macos.defaults]
 # (conf.d/macos.toml); mise bootstrap has no pmset/nvram support, so this task

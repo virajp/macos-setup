@@ -2,6 +2,7 @@
 #MISE description="Build and pull the mempalace/qdrant images"
 #MISE hide=true
 #MISE depends=["mempalace:check"]
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

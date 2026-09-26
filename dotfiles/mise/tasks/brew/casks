@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Install/upgrade casks and VS Code extensions from the Brewfile"
 #MISE hide=true
+#MISE dir="~"
 
 # Run from the post-packages hook (conf.d/macos.toml). Formulae are mise's
 # (conf.d/packages.toml); the Brewfile only holds casks and VS Code extensions,

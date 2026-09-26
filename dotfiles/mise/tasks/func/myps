@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="List processes for the current user, optionally filtered"
 #MISE hide=true
+#MISE dir="~"
 
 # Optional: with no argument every process for the user is listed, which is
 # what the shell `myps` alias relies on.

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-#MISE description="Start the mempalace qdrant stack"
+#MISE description="Start the qdrant (mempalace) stack"
 #MISE depends=["mempalace:check"]
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

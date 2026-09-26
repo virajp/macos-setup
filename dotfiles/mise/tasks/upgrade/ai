@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Setup / Upgrade AI tools"
 #MISE hide=true
+#MISE dir="~"
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"

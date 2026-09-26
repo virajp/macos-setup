@@ -2,6 +2,7 @@
 #MISE description="Upgrade all tools managed in the system"
 #MISE depends=["global:init"]
 #MISE hide=true
+#MISE dir="~"
 
 #USAGE flag "-f --force" help="Run the weekly steps (macOS settings, power profile, mempalace images) even if they ran less than a week ago"
 
