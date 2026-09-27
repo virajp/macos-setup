@@ -14,17 +14,6 @@ status.missing_tools = "always"
 task.output          = "interleave"
 trusted_config_paths = [ "~/.config/mise", "~/Projects" ]
 
-# NodeJS settings
-node.compile = false
-
-# Python settings
-python.compile      = false
-python.uv_venv_auto = "create|source"
-
-# Package manager settings
-npm.package_manager = "pnpm"
-pipx.uvx            = true
-
 [settings.github]
 credential_command = "fnox get GITHUB_API_TOKEN"
 

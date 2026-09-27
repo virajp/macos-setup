@@ -31,6 +31,3 @@
 
 # oh-my-posh
 "~/.config/oh-my-posh" = { mode = "symlink", source = "oh-my-posh" }
-
-# PNPM
-"~/Library/Preferences/pnpm/config.yaml" = { mode = "symlink", source = "pnpm/config.yaml" }

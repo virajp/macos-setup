@@ -1,0 +1,26 @@
+[settings]
+# NodeJS settings
+node.compile        = false
+npm.package_manager = "pnpm"
+
+[tools]
+node = { version = "latest" }
+pnpm = { version = "latest" }
+
+[env]
+PNPM_HOME = "$HOME/Library/pnpm"
+_.path    = "$PNPM_HOME/bin"
+
+[bootstrap.files."~/Library/Preferences/pnpm/config.yaml"]
+content = """
+# Global pnpm configuration (pnpm v11+).
+# Path resolved via: pnpm config get globalconfig
+# Settings reference: https://pnpm.io/settings
+
+minimumReleaseAge: 600 # 600 = 10h cooldown
+
+# Exempt specific versions from the cooldown when an urgent fix is needed:
+minimumReleaseAgeExclude:
+  - "@askviraj/*"
+  - "@virajp.dev/*"
+"""
