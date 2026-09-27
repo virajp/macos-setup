@@ -106,22 +106,14 @@ TrackpadThreeFingerTapGesture = 0    # disable three-finger tap lookup
 [bootstrap.macos.defaults."com.apple.appleinterface"]
 videoStreamingOptimizeOnBattery = true # clamp streaming quality on battery
 
-[bootstrap.hooks]
-post-defaults = [
+[bootstrap.hooks.post-defaults]
+run = """
 # defaults values are not templated, and $HOME must not be hardcoded
-'defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"',
-"chflags nohidden ~/Library",
-"killall cfprefsd || true",
-"killall Finder || true",
-"killall Dock || true",
-"killall SystemUIServer || true",
-"killall ControlCenter || true",
-]
-post-packages = [ "mise run brew:casks", "mise run tailscale:daemon" ]
-pre-packages = "mise run macos:appstore"
-
-# Runs last in `mise bootstrap`: prompts for sudo (pmset/nvram)
-[tasks.bootstrap]
-description = "Apply the pmset/nvram power profile"
-hide        = true
-run         = "mise run macos:power"
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
+chflags nohidden ~/Library
+killall cfprefsd || true
+killall Finder || true
+killall Dock || true
+killall SystemUIServer || true
+killall ControlCenter || true
+"""

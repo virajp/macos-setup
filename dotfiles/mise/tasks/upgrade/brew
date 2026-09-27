@@ -25,8 +25,8 @@ brew update --force # --verbose
 # generic upgrade below would otherwise fail on its root-owned keg.
 mise run upgrade:tailscale
 
-print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
-mise bootstrap packages prune --manager brew --yes
+print_subheader "Deleting brew packages NOT in [bootstrap.packages] ..."
+mise bootstrap packages prune --yes
 
 print_subheader "Install/Upgrade all declared packages ..."
 mise bootstrap packages upgrade --yes

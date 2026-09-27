@@ -43,14 +43,20 @@ mise self-update --yes
 
 # Install & upgrade mise
 print_subheader "Install MISE tools ..."
-mise install --yes --silent --include-task-tools --jobs 10
+mise install --yes --include-task-tools --jobs 10
 
 print_subheader "Upgrading mise tools ..."
-mise upgrade --yes --silent --jobs 10 --bump
+mise upgrade --yes --jobs 10 --bump
 
 # Prune all unused versions of tools
 print_subheader "Pruning unused versions of tools ..."
 mise prune --yes
+
+# Upgrade Homebrew and all installed packages
+fnox exec --profile brew -- mise run upgrade:brew
+
+print_subheader "Installing rest using mise ..."
+mise bootstrap --skip macos-defaults,defaults,packages --yes
 
 # Reshim mise to ensure all tools are available
 print_subheader "Reshimming mise ..."
@@ -59,9 +65,6 @@ mise reshim
 # Run mise doctor
 print_subheader "Running mise doctor ..."
 mise doctor --quiet --silent > /dev/null
-
-# Upgrade Homebrew and all installed packages
-fnox exec --profile brew -- mise run upgrade:brew
 
 mise run upgrade:npm
 mise run upgrade:pnpm
@@ -73,12 +76,14 @@ mise run upgrade:ai
 # then. `files` re-checks /etc/pam.d/sudo_local (Touch ID for sudo), `defaults`
 # the macOS settings, `task` the pmset/nvram power profile.
 if [[ "${run_weekly}" == "true" ]]; then
-  # Apply macOS system settings
-  print_header "Applying macOS system settings ..."
-  mise bootstrap --only files,defaults,task --yes
-
   # Update qdrant (mempalace)
   mise run mempalace:update
+
+  # Apply macOS system settings
+  print_header "Applying macOS system settings ..."
+  mise bootstrap --only macos-defaults,defaults --yes
+
+  mise run upgrade:power
 
   # Update the weekly stamp to indicate that the weekly steps have been run
   touch "${WEEKLY_STAMP}"
@@ -89,5 +94,8 @@ mise run upgrade:macos:download
 
 # Clean up unnecessary .DS_Store files from ~/Projects folder
 mise run cleanupDS ~/Projects
+
+# Start tailscale daemon
+mise run tailscale:daemon
 
 print_header "Setup complete!"

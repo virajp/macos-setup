@@ -75,6 +75,7 @@ login_shell = "/opt/homebrew/bin/zsh"
 "/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }
 "/etc/shells/brew-fish" = { line = "/opt/homebrew/bin/fish" }
 "/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }
+"~/.zprofile/mise-path" = { block = "export PATH=\"${HOME}/.local/bin:$PATH\"" }
 
 # ZSH
 "~/.config/zsh" = { mode = "symlink-each", source = "../../zsh/scripts" }
