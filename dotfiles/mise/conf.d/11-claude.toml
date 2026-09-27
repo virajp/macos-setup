@@ -3,15 +3,16 @@
 "npm:codeburn"                = { pnpm = true, version = "0.9.25" }
 "pipx:graphifyy"              = { uvx = true, version = "0.9.69" }
 rtk                           = { version = "0.50.0" }
+ruby                          = { version = "4.0.7" }
 
 [bootstrap.brew.taps]
 "stablyai/orca" = "https://github.com/stablyai/homebrew-orca.git"
 "virajp/tap"    = "https://github.com/virajp/homebrew-tap.git"
 
 [bootstrap.packages]
-"brew-cask:claude"             = "latest" # Claude Desktop app
-"brew-cask:claude-code@latest" = "latest" # Claude Code latest version
-# "brew-cask:stablyai/orca/orca"  = "latest" # Orchestrating AI coding agents
+"brew-cask:claude"              = "latest" # Claude Desktop app
+"brew-cask:claude-code@latest"  = "latest" # Claude Code latest version
+"brew-cask:stablyai/orca/orca"  = "latest" # Orchestrating AI coding agents
 "brew:virajp/tap/claude-status" = "latest" # Claude Code status line
 
 [dotfiles]
