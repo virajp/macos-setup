@@ -11,16 +11,15 @@ project_name = "mempalace"
 state        = "running"
 sudo         = false
 
-[bootstrap.macos.launchd.agents.mempalace-hub]
-args              = [ "x", "--", "mempalace", "serve" ]
-environment       = { MEMPALACE_MCP_IDLE_HOURS = "0", PATH = "/opt/homebrew/bin:/usr/bin:/bin" }
-keep_alive        = true
-kickstart         = true
-program           = "/opt/homebrew/bin/mise"
-run_at_load       = true
-stderr_path       = "~/Library/Logs/mempalace-hub.log"
-stdout_path       = "~/Library/Logs/mempalace-hub.log"
-throttle_interval = 10
+[bootstrap.services.mempalace-hub]
+command           = "~/.local/bin/mise x -- mempalace serve" # from `which mise`
+description       = "MemPalace Hub service (mcp server)"
+enabled           = true
+environment       = { MEMPALACE_MCP_IDLE_HOURS = "0" }
+requires_tools    = true
+restart           = "on-failure"
+scope             = "user"
+state             = "running"
 working_directory = "~"
 
 [bootstrap.directories."~/.config/mempalace"]
