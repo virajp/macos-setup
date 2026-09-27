@@ -1,3 +1,10 @@
+[bootstrap.mise_shell_activate]
+bash_profile = "shims"
+bashrc       = "activate"
+fish         = "activate"
+zprofile     = "shims"
+zshrc        = "activate"
+
 # Packages to be installed via Homebrew
 [bootstrap.packages]
 # Formulaes
