@@ -7,6 +7,6 @@
 
 # Load all ZSH configuration
 for f in ~/.config/zsh/*.zsh(N); do
-  echo "$(date): $f"
+  # echo "$(date): $f"
   source "$f"
 done
