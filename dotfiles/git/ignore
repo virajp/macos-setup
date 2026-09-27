@@ -27,4 +27,15 @@ npm-debug.log
 ##################
 *.bak
 
+##################
+# Mise           #
+##################
+mise.local.toml
+mise.local.lock
+.config/mise/**/*.local.toml
+.config/mise/**/*.local.lock
+
+##################
+# AI Tools       #
+##################
 **/.claude/settings.local.json
