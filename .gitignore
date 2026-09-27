@@ -38,3 +38,6 @@
 
 # Graphify
 graphify-out/
+
+# Git worktrees
+.worktrees/
