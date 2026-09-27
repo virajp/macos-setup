@@ -1,0 +1,11 @@
+# Global mise config, loaded from ~/.config/mise/conf.d/. Machine state applied
+# by `mise bootstrap` (from any directory); settings/tools/env stay in
+# ../config.toml.
+# Optional module: the Claude Code status line, from the owner's public tap.
+# Third-party taps need published API metadata (api/formula/<name>.json in the
+# tap repo); mise's Ruby shim cannot evaluate most raw formula/cask definitions.
+[bootstrap.brew.taps]
+"virajp/tap" = "https://github.com/virajp/homebrew-tap.git"
+
+[bootstrap.packages]
+"brew:virajp/tap/claude-status" = "latest" # Claude Code status line
