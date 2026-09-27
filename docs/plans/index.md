@@ -8,5 +8,5 @@ to pick the next runnable plan.
 
 | Folder                                          | Kind   | Plan                           | Target repo | Priority | Status   | Requires                           | Backlog |
 | ----------------------------------------------- | ------ | ------------------------------ | ----------- | -------- | -------- | ---------------------------------- | ------- |
-| `docs/plans/2026-09-27-personal-values-overlay` | change | Personal values overlay        | —           | 10       | APPROVED | —                                  | —       |
+| `docs/plans/2026-09-27-personal-values-overlay` | change | Personal values overlay        | —           | 10       | RUNNING  | —                                  | —       |
 | `docs/plans/2026-09-27-adoption-mechanism`      | change | Adoption mechanism for friends | —           | 20       | APPROVED | 2026-09-27-personal-values-overlay | —       |
