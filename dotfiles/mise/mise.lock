@@ -152,7 +152,7 @@ url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
 [[tools.usage]]
 version = "6.11.1"
 backend = "packslip:github.com/jdx/usage"
-specifiers = ["latest"]
+specifiers = ["6.11.1"]
 
 [tools.usage."platforms.macos-arm64"]
 checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
