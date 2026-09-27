@@ -85,6 +85,16 @@ login_shell = "/opt/homebrew/bin/zsh"
 "~/.config/fish/config.fish" = { mode = "symlink", source = "../../fish/config.fish" }
 "~/.config/fish/functions"   = { mode = "symlink", source = "../../fish/functions" }
 
+# Git & SSH
+"~/.config/git" = { mode = "symlink-each", source = "../../git" }
+"~/.ssh"        = { mode = "symlink-each", source = "../../ssh" }
+
+# Brewfile (casks + VS Code extensions, applied by brew:casks)
+"~/.config/brewfile" = { mode = "symlink", source = "../../homebrew/brewfile" }
+
+# Mise (user level)
+"~/.config/mise" = { mode = "symlink", source = "../../mise" }
+
 [env]
 # GCP related
 CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
