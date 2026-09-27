@@ -88,7 +88,7 @@ checksum = "sha256:751fdf7439f115d87ee2a8f3f18c065b6151852068e3e666ac60ac2996f75
 url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-darwin-arm64.tar.gz"
 
 [[tools."npm:@mermaid-js/mermaid-cli"]]
-version = "11.17.0"
+version = "12.0.0"
 backend = "npm:@mermaid-js/mermaid-cli"
 specifiers = ["latest"]
 
@@ -101,11 +101,19 @@ specifiers = ["latest"]
 version = "0.9.69"
 backend = "pipx:graphifyy"
 specifiers = ["latest"]
+uv = { path = "locks/pipx-graphifyy/0.9.69~4cab81f3", digest = "sha256:a9b63aa4519ced3d22709f0e90a4c8b6f9cc898c3bdd4861fbbefe24d80b1e49" }
+
+[tools."pipx:graphifyy".options]
+uvx = "true"
 
 [[tools."pipx:mempalace"]]
 version = "3.10.0"
 backend = "pipx:mempalace"
 specifiers = ["latest"]
+uv = { path = "locks/pipx-mempalace/3.10.0~318f0c0e", digest = "sha256:a04cc14829a5f84da0685acd8f9b6daf480fc4ef92eb049b747b3ef57962870c" }
+
+[tools."pipx:mempalace".options]
+uvx = "true"
 
 [[tools.pnpm]]
 version = "12.6.0"
@@ -132,6 +140,11 @@ provenance = "github-attestations"
 version = "0.50.0"
 backend = "aqua:rtk-ai/rtk"
 specifiers = ["latest"]
+
+[tools.rtk."platforms.linux-x64"]
+checksum = "sha256:bc2b8902b0d9c796c82ef45f16ae2307e17757afeca5ee156235a3dc7bda5f89"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.50.0/rtk-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/585679953"
 
 [tools.rtk."platforms.macos-arm64"]
 checksum = "sha256:fe54761a9950266e3a78ddb66a8af5e067251169da306a288e0751de63d836fe"

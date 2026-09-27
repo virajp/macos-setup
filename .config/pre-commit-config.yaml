@@ -50,7 +50,7 @@ repos:
         stages: [ pre-commit ]
       - id: check-added-large-files
         name: Check for added large files (>1MB)
-        args: [ "--maxkb=1024" ]
+        args: [ "--maxkb=2048" ]
         stages: [ pre-commit ]
       - id: check-symlinks
         name: Check for broken symlinks

@@ -1,0 +1,5 @@
+[project]
+dependencies    = [ "mempalace==3.10.0" ]
+name            = "mise-pypi-tool-environment"
+requires-python = ">=3.9"
+version         = "0.0.0"
