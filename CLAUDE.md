@@ -17,7 +17,15 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   (`[bootstrap.packages]` — Homebrew formulae and App Store apps), `macos.toml`
   (`[bootstrap.macos.defaults]`, hooks, the `bootstrap` task), `system.toml`
   (`[bootstrap.files]` Touch ID, `[bootstrap.user]` login shell + `/etc/shells`
-  lines, `[bootstrap.compose]`).
+  lines), `identity.toml` (personal `[env]` identity: `GITHUB_*`/`GITLAB_*`),
+  `mempalace.toml` (`[bootstrap.compose.mempalace]` qdrant + the `mempalace-hub`
+  launchd agent), `claude.toml` (the `virajp/tap` tap + `claude-status`).
+- Identity files — personal values live only in whole-file identity files:
+  `dotfiles/git/identity` (`[user]`, included by `gitconfig`),
+  `dotfiles/ssh/config.identity` (`User`, included in `Host *`),
+  `dotfiles/mise/conf.d/identity.toml`, plus the already-personal
+  `ssh/signingkeys/` and `ssh/allowed_signers`. Keep new personal values there,
+  not in shared files.
 - `dotfiles/mise.toml` — the `[dotfiles]` link map: which source file lands at
   which `$HOME` path, in which mode. A project config on purpose (it changes
   with the repo, not the machine), applied with `mise run dotfiles:install`;

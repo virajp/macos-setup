@@ -15,7 +15,7 @@ app's config; the `[dotfiles]` map in `mise.toml` symlinks them into `$HOME`
 | `oh-my-posh/` | Oh My Posh prompt themes (`shell.yaml`, `claude.yaml`) — alternate  |
 | `ghostty/`    | Ghostty terminal configuration                                      |
 | `homebrew/`   | The `brewfile` — casks and VS Code extensions (formulae are mise's) |
-| `git/`        | Git config, ignores, and conditional includes for GitHub/GitLab     |
+| `git/`        | Git config, ignores, `identity` (`[user]`), GitHub/GitLab includes  |
 | `github/`     | GitHub CLI (`gh`) configuration (`hosts.yml` stays untracked)       |
 | `ssh/`        | SSH client config and commit-signing public keys (see below)        |
 | `fnox/`       | Secret management via the macOS Keychain (see below)                |
@@ -105,7 +105,9 @@ It is the single source of truth for **environment variables, aliases and shell
 functions**. Neither shell defines its own — there is no `aliases.sh` or
 `functions.sh`, and fish's `conf.d` carries only bootstrap variables. Some names
 differ from their old shell equivalents: `ips4` is now `ipv4`, `ips6` is `ipv6`,
-and `list-services` is `listServices`.
+and `list-services` is `listServices`. The personal `GITHUB_*`/`GITLAB_*`
+variables are the one exception: they live in `conf.d/identity.toml` (see
+**Machine declaration**).
 
 **`PATH` is the deliberate exception** and stays in shell config
 (`fish/conf.d/02-path.fish`, `zsh/.zshrc`). mise prepends `[env] _.path` entries
@@ -139,7 +141,7 @@ argument passes through to `claude`, so `cc review --continue` and
 `dotfiles/mempalace/` holds the `docker compose` stack for mempalace's qdrant
 backend (`127.0.0.1:6333`, data bind-mounted from `~/.local/share/qdrant`);
 `mise bootstrap` keeps it running (`[bootstrap.compose.mempalace]` in
-`conf.d/system.toml`). The MCP server is `mempalace-mcp` from the
+`conf.d/mempalace.toml`). The MCP server is `mempalace-mcp` from the
 `pipx:mempalace` mise tool, started by Claude Code over stdio through the `vwf`
 plugin, with its `MEMPALACE_*` env in `ai-tools/claude/settings.json` (palace
 data in `~/.local/share/mempalace`). `mempalace:*` mise tasks
@@ -152,7 +154,9 @@ data in `~/.local/share/mempalace`). `mempalace:*` mise tasks
 `git/root/gitconfig` includes host-specific configs conditionally
 (`git/git/gitconfig-github`, `gitconfig-gitlab`) and uses a global ignore file
 (`git/root/gitignore_global`). Commit signing keys live in `ssh/` and are
-referenced via `ssh/allowed_signers`.
+referenced via `ssh/allowed_signers`. The `[user]` identity (name, email,
+signing key) is not in `gitconfig`: it always includes `git/identity`, linked to
+`~/.config/git/identity`.
 
 `push.default` is `current`, and the push aliases (`p` in gitconfig, `gp` in
 mise) push only the current branch — never `--all`. With public repos, a `--all`
@@ -164,7 +168,8 @@ push would publish every local scratch branch, whatever it carries.
 contact is recorded in `~/.ssh/known_hosts`, a changed key is refused). It
 includes `~/.ssh/config.local` for machine-local hosts — LAN boxes, per-host
 auth overrides — which is untracked on purpose, since this repo is public. A
-missing include is ignored by ssh.
+missing include is ignored by ssh. The default `User` sits in
+`ssh/config.identity`, included as the first line of `Host *`.
 
 Only `github/config.yml` is linked into `~/.config/gh`. `hosts.yml` is machine
 state `gh auth login` writes, and while macOS `gh` keeps the token in the
@@ -191,21 +196,29 @@ Apply it with `mise run dotfiles:install`.
   (`macos:appstore`) checks that an Apple Account is signed in, since
   `mas install` fails otherwise and would abort the run (mas 7 has no sign-in
   query, so this is a heuristic). Third-party tap formulae work only when the
-  tap publishes `api/formula/<name>.json` (`virajp/tap` does). The
-  `post-packages` hook then runs `brew:casks`, which applies `homebrew/brewfile`
-  — casks and VS Code extensions, which stay on Homebrew because mise's cask
-  support is intentionally narrow (no `postflight`, no per-cask `appdir`).
-  Ownership rule: casks → Homebrew, formulae/mas → mise, versioned dev tools →
-  `[tools]`. One formula needs more: `tailscaled` must run as root (utun) and
-  mise has no privileged services on macOS, so the `tailscale:daemon` hook task
-  starts it with `sudo brew services`, and `upgrade:tailscale` hands the
-  root-owned keg back before `packages upgrade` can replace it. (The App Store
-  build is sandboxed and cannot run the Tailscale SSH server.)
+  tap publishes `api/formula/<name>.json` (`virajp/tap`, declared in
+  `claude.toml`, does). The `post-packages` hook then runs `brew:casks`, which
+  applies `homebrew/brewfile` — casks and VS Code extensions, which stay on
+  Homebrew because mise's cask support is intentionally narrow (no `postflight`,
+  no per-cask `appdir`). Ownership rule: casks → Homebrew, formulae/mas → mise,
+  versioned dev tools → `[tools]`. One formula needs more: `tailscaled` must run
+  as root (utun) and mise has no privileged services on macOS, so the
+  `tailscale:daemon` hook task starts it with `sudo brew services`, and
+  `upgrade:tailscale` hands the root-owned keg back before `packages upgrade`
+  can replace it. (The App Store build is sandboxed and cannot run the Tailscale
+  SSH server.)
 - `[bootstrap.files]` (`system.toml`) — `/etc/pam.d/sudo_local` (Touch ID for
   sudo).
-- `[bootstrap.compose]` (`system.toml`) — the qdrant container from `mempalace/`
-  (project `mempalace`), after OrbStack. `project_dir` has to be a literal
-  absolute path, so this is the one place the username appears in the repo.
+- `[bootstrap.compose]` (`mempalace.toml`) — the qdrant container from
+  `mempalace/` (project `mempalace`), after OrbStack. `project_dir` has to be a
+  literal absolute path (mise expands neither `~`, `$HOME` nor templates there),
+  so it holds the username. The same file declares the `mempalace-hub` launchd
+  agent (`[bootstrap.macos.launchd.agents.mempalace-hub]`, `mempalace serve`).
+- `[bootstrap.brew.taps]` + `[bootstrap.packages]` (`claude.toml`) — the
+  `virajp/tap` tap and its `claude-status` formula (the Claude Code status
+  line).
+- `[env]` (`identity.toml`) — the personal `GITHUB_*`/`GITLAB_*` identity
+  variables; the one conf.d file that holds env rather than machine state.
 - `[dotfiles]` `line` entries (`system.toml`) — Homebrew's bash and zsh in
   `/etc/shells`.
 - `[bootstrap.macos.defaults]` (`macos.toml`) — every `defaults write` the old
