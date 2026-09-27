@@ -10,9 +10,10 @@ backlog_pieces: []
 
 ## Status
 
-**APPROVED**
+**RUNNING**
 
-APPROVED 2026-09-27 by the user
+RUNNING since 2026-09-27 in
+/Users/virajpatel/Projects/github.com/virajp/macos-setup/.worktrees/2026-09-27-personal-values-overlay
 
 ## Consent
 
@@ -140,14 +141,14 @@ none
 
 ## Units
 
-| Id | Wave | Unit file                                          | Kind | Owns                                                                                                                                                                                                                   | Depends on     | Status  | Commit |
-| -- | ---- | -------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------- | ------ |
-| U1 | 1    | [01-git-identity.md](01-git-identity.md)           | edit | `dotfiles/git/gitconfig`, `dotfiles/git/identity`, `dotfiles/mise.toml`                                                                                                                                                | —              | pending |        |
-| U2 | 1    | [02-ssh-identity.md](02-ssh-identity.md)           | edit | `dotfiles/ssh/config`, `dotfiles/ssh/config.identity`                                                                                                                                                                  | —              | pending |        |
-| U3 | 1    | [03-mise-conf-d-split.md](03-mise-conf-d-split.md) | edit | `dotfiles/mise/config.toml`, `dotfiles/mise/conf.d/system.toml`, `dotfiles/mise/conf.d/packages.toml`, `dotfiles/mise/conf.d/identity.toml`, `dotfiles/mise/conf.d/mempalace.toml`, `dotfiles/mise/conf.d/claude.toml` | —              | pending |        |
-| U4 | 1    | [04-fish-pnpm-home.md](04-fish-pnpm-home.md)       | edit | `dotfiles/fish/conf.d/02-path.fish`                                                                                                                                                                                    | —              | pending |        |
-| U5 | 2    | [05-docs.md](05-docs.md)                           | edit | `docs/account.md`, `CLAUDE.md`, `readme.md`, `dotfiles/CONFIG_DOCUMENTATION.md`, `dotfiles/readme.md`, `docs/**` except `docs/plans/**`, any doc `vwf:docs-sync` names                                                 | U1, U2, U3, U4 | pending |        |
-| U6 | 3    | [06-gates-and-bump.md](06-gates-and-bump.md)       | edit | — (no version file, no generator)                                                                                                                                                                                      | U5             | pending |        |
+| Id | Wave | Unit file                                          | Kind | Owns                                                                                                                                                                                                                   | Depends on     | Status  | Commit  |
+| -- | ---- | -------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------- | ------- |
+| U1 | 1    | [01-git-identity.md](01-git-identity.md)           | edit | `dotfiles/git/gitconfig`, `dotfiles/git/identity`, `dotfiles/mise.toml`                                                                                                                                                | —              | green   | 99a3cb1 |
+| U2 | 1    | [02-ssh-identity.md](02-ssh-identity.md)           | edit | `dotfiles/ssh/config`, `dotfiles/ssh/config.identity`                                                                                                                                                                  | —              | green   | dede874 |
+| U3 | 1    | [03-mise-conf-d-split.md](03-mise-conf-d-split.md) | edit | `dotfiles/mise/config.toml`, `dotfiles/mise/conf.d/system.toml`, `dotfiles/mise/conf.d/packages.toml`, `dotfiles/mise/conf.d/identity.toml`, `dotfiles/mise/conf.d/mempalace.toml`, `dotfiles/mise/conf.d/claude.toml` | —              | green   | 0634262 |
+| U4 | 1    | [04-fish-pnpm-home.md](04-fish-pnpm-home.md)       | edit | `dotfiles/fish/conf.d/02-path.fish`                                                                                                                                                                                    | —              | green   |         |
+| U5 | 2    | [05-docs.md](05-docs.md)                           | edit | `docs/account.md`, `CLAUDE.md`, `readme.md`, `dotfiles/CONFIG_DOCUMENTATION.md`, `dotfiles/readme.md`, `docs/**` except `docs/plans/**`, any doc `vwf:docs-sync` names                                                 | U1, U2, U3, U4 | pending |         |
+| U6 | 3    | [06-gates-and-bump.md](06-gates-and-bump.md)       | edit | — (no version file, no generator)                                                                                                                                                                                      | U5             | pending |         |
 
 ## Shared-file rule
 
@@ -245,8 +246,14 @@ the unit could not proceed without; it blocks the unit and its dependents.
 
 ## Run log
 
-| Wave | Unit | Model | Round | Outcome | Detail | Commit |
-| ---- | ---- | ----- | ----- | ------- | ------ | ------ |
+| Wave | Unit      | Model | Round | Outcome | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                             | Commit  |
+| ---- | --------- | ----- | ----- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| 0    | preflight | —     | 1     | green   | Wave gate green (format, lint, pre-commit). Format check skipped: no `covers:`. Doctor: mise, graphify CLI, graph pass; repo has no `.config/vwf.yaml` (not onboarded) — noted, not an execute halt; no `code` unit, so LSP/conventions skipped. Worktree via `git worktree add` (`.worktrees/` ignored in 4f7e586); `setup:all` not run (its `mise upgrade` would move a lockfile), `init` + `mise install` only                                  | —       |
+| 1    | U4        | opus  | 1     | green   | PNPM_HOME → `"$HOME/Library/pnpm"`; verified `fish -n`, HOME override, no `virajpatel` left. DECIDED: ran pre-commit scoped to its file, not the full gate (concurrent units)                                                                                                                                                                                                                                                                      |         |
+| 1    | U2        | opus  | 1     | green   | `User virajp` → `dotfiles/ssh/config.identity`; `Host *` line 11 now `Include ~/.ssh/config.identity`; covered by `symlink-each`. DECIDED: pre-commit scoped to its files (concurrent units)                                                                                                                                                                                                                                                       | dede874 |
+| 1    | U1        | opus  | 1     | green   | `[user]` → `dotfiles/git/identity`; gitconfig `[include] path = ~/.config/git/identity`; link added to `dotfiles/mise.toml` (3 neighbours re-aligned by taplo). DOCS FALSIFIED: `dotfiles/CONFIG_DOCUMENTATION.md:152-155` Git section (→ U5). GAP: `~/.config/git/` absent; assumes `dotfiles:install` creates the parent dir — after-landing step confirms                                                                                       | 99a3cb1 |
+| 1    | U3        | opus  | 1     | green   | identity/mempalace/claude conf.d files created byte-copied; entries removed from `config.toml`, `system.toml`, `packages.toml` (brew keys re-aligned by taplo); `MISE_CONFIG_DIR` honoured, key/value union = HEAD (315=315). DOCS FALSIFIED: `CLAUDE.md:14-20`, `dotfiles/CONFIG_DOCUMENTATION.md:141-142,174-216` (→ U5). GAP: taplo config unspecified, used `.config/taplo.toml`; a transient gate failure from concurrent edits, re-run green | 0634262 |
+| 1    | R1        | opus  | 1     | pass    | FINDINGS 0; CONTRACT clean; RULINGS clean                                                                                                                                                                                                                                                                                                                                                                                                          |         |
 
 ## Launch
 

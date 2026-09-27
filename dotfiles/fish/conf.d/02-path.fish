@@ -28,6 +28,6 @@ fish_add_path --global "$HOMEBREW_PREFIX/opt/curl/bin"
 fish_add_path --global "$HOME/.local/bin"
 
 # pnpm
-set -gx PNPM_HOME '/Users/virajpatel/Library/pnpm'
+set -gx PNPM_HOME "$HOME/Library/pnpm"
 fish_add_path --global "$PNPM_HOME/bin"
 # pnpm end
