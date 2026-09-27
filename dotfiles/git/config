@@ -3,22 +3,10 @@
 [include]
 	path = ~/.config/git/identity
 
-# [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-# 	path = ~/.config/git/gitconfig-github
-
-# [includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
-# 	path = ~/.config/git/gitconfig-github
-
-# [includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
-# 	path = ~/.config/git/gitconfig-gitlab
-
-# [includeIf "hasconfig:remote.*.url:https://gitlab.com/*/**"]
-# 	path = ~/.config/git/gitconfig-gitlab
-
 [core]
 	autocrlf = input
 	editor = $HOMEBREW_PREFIX/bin/code
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.config/git/ignore
 	filemode = false
 	# Caches untracked-file listings per directory in .git/index, keyed on
 	# directory mtime. Safe on APFS; unreliable on filesystems that don't
