@@ -221,7 +221,8 @@
     "stackgen@virajp-plugins": true,
     "vwf@virajp-plugins": true,
     "taste-skill@taste-skill": true,
-    "stackgen-lsp@stackgen-lsp": true
+    "stackgen-lsp@stackgen-lsp": true,
+    "brag@brag": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -246,6 +247,12 @@
       "source": {
         "source": "directory",
         "path": "/Users/virajpatel/.claude/plugins/local/stackgen-lsp"
+      }
+    },
+    "brag": {
+      "source": {
+        "source": "github",
+        "repo": "latent-spaces/brag"
       }
     }
   },
