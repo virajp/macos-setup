@@ -10,9 +10,9 @@ backlog_pieces: []
 
 ## Status
 
-**RUNNING**
+**COMPLETE**
 
-RUNNING — ready to land by hand on 2026-09-27-personal-values-overlay
+COMPLETE 2026-09-27 — 99a3cb1, dede874, 0634262, fd0900b, d64220c
 
 ## Consent
 
