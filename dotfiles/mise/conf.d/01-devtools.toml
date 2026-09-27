@@ -42,12 +42,12 @@
 
 [tools]
 # MISE tools
-fnox  = { minimum_release_age = "0h", version = "1.35.3" }
-usage = { minimum_release_age = "0h", version = "latest" }
+fnox  = { version = "1.35.3" }
+usage = { version = "6.11.1" }
 
 # Developer Tools
-1password = { minimum_release_age = "0h", version = "2.39.0" }
-bun       = { minimum_release_age = "0h", version = "1.4.2" }
+1password = { version = "2.39.0" }
+bun       = { version = "1.4.2" }
 jq        = { version = "1.8.2" }
 yq        = { version = "4.53.6" }
 

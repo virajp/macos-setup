@@ -7,4 +7,4 @@ set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Cleaning up .DS_Store files ..."
-find . -type f -name '.DS_Store' -ls -delete || true
+find . -type f -name '.DS_Store' -ls -delete

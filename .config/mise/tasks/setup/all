@@ -17,10 +17,10 @@ mise doctor --quiet --silent > /dev/null
 
 # Install & upgrade mise
 print_subheader "Setting up MISE ..."
-mise install
+mise install --yes --jobs 10
 
 print_subheader "Upgrading mise tools ..."
-mise upgrade --local || true
+mise upgrade --local --bump --yes --jobs 10
 
 mise run setup:precommit
 

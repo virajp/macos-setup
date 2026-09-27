@@ -90,7 +90,7 @@ main() {
 
   # Check Homebrew health
   echo "${CHECK_EMOJI} Checking Homebrew health..."
-  brew doctor || true
+  brew doctor
 
   # mise drives the rest of the setup.
   if ! command -v mise &> /dev/null; then
