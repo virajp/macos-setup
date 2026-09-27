@@ -25,6 +25,18 @@ project_name = "mempalace"
 state        = "running"
 sudo         = false
 
+[bootstrap.macos.launchd.agents.mempalace-hub]
+args              = [ "x", "--", "mempalace", "serve" ]
+environment       = { MEMPALACE_MCP_IDLE_HOURS = "0", PATH = "/opt/homebrew/bin:/usr/bin:/bin" }
+keep_alive        = true
+kickstart         = true
+program           = "/opt/homebrew/bin/mise"
+run_at_load       = true
+stderr_path       = "~/Library/Logs/mempalace-hub.log"
+stdout_path       = "~/Library/Logs/mempalace-hub.log"
+throttle_interval = 10
+working_directory = "~"
+
 [dotfiles]
 # Homebrew shells in /etc/shells (fish is handled by [bootstrap.user])
 "/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }

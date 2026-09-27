@@ -6,5 +6,10 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-print_header "Starting qdrant (mempalace) ... "
-mise bootstrap compose apply --yes --silent
+line_sep "="
+
+print_wait "Starting qdrant (mempalace) ... "
+mise x --silent -- mise bootstrap compose apply --yes --silent && print_success
+
+print_wait "Starting mempalace hub ... "
+mise bootstrap launchd apply --yes --silent && print_success

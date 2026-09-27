@@ -7,5 +7,5 @@
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-print_header "Pulling the dependencies ..."
-docker compose --file "${HOME}/.config/mempalace/docker-compose.yaml" pull --ignore-buildable
+print_header "Pulling the dependencies ... "
+mise x --silent -- docker compose --file "${HOME}/.config/mempalace/docker-compose.yaml" pull --ignore-buildable

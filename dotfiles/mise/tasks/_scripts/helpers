@@ -53,6 +53,11 @@ print_success() {
   echo -e "${SUCCESS_EMOJI} ${GREEN}${BOLD}${msg}${NORMAL}"
 }
 
+print_warn() {
+  local msg="$1"
+  echo -e "${YELLOW}${BOLD}${msg}${NORMAL}"
+}
+
 # Print line separator
 line_sep() {
   local COL
