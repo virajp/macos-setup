@@ -42,25 +42,22 @@ print_header "Upgrading MISE ..."
 mise self-update --yes
 
 # Install & upgrade mise
-print_header "Setting up MISE ..."
-# Lock newly added [tools] first so --locked doesn't fail on them; existing
-# locked versions are kept (mise upgrade below moves them).
-# mise lock --global
-mise install --locked
+print_subheader "Install MISE tools ..."
+mise install --yes --silent --include-task-tools --jobs 10
 
-print_header "Upgrading mise tools ..."
-mise upgrade
+print_subheader "Upgrading mise tools ..."
+mise upgrade --yes --silent --jobs 10 --bump
 
 # Prune all unused versions of tools
-print_header "Pruning unused versions of tools ..."
+print_subheader "Pruning unused versions of tools ..."
 mise prune --yes
 
 # Reshim mise to ensure all tools are available
-print_header "Reshimming mise ..."
+print_subheader "Reshimming mise ..."
 mise reshim
 
 # Run mise doctor
-print_header "Running mise doctor ..."
+print_subheader "Running mise doctor ..."
 mise doctor --quiet --silent > /dev/null
 
 # Upgrade Homebrew and all installed packages
