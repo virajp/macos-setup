@@ -1,8 +1,8 @@
 [tools]
-"npm:@mermaid-js/mermaid-cli" = { pnpm = true, version = "latest" }
-"npm:codeburn"                = { pnpm = true, version = "latest" }
-"pipx:graphifyy"              = { uvx = true, version = "latest" }
-rtk                           = { version = "latest" }
+"npm:@mermaid-js/mermaid-cli" = { pnpm = true, version = "12.0.0" }
+"npm:codeburn"                = { pnpm = true, version = "0.9.25" }
+"pipx:graphifyy"              = { uvx = true, version = "0.9.69" }
+rtk                           = { version = "0.50.0" }
 
 [bootstrap.brew.taps]
 "stablyai/orca" = "https://github.com/stablyai/homebrew-orca.git"

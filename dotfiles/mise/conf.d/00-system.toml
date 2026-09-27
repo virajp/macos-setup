@@ -49,11 +49,6 @@
 # Mac App Store (keyed by ADAM id)
 "mas:497799835" = "latest" # Xcode
 
-[tools]
-# MISE tools
-fnox  = { minimum_release_age = "0h", version = "latest" }
-usage = { minimum_release_age = "0h", version = "latest" }
-
 # Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
 # sudo_local is the drop-in it includes and survives them.
 [bootstrap.files."/etc/pam.d/sudo_local"]

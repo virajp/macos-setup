@@ -4,8 +4,8 @@ node.compile        = false
 npm.package_manager = "pnpm"
 
 [tools]
-node = { version = "latest" }
-pnpm = { version = "latest" }
+node = { version = "26.10.0" }
+pnpm = { version = "12.6.0" }
 
 [env]
 PNPM_HOME = "$HOME/Library/pnpm"

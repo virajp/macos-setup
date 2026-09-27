@@ -42,18 +42,18 @@
 
 [tools]
 # MISE tools
-fnox  = { minimum_release_age = "0h", version = "latest" }
+fnox  = { minimum_release_age = "0h", version = "1.35.3" }
 usage = { minimum_release_age = "0h", version = "latest" }
 
 # Developer Tools
-1password = { minimum_release_age = "0h", version = "latest" }
-bun       = { minimum_release_age = "0h", version = "latest" }
-jq        = { version = "latest" }
-yq        = { version = "latest" }
+1password = { minimum_release_age = "0h", version = "2.39.0" }
+bun       = { minimum_release_age = "0h", version = "1.4.2" }
+jq        = { version = "1.8.2" }
+yq        = { version = "4.53.6" }
 
 # Linter & Formatters
-dprint = { version = "latest" }
-taplo  = { version = "latest" }
+dprint = { version = "0.57.4" }
+taplo  = { version = "0.10.0" }
 
 [dotfiles]
 
