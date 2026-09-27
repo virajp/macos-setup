@@ -39,7 +39,21 @@ git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages], conf.d/packages.toml).
 print_header "Upgrading MISE ..."
-mise bootstrap packages upgrade brew:mise --yes
+mise self-update --yes
+
+# Install & upgrade mise
+print_header "Setting up MISE ..."
+# Lock newly added [tools] first so --locked doesn't fail on them; existing
+# locked versions are kept (mise upgrade below moves them).
+# mise lock --global
+mise install --locked
+
+print_header "Upgrading mise tools ..."
+mise upgrade
+
+# Prune all unused versions of tools
+print_header "Pruning unused versions of tools ..."
+mise prune --yes
 
 # Reshim mise to ensure all tools are available
 print_header "Reshimming mise ..."
@@ -48,20 +62,6 @@ mise reshim
 # Run mise doctor
 print_header "Running mise doctor ..."
 mise doctor --quiet --silent > /dev/null
-
-# Install & upgrade mise
-print_header "Setting up MISE ..."
-# Lock newly added [tools] first so --locked doesn't fail on them; existing
-# locked versions are kept (mise upgrade below moves them).
-mise lock --global
-mise install --locked
-
-print_header "Upgrading mise tools ..."
-mise upgrade  || true
-
-# Prune all unused versions of tools
-print_header "Pruning unused versions of tools ..."
-mise prune --yes
 
 # Upgrade Homebrew and all installed packages
 fnox exec --profile brew -- mise run upgrade:brew

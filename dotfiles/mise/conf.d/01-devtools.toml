@@ -1,0 +1,56 @@
+# Packages to be installed via Homebrew
+[bootstrap.packages]
+# Formulaes
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"   = "latest" # Enhances git diff output
+"brew:fish"            = "latest" # Friendly interactive shell
+"brew:fnox"            = "latest" # Version manager for multiple programming languages
+"brew:gh"              = "latest" # GitHub CLI tool
+"brew:git"             = "latest" # Distributed version control system
+"brew:git-tools"       = "latest" # Additional Git utilities
+"brew:glab"            = "latest" # GitLab CLI tool
+"brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:starship"        = "latest" # Cross-shell prompt
+"brew:yq"              = "latest" # YAML processor
+
+# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
+"brew-cask:font-fira-code-nerd-font"    = "latest"
+"brew-cask:font-hack-nerd-font"         = "latest"
+"brew-cask:font-iosevka-nerd-font"      = "latest"
+"brew-cask:font-iosevka-term-nerd-font" = "latest"
+"brew-cask:font-meslo-lg-nerd-font"     = "latest"
+
+# Casks
+"brew-cask:alfred"             = "latest" # Application launcher and productivity software
+"brew-cask:android-studio"     = "latest" # Tools for building Android applications
+"brew-cask:brave-browser"      = "latest" # Brave Browser
+"brew-cask:easyfind"           = "latest" # Find files, folders, or contents in any file
+"brew-cask:ghostty"            = "latest" # Terminal emulator that uses platform-native UI and GPU acceleration
+"brew-cask:github"             = "latest" # Desktop client for GitHub repositories
+"brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
+"brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
+"brew-cask:taskexplorer"       = "latest" # Explore running tasks (processes)
+"brew-cask:visual-studio-code" = "latest" # Open-source code editor
+"brew-cask:warp"               = "latest" # Rust-based terminal
+
+# Mac App Store (keyed by ADAM id)
+"mas:497799835" = "latest" # Xcode
+
+[tools]
+# MISE tools
+fnox  = { minimum_release_age = "0h", version = "latest" }
+usage = { minimum_release_age = "0h", version = "latest" }
+
+# Developer Tools
+1password = { minimum_release_age = "0h", version = "latest" }
+bun       = { minimum_release_age = "0h", version = "latest" }
+jq        = { version = "latest" }
+yq        = { version = "latest" }
+
+# Linter & Formatters
+dprint = { version = "latest" }
+taplo  = { version = "latest" }

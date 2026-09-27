@@ -1,0 +1,3 @@
+[dotfiles]
+# GitHub Copilot
+"~/.github/git-commit-guidelines.md" = { mode = "symlink", source = "../../ai-tools/copilot/git-commit-guidelines.md" }

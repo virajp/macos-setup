@@ -23,4 +23,4 @@ split-inherit-working-directory = true
 window-new-tab-position = current
 window-show-tab-bar = always
 
-shell-integration = fish
+shell-integration = zsh

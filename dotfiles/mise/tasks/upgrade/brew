@@ -29,8 +29,8 @@ print_subheader "Deleting formulae NOT in [bootstrap.packages] ..."
 mise bootstrap packages prune --manager brew --yes
 
 print_subheader "Install/Upgrade all declared packages ..."
-mise bootstrap packages apply --update --yes
 mise bootstrap packages upgrade --yes
+mise bootstrap packages apply --update --yes
 
 mise run brew:casks
 

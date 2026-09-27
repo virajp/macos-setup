@@ -1,0 +1,31 @@
+[tools]
+node                          = { version = "latest" }
+"npm:@mermaid-js/mermaid-cli" = { pnpm = true, version = "latest" }
+"npm:codeburn"                = { version = "latest" }
+"pipx:graphifyy"              = { uvx = true, version = "latest" }
+pnpm                          = { version = "latest" }
+rtk                           = { version = "latest" }
+
+[bootstrap.brew.taps]
+"stablyai/orca" = "https://github.com/stablyai/homebrew-orca.git"
+"virajp/tap"    = "https://github.com/virajp/homebrew-tap.git"
+
+[bootstrap.packages]
+"brew-cask:claude"             = "latest" # Claude Desktop app
+"brew-cask:claude-code@latest" = "latest" # Claude Code latest version
+# "brew-cask:stablyai/orca/orca"  = "latest" # Orchestrating AI coding agents
+"brew:virajp/tap/claude-status" = "latest" # Claude Code status line
+
+[dotfiles]
+"~/.claude/CLAUDE.md"     = { mode = "symlink", source = "../../ai-tools/claude/CLAUDE.md" }
+"~/.claude/output-styles" = { mode = "symlink", source = "../../ai-tools/claude/output-styles" }
+"~/.claude/settings.json" = { mode = "symlink", source = "../../ai-tools/claude/settings.json" }
+
+[shell_alias]
+# AI Tools shortcuts
+aistats = "mise x -- codeburn report --period 30days --format tui"
+cc      = "mise run --silent func:claude"
+ccf     = "mise run --silent func:claude --model 'fable[1m]'"
+cch     = "mise run --silent func:claude --model 'haiku[1m]'"
+cco     = "mise run --silent func:claude --model 'opus[1m]'"
+ccs     = "mise run --silent func:claude --model 'sonnet[1m]'"

@@ -1,0 +1,198 @@
+# Packages to be installed via Homebrew
+[bootstrap.packages]
+# Formulaes
+"brew:bash"            = "latest" # Latest version of bash
+"brew:bat"             = "latest" # Alternative to cat
+"brew:btop"            = "latest" # Resource monitor for the terminal
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"   = "latest" # Enhances git diff output
+"brew:doggo"           = "latest" # DNS lookup utility
+"brew:eza"             = "latest" # Modern replacement for 'ls'
+"brew:fish"            = "latest" # Friendly interactive shell
+"brew:fzf"             = "latest" # Command-line fuzzy finder
+"brew:gh"              = "latest" # GitHub CLI tool
+"brew:git"             = "latest" # Distributed version control system
+"brew:git-tools"       = "latest" # Additional Git utilities
+"brew:glab"            = "latest" # GitLab CLI tool
+"brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:mas"             = "latest" # Mac App Store command-line interface
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:yq"              = "latest" # YAML processor
+"brew:zinit"           = "latest" # Zsh plugin manager
+"brew:zoxide"          = "latest" # Fast directory jumper
+"brew:zsh"             = "latest" # Z shell
+# "brew:fnox"            = "latest" # Version manager for multiple programming languages
+
+# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
+"brew-cask:font-fira-code-nerd-font"    = "latest"
+"brew-cask:font-hack-nerd-font"         = "latest"
+"brew-cask:font-iosevka-nerd-font"      = "latest"
+"brew-cask:font-iosevka-term-nerd-font" = "latest"
+"brew-cask:font-meslo-lg-nerd-font"     = "latest"
+
+# Casks
+"brew-cask:alfred"             = "latest" # Application launcher and productivity software
+"brew-cask:android-studio"     = "latest" # Tools for building Android applications
+"brew-cask:brave-browser"      = "latest" # Brave Browser
+"brew-cask:easyfind"           = "latest" # Find files, folders, or contents in any file
+"brew-cask:ghostty"            = "latest" # Terminal emulator that uses platform-native UI and GPU acceleration
+"brew-cask:github"             = "latest" # Desktop client for GitHub repositories
+"brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
+"brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
+"brew-cask:taskexplorer"       = "latest" # Explore running tasks (processes)
+"brew-cask:visual-studio-code" = "latest" # Open-source code editor
+"brew-cask:warp"               = "latest" # Rust-based terminal
+
+# Mac App Store (keyed by ADAM id)
+"mas:497799835" = "latest" # Xcode
+
+[tools]
+# MISE tools
+fnox  = { minimum_release_age = "0h", version = "latest" }
+usage = { minimum_release_age = "0h", version = "latest" }
+
+# Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
+# sudo_local is the drop-in it includes and survives them.
+[bootstrap.files."/etc/pam.d/sudo_local"]
+content = """
+auth       sufficient     pam_tid.so
+"""
+group = "wheel"
+mode = "0444"
+owner = "root"
+
+# fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
+# zsh are added to /etc/shells by the line entries below.
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/zsh"
+
+[dotfiles]
+# Shells managed by Homebrew
+"/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }
+"/etc/shells/brew-fish" = { line = "/opt/homebrew/bin/fish" }
+"/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }
+
+# ZSH
+"~/.config/zsh" = { mode = "symlink-each", source = "../../zsh/scripts" }
+"~/.zshenv"     = { mode = "symlink", source = "../../zsh/.zshenv" }
+"~/.zshrc"      = { mode = "symlink", source = "../../zsh/.zshrc" }
+
+# Fish
+"~/.config/fish/conf.d"      = { mode = "symlink", source = "../../fish/conf.d" }
+"~/.config/fish/config.fish" = { mode = "symlink", source = "../../fish/config.fish" }
+"~/.config/fish/functions"   = { mode = "symlink", source = "../../fish/functions" }
+
+[env]
+# GCP related
+CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
+USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
+
+# Development tools
+CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+DOTNET_CLI_TELEMETRY_OPTOUT = "true"
+HELM_EXPERIMENTAL_OCI       = "1"
+NODE_ENV                    = "development"
+PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
+RUNTIME_ENV                 = "development"
+
+# iCloud Drive
+CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+
+# Docker
+BUILDKIT_PROGRESS           = "auto"
+COMPOSE_DOCKER_CLI_BUILD    = "1"
+DOCKER_BUILDKIT             = "1"
+DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
+DOCKER_HIDE_LEGACY_COMMANDS = "1"
+
+# Homebrew behaviour (HOMEBREW_PREFIX stays in shell config: `brew shellenv`
+# needs it before mise activates)
+HOMEBREW_BUNDLE_FILE                = "${HOME}/.config/brewfile"
+HOMEBREW_CASK_OPTS                  = "--appdir=~/Applications"
+HOMEBREW_CLEANUP_MAX_AGE_DAYS       = "7"
+HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS = "7"
+HOMEBREW_CURL_RETRIES               = "2"
+HOMEBREW_DISPLAY_INSTALL_TIMES      = "true"
+HOMEBREW_FAIL_LOG_LINES             = "100"
+HOMEBREW_FORCE_BREWED_CURL          = "true"
+HOMEBREW_FORCE_BREWED_GIT           = "true"
+HOMEBREW_NO_ANALYTICS               = "true"
+HOMEBREW_NO_ENV_HINTS               = "1"
+
+# Python (uv)
+UV_NO_CACHE          = "true"
+UV_NO_MANAGED_PYTHON = "true"
+UV_PYTHON_DOWNLOADS  = "never"
+
+[shell_alias]
+brew               = "fnox exec -P brew -- brew"
+cleanupDS          = "mise run cleanupDS"
+cleanupDS-Projects = "mise run cleanupDS ~/Projects"
+cleanupTelegram    = "mise run cleanupTelegram"
+osx-upgrade        = "mise run upgrade:macos:upgrade"
+updateall          = "mise run updateall"
+
+# Startup, Services and Process related shortcuts
+listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
+listStartupItems = "mise run func:listStartupItems"
+myps             = "mise run func:myps"
+
+# IP related shortcuts
+gateway  = "mise run ips:gateway"
+ii       = "mise run ips:ii"
+ips      = "mise run ips:ips"
+ipv4     = "mise run ips:ipv4"
+ipv6     = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
+
+# Generic Aliases
+bat             = "bat --tabs 2"
+cancelPrintJobs = "sudo cancel -a -x"
+cd              = "z"
+cdcd            = "cd '$CLOUD_PATH'"
+cdgh            = "cd '$HOME/Projects/github.com'"
+cls             = "clear"
+diff            = "diff-so-fancy"
+dig             = "doggo"
+dns             = "scutil --dns"
+edit            = "subl"
+findPid         = "lsof -t -c"
+finder          = "open -a Finder ./"
+flushdns        = "dscacheutil -flushcache"
+hping           = "httping --ts -GBbXsSYaWZvv"
+ipInfo0         = "ipconfig getpacket en0"
+openports       = "sudo lsof -i -P | grep LISTEN"
+ping            = "prettyping -i 2 --nolegend"
+plist           = "plutil -p"
+routes          = "netstat -nr -f inet"
+
+# ls & tree related aliases
+ld = "ls --only-dirs"
+lf = "ls --only-files"
+lg = "ls --git-ignore"
+ls = "eza --icons --color=always --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
+td = "eza --tree --color=always --only-dirs --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
+tg = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1 --git-ignore"
+tl = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
+
+# Git Related Aliases
+gc    = 'git commit -a -m'
+gp    = 'git push --verbose'
+gpull = 'git pull --all --verbose --progress'
+gs    = 'git status -sb'
+
+# Docker Related Aliases
+dclean = "docker system prune --all --volumes --force"
+dlist  = "docker image list"
+dprune = "docker system prune --volumes --force"
+dpull  = "docker image pull --platform='linux/amd64'"
+drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
+
+# Kubernetes (K8s) Related Aliases
+k        = "kubectl"
+kc-local = "kubectl config use-context orbstack"
+kgc      = "kubectl config current-context"
+kubectx  = "kubectl config get-contexts"

@@ -4,6 +4,7 @@ all_compile          = false
 env_shell_expand     = true
 gpg_verify           = true
 lockfile             = true
+lockfile_mode        = "generate"
 lockfile_platforms   = [ "macos-arm64" ]
 minimum_release_age  = "10h"
 os                   = "macos"
@@ -27,168 +28,14 @@ pipx.uvx            = true
 [settings.github]
 credential_command = "fnox get GITHUB_API_TOKEN"
 
-[tools]
-# MISE tools
-fnox  = { minimum_release_age = "0h", version = "latest" }
-usage = { minimum_release_age = "0h", version = "latest" }
-
-# Developer Tools
-1password = { minimum_release_age = "0h", version = "latest" }
-bun       = { minimum_release_age = "0h", version = "latest" }
-jq        = { version = "latest" }
-node      = { minimum_release_age = "0h", version = "latest" }
-pnpm      = { minimum_release_age = "0h", version = "latest" }
-python    = { minimum_release_age = "0h", version = "latest" }
-uv        = { minimum_release_age = "0h", version = "latest" }
-yq        = { version = "latest" }
-
-# AI Tools
-"npm:@mermaid-js/mermaid-cli" = { version = "latest" }
-"npm:codeburn"                = { version = "latest" }
-"pipx:graphifyy"              = { uvx = true, version = "latest" }
-"pipx:mempalace"              = { uvx = true, version = "latest" }
-rtk                           = { version = "latest" }
-
-# Linter & Formatters
-dprint = { version = "latest" }
-taplo  = { version = "latest" }
+[bootstrap.brew]
+adopt = true
 
 [tasks."global:init"]
 description = "Initialize mise tasks"
 hide        = true
 run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
-[shell_alias]
-brew               = "fnox exec -P brew -- brew"
-cleanupDS          = "mise run cleanupDS"
-cleanupDS-Projects = "mise run cleanupDS ~/Projects"
-cleanupTelegram    = "mise run cleanupTelegram"
-osx-upgrade        = "mise run upgrade:macos:upgrade"
-updateall          = "mise run updateall"
-
-# AI Tools shortcuts
-aistats = "mise x -- codeburn report --period 30days --format tui"
-cc      = "mise run --silent func:claude"
-ccf     = "mise run --silent func:claude --model 'fable[1m]'"
-cch     = "mise run --silent func:claude --model 'haiku[1m]'"
-cco     = "mise run --silent func:claude --model 'opus[1m]'"
-ccs     = "mise run --silent func:claude --model 'sonnet[1m]'"
-mp      = "mise x -- fnox exec --profile mempalace -- mempalace"
-
-# Development related shortcuts
-# code = "mise run --silent func:code --"
-
-# Startup, Services and Process related shortcuts
-listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
-listStartupItems = "mise run func:listStartupItems"
-myps             = "mise run func:myps"
-
-# IP related shortcuts
-gateway  = "mise run ips:gateway"
-ii       = "mise run ips:ii"
-ips      = "mise run ips:ips"
-ipv4     = "mise run ips:ipv4"
-ipv6     = "mise run ips:ipv6"
-remoteip = "mise run ips:remoteip"
-
-# Generic Aliases
-bat             = "bat --tabs 2"
-cancelPrintJobs = "sudo cancel -a -x"
-cd              = "z"
-cdcd            = "cd '$CLOUD_PATH'"
-cdgh            = "cd '$HOME/Projects/github.com'"
-cls             = "clear"
-diff            = "diff-so-fancy"
-dig             = "doggo"
-dns             = "scutil --dns"
-edit            = "subl"
-findPid         = "lsof -t -c"
-finder          = "open -a Finder ./"
-flushdns        = "dscacheutil -flushcache"
-hping           = "httping --ts -GBbXsSYaWZvv"
-ipInfo0         = "ipconfig getpacket en0"
-openports       = "sudo lsof -i -P | grep LISTEN"
-ping            = "prettyping -i 2 --nolegend"
-plist           = "plutil -p"
-routes          = "netstat -nr -f inet"
-
-# ls & tree related aliases
-ld = "ls --only-dirs"
-lf = "ls --only-files"
-lg = "ls --git-ignore"
-ls = "eza --icons --color=always --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
-td = "eza --tree --color=always --only-dirs --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
-tg = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1 --git-ignore"
-tl = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
-
-# Git Related Aliases
-gc    = 'git commit -a -m'
-gp    = 'git push --verbose'
-gpull = 'git pull --all --verbose --progress'
-gs    = 'git status -sb'
-
-# Docker Related Aliases
-dclean = "docker system prune --all --volumes --force"
-dlist  = "docker image list"
-dprune = "docker system prune --volumes --force"
-dpull  = "docker image pull --platform='linux/amd64'"
-drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
-
-# Kubernetes (K8s) Related Aliases
-k        = "kubectl"
-kc-local = "kubectl config use-context orbstack"
-kgc      = "kubectl config current-context"
-kubectx  = "kubectl config get-contexts"
-
 [env]
-# GCP related
-CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
-USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
-
-# Development tools
-CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
-DOTNET_CLI_TELEMETRY_OPTOUT = "true"
-HELM_EXPERIMENTAL_OCI       = "1"
-NODE_ENV                    = "development"
-PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
-RUNTIME_ENV                 = "development"
-
-# iCloud Drive
-CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
-
-# Docker
-BUILDKIT_PROGRESS           = "auto"
-COMPOSE_DOCKER_CLI_BUILD    = "1"
-DOCKER_BUILDKIT             = "1"
-DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
-DOCKER_HIDE_LEGACY_COMMANDS = "1"
-
-# Homebrew behaviour (HOMEBREW_PREFIX stays in shell config: `brew shellenv`
-# needs it before mise activates)
-HOMEBREW_CASK_OPTS                  = "--appdir=~/Applications"
-HOMEBREW_CLEANUP_MAX_AGE_DAYS       = "7"
-HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS = "7"
-HOMEBREW_CURL_RETRIES               = "2"
-HOMEBREW_DISPLAY_INSTALL_TIMES      = "true"
-HOMEBREW_FAIL_LOG_LINES             = "100"
-HOMEBREW_FORCE_BREWED_CURL          = "true"
-HOMEBREW_FORCE_BREWED_GIT           = "true"
-HOMEBREW_NO_ANALYTICS               = "true"
-HOMEBREW_NO_ENV_HINTS               = "1"
-# Casks + VS Code extensions live here (dotfiles/homebrew/brewfile); formulae
-# are mise's ([bootstrap.packages]). Lets bare `brew bundle ...` work anywhere.
-HOMEBREW_BUNDLE_FILE = "${HOME}/.config/brewfile"
-
-# Python (uv)
-UV_NO_CACHE          = "true"
-UV_NO_MANAGED_PYTHON = "true"
-UV_PYTHON_DOWNLOADS  = "never"
-
-# Mempalace Backend
-MEMPALACE_BACKEND          = "qdrant"
-MEMPALACE_EMBEDDING_DEVICE = "auto"
-MEMPALACE_EMBEDDING_MODEL  = "embeddinggemma"
-MEMPALACE_MAX_BACKUPS      = 4
-MEMPALACE_MCP_IDLE_HOURS   = 0
-MEMPALACE_PALACE_PATH      = "~/.local/share/mempalace"
-MEMPALACE_QDRANT_URL       = "http://127.0.0.1:6333"
+# Mise
+MISE_BREW_CASK_OPT_APPDIR = "$HOME/Applications"

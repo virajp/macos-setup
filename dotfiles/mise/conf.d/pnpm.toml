@@ -1,0 +1,3 @@
+[env]
+PNPM_HOME = "$HOME/Library/pnpm"
+_.path    = "$PNPM_HOME/bin"
