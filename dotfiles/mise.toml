@@ -20,14 +20,8 @@
 "~/.config/git" = { mode = "symlink-each", source = "git" }
 "~/.ssh"        = { mode = "symlink-each", source = "ssh" }
 
-# GitHub CLI
-"~/.config/gh/config.yml" = { mode = "symlink", source = "github/config.yml" }
-
 # Brewfile (casks + VS Code extensions, applied by brew:casks)
 "~/.config/brewfile" = { mode = "symlink", source = "homebrew/brewfile" }
 
 # Mise (user level)
 "~/.config/mise" = { mode = "symlink", source = "mise" }
-
-# oh-my-posh
-"~/.config/oh-my-posh" = { mode = "symlink", source = "oh-my-posh" }
