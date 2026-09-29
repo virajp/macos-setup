@@ -1,0 +1,18 @@
+[bootstrap.packages]
+# Formulas
+"brew:mas" = "latest" # Mac App Store command-line interface
+
+[dotfiles]
+# Mise (user level)
+"~/.config/mise" = "~/.dotfiles/mise"
+
+# Brewfile (casks + VS Code extensions, applied by brew:casks)
+"~/.config/brewfile" = "~/.dotfiles/homebrew/brewfile"
+
+[shell_alias]
+brew               = "fnox exec -P brew -- brew"
+cleanupDS          = "mise run cleanupDS"
+cleanupDS-Projects = "mise run cleanupDS ~/Projects"
+cleanupTelegram    = "mise run cleanupTelegram"
+osx-upgrade        = "mise run upgrade:macos:upgrade"
+updateall          = "mise run updateall"

@@ -27,14 +27,12 @@ elif [[ -f "${WEEKLY_STAMP}" ]]; then
 fi
 
 # Kill keyboxd (gpg) to ensure that stale keys are refreshed
-gpgconf --kill all || true
+# gpgconf --kill all || true
 
-# Set global Git configuration for GPG SSH signing.
-# Single-quoted so the literal ~ is written to ~/.gitconfig rather than an
-# expanded absolute path: that file is a symlink into this repo, so an
-# expanded $HOME would hardcode this machine's username into version control.
-# git expands ~ in config path values at read time.
-git config --global gpg.ssh.allowedSignersFile '~/.ssh/allowed_signers'
+# Link `~/.dotfiles` to the local repository
+if [[ ! -d "${HOME}/.dotfiles" && ! -L "${HOME}/.dotfiles" ]]; then
+  ln -s ~/Projects/github.com/virajp/macos-setup/dotfiles ~/.dotfiles
+fi
 
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages], conf.d/packages.toml).
@@ -56,7 +54,7 @@ mise prune --yes
 fnox exec --profile brew -- mise run upgrade:brew
 
 print_subheader "Installing rest using mise ..."
-mise bootstrap --skip macos-defaults,defaults,packages --yes
+mise bootstrap --skip macos-defaults,packages --yes
 
 # Reshim mise to ensure all tools are available
 print_subheader "Reshimming mise ..."

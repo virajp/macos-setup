@@ -11,11 +11,11 @@
 "brew:git"             = "latest" # Distributed version control system
 "brew:git-tools"       = "latest" # Additional Git utilities
 "brew:glab"            = "latest" # GitLab CLI tool
-"brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
 "brew:jq"              = "latest" # Command-line JSON processor
 "brew:ripgrep"         = "latest" # Fast search tool
 "brew:starship"        = "latest" # Cross-shell prompt
 "brew:yq"              = "latest" # YAML processor
+# "brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
 
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 "brew-cask:font-fira-code-nerd-font"    = "latest"
@@ -28,7 +28,6 @@
 "brew-cask:alfred"             = "latest" # Application launcher and productivity software
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
 "brew-cask:brave-browser"      = "latest" # Brave Browser
-"brew-cask:easyfind"           = "latest" # Find files, folders, or contents in any file
 "brew-cask:ghostty"            = "latest" # Terminal emulator that uses platform-native UI and GPU acceleration
 "brew-cask:github"             = "latest" # Desktop client for GitHub repositories
 "brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
@@ -42,33 +41,71 @@
 
 [tools]
 # MISE tools
-fnox  = { version = "1.35.3" }
-usage = { version = "6.11.1" }
+fnox  = { source = "brew", version = "1.36.0" }
+usage = { source = "brew", version = "6.12.0" }
 
 # Developer Tools
-1password = { version = "2.39.0" }
-bun       = { version = "1.4.2" }
-jq        = { version = "1.8.2" }
-yq        = { version = "4.53.6" }
+1password = { source = "brew", version = "2.39.0" }
+bun       = { source = "brew", version = "1.4.2" }
+jq        = { source = "brew", version = "1.8.2" }
+yq        = { source = "brew", version = "4.54.1" }
 
 # Linter & Formatters
-dprint = { version = "0.57.4" }
-taplo  = { version = "0.10.0" }
+dprint = { source = "brew", version = "0.57.4" }
+taplo  = { source = "brew", version = "0.10.0" }
 
 [dotfiles]
+# Git & SSH
+"~/.config/git" = "~/.dotfiles/git"
+"~/.ssh"        = { mode = "symlink-each", source = "~/.dotfiles/ssh" }
 
 # 1Password
-"~/.config/1Password/ssh/agent.toml" = { mode = "symlink", source = "../../1Password/agent.toml" }
+"~/.config/1Password/ssh/agent.toml" = "~/.dotfiles/1Password/agent.toml"
 
 # dprint & Taplo
-"~/.config/dprint.json" = { mode = "symlink", source = "../../dprint/dprint.json" }
-"~/.config/taplo.toml"  = { mode = "symlink", source = "../../dprint/taplo.toml" }
+"~/.config/dprint.json" = "~/.dotfiles/dprint/dprint.json"
+"~/.config/taplo.toml"  = "~/.dotfiles/dprint/taplo.toml"
 
 # fnox
-"~/.config/fnox/config.toml" = { mode = "symlink", source = "../../fnox/fnox.toml" }
+"~/.config/fnox/config.toml" = "~/.dotfiles/fnox/fnox.toml"
 
 # Ghostty
-"~/.config/ghostty/config" = { mode = "symlink", source = "../../ghostty/config" }
+"~/.config/ghostty/config" = "~/.dotfiles/ghostty/config"
 
 # Gem
-"~/.gemrc" = { mode = "symlink", source = "../../gem/.gemrc" }
+"~/.gemrc" = "~/.dotfiles/gem/.gemrc"
+
+[env]
+# Development tools
+CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+DOTNET_CLI_TELEMETRY_OPTOUT = "true"
+HELM_EXPERIMENTAL_OCI       = "1"
+PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
+RUNTIME_ENV                 = "development"
+
+# Docker
+BUILDKIT_PROGRESS           = "auto"
+COMPOSE_DOCKER_CLI_BUILD    = "1"
+DOCKER_BUILDKIT             = "1"
+DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
+DOCKER_HIDE_LEGACY_COMMANDS = "1"
+
+[shell_alias]
+# Git Related Aliases
+gc    = 'git commit -a -m'
+gp    = 'git push --verbose'
+gpull = 'git pull --all --verbose --progress'
+gs    = 'git status -sb'
+
+# Docker Related Aliases
+dclean = "docker system prune --all --volumes --force"
+dlist  = "docker image list"
+dprune = "docker system prune --volumes --force"
+dpull  = "docker image pull --platform='linux/amd64'"
+drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
+
+# Kubernetes (K8s) Related Aliases
+k        = "kubectl"
+kc-local = "kubectl config use-context orbstack"
+kgc      = "kubectl config current-context"
+kubectx  = "kubectl config get-contexts"

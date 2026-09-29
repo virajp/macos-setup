@@ -4,10 +4,11 @@ node.compile        = false
 npm.package_manager = "pnpm"
 
 [tools]
-node = { version = "26.10.0" }
-pnpm = { version = "12.6.0" }
+node = "26.10.0"
+pnpm = "12.8.1"
 
 [env]
+NODE_ENV  = "development"
 PNPM_HOME = "$HOME/Library/pnpm"
 _.path    = "$PNPM_HOME/bin"
 

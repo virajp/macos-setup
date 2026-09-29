@@ -13,8 +13,14 @@ task.disable_spec_from_run_scripts = true
 task.output                        = "interleave"
 trusted_config_paths               = [ "~/.config/mise", "~/Projects" ]
 
+# Setup the dotfiles
+dotfiles.default_mode      = "symlink"
+dotfiles.relative_symlinks = false
+dotfiles.root              = "~/.dotfiles"
+
 [settings.github]
-credential_command = "fnox get GITHUB_API_TOKEN"
+# credential_command = "fnox get GITHUB_API_TOKEN"
+use_git_credentials = true
 
 [bootstrap.brew]
 adopt = true
