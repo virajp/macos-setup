@@ -105,7 +105,7 @@ Clarifying questions come **before** implementation, not after mistakes.
 - **Graph refresh**: never `graphify hook install` (its raw git hooks pin a
   Python path and break on upgrade). Run it as a pre-commit `post-commit` stage
   hook (`graphify-refresh` → `mise x -- mise run code:graph`); copy the task
-  from `95octane/.config/mise/tasks/code/graph`. Migrating a repo:
+  from this setup repo's `.config/mise/tasks/code/graph`. Migrating a repo:
   `graphify hook uninstall`, add `post-commit` to `default_install_hook_types`,
   `pre-commit install --hook-type post-commit`, drop the `merge=graphify` line
   from `.gitattributes`
