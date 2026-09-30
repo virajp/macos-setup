@@ -29,7 +29,7 @@ owner = "root"
 # fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
 # zsh are added to /etc/shells by the line entries below.
 [bootstrap.user]
-login_shell = "/opt/homebrew/bin/zsh"
+login_shell = "/opt/homebrew/bin/fish"
 
 [dotfiles]
 # Shells managed by Homebrew
