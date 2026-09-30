@@ -43,8 +43,7 @@
       "Bash(gcloud *)",
       "Bash(doppler *)",
       "Bash(* doppler *)"
-    ],
-    "defaultMode": "bypassPermissions"
+    ]
   },
   "model": "opus[1m]",
   "disableClaudeAiConnectors": true,
