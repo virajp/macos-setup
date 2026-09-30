@@ -157,5 +157,6 @@
       "**Org-specific CLIs**: None configured — `mise` (225× in-project, 349× in shell history) is a general-purpose toolchain/task runner, not org-specific",
       "routine under virajp/ prefix: none — repo is solo-authored, no org-wide prefix identified"
     ]
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
