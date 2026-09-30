@@ -1,0 +1,111 @@
+# Packages to be installed via Homebrew
+[bootstrap.packages]
+# Formulaes
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:diff-so-fancy"   = "latest" # Enhances git diff output
+"brew:fish"            = "latest" # Friendly interactive shell
+"brew:fnox"            = "latest" # Version manager for multiple programming languages
+"brew:gh"              = "latest" # GitHub CLI tool
+"brew:git"             = "latest" # Distributed version control system
+"brew:git-tools"       = "latest" # Additional Git utilities
+"brew:glab"            = "latest" # GitLab CLI tool
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:starship"        = "latest" # Cross-shell prompt
+"brew:yq"              = "latest" # YAML processor
+# "brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
+
+# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
+"brew-cask:font-fira-code-nerd-font"    = "latest"
+"brew-cask:font-hack-nerd-font"         = "latest"
+"brew-cask:font-iosevka-nerd-font"      = "latest"
+"brew-cask:font-iosevka-term-nerd-font" = "latest"
+"brew-cask:font-meslo-lg-nerd-font"     = "latest"
+
+# Casks
+"brew-cask:alfred"             = "latest" # Application launcher and productivity software
+"brew-cask:android-studio"     = "latest" # Tools for building Android applications
+"brew-cask:brave-browser"      = "latest" # Brave Browser
+"brew-cask:ghostty"            = "latest" # Terminal emulator that uses platform-native UI and GPU acceleration
+"brew-cask:github"             = "latest" # Desktop client for GitHub repositories
+"brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
+"brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
+"brew-cask:taskexplorer"       = "latest" # Explore running tasks (processes)
+"brew-cask:visual-studio-code" = "latest" # Open-source code editor
+"brew-cask:warp"               = "latest" # Rust-based terminal
+
+# Mac App Store (keyed by ADAM id)
+"mas:497799835" = "latest" # Xcode
+
+[tools]
+# MISE tools
+fnox  = { source = "brew", version = "1.36.0" }
+usage = { source = "brew", version = "6.12.0" }
+
+# Developer Tools
+1password = { source = "brew", version = "2.39.0" }
+bun       = { source = "brew", version = "1.4.2" }
+jq        = { source = "brew", version = "1.8.2" }
+yq        = { source = "brew", version = "4.54.1" }
+
+# Linter & Formatters
+dprint = { source = "brew", version = "0.57.4" }
+taplo  = { source = "brew", version = "0.10.0" }
+
+[dotfiles]
+# Git & SSH
+"~/.config/git" = {}
+"~/.ssh"        = { mode = "symlink-each" }
+
+# 1Password
+"~/.config/1Password/ssh/agent.toml" = {}
+
+# dprint & Taplo
+"~/.config/dprint.json" = {}
+"~/.config/taplo.toml"  = {}
+
+# fnox
+"~/.config/fnox/config.toml" = {}
+
+# Ghostty
+"~/.config/ghostty/config" = {}
+
+# Gem
+"~/.gemrc" = {}
+
+[env]
+# Development tools
+CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+DOTNET_CLI_TELEMETRY_OPTOUT = "true"
+HELM_EXPERIMENTAL_OCI       = "1"
+PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
+RUNTIME_ENV                 = "development"
+
+# Docker
+BUILDKIT_PROGRESS           = "auto"
+COMPOSE_DOCKER_CLI_BUILD    = "1"
+DOCKER_BUILDKIT             = "1"
+DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
+DOCKER_HIDE_LEGACY_COMMANDS = "1"
+
+[shell_alias]
+# Git Related Aliases
+gc    = 'git commit -a -m'
+gp    = 'git push --verbose'
+gpull = 'git pull --all --verbose --progress'
+gs    = 'git status -sb'
+
+# Docker Related Aliases
+dclean = "docker system prune --all --volumes --force"
+dlist  = "docker image list"
+dprune = "docker system prune --volumes --force"
+dpull  = "docker image pull --platform='linux/amd64'"
+drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
+
+# Kubernetes (K8s) Related Aliases
+k        = "kubectl"
+kc-local = "kubectl config use-context orbstack"
+kgc      = "kubectl config current-context"
+kubectx  = "kubectl config get-contexts"

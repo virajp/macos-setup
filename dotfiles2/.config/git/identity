@@ -1,0 +1,26 @@
+# Personal git identity, included from gitconfig.
+# An adopter replaces this file wholesale.
+[user]
+	name = Viraj Patel
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo
+	email = 3125954+virajp@users.noreply.github.com
+
+# Identity for GitHub
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = ~/.config/git/github.config
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+	path = ~/.config/git/github.config
+
+[includeIf "gitdir:~/Projects/github.com/"]
+	path = ~/.config/git/github.config
+
+# Identity for GitLab
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
+	path = ~/.config/git/gitlab.config
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+	path = ~/.config/git/gitlab.config
+
+[includeIf "gitdir:~/Projects/gitlab.com/"]
+	path = ~/.config/git/gitlab.config

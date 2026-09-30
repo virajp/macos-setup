@@ -1,0 +1,65 @@
+[bootstrap.packages]
+# Formulas
+"brew:bat"             = "latest" # Alternative to cat
+"brew:btop"            = "latest" # Resource monitor for the terminal
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:doggo"           = "latest" # DNS lookup utility
+"brew:eza"             = "latest" # Modern replacement for 'ls'
+"brew:fzf"             = "latest" # Command-line fuzzy finder
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:yq"              = "latest" # YAML processor
+"brew:zoxide"          = "latest" # Fast directory jumper
+
+# Casks
+"brew-cask:alfred"        = "latest" # Application launcher and productivity software
+"brew-cask:brave-browser" = "latest" # Brave Browser
+"brew-cask:easyfind"      = "latest" # Find files, folders, or contents in any file
+"brew-cask:taskexplorer"  = "latest" # Explore running tasks (processes)
+
+[shell_alias]
+# Startup, Services and Process related shortcuts
+listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
+listStartupItems = "mise run func:listStartupItems"
+myps             = "mise run func:myps"
+
+# IP related shortcuts
+gateway  = "mise run ips:gateway"
+ii       = "mise run ips:ii"
+ips      = "mise run ips:ips"
+ipv4     = "mise run ips:ipv4"
+ipv6     = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
+
+# Generic Aliases
+bat             = "bat --tabs 2"
+cancelPrintJobs = "sudo cancel -a -x"
+cd              = "z"
+cdcd            = "cd '$CLOUD_PATH'"
+cdgh            = "cd '$HOME/Projects/github.com'"
+cls             = "clear"
+diff            = "diff-so-fancy"
+dig             = "doggo"
+dns             = "scutil --dns"
+edit            = "subl"
+findPid         = "lsof -t -c"
+finder          = "open -a Finder ./"
+flushdns        = "dscacheutil -flushcache"
+hping           = "httping --ts -GBbXsSYaWZvv"
+ipInfo0         = "ipconfig getpacket en0"
+openports       = "sudo lsof -i -P | grep LISTEN"
+ping            = "prettyping -i 2 --nolegend"
+plist           = "plutil -p"
+routes          = "netstat -nr -f inet"
+
+# ls & tree related aliases
+ld = "ls --only-dirs"
+lf = "ls --only-files"
+lg = "ls --git-ignore"
+ll = "ls"
+ls = "eza --icons --color=always --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
+td = "eza --tree --color=always --only-dirs --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
+tg = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1 --git-ignore"
+tl = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"

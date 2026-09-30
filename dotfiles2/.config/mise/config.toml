@@ -1,0 +1,35 @@
+[settings]
+activate_aggressive                = true
+all_compile                        = false
+env_shell_expand                   = true
+gpg_verify                         = true
+lockfile                           = false
+minimum_release_age                = "10h"
+os                                 = "macos"
+paranoid                           = true
+raw                                = true
+status.missing_tools               = "always"
+task.disable_spec_from_run_scripts = true
+task.output                        = "interleave"
+trusted_config_paths               = [ "~/.config/mise", "~/Projects" ]
+
+# Setup the dotfiles
+dotfiles.default_mode      = "symlink"
+dotfiles.relative_symlinks = false
+dotfiles.root              = "~/Projects/github.com/virajp/macos-setup/dotfiles2"
+
+[settings.github]
+# credential_command = "fnox get GITHUB_API_TOKEN"
+use_git_credentials = true
+
+[bootstrap.brew]
+adopt = true
+
+[tasks."global:init"]
+description = "Initialize mise tasks"
+hide        = true
+run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+
+[env]
+# Mise
+MISE_BREW_CASK_OPT_APPDIR = "$HOME/Applications"

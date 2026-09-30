@@ -1,0 +1,22 @@
+#!/usr/bin/env fish
+# =============================================================================
+# Fish Configuration: Homebrew
+# =============================================================================
+# This file is auto-sourced by Fish shell during startup.
+# Files in conf.d/ are automatically loaded in alphabetical order.
+#
+# Environment variables referenced:
+# - HOMEBREW_PREFIX: Homebrew installation prefix (defined in 01-env.fish)
+#
+# Only the shellenv bootstrap lives here. The HOMEBREW_* behaviour flags moved
+# to mise's [env] block - `brew` reads them at runtime, not during startup.
+#
+# This must run BEFORE mise activates (51-): mise wins PATH precedence by
+# prepending, so anything touching PATH after it takes precedence back.
+# =============================================================================
+
+# Homebrew Initialization
+if test -f "$HOMEBREW_PREFIX/bin/brew"
+  # If you're using macOS, you'll want this enabled
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv fish)"
+end

@@ -5,6 +5,30 @@
 set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
+print_header "Setting up '~/.config/mise' ..."
+# Link `~/.config/mise` to the local repository
+MISE_SRC="${MISE_PROJECT_ROOT}/dotfiles2/.config/mise"
+if [[ -L "${HOME}/.config/mise" ]]; then
+  MISE_CURRENT_SRC="$(readlink "${HOME}/.config/mise")"
+  if [[ "${MISE_CURRENT_SRC}" != "${MISE_SRC}" ]]; then
+    print_green "Updating symlink to point to the correct source..."
+    rm -f "${HOME}/.config/mise"
+    ln -s "${MISE_SRC}" "${HOME}/.config/mise"
+  fi
+elif [[ -d "${HOME}/.config/mise" ]]; then
+  print_green "Found existing directory at '~/.config/mise', creating symlink to '${MISE_SRC}'..."
+  mv "${HOME}/.config/mise" "${HOME}/.config/mise.bak"
+  ln -s "${MISE_SRC}" "${HOME}/.config/mise"
+elif [[ ! -e "${HOME}/.config/mise" ]]; then
+  print_green "Creating symlink to '${MISE_SRC}' at '~/.config/mise'..."
+  ln -s "${MISE_SRC}" "${HOME}/.config/mise"
+fi
+# Fail in case the symlink was not created successfully
+if [[ ! -L "${HOME}/.config/mise" ]]; then
+  print_red "Failed to create symlink at '~/.config/mise'. Please check"
+  exit 1
+fi
+
 print_header "Starting project setup ..."
 
 # Reshim mise to ensure all tools are available

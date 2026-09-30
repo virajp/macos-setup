@@ -1,0 +1,45 @@
+# Casks and VS Code extensions only. Formulae and Mac App Store apps are
+# declared in mise/conf.d/packages.toml ([bootstrap.packages]) and installed by mise;
+# casks stay on Homebrew because mise's cask support is intentionally narrow.
+# Applied by the brew:casks task (post-packages hook) via `brew bundle`.
+# 1Password must live in /Applications; everything else goes to ~/Applications
+# via HOMEBREW_CASK_OPTS.
+# Password manager that keeps all passwords secure behind one password
+cask "1password", args: { appdir: "/Applications" }
+# Open-source video transcoder
+cask "handbrake-app"
+# Discover, download, and run local LLMs
+# cask "lm-studio", args: { appdir: "/Applications" }
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Collection of apps available by subscription
+cask "setapp"
+# Team communication and collaboration software
+# cask "slack"
+# Mux and tag mp4 files
+# cask "subler"
+# Multimedia player
+cask "vlc"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+vscode "astro-build.astro-vscode"
+vscode "bmalehorn.vscode-fish"
+vscode "bradlc.vscode-tailwindcss"
+vscode "christian-kohler.npm-intellisense"
+vscode "dart-code.dart-code"
+vscode "dart-code.flutter"
+vscode "dbaeumer.vscode-eslint"
+vscode "doppler.doppler-vscode"
+vscode "dprint.dprint"
+vscode "effectful-tech.effect-vscode"
+vscode "foxundermoon.shell-format"
+vscode "gruntfuggly.todo-tree"
+vscode "hverlin.mise-vscode"
+vscode "meganrogge.template-string-converter"
+vscode "oderwat.indent-rainbow"
+vscode "pkief.material-icon-theme"
+vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
+vscode "usernamehw.errorlens"

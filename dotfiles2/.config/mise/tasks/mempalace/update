@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#MISE description="Update qdrant image (throttled to once a week)"
+#MISE dir="~"
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
+
+mise run mempalace:stop
+mise run mempalace:pull
+mise run mempalace:start
+
+print_success "Update complete!"

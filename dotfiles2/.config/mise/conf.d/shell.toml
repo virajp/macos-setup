@@ -1,0 +1,49 @@
+[bootstrap.mise_shell_activate]
+bash_profile = "shims"
+bashrc       = "activate"
+fish         = "activate"
+zprofile     = "shims"
+zshrc        = "activate"
+
+[bootstrap.packages]
+# Bash
+"brew:bash" = "latest"
+
+# Fish
+"brew:fish" = "latest"
+
+# Zsh
+"brew:zinit" = "latest" # Zsh plugin manager
+"brew:zsh"   = "latest"
+
+# Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
+# sudo_local is the drop-in it includes and survives them.
+[bootstrap.files."/etc/pam.d/sudo_local"]
+content = """
+auth       sufficient     pam_tid.so
+"""
+group = "wheel"
+mode = "0444"
+owner = "root"
+
+# fish as login shell (mise adds it to /etc/shells first). Homebrew's bash and
+# zsh are added to /etc/shells by the line entries below.
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/zsh"
+
+[dotfiles]
+# Shells managed by Homebrew
+"/etc/shells/brew-bash" = { line = "/opt/homebrew/bin/bash" }
+"/etc/shells/brew-fish" = { line = "/opt/homebrew/bin/fish" }
+"/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }
+"~/.zprofile/mise-path" = { block = "export PATH=\"${HOME}/.local/bin:$PATH\"" }
+
+# ZSH
+"~/.config/zsh" = {}
+"~/.zshenv"     = {}
+"~/.zshrc"      = {}
+
+# Fish
+"~/.config/fish/conf.d"      = {}
+"~/.config/fish/config.fish" = {}
+"~/.config/fish/functions"   = {}

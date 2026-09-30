@@ -1,0 +1,5 @@
+:verbose: false
+:update_sources: true
+:backtrace: true
+update: --no-document
+install: --no-document
