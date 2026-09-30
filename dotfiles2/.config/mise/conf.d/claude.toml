@@ -1,7 +1,7 @@
 [tools]
 "npm:@mermaid-js/mermaid-cli" = { pnpm = true, version = "12.0.0" }
 "npm:codeburn"                = { pnpm = true, version = "0.9.25" }
-"pipx:graphifyy"              = { uvx = true, version = "0.9.71" }
+"pipx:graphifyy"              = { uvx = "true", version = "0.9.72" }
 rtk                           = "0.50.0"
 ruby                          = "4.0.7"
 

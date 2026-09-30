@@ -41,18 +41,18 @@
 
 [tools]
 # MISE tools
-fnox  = { source = "brew", version = "1.36.0" }
-usage = { source = "brew", version = "6.12.0" }
+fnox  = "1.36.0"
+usage = "6.12.0"
 
 # Developer Tools
-1password = { source = "brew", version = "2.39.0" }
-bun       = { source = "brew", version = "1.4.2" }
-jq        = { source = "brew", version = "1.8.2" }
-yq        = { source = "brew", version = "4.54.1" }
+1password = "2.39.0"
+bun       = "1.4.2"
+jq        = "1.8.2"
+yq        = "4.54.1"
 
 # Linter & Formatters
-dprint = { source = "brew", version = "0.57.4" }
-taplo  = { source = "brew", version = "0.10.0" }
+dprint = "0.58.0"
+taplo  = "0.10.0"
 
 [dotfiles]
 # Git & SSH
