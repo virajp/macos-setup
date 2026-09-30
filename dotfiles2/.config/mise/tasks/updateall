@@ -32,7 +32,7 @@ fi
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages], conf.d/packages.toml).
 print_header "Upgrading MISE ..."
-mise self-update --yes
+mise self-update --yes --minimum-release-age "0h"
 
 # Install & upgrade mise
 print_subheader "Install MISE tools ..."
