@@ -1,5 +1,5 @@
 # Personal identity (name, email, signing key) lives in .config/git/identity,
-# linked to ~/.config/git/identity.
+# rendered from the [vars] in .config/mise/conf.d/identity.toml.
 [include]
 	path = ~/.config/git/identity
 

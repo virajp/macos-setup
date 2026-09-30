@@ -11,8 +11,10 @@ mirrors `$HOME`: every file sits at the path it is linked to, and
 points mise here. Each topic's links are declared in the `[dotfiles]` table of
 its own `.config/mise/conf.d/<topic>.toml` (e.g. `shell.toml` links
 `~/.config/fish` and `~/.zshrc`), next to that topic's packages and settings.
-`mise bootstrap` applies them from any directory, together with the rest of the
-machine declaration (see [CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
+Files holding personal values are templates rendered from the `[vars]` in
+`.config/mise/conf.d/identity.toml`. `mise bootstrap` applies them from any
+directory, together with the rest of the machine declaration (see
+[CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
 
 ```shell
 mise run dotfiles:install   # create the symlinks

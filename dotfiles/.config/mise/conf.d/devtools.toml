@@ -57,9 +57,17 @@ dprint = "0.58.0"
 taplo  = "0.10.0"
 
 [dotfiles]
-# Git & SSH
-"~/.config/git" = {}
-"~/.ssh"        = { mode = "symlink-each" }
+# Git & SSH. Identity files are templates rendered from the [vars] in
+# identity.toml; listed per file, since a template cannot sit inside a linked
+# directory.
+"~/.config/git/allowed_signers" = { mode = "template" }
+"~/.config/git/config"          = {}
+"~/.config/git/github.config"   = { mode = "template" }
+"~/.config/git/gitlab.config"   = { mode = "template" }
+"~/.config/git/identity"        = { mode = "template" }
+"~/.config/git/ignore"          = {}
+"~/.ssh/config"                 = {}
+"~/.ssh/config.identity"        = { mode = "template" }
 
 # dprint & Taplo
 "~/.config/dprint.json" = {}

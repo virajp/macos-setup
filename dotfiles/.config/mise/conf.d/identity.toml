@@ -1,0 +1,10 @@
+# Personal identity. The only file with personal values: the identity
+# templates under dotfiles/ (git identity, GitHub/GitLab configs,
+# allowed_signers, ssh config.identity) render from these `[vars]` on
+# `mise bootstrap`. An adopter replaces this file wholesale.
+[vars]
+github_email = "3125954+virajp@users.noreply.github.com"
+gitlab_email = "35455-virajp@users.noreply.gitlab.com"
+name         = "Viraj Patel"
+signing_key  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo"
+ssh_user     = "virajp"

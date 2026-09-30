@@ -23,10 +23,14 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   links), `mempalace.toml` (qdrant compose + the `mempalace-hub` service),
   `1password.toml`, `starship.toml`, `fonts.toml`, `utils.toml` (shell aliases),
   `extras.toml`, `env.toml`, `system.toml`.
-- Identity files — personal values live only in whole-file identity files:
-  `dotfiles/.config/git/identity` (`[user]`, included by `.config/git/config`),
-  `dotfiles/.ssh/config.identity` (`User`, included in `Host *`), and
-  `dotfiles/.config/git/allowed_signers`. Keep new personal values there, not in
+- Identity — personal values live only in `[vars]` of
+  `dotfiles/.config/mise/conf.d/identity.toml`. The identity files are Tera
+  templates rendered from them by `mise bootstrap` (`mode = "template"`):
+  `.config/git/identity` (`[user]`, included by `.config/git/config`),
+  `github.config`, `gitlab.config`, `allowed_signers`, and
+  `.ssh/config.identity` (`User`, included in `Host *`). Their rendered copies
+  in `$HOME` are not symlinks: edit the template or the vars, then
+  `mise bootstrap --only dotfiles`. Keep new personal values in `[vars]`, not in
   shared files.
 - `dotfiles/.config/mise/tasks/` — global mise tasks: `updateall`, `upgrade:*`
   (incl. `upgrade:power`, the `pmset`/`nvram` profile), `mempalace:*`,

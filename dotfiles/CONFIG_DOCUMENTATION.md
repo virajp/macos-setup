@@ -8,22 +8,22 @@ it is linked to, and each topic's `[dotfiles]` table in
 
 ## Directory Structure
 
-| Path                                        | What it configures                                                        |
-| ------------------------------------------- | ------------------------------------------------------------------------- |
-| `.config/fish/`                             | Fish shell — the default interactive shell (`conf.d/*.fish`)              |
-| `.zshenv`, `.zshrc`, `.config/zsh/`         | Zsh configuration (fallback shell); `.zshrc` sources `.config/zsh/*.zsh`  |
-| `.config/starship.toml`                     | Starship prompt (the active prompt, initialised from fish)                |
-| `.config/ghostty/`                          | Ghostty terminal configuration                                            |
-| `.config/brewfile`                          | VS Code extensions and the `1password` cask (not linked, see below)       |
-| `.config/git/`                              | Git config, ignore, `identity`, GitHub/GitLab includes, `allowed_signers` |
-| `.ssh/`                                     | SSH client config and `config.identity` (see below)                       |
-| `.config/fnox/`                             | Secret management via the macOS Keychain (see below)                      |
-| `.config/mise/`                             | Global `mise` config, the machine declaration (`conf.d/`) and tasks       |
-| `.config/dprint.json`, `.config/taplo.toml` | `dprint` / `taplo` formatter configuration                                |
-| `.gemrc`                                    | RubyGems configuration                                                    |
-| `.config/1Password/`                        | 1Password SSH agent configuration                                         |
-| `.claude/`                                  | Claude Code (`CLAUDE.md`, `settings.json`, `output-styles/`)              |
-| `.github/`                                  | GitHub Copilot commit-message guidelines                                  |
+| Path                                        | What it configures                                                                    |
+| ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `.config/fish/`                             | Fish shell — the default interactive shell (`conf.d/*.fish`)                          |
+| `.zshenv`, `.zshrc`, `.config/zsh/`         | Zsh configuration (fallback shell); `.zshrc` sources `.config/zsh/*.zsh`              |
+| `.config/starship.toml`                     | Starship prompt (the active prompt, initialised from fish)                            |
+| `.config/ghostty/`                          | Ghostty terminal configuration                                                        |
+| `.config/brewfile`                          | VS Code extensions and the `1password` cask (not linked, see below)                   |
+| `.config/git/`                              | Git config, ignore; `identity`, GitHub/GitLab includes, `allowed_signers` (templates) |
+| `.ssh/`                                     | SSH client config and `config.identity` (template, see below)                         |
+| `.config/fnox/`                             | Secret management via the macOS Keychain (see below)                                  |
+| `.config/mise/`                             | Global `mise` config, the machine declaration (`conf.d/`) and tasks                   |
+| `.config/dprint.json`, `.config/taplo.toml` | `dprint` / `taplo` formatter configuration                                            |
+| `.gemrc`                                    | RubyGems configuration                                                                |
+| `.config/1Password/`                        | 1Password SSH agent configuration                                                     |
+| `.claude/`                                  | Claude Code (`CLAUDE.md`, `settings.json`, `output-styles/`)                          |
+| `.github/`                                  | GitHub Copilot commit-message guidelines                                              |
 
 Files written by `mise bootstrap` from inline content rather than linked:
 `~/.config/gh/config.yml` (`git.toml`), `~/Library/Preferences/pnpm/config.yaml`
@@ -155,11 +155,15 @@ pulls the qdrant image weekly from `updateall`. See
 
 ## Git
 
-`.config/git/config` always includes `identity`, which holds the `[user]`
-identity (name, email, signing key) and includes the host-specific configs
-conditionally (`github.config`, `gitlab.config`). The global ignore file is
-`.config/git/ignore`, and commit signatures are verified against
-`.config/git/allowed_signers`.
+Personal values live only in `[vars]` of `.config/mise/conf.d/identity.toml`
+(name, GitHub/GitLab emails, signing key, ssh user). The files that carry them
+are Tera templates, rendered into `$HOME` by `mise bootstrap` as plain files,
+not symlinks — edit the template or the vars, then
+`mise bootstrap --only dotfiles`. `.config/git/config` always includes
+`identity`, which holds the `[user]` identity and includes the host-specific
+configs conditionally (`github.config`, `gitlab.config`). The global ignore file
+is `.config/git/ignore`, and commit signatures are verified against
+`allowed_signers`.
 
 `push.default` is `current`, and the push aliases (`p` in the git config, `gp`
 in mise) push only the current branch — never `--all`. With public repos, a
@@ -173,8 +177,9 @@ the 1Password SSH agent. It includes `~/.ssh/config.local` for machine-local
 hosts — LAN boxes, per-host auth overrides — which is untracked on purpose,
 since this repo is public. A missing include is ignored by ssh. The default
 `User` sits in `.ssh/config.identity`, included as the first line of `Host *`.
-`~/.ssh` is linked `symlink-each`, so ssh and the 1Password agent can write
-sibling files there without them landing in the repo.
+`~/.ssh` and `~/.config/git` are real directories with one entry per file, so
+ssh, the 1Password agent and git can write sibling files there without them
+landing in the repo.
 
 `~/.config/gh/config.yml` is written by `mise bootstrap` from `git.toml`.
 `hosts.yml` is machine state `gh auth login` writes, and while macOS `gh` keeps
@@ -227,12 +232,12 @@ defaults and runs `upgrade:power`.
 
 ### Link map
 
-Only paths listed in a `[dotfiles]` table are symlinked, so repo metadata is
-never linked by accident. Sources resolve against `dotfiles.root` in
-`config.toml` (this directory), at the same path as the target.
-`mode =
-"symlink"` (the default) links the source itself;
-`mode = "symlink-each"` links each entry inside the source directory
-individually (used for `~/.ssh`). `line`/`block` entries add a line or a managed
-block to a file instead of linking it (`/etc/shells`, `~/.zprofile`).
-`.config/brewfile`'s entry in `system.toml` is commented out.
+Only paths listed in a `[dotfiles]` table are linked, so repo metadata is never
+linked by accident. Sources resolve against `dotfiles.root` in `config.toml`
+(this directory), at the same path as the target. `mode = "symlink"` (the
+default) links the source itself; `mode = "template"` renders the source with
+the `[vars]` from `identity.toml` and writes a plain file. A template cannot sit
+inside a linked directory, which is why `~/.config/git` and `~/.ssh` are listed
+per file. `line`/`block` entries add a line or a managed block to a file instead
+of linking it (`/etc/shells`, `~/.zprofile`). `.config/brewfile`'s entry in
+`system.toml` is commented out.
