@@ -1,6 +1,6 @@
 [tools]
 python = "3.14.7"
-uv     = "0.12.20"
+uv     = "0.12.21"
 
 [settings]
 # Python settings

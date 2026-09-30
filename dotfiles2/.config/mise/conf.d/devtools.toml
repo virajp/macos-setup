@@ -28,13 +28,16 @@
 "brew-cask:alfred"             = "latest" # Application launcher and productivity software
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
 "brew-cask:brave-browser"      = "latest" # Brave Browser
-"brew-cask:ghostty"            = "latest" # Terminal emulator that uses platform-native UI and GPU acceleration
+"brew-cask:ghostty"            = "latest" # Terminal emulator
 "brew-cask:github"             = "latest" # Desktop client for GitHub repositories
+"brew-cask:notion"             = "latest" # App to write, plan, collaborate, and get organised
+"brew-cask:obsidian"           = "latest" # Knowledge base that works on top Markdown files
 "brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
 "brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
 "brew-cask:taskexplorer"       = "latest" # Explore running tasks (processes)
 "brew-cask:visual-studio-code" = "latest" # Open-source code editor
 "brew-cask:warp"               = "latest" # Rust-based terminal
+# "brew-cask:lm-studio"          = "latest" # Discover, download, and run local LLMs
 
 # Mac App Store (keyed by ADAM id)
 "mas:497799835" = "latest" # Xcode

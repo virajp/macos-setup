@@ -17,7 +17,15 @@
 "brew-cask:alfred"        = "latest" # Application launcher and productivity software
 "brew-cask:brave-browser" = "latest" # Brave Browser
 "brew-cask:easyfind"      = "latest" # Find files, folders, or contents in any file
+"brew-cask:setapp"        = "latest" # Collection of apps available by subscription
 "brew-cask:taskexplorer"  = "latest" # Explore running tasks (processes)
+"brew-cask:whatsapp"      = "latest" # Native desktop client for WhatsApp
+# "brew-cask:slack"         = "latest" # Team communication and collaboration software
+
+# Video Casks
+"brew-cask:handbrake-app" = "latest" # Open-source video transcoder
+"brew-cask:vlc"           = "latest" # Multimedia player
+# "brew-cask:subler"        = "latest" # Mux and tag mp4 files
 
 [shell_alias]
 # Startup, Services and Process related shortcuts

@@ -6,8 +6,8 @@
 # Mise (user level)
 "~/.config/mise" = {}
 
-# Brewfile (casks + VS Code extensions, applied by brew:casks)
-"~/.config/brewfile" = {}
+# # Brewfile (casks + VS Code extensions, applied by brew:casks)
+# "~/.config/brewfile" = {}
 
 [shell_alias]
 brew               = "fnox exec -P brew -- brew"
