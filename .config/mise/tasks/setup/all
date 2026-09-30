@@ -7,7 +7,7 @@ source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Setting up '~/.config/mise' ..."
 # Link `~/.config/mise` to the local repository
-MISE_SRC="${MISE_PROJECT_ROOT}/dotfiles2/.config/mise"
+MISE_SRC="${MISE_PROJECT_ROOT}/dotfiles/.config/mise"
 if [[ -L "${HOME}/.config/mise" ]]; then
   MISE_CURRENT_SRC="$(readlink "${HOME}/.config/mise")"
   if [[ "${MISE_CURRENT_SRC}" != "${MISE_SRC}" ]]; then

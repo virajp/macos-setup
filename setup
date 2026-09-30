@@ -8,8 +8,8 @@
 #   Provisions a fresh laptop (or re-converges an existing one). Homebrew and
 #   mise are the only things installed by hand here; everything else -
 #   packages, dotfiles, macOS defaults, login shell, Touch ID - is declared in
-#   the global mise config (dotfiles/mise/, linked to ~/.config/mise) and
-#   applied by `mise bootstrap`.
+#   the global mise config (dotfiles/.config/mise/, linked to ~/.config/mise)
+#   and applied by `mise bootstrap`.
 #
 # Usage:
 #   ./setup
@@ -24,9 +24,9 @@
 #   is not there yet
 # - `brew analytics off`, `brew doctor`
 # - Install `mise`
-# - Link ~/.config/mise to dotfiles/mise so the global config exists
-# - Run `mise bootstrap` (skipping the compose phase until Docker is up)
-# - Link the dotfiles (`mise run dotfiles:install`)
+# - Link ~/.config/mise to dotfiles/.config/mise so the global config exists
+# - Run `mise bootstrap` (skipping the compose phase until Docker is up); its
+#   dotfiles phase links the rest of the dotfiles
 #
 # Notes:
 #   Written as a function that is called (and exited) on the last line, so the
@@ -108,12 +108,12 @@ main() {
   # `mise bootstrap` already reads it (the [dotfiles] entry for ~/.config/mise
   # then finds it applied).
   if [[ ! -L "${MISE_CONFIG_DIR}" ]]; then
-    echo "${SETTING_EMOJI} Linking ${MISE_CONFIG_DIR} -> ${REPO_DIR}/dotfiles/mise..."
+    echo "${SETTING_EMOJI} Linking ${MISE_CONFIG_DIR} -> ${REPO_DIR}/dotfiles/.config/mise..."
     mkdir -p "${HOME}/.config"
     if [[ -e "${MISE_CONFIG_DIR}" ]]; then
       mv "${MISE_CONFIG_DIR}" "${MISE_CONFIG_DIR}.bak-$(date +%s)"
     fi
-    ln -s "${REPO_DIR}/dotfiles/mise" "${MISE_CONFIG_DIR}"
+    ln -s "${REPO_DIR}/dotfiles/.config/mise" "${MISE_CONFIG_DIR}"
   fi
 
   # The qdrant compose project needs a running Docker engine. On a fresh machine
@@ -135,13 +135,6 @@ main() {
   # root's preference domain instead of yours.
   cd "${HOME}"
   mise bootstrap "${bootstrap_flags[@]}"
-
-  # The dotfiles link map is a project config in dotfiles/ (it changes with the
-  # repo, not with the machine), so it is applied from there, not by the global
-  # bootstrap above.
-  echo ""
-  echo "${SETTING_EMOJI} Linking dotfiles..."
-  mise --cd "${REPO_DIR}" run dotfiles:install
 
   echo ""
   echo "${SUCCESS_EMOJI} Setup complete!"

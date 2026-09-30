@@ -10,4 +10,4 @@ Notes and configuration for the AI coding tools used in this setup.
 ## Configured via dotfiles
 
 These tools are installed through `mise`/Homebrew and configured under
-[`dotfiles/ai-tools/`](../../dotfiles/ai-tools)
+[`dotfiles/.claude/`](../../dotfiles/.claude)

@@ -1,4 +1,4 @@
-# Personal identity (name, email, signing key) lives in git/identity,
+# Personal identity (name, email, signing key) lives in .config/git/identity,
 # linked to ~/.config/git/identity.
 [include]
 	path = ~/.config/git/identity
@@ -91,7 +91,7 @@
 
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = ~/.ssh/allowed_signers
+	allowedSignersFile = ~/.config/git/allowed_signers
 
 [tag]
 	forceSignAnnotated = true

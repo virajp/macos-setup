@@ -16,7 +16,7 @@ trusted_config_paths               = [ "~/.config/mise", "~/Projects" ]
 # Setup the dotfiles
 dotfiles.default_mode      = "symlink"
 dotfiles.relative_symlinks = false
-dotfiles.root              = "~/Projects/github.com/virajp/macos-setup/dotfiles2"
+dotfiles.root              = "~/Projects/github.com/virajp/macos-setup/dotfiles"
 
 [settings.github]
 # credential_command = "fnox get GITHUB_API_TOKEN"

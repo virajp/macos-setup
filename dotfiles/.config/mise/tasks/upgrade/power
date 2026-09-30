@@ -4,9 +4,9 @@
 #MISE dir="~"
 
 # Everything `defaults`-based lives in [bootstrap.macos.defaults]
-# (conf.d/macos.toml); mise bootstrap has no pmset/nvram support, so this task
-# carries those and runs as the `bootstrap` task at the end of `mise bootstrap`.
-# macOS updates reset these settings, so `updateall` re-applies them too.
+# (conf.d/macos-defaults.toml); mise bootstrap has no pmset/nvram support, so
+# this task carries those. macOS updates reset these settings, so `updateall`
+# re-applies them weekly.
 
 set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
