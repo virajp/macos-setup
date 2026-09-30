@@ -92,11 +92,13 @@ main() {
   echo "${CHECK_EMOJI} Checking Homebrew health..."
   brew doctor
 
-  # mise drives the rest of the setup.
-  if ! command -v mise &> /dev/null; then
-    echo "${INSTALL_EMOJI} mise not found. Installing..."
-    brew install mise
+  # mise drives the rest of the setup. It is installed with its own installer
+  # (to ~/.local/bin), never Homebrew, so `mise self-update` can manage it.
+  if [[ ! -x "${HOME}/.local/bin/mise" ]]; then
+    echo "${INSTALL_EMOJI} mise not found in ~/.local/bin. Installing..."
+    curl https://mise.run | sh
   fi
+  export PATH="${HOME}/.local/bin:${PATH}"
 
   # Casks land in ~/Applications (1password is the exception, see the Brewfile).
   # Only needed on a fresh machine: once the dotfiles are linked, the global mise

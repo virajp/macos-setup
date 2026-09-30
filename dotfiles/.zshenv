@@ -17,8 +17,8 @@
 # supersedes the shims for tool resolution and applies the [env] block.
 #
 # The absolute path is required: path_helper only runs from /etc/zprofile
-# (login shells), so /opt/homebrew/bin is not on PATH yet here.
-if [[ -x /opt/homebrew/bin/mise ]]; then
+# (login shells), and ~/.local/bin is not on PATH yet here.
+if [[ -x "${HOME}/.local/bin/mise" ]]; then
   export MISE_ENV=dev
-  eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
+  eval "$("${HOME}/.local/bin/mise" activate zsh --shims)"
 fi
