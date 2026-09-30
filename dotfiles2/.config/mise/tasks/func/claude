@@ -30,4 +30,8 @@ if [[ -n "$model" ]]; then
   args+=(--model "$model")
 fi
 
-exec claude "${args[@]}" "$@" --dangerously-skip-permissions --allow-dangerously-skip-permissions
+# Add the dangerously skip permissions flag to the arguments array
+args+=(--dangerously-skip-permissions)
+args+=(--allow-dangerously-skip-permissions)
+
+exec claude "${args[@]}" "$@"
