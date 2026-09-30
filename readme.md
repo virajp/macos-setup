@@ -26,6 +26,18 @@ mise run dotfiles:install # (re)link only the dotfiles
 > [docs/setup.md](./docs/setup.md) (`curl … | sh`) — it installs Homebrew and
 > clones this repo before doing the same.
 
+## Use it for your own machine
+
+This repo is personal, but its shape isn't. To adopt it into your own setup
+repo, or to pull later changes into one, run this in Claude Code:
+
+```text
+Follow https://raw.githubusercontent.com/virajp/macos-setup/main/sync.md
+```
+
+[`sync.md`](./sync.md) keeps your software and identity and only brings over the
+structure. Add `for <app>` to limit it to one piece of software.
+
 ## Manual steps
 
 - [Create account](./docs/account.md)
