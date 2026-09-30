@@ -74,11 +74,3 @@ updateall --force   # run the weekly part now
 # Update macOS (works on zsh & fish only)
 osx-upgrade
 ```
-
-## Install these tools manually
-
-- [Brave Browser](https://brave.com/)
-- [Cloudflare Wrap](https://1.1.1.1/)
-- [SnapDownloader](https://snapdownloader.com/downloads)
-- [Spatial Media Metadata Injector](https://github.com/google/spatial-media/releases)
-- [Insta360 Studio 2023](https://www.insta360.com/download/insta360-oners)
