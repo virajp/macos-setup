@@ -5,13 +5,14 @@ liking.
 
 ## Installation
 
-I use [mise](https://mise.jdx.dev/) to manage my dotfiles. `mise.toml` in this
-directory holds the `[dotfiles]` link map — which source file lands at which
-`$HOME` path, and in which mode (`symlink`, `symlink-each`). It is a project
-config on purpose: the links change when this repo changes, not when the machine
-does, so they are applied by a repo task rather than by the machine-wide
-`mise bootstrap` (whose declaration lives in `mise/conf.d/`, see
-[CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
+I use [mise](https://mise.jdx.dev/) to manage my dotfiles. This directory
+mirrors `$HOME`: every file sits at the path it is linked to, and
+`dotfiles.root` in [`.config/mise/config.toml`](./.config/mise/config.toml)
+points mise here. Each topic's links are declared in the `[dotfiles]` table of
+its own `.config/mise/conf.d/<topic>.toml` (e.g. `shell.toml` links
+`~/.config/fish` and `~/.zshrc`), next to that topic's packages and settings.
+`mise bootstrap` applies them from any directory, together with the rest of the
+machine declaration (see [CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
 
 ```shell
 mise run dotfiles:install   # create the symlinks
@@ -21,8 +22,9 @@ mise run dotfiles:delete    # remove the symlinks
 
 ## Adding a dotfile
 
-Add the file under `dotfiles/<pkg>/`, add its entry to `mise.toml` (source paths
-are relative to this directory), then run `mise run dotfiles:install`.
+Add the file under `dotfiles/` at its `$HOME` path, add a `[dotfiles]` entry for
+it to the matching `.config/mise/conf.d/<topic>.toml`, then run
+`mise run dotfiles:install`.
 
 ## Reference
 

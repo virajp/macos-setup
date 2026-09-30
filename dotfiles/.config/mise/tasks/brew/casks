@@ -3,8 +3,8 @@
 #MISE hide=true
 #MISE dir="~"
 
-# Run from the post-packages hook (conf.d/macos.toml). Formulae are mise's
-# (conf.d/packages.toml); the Brewfile only holds casks and VS Code extensions,
+# Run by hand. Formulae and most casks are mise's ([bootstrap.packages] in
+# conf.d/*.toml); the Brewfile only holds casks and VS Code extensions,
 # so cleanup is scoped to those types and never touches formulae.
 
 set -e

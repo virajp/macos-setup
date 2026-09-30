@@ -5,7 +5,7 @@
 #   - https://www.defaults-write.com/
 #   - https://mac.install.guide/mac-setup/finder/
 # `defaults read <domain> [<key>]` shows the live value. pmset/nvram live in the
-# macos:power task (run as the `bootstrap` task below) — mise only does
+# upgrade:power task (run weekly by `updateall`) — mise only does
 # `defaults`, and it never restarts apps itself, hence the post-defaults hook.
 
 # General & Appearance

@@ -1,24 +1,20 @@
 # Setup
 
-Homebrew formulae and Mac App Store apps are declared in `[bootstrap.packages]`
-of [`dotfiles/mise/conf.d/packages.toml`](../dotfiles/mise/conf.d/packages.toml)
-and installed by [`mise bootstrap`](https://mise.jdx.dev/bootstrap.html), which
-pours Homebrew bottles itself. Casks (GUI apps, fonts) and VS Code extensions
-stay on `Homebrew`, declared in
-[`dotfiles/homebrew/brewfile`](../dotfiles/homebrew/brewfile) and applied by the
-`brew:casks` task. Development tools (global or per project) are `mise`
-`[tools]`.
+Homebrew formulae, casks and Mac App Store apps are declared in
+`[bootstrap.packages]` of the topic files in
+[`dotfiles/.config/mise/conf.d/`](../dotfiles/.config/mise/conf.d/) and
+installed by [`mise bootstrap`](https://mise.jdx.dev/bootstrap.html), which
+pours Homebrew bottles itself. Development tools (global or per project) are
+`mise` `[tools]`.
 
 ## Setup
 
 The repo is public, so the [`setup`](../setup) script can be run directly from
 GitHub. It installs Homebrew (which pulls in the Xcode Command Line Tools) and
 `mise`, clones this repo to `~/Projects/github.com/virajp/macos-setup` if it
-isn't already present, links `~/.config/mise` to `dotfiles/mise` so the global
-config exists, runs `mise bootstrap --yes` — packages, macOS defaults, fish as
-login shell, Touch ID for sudo, and the pmset/nvram power profile (this last
-part prompts for `sudo`) — and finally `mise run dotfiles:install` to link the
-dotfiles.
+isn't already present, links `~/.config/mise` to `dotfiles/.config/mise` so the
+global config exists, then runs `mise bootstrap --yes` — packages, dotfile
+links, macOS defaults, fish as login shell and Touch ID for sudo.
 
 ```shell
 curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup | sh

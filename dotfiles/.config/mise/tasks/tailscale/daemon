@@ -3,7 +3,7 @@
 #MISE hide=true
 #MISE dir="~"
 
-# Run from the post-packages hook (conf.d/macos.toml). The formula itself is
+# Run by `updateall`. The formula itself is
 # mise's; only the daemon goes through `brew services`, because tailscaled needs
 # root for the utun interface and mise has no privileged services on macOS.
 # Only starts when tailscaled is not running: `sudo brew services start`
