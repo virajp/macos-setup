@@ -1,3 +1,0 @@
-# Personal ssh defaults, included inside `Host *` from config (so no Host line).
-# An adopter replaces this file wholesale with their own.
-User virajp
