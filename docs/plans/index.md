@@ -6,7 +6,6 @@ to pick the next runnable plan.
 
 ## Plans
 
-| Folder                                                   | Kind   | Plan                           | Target repo | Priority | Status   | Requires                           | Backlog |
-| -------------------------------------------------------- | ------ | ------------------------------ | ----------- | -------- | -------- | ---------------------------------- | ------- |
-| `docs/plans/archived/2026-09-27-personal-values-overlay` | change | Personal values overlay        | —           | 10       | COMPLETE | —                                  | —       |
-| `docs/plans/2026-09-27-adoption-mechanism`               | change | Adoption mechanism for friends | —           | 20       | RUNNING  | 2026-09-27-personal-values-overlay | —       |
+| Folder                                                   | Kind   | Plan                    | Target repo | Priority | Status   | Requires | Backlog |
+| -------------------------------------------------------- | ------ | ----------------------- | ----------- | -------- | -------- | -------- | ------- |
+| `docs/plans/archived/2026-09-27-personal-values-overlay` | change | Personal values overlay | —           | 10       | COMPLETE | —        | —       |
