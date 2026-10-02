@@ -10,6 +10,7 @@
 "brew:fzf"             = "latest" # Command-line fuzzy finder
 "brew:jq"              = "latest" # Command-line JSON processor
 "brew:ripgrep"         = "latest" # Fast search tool
+"brew:superfile"       = "latest" # File management utility
 "brew:yq"              = "latest" # YAML processor
 "brew:zoxide"          = "latest" # Fast directory jumper
 
