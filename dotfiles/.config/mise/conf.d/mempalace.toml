@@ -11,16 +11,16 @@ project_name = "mempalace"
 state        = "running"
 sudo         = false
 
-[bootstrap.services.mempalace-hub]
-command           = "~/.local/bin/mise x -- mempalace serve" # from `which mise`
-description       = "MemPalace Hub service (mcp server)"
-enabled           = true
-environment       = { MEMPALACE_MCP_IDLE_HOURS = "0" }
-requires_tools    = true
-restart           = "on-failure"
-scope             = "user"
-state             = "running"
-working_directory = "~"
+# [bootstrap.services.mempalace-hub]
+# command           = "~/.local/bin/mise x -- mempalace serve" # from `which mise`
+# description       = "MemPalace Hub service (mcp server)"
+# enabled           = true
+# environment       = {}
+# requires_tools    = true
+# restart           = "on-failure"
+# scope             = "user"
+# state             = "running"
+# working_directory = "~"
 
 [bootstrap.directories."~/.config/mempalace"]
 
@@ -58,13 +58,14 @@ networks:
 
 [env]
 # Mempalace Backend
-MEMPALACE_BACKEND          = "qdrant"
-MEMPALACE_EMBEDDING_DEVICE = "auto"
-MEMPALACE_EMBEDDING_MODEL  = "embeddinggemma"
-MEMPALACE_MAX_BACKUPS      = 4
-MEMPALACE_MCP_IDLE_HOURS   = 0
-MEMPALACE_PALACE_PATH      = "~/.local/share/mempalace"
-MEMPALACE_QDRANT_URL       = "http://127.0.0.1:6333"
+MEMPALACE_BACKEND               = "qdrant"
+MEMPALACE_EMBEDDING_DEVICE      = "auto"
+MEMPALACE_EMBEDDING_MODEL       = "minilm"
+MEMPALACE_MAX_BACKUPS           = 4
+MEMPALACE_MCP_ALLOW_PEER_WRITER = 1
+MEMPALACE_MCP_IDLE_HOURS        = 0
+MEMPALACE_QDRANT_URL            = "http://127.0.0.1:6333"
+# MEMPALACE_PALACE_PATH           = "~/.local/share/mempalace"
 
 [shell_alias]
 mp = "mise x -- fnox exec --profile mempalace -- mempalace"
