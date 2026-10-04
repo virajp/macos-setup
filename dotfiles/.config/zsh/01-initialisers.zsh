@@ -6,6 +6,10 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 # mise activate
+# Setting up mise trusted paths
+export MISE_TRUSTED_CONFIG_PATHS="$HOME/.config/mise:$HOME/Projects"
+# MISE_ENV must be set as "dev"
+export MISE_ENV="dev"
 # Must run after `brew shellenv` and the PATH exports
 if command -v mise >/dev/null 2>&1; then
   # echo "Activating mise ... "

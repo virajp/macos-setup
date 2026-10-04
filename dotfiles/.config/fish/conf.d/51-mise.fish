@@ -1,5 +1,9 @@
 # mise activate
+
+# MISE_ENV must be set as "dev"
 set --global --export MISE_ENV dev
+# Setting up mise trusted paths
+set --global --export MISE_TRUSTED_CONFIG_PATHS "$HOME/.config/mise:$HOME/Projects"
 
 # Homebrew's mise formula ships vendor_conf.d/mise-activate.fish, which sorts
 # after this file and would re-run a full `mise activate`, overriding the

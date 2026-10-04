@@ -8,9 +8,6 @@
 # GPG
 export GPG_TTY="$(tty)"
 
-# Mise environment
-export MISE_ENV="dev"
-
 # fnox config dir
 export FNOX_CONFIG_DIR="$HOME/.config/fnox"
 

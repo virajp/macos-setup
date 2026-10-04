@@ -11,7 +11,7 @@ raw                                = true
 status.missing_tools               = "always"
 task.disable_spec_from_run_scripts = true
 task.output                        = "interleave"
-trusted_config_paths               = [ "~/.config/mise", "~/Projects" ]
+trusted_config_paths               = [ "~/.config/mise" ]
 
 # Setup the dotfiles
 dotfiles.default_mode      = "symlink"
