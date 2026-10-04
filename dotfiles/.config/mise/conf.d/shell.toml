@@ -1,10 +1,4 @@
-[bootstrap.mise_shell_activate]
-bash_profile = "shims"
-bashrc       = "activate"
-fish         = "activate"
-zprofile     = "shims"
-zshrc        = "activate"
-
+# Packages to be installed via Homebrew
 [bootstrap.packages]
 # Bash
 "brew:bash" = "latest"
@@ -15,6 +9,13 @@ zshrc        = "activate"
 # Zsh
 "brew:zinit" = "latest" # Zsh plugin manager
 "brew:zsh"   = "latest"
+
+[bootstrap.mise_shell_activate]
+bash_profile = "shims"
+bashrc       = "activate"
+fish         = "activate"
+zprofile     = "shims"
+zshrc        = "activate"
 
 # Touch ID for sudo. /etc/pam.d/sudo is overwritten by every macOS update;
 # sudo_local is the drop-in it includes and survives them.

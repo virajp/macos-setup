@@ -5,17 +5,13 @@
 "brew:coreutils"       = "latest" # GNU core utilities
 "brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
 "brew:diff-so-fancy"   = "latest" # Enhances git diff output
-"brew:fish"            = "latest" # Friendly interactive shell
 "brew:fnox"            = "latest" # Version manager for multiple programming languages
 "brew:gh"              = "latest" # GitHub CLI tool
 "brew:git"             = "latest" # Distributed version control system
 "brew:git-tools"       = "latest" # Additional Git utilities
 "brew:glab"            = "latest" # GitLab CLI tool
-"brew:jq"              = "latest" # Command-line JSON processor
 "brew:ripgrep"         = "latest" # Fast search tool
 "brew:starship"        = "latest" # Cross-shell prompt
-"brew:yq"              = "latest" # YAML processor
-# "brew:gnupg"           = "latest" # GNU Privacy Guard for encryption and signing
 
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 "brew-cask:font-fira-code-nerd-font"    = "latest"
@@ -25,16 +21,13 @@
 "brew-cask:font-meslo-lg-nerd-font"     = "latest"
 
 # Casks
-"brew-cask:alfred"             = "latest" # Application launcher and productivity software
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
-"brew-cask:brave-browser"      = "latest" # Brave Browser
 "brew-cask:ghostty"            = "latest" # Terminal emulator
 "brew-cask:github"             = "latest" # Desktop client for GitHub repositories
 "brew-cask:notion"             = "latest" # App to write, plan, collaborate, and get organised
 "brew-cask:obsidian"           = "latest" # Knowledge base that works on top Markdown files
 "brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
 "brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
-"brew-cask:taskexplorer"       = "latest" # Explore running tasks (processes)
 "brew-cask:visual-studio-code" = "latest" # Open-source code editor
 "brew-cask:warp"               = "latest" # Rust-based terminal
 # "brew-cask:lm-studio"          = "latest" # Discover, download, and run local LLMs
@@ -51,12 +44,6 @@ version = "latest"
 
 # Developer Tools
 [tools.bun]
-version = "latest"
-
-[tools.jq]
-version = "latest"
-
-[tools.yq]
 version = "latest"
 
 [dotfiles]

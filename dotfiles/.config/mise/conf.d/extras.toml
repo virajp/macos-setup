@@ -15,7 +15,9 @@
 "brew:wget"        = "latest" # Network downloader
 
 # Casks
-# "brew-cask:alfred"        = "latest" # Application launcher and productivity software
+"brew-cask:alfred"        = "latest" # Application launcher and productivity software
+"brew-cask:brave-browser" = "latest" # Brave Browser
+"brew-cask:taskexplorer"  = "latest" # Explore running tasks (processes)
 
 # Mac App Store (keyed by ADAM id)
 "mas:1120214373" = "latest" # Battery Health 2
