@@ -4,26 +4,13 @@
 "brew:ca-certificates" = "latest" # Common CA certificates
 "brew:coreutils"       = "latest" # GNU core utilities
 "brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
-"brew:diff-so-fancy"   = "latest" # Enhances git diff output
 "brew:fnox"            = "latest" # Version manager for multiple programming languages
-"brew:gh"              = "latest" # GitHub CLI tool
-"brew:git"             = "latest" # Distributed version control system
-"brew:git-tools"       = "latest" # Additional Git utilities
-"brew:glab"            = "latest" # GitLab CLI tool
 "brew:ripgrep"         = "latest" # Fast search tool
 "brew:starship"        = "latest" # Cross-shell prompt
-
-# Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
-"brew-cask:font-fira-code-nerd-font"    = "latest"
-"brew-cask:font-hack-nerd-font"         = "latest"
-"brew-cask:font-iosevka-nerd-font"      = "latest"
-"brew-cask:font-iosevka-term-nerd-font" = "latest"
-"brew-cask:font-meslo-lg-nerd-font"     = "latest"
 
 # Casks
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
 "brew-cask:ghostty"            = "latest" # Terminal emulator
-"brew-cask:github"             = "latest" # Desktop client for GitHub repositories
 "brew-cask:notion"             = "latest" # App to write, plan, collaborate, and get organised
 "brew-cask:obsidian"           = "latest" # Knowledge base that works on top Markdown files
 "brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
@@ -33,7 +20,9 @@
 # "brew-cask:lm-studio"          = "latest" # Discover, download, and run local LLMs
 
 # Mac App Store (keyed by ADAM id)
-"mas:497799835" = "latest" # Xcode
+"mas:1450874784" = "latest" # Transporter
+"mas:497799835"  = "latest" # Xcode
+"mas:640199958"  = "latest" # Developer
 
 # MISE tools
 [tools.fnox]
