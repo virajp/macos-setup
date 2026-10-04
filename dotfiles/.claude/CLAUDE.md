@@ -109,5 +109,3 @@ Clarifying questions come **before** implementation, not after mistakes.
   `graphify hook uninstall`, add `post-commit` to `default_install_hook_types`,
   `pre-commit install --hook-type post-commit`, drop the `merge=graphify` line
   from `.gitattributes`
-
-@RTK.md
