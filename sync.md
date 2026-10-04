@@ -23,7 +23,8 @@ The rest of this file is addressed to the agent running it.
 
 - **Ask, never assume.** Use `AskUserQuestion` for every decision this file does
   not settle. When a step says "ask", ask before acting.
-- **macOS only.** Stop if `uname -s` is not `Darwin`.
+- **macOS on Apple Silicon only.** Stop if `uname -s` is not `Darwin` or
+  `uname -m` is not `arm64`.
 - **Write only inside the user's setup repo** and the temp folder, except for
   the mise install (step 3) and the final apply (step 11), each behind its own
   consent.
@@ -38,7 +39,10 @@ The rest of this file is addressed to the agent running it.
 ## 1. Preflight
 
 1. Check `uname -s` is `Darwin`.
-2. Read the prompt: no `for <app>` means a full run; `for <app>` means a scoped
+2. Check `uname -m` is `arm64`. The setup assumes Apple Silicon's Homebrew
+   prefix `/opt/homebrew` (login shell, `/etc/shells`, fish env, `setup`); on an
+   Intel Mac, stop and tell the user.
+3. Read the prompt: no `for <app>` means a full run; `for <app>` means a scoped
    run (step 8). Confirm the scope with the user.
 
 ## 2. Clone upstream into a temp folder
@@ -74,6 +78,10 @@ other method.
    `~/.cache/mise`.
 5. Verify: `~/.local/bin/mise --version`. If `~/.local/bin` is not on `PATH`,
    use the full path for the rest of the run and tell the user.
+6. Compare that version with `min_version` in upstream's
+   `dotfiles/.config/mise/config.toml`. If theirs is older, ask for consent and
+   run `mise self-update`: the bootstrap features this setup uses (compose,
+   templates, macOS defaults) need a recent mise.
 
 If the user declines, stop: nothing below works without mise.
 
@@ -94,9 +102,13 @@ Ask where their setup repo is.
      - `mas list` → `"mas:<id>"` (if `mas` is installed)
      - `mise ls --global --current` → `[tools]`
 
-     Place each entry in the `conf.d/<topic>.toml` whose topic fits it (shell,
-     git, node, python, fonts, …) and the rest in `extras.toml`. Show the
-     placement and let the user move or drop entries.
+     Place each entry in the `conf.d/<topic>.toml` whose topic fits it (list
+     upstream's `conf.d/` for the current topics — e.g. `shell`, `terminal`,
+     `cli`, `network`, `git`, `containers`, `security`, `devtools`, `node`,
+     `python`, `system`). Put leftover formulae in `cli.toml` and leftover apps
+     in `macos-apps.toml`. A versioned dev tool found as a formula (`node`,
+     `python`, `go`, `terraform`, …) belongs in `[tools]`, not `brew:` — suggest
+     moving it. Show the placement and let the user move or drop entries.
   4. For every upstream `[dotfiles]` target that already exists in their `$HOME`
      as a real file (e.g. `~/.config/fish/config.fish`,
      `~/.config/starship.toml`), copy **their** file into the mirror path under
@@ -112,18 +124,25 @@ Personal values live only in `[vars]` of
 templates (`mode = "template"`, original file names) rendered from these vars:
 `.config/git/identity`, `.config/git/github.config`,
 `.config/git/gitlab.config`, `.config/git/allowed_signers`,
-`.ssh/config.identity`.
+`.ssh/config.identity`, `.config/1Password/ssh/agent.toml`. The same vars feed
+`PROJECTS_DIR` (`conf.d/cli.toml`) and the pnpm and gh config files
+(`template = true` in `conf.d/node.toml` and `conf.d/git.toml`). `[vars]` values
+must be strings.
 
 - If `identity.toml` exists, keep it and ask only for vars upstream added since.
 - Otherwise ask for each value and write the file:
 
-  | Var            | Ask for                                                          |
-  | -------------- | ---------------------------------------------------------------- |
-  | `name`         | Git author name                                                  |
-  | `github_email` | GitHub commit email (suggest their `…@users.noreply.github.com`) |
-  | `gitlab_email` | GitLab commit email (ask if they use GitLab at all)              |
-  | `signing_key`  | SSH public key for commit signing (ask if they sign commits)     |
-  | `ssh_user`     | Default SSH user                                                 |
+  | Var                        | Ask for                                                                                                |
+  | -------------------------- | ------------------------------------------------------------------------------------------------------ |
+  | `name`                     | Git author name                                                                                        |
+  | `github_email`             | GitHub commit email (suggest their `…@users.noreply.github.com`)                                       |
+  | `gitlab_email`             | GitLab commit email (ask if they use GitLab at all)                                                    |
+  | `signing_key`              | SSH public key for commit signing (ask if they sign commits)                                           |
+  | `ssh_user`                 | Default SSH user                                                                                       |
+  | `projects_dir`             | Folder holding `github.com/<user>/<repo>` (default `~/Projects`)                                       |
+  | `editor`                   | Command gh opens for issues and PRs (e.g. `code`, `vim`)                                               |
+  | `op_ssh_vault`             | 1Password vault holding their SSH keys (default `Private`)                                             |
+  | `pnpm_release_age_exclude` | Package patterns exempt from pnpm's release-age cooldown, space-separated (their own scopes, or empty) |
 
 - If they don't use GitLab, drop `gitlab.config`, its `includeIf` blocks in
   `identity`, its `allowed_signers` line and its `[dotfiles]` entry — ask first.
@@ -148,8 +167,27 @@ lint config, `.gitignore`, `LICENSE`, `readme.md`, `CLAUDE.md`, and `docs/`
 (apart from what is excluded below).
 
 Where an upstream setting assumes an app the user doesn't have (e.g.
-`CHROME_EXECUTABLE` → Brave, `edit` → Sublime Text, `code` as git/gh editor, the
-GCP env), ask: keep it, point it at their app, or drop it.
+`CHROME_EXECUTABLE` → Brave, `edit` → Sublime Text, `code` as the git editor in
+`.config/git/config`, the GCP env), ask: keep it, point it at their app, or drop
+it.
+
+**Merge, don't overwrite.** "Take upstream" applies key by key, never file by
+file — on a re-sync the user's structure files carry their own additions:
+
+- A key only the user has (their own alias, env var, `[dotfiles]` entry, a line
+  in a shell config): keep it.
+- A key upstream has and the user's copy doesn't: add it.
+- A key both have with different values: take upstream's if the user's value is
+  upstream's old one; otherwise show both and ask.
+- A key upstream removed that the user's copy still has unchanged: remove it,
+  and list it in the summary.
+
+**Follow keys, not file names.** When upstream moves keys to another file (e.g.
+`utils.toml` split into `cli.toml`, `network.toml`, `macos-apps.toml` and
+`system.toml`), match each of the user's keys to where upstream keeps it now and
+move it there — packages and tools included. Create files upstream added, and
+delete a file upstream removed once everything in it has moved. Ask where to put
+a key with no upstream counterpart.
 
 ### The user's software — keep theirs
 
@@ -169,15 +207,21 @@ structure itself needs to run (e.g. `fnox`, `usage`, `dprint`, `taplo`,
 These lines hold machine paths or usernames that mise cannot template. Write the
 user's value on the first run and never overwrite it afterwards:
 
-| Line                                                            | Their value                                            |
-| --------------------------------------------------------------- | ------------------------------------------------------ |
-| `dotfiles.root` in `dotfiles/.config/mise/config.toml`          | `<their repo path>/dotfiles`, `~`-relative             |
-| `project_dir` in `conf.d/mempalace.toml` (if mempalace adopted) | their absolute `$HOME` + `/.config/mempalace`          |
-| `GITHUB_USER` default, raw URL and `Author` in `setup`          | their username and name                                |
-| `macos-setup` repo name in `setup` (`REPO_URL`, `REPO_DIR`)     | their repo name, so `REPO_DIR` matches `dotfiles.root` |
-| URLs in `.config/git-conventional-commits.yaml`                 | their repo                                             |
-| Clone path and `curl` URL in `docs/setup.md`                    | their username and repo                                |
-| Hostname in `docs/host.md`                                      | ask for their computer name, or leave a placeholder    |
+| Line                                                            | Their value                                                                |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `dotfiles.root` in `dotfiles/.config/mise/config.toml`          | `<their repo path>/dotfiles`, `~`-relative                                 |
+| `project_dir` in `conf.d/mempalace.toml` (if mempalace adopted) | their absolute `$HOME` + `/.config/mempalace` ¹                            |
+| `GITHUB_USER` default, raw URL and `Author` in `setup`          | their username and name                                                    |
+| `REPO_NAME` and `PROJECTS_DIR` defaults in `setup`              | their repo name and projects folder, so `REPO_DIR` matches `dotfiles.root` |
+| `"Projects/github.com"` substitution in `.config/starship.toml` | their `projects_dir` + `/github.com`, relative to `~`                      |
+| URLs in `.config/git-conventional-commits.yaml`                 | their repo                                                                 |
+| Clone path and `curl` URL in `docs/setup.md`                    | their username and repo                                                    |
+| Hostname in `docs/host.md`                                      | ask for their computer name, or leave the placeholder                      |
+
+¹ Check first whether their mise renders templates in compose values
+([jdx/mise#13937](https://github.com/jdx/mise/discussions/13937)): if
+`project_dir = "{{ env.HOME }}/.config/mempalace"` passes
+`mise bootstrap compose status`, use that and drop this row.
 
 ### Adopted by default — offer an opt-out
 
@@ -212,7 +256,6 @@ Ask about each; skip it if declined:
 
 - `dotfiles/.claude/settings.json`
 - the owner's own projects: `@virajp.dev/claude-plugins` in `upgrade:ai`, the
-  `@askviraj/*` and `@virajp.dev/*` exemptions in `conf.d/node.toml`, the
   `virajp/ai-plugins` link in `docs/ai-tools/readme.md`, the schema URL in
   `.config/statusline.json`
 - `docs/plans/`, `docs/backlog.md`, `TASKS.md`, `graphify-out/`, `.vscode/`
@@ -233,6 +276,10 @@ plugin, skill or file the user doesn't have:
 
 Check each: `claude plugin list` for plugins, `claude mcp list` for MCP servers,
 the file system for the rest. Show the user what was dropped.
+
+Then rebuild the `## Shell Aliases` section from the user's `[shell_alias]`
+entries across `conf.d/*.toml`: list only the aliases they kept that shadow a
+standard command, with what each runs, and update the summary of the safe ones.
 
 ## 8. Scoped run (`for <app>`)
 
@@ -261,10 +308,14 @@ Everything else in the repo stays untouched. Continue with step 9.
    mise x --cd="$REPO" -- mise run code:lint
    ```
 
-3. Check nothing personal from upstream slipped in: search `$REPO` for `virajp`,
-   `virajpatel`, `Viraj Patel`, `askviraj`, `3125954` and `35455`. Every hit
-   must be justified (e.g. the adopted `virajp/tap` tap, the `@askviraj/linter`
-   hook) or removed.
+3. Check nothing personal from upstream slipped in:
+
+   ```shell
+   git -C "$REPO" grep -niE 'viraj|vicz|3125954|35455|/Users/'
+   ```
+
+   Every hit must be justified (e.g. the adopted `virajp/tap` tap, the
+   `@askviraj/linter` hook, `/Users/Shared`) or removed.
 
 ## 10. Review
 
@@ -274,7 +325,10 @@ Everything else in the repo stays untouched. Continue with step 9.
 
 ## 11. Apply to the machine
 
-Ask again before touching the machine. If yes:
+Ask again before touching the machine, and say what a full converge does: it
+restarts Finder, Dock and the menu bar (macOS defaults), changes the login shell
+to fish, writes `/etc/pam.d/sudo_local` and `/etc/shells`, and installs every
+declared package. List the parts they opted out of in step 6. If yes:
 
 1. Link the global mise config to the repo (moves an existing `~/.config/mise`
    directory to `~/.config/mise.bak`):
@@ -295,7 +349,8 @@ Ask again before touching the machine. If yes:
    tell the user to run `mise bootstrap --only compose` later.
 
 3. Verify: `mise bootstrap status` and `mise run dotfiles:status` show nothing
-   missing.
+   missing, and the identity applies — `git -C "$REPO" config user.email` prints
+   their `github_email` (when `$REPO` sits under `projects_dir`).
 
 ## 12. Clean up
 
