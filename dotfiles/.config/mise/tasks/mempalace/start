@@ -10,6 +10,3 @@ line_sep "="
 
 print_wait "Starting qdrant (mempalace) ... "
 mise x --silent -- mise bootstrap compose apply --yes --silent && print_success
-
-print_wait "Starting mempalace hub ... "
-mise x --silent -- mise bootstrap services apply --yes --silent && print_success

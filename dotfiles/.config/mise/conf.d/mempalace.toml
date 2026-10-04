@@ -11,17 +11,6 @@ project_name = "mempalace"
 state        = "running"
 sudo         = false
 
-# [bootstrap.services.mempalace-hub]
-# command           = "~/.local/bin/mise x -- mempalace serve" # from `which mise`
-# description       = "MemPalace Hub service (mcp server)"
-# enabled           = true
-# environment       = {}
-# requires_tools    = true
-# restart           = "on-failure"
-# scope             = "user"
-# state             = "running"
-# working_directory = "~"
-
 [bootstrap.directories."~/.config/mempalace"]
 
 [bootstrap.files."~/.config/mempalace/docker-compose.yaml"]
