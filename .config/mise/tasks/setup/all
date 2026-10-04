@@ -25,7 +25,7 @@ elif [[ ! -e "${HOME}/.config/mise" ]]; then
 fi
 # Fail in case the symlink was not created successfully
 if [[ ! -L "${HOME}/.config/mise" ]]; then
-  print_red "Failed to create symlink at '~/.config/mise'. Please check"
+  print_error "Failed to create symlink at '~/.config/mise'. Please check"
   exit 1
 fi
 
