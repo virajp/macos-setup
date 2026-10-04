@@ -23,7 +23,8 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   links), `mempalace.toml` (qdrant compose + the `mempalace-hub` service),
   `terminal.toml` (ghostty, warp, starship, fonts), `cli.toml`, `network.toml`,
   `containers.toml`, `security.toml` (1Password, fnox, SSH), `macos-apps.toml`,
-  `system.toml` (Homebrew env, mise link, maintenance aliases).
+  `system.toml` (system utility apps, Homebrew env, mise link, maintenance
+  aliases).
 - Identity — personal values live only in `[vars]` of
   `dotfiles/.config/mise/conf.d/identity.toml`. The identity files are Tera
   templates rendered from them by `mise bootstrap` (`mode = "template"`):

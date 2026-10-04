@@ -2,11 +2,9 @@
 # Casks
 "brew-cask:alfred"        = "latest" # Application launcher and productivity software
 "brew-cask:brave-browser" = "latest" # Brave Browser
-"brew-cask:easyfind"      = "latest" # Find files, folders, or contents in any file
 "brew-cask:notion"        = "latest" # App to write, plan, collaborate, and get organised
 "brew-cask:obsidian"      = "latest" # Knowledge base that works on top Markdown files
 "brew-cask:setapp"        = "latest" # Collection of apps available by subscription
-"brew-cask:taskexplorer"  = "latest" # Explore running tasks (processes)
 "brew-cask:whatsapp"      = "latest" # Native desktop client for WhatsApp
 # "brew-cask:slack"         = "latest" # Team communication and collaboration software
 
@@ -16,24 +14,17 @@
 # "brew-cask:subler"        = "latest" # Mux and tag mp4 files
 
 # Mac App Store (keyed by ADAM id)
-"mas:1120214373" = "latest" # Battery Health 2
 "mas:1290358394" = "latest" # Cardhop
 "mas:1502111349" = "latest" # PDF Squeezer
 "mas:302584613"  = "latest" # Kindle
 "mas:361285480"  = "latest" # Keynote
 "mas:361304891"  = "latest" # Numbers
 "mas:361309726"  = "latest" # Pages
-"mas:411643860"  = "latest" # DaisyDisk
 "mas:424389933"  = "latest" # Final Cut Pro
-"mas:425424353"  = "latest" # The Unarchiver
-"mas:441258766"  = "latest" # Magnet
-"mas:455970963"  = "latest" # Disk Doctor
 "mas:462054704"  = "latest" # Microsoft Word
 "mas:462058435"  = "latest" # Microsoft Excel
 "mas:462062816"  = "latest" # Microsoft PowerPoint
 "mas:566631581"  = "latest" # PDF Protector
-"mas:686428787"  = "latest" # Duplicate Detective
-"mas:715464874"  = "latest" # Disk Map
 "mas:747648890"  = "latest" # Telegram
 # "mas:1616831348" = "latest" # Affinity Designer 2
 # "mas:1616822987" = "latest" # Affinity Photo 2

@@ -225,8 +225,9 @@ topic:
 - `security.toml` — 1Password, fnox and the SSH config.
 - `devtools.toml` — Xcode, Android Studio, editors, bun and dev env.
 - `macos-apps.toml` — desktop and App Store apps.
-- `system.toml` — mas, ruby, usage, the `~/.config/mise` link, Homebrew env and
-  the maintenance aliases.
+- `system.toml` — mas, ruby, usage, system utility apps (disk, battery, archive,
+  window tools), the `~/.config/mise` link, Homebrew env and the maintenance
+  aliases.
 - `python.toml` — python, uv and the pipx-through-uv settings.
 
 The `pmset`/`nvram` power profile is the `upgrade:power` task; mise has no

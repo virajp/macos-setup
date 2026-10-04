@@ -24,13 +24,15 @@ CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
 
 [shell_alias]
 # Generic Aliases
-bat    = "bat --tabs 2"
-cd     = "z"
-cdcd   = "cd '$CLOUD_PATH'"
-cdgh   = "cd '$HOME/Projects/github.com'"
-cls    = "clear"
-finder = "open -a Finder ./"
-plist  = "plutil -p"
+bat     = "bat --tabs 2"
+cd      = "z"
+cdcd    = "cd '$CLOUD_PATH'"
+cdgh    = "cd '$HOME/Projects/github.com'"
+cls     = "clear"
+findPid = "lsof -t -c"
+finder  = "open -a Finder ./"
+myps    = "mise run func:myps"
+plist   = "plutil -p"
 
 # ls & tree related aliases
 la = "ls -a"
