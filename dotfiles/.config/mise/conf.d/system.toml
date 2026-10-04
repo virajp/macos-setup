@@ -2,12 +2,34 @@
 # Formulas
 "brew:mas" = "latest" # Mac App Store command-line interface
 
+# Required by mise to parse the brew-cask correctly
+[tools.ruby]
+version = "latest"
+
 [dotfiles]
 # Mise (user level)
 "~/.config/mise" = {}
 
 # # Brewfile (casks + VS Code extensions, applied by brew:casks)
 # "~/.config/brewfile" = {}
+
+[env]
+# iCloud Drive
+CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+
+# Homebrew behaviour (HOMEBREW_PREFIX stays in shell config: `brew shellenv`
+# needs it before mise activates)
+HOMEBREW_BUNDLE_FILE                = "${HOME}/.config/brewfile"
+HOMEBREW_CASK_OPTS                  = "--appdir=~/Applications"
+HOMEBREW_CLEANUP_MAX_AGE_DAYS       = "7"
+HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS = "7"
+HOMEBREW_CURL_RETRIES               = "2"
+HOMEBREW_DISPLAY_INSTALL_TIMES      = "true"
+HOMEBREW_FAIL_LOG_LINES             = "100"
+HOMEBREW_FORCE_BREWED_CURL          = "true"
+HOMEBREW_FORCE_BREWED_GIT           = "true"
+HOMEBREW_NO_ANALYTICS               = "true"
+HOMEBREW_NO_ENV_HINTS               = "1"
 
 [shell_alias]
 brew               = "fnox exec -P brew -- brew"

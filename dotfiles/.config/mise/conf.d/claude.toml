@@ -7,10 +7,6 @@
 depends = [ "node", "pnpm" ]
 version = "latest"
 
-# Required by mise to parse the brew-cask correctly
-[tools.ruby]
-version = "latest"
-
 [bootstrap.brew.taps]
 "stablyai/orca" = "https://github.com/stablyai/homebrew-orca.git"
 "virajp/tap"    = "https://github.com/virajp/homebrew-tap.git"

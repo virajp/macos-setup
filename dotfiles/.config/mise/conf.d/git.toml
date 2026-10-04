@@ -8,6 +8,7 @@
 "brew:git"           = "latest" # Distributed version control system
 "brew:git-tools"     = "latest" # Additional Git utilities
 "brew:glab"          = "latest" # GitLab CLI tool
+"brew:lazygit"       = "latest" # Simple terminal UI for git
 
 [dotfiles]
 # Git configuration; identity files are templates rendered from the [vars] in identity.toml
@@ -40,3 +41,11 @@ pager: less
 aliases:
   co: pr checkout
 """
+
+[shell_alias]
+# Git Related Aliases
+diff  = "diff-so-fancy"
+gc    = 'git commit -a -m'
+gp    = 'git push --verbose'
+gpull = 'git pull --all --verbose --progress'
+gs    = 'git status -sb'

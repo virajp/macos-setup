@@ -64,13 +64,11 @@ DOCKER_BUILDKIT             = "1"
 DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
 DOCKER_HIDE_LEGACY_COMMANDS = "1"
 
-[shell_alias]
-# Git Related Aliases
-gc    = 'git commit -a -m'
-gp    = 'git push --verbose'
-gpull = 'git pull --all --verbose --progress'
-gs    = 'git status -sb'
+# GCP related
+CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
+USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
 
+[shell_alias]
 # Docker Related Aliases
 dclean = "docker system prune --all --volumes --force"
 dlist  = "docker image list"
