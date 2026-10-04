@@ -1,0 +1,27 @@
+[bootstrap.packages]
+# Formulas
+"brew:doggo"      = "latest" # DNS lookup utility
+"brew:gping"      = "latest" # Ping with a graph
+"brew:httping"    = "latest" # Ping a web server over HTTP
+"brew:ipcalc"     = "latest" # IP address calculator
+"brew:prettyping" = "latest" # Enhanced ping with visual output
+"brew:tailscale"  = "latest" # tailscaled runs as a root brew service (tailscale:daemon hook)
+
+[shell_alias]
+# IP related shortcuts
+gateway  = "mise run ips:gateway"
+ii       = "mise run ips:ii"
+ips      = "mise run ips:ips"
+ipv4     = "mise run ips:ipv4"
+ipv6     = "mise run ips:ipv6"
+remoteip = "mise run ips:remoteip"
+
+# DNS, ping & routing
+dig       = "doggo"
+dns       = "scutil --dns"
+flushdns  = "dscacheutil -flushcache"
+hping     = "httping --ts -GBbXsSYaWZvv"
+ipInfo0   = "ipconfig getpacket en0"
+openports = "sudo lsof -i -P | grep LISTEN"
+ping      = "prettyping -i 2 --nolegend"
+routes    = "netstat -nr -f inet"

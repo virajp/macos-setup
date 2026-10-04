@@ -1,0 +1,31 @@
+[bootstrap.packages]
+"brew-cask:orbstack" = "latest" # Replacement for Docker Desktop
+
+[env]
+# Docker
+BUILDKIT_PROGRESS           = "auto"
+COMPOSE_DOCKER_CLI_BUILD    = "1"
+DOCKER_BUILDKIT             = "1"
+DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
+DOCKER_HIDE_LEGACY_COMMANDS = "1"
+
+# Helm
+HELM_EXPERIMENTAL_OCI = "1"
+
+# GCP related
+CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
+USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
+
+[shell_alias]
+# Docker Related Aliases
+dclean = "docker system prune --all --volumes --force"
+dlist  = "docker image list"
+dprune = "docker system prune --volumes --force"
+dpull  = "docker image pull --platform='linux/amd64'"
+drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
+
+# Kubernetes (K8s) Related Aliases
+k        = "kubectl"
+kc-local = "kubectl config use-context orbstack"
+kgc      = "kubectl config current-context"
+kubectx  = "kubectl config get-contexts"

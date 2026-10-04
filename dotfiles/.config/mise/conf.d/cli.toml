@@ -1,0 +1,44 @@
+[bootstrap.packages]
+# Formulas
+"brew:bat"             = "latest" # Alternative to cat
+"brew:btop"            = "latest" # Resource monitor for the terminal
+"brew:ca-certificates" = "latest" # Common CA certificates
+"brew:coreutils"       = "latest" # GNU core utilities
+"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
+"brew:eza"             = "latest" # Modern replacement for 'ls'
+"brew:fzf"             = "latest" # Command-line fuzzy finder
+"brew:imagemagick"     = "latest" # Image manipulation tool
+"brew:jq"              = "latest" # Command-line JSON processor
+"brew:pstree"          = "latest" # Display process tree
+"brew:ripgrep"         = "latest" # Fast search tool
+"brew:superfile"       = "latest" # File management utility
+"brew:tree"            = "latest" # Display directory tree
+"brew:watch"           = "latest" # Execute a command periodically and show output
+"brew:wget"            = "latest" # Network downloader
+"brew:yq"              = "latest" # YAML processor
+"brew:zoxide"          = "latest" # Fast directory jumper
+
+[env]
+# iCloud Drive
+CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+
+[shell_alias]
+# Generic Aliases
+bat    = "bat --tabs 2"
+cd     = "z"
+cdcd   = "cd '$CLOUD_PATH'"
+cdgh   = "cd '$HOME/Projects/github.com'"
+cls    = "clear"
+finder = "open -a Finder ./"
+plist  = "plutil -p"
+
+# ls & tree related aliases
+la = "ls -a"
+ld = "ls --only-dirs"
+lf = "ls --only-files"
+lg = "ls --git-ignore"
+ll = "ls"
+ls = "eza --icons --color=always --group-directories-first --classify=always --long --grid --all --modified --git --header --width=1 --links"
+td = "eza --tree --color=always --only-dirs --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"
+tg = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1 --git-ignore"
+tl = "eza --tree --color=always --all --group-directories-first --sort name --long --header --icons --classify=always --modified --git --width=1"

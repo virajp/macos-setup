@@ -105,10 +105,11 @@ API calls use `[settings.github] use_git_credentials`.
 settings, see **Link map**); everything else is split by topic across
 `conf.d/*.toml`, each carrying its topic's `[tools]`, `[env]`, `[settings]` and
 `[shell_alias]`. `node.toml` sets `pnpm` as the npm package manager;
-`python.toml` installs `pipx:*` tools with `uvx` (`pipx.uvx = true`). Most
-`[shell_alias]` shortcuts live in `utils.toml` — including `updateall`,
-`osx-upgrade`, IP helpers (`ipv4`, `gateway`, …), and cleanup tasks. The task
-scripts themselves live under `.config/mise/tasks/`.
+`python.toml` installs `pipx:*` tools with `uvx` (`pipx.uvx = true`). Each
+`[shell_alias]` shortcut lives with its topic — `updateall`, `osx-upgrade` and
+the cleanup tasks in `system.toml`, IP helpers (`ipv4`, `gateway`, …) in
+`network.toml`, the `ls`/`cd` replacements in `cli.toml`. The task scripts
+themselves live under `.config/mise/tasks/`.
 
 mise is the single source of truth for **environment variables, aliases and
 shell functions**. Neither shell defines its own — there is no `aliases.sh` or
@@ -217,9 +218,16 @@ topic:
 - `claude.toml` — the `virajp/tap` and `stablyai/orca` taps, `claude-status`
   (the Claude Code status line), the Claude casks and the `~/.claude` links.
 - `git.toml`, `node.toml` — the gh and pnpm config files.
-- `devtools.toml`, `python.toml`, `1password.toml`, `starship.toml`,
-  `fonts.toml`, `utils.toml`, `extras.toml`, `env.toml`, `system.toml` — tools,
-  packages, env, aliases and links for their topic.
+- `terminal.toml` — ghostty, warp, starship and the Nerd Fonts.
+- `cli.toml` — command-line tools and the aliases that shadow standard commands.
+- `network.toml` — DNS/ping/IP tools, tailscale and their aliases.
+- `containers.toml` — orbstack, Docker/k8s aliases, Docker, Helm and GCP env.
+- `security.toml` — 1Password, fnox and the SSH config.
+- `devtools.toml` — Xcode, Android Studio, editors, bun and dev env.
+- `macos-apps.toml` — desktop and App Store apps.
+- `system.toml` — mas, ruby, usage, the `~/.config/mise` link, Homebrew env and
+  the maintenance aliases.
+- `python.toml` — python, uv and the pipx-through-uv settings.
 
 The `pmset`/`nvram` power profile is the `upgrade:power` task; mise has no
 declaration for it.

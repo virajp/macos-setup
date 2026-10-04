@@ -30,7 +30,9 @@ Bias toward caution over speed — use judgment for trivial tasks.
 
 ## Shell Aliases
 
-Defined in one place: the `[shell_alias]` block of `~/.config/mise/conf.d/utils.toml`.
+Defined only in the `[shell_alias]` blocks of `~/.config/mise/conf.d/*.toml`
+(one per topic; the shadowing ones are in `cli.toml`, `network.toml`, `git.toml`
+and `devtools.toml`).
 The fish and zsh configs define no aliases of their own. mise activates in
 non-interactive shells too, so these apply to tool-invoked commands — not just
 the interactive prompt.

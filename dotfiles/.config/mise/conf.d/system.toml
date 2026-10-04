@@ -6,6 +6,10 @@
 [tools.ruby]
 version = "latest"
 
+# MISE tools
+[tools.usage]
+version = "latest"
+
 [dotfiles]
 # Mise (user level)
 "~/.config/mise" = {}
@@ -14,9 +18,6 @@ version = "latest"
 # "~/.config/brewfile" = {}
 
 [env]
-# iCloud Drive
-CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
-
 # Homebrew behaviour (HOMEBREW_PREFIX stays in shell config: `brew shellenv`
 # needs it before mise activates)
 HOMEBREW_BUNDLE_FILE                = "${HOME}/.config/brewfile"
@@ -35,6 +36,12 @@ HOMEBREW_NO_ENV_HINTS               = "1"
 brew               = "fnox exec -P brew -- brew"
 cleanupDS          = "mise run cleanupDS"
 cleanupDS-Projects = "mise run cleanupDS ~/Projects"
-cleanupTelegram    = "mise run cleanupTelegram"
 osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
+
+# Startup, Services and Process related shortcuts
+cancelPrintJobs  = "sudo cancel -a -x"
+findPid          = "lsof -t -c"
+listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
+listStartupItems = "mise run func:listStartupItems"
+myps             = "mise run func:myps"

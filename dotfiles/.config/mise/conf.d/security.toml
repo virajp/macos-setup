@@ -1,0 +1,20 @@
+[tools.1password]
+version = "latest"
+
+[bootstrap.packages]
+# Formulas
+"brew:fnox" = "latest" # Secret management tool
+
+# Mac App Store
+"mas:1569813296" = "latest" # 1Password for Safari
+
+[dotfiles]
+# 1Password
+"~/.config/1Password/ssh/agent.toml" = {}
+
+# fnox
+"~/.config/fnox/config.toml" = {}
+
+# SSH configuration; identity files are templates rendered from the [vars] in identity.toml
+"~/.ssh/config"          = {}
+"~/.ssh/config.identity" = { mode = "template" }

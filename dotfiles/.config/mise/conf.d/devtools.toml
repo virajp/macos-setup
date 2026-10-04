@@ -1,50 +1,28 @@
 # Packages to be installed via Homebrew
 [bootstrap.packages]
 # Formulaes
-"brew:ca-certificates" = "latest" # Common CA certificates
-"brew:coreutils"       = "latest" # GNU core utilities
-"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
-"brew:fnox"            = "latest" # Secret management tool
-"brew:ripgrep"         = "latest" # Fast search tool
+"brew:lcov" = "latest" # Code coverage tool for C/C++
 
 # Casks
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
-"brew-cask:ghostty"            = "latest" # Terminal emulator
-"brew-cask:notion"             = "latest" # App to write, plan, collaborate, and get organised
-"brew-cask:obsidian"           = "latest" # Knowledge base that works on top Markdown files
-"brew-cask:orbstack"           = "latest" # Replacement for Docker Desktop
 "brew-cask:sublime-text"       = "latest" # Text editor for code, markup and prose
 "brew-cask:visual-studio-code" = "latest" # Open-source code editor
-"brew-cask:warp"               = "latest" # Rust-based terminal
 # "brew-cask:lm-studio"          = "latest" # Discover, download, and run local LLMs
 
 # Mac App Store (keyed by ADAM id)
 "mas:1450874784" = "latest" # Transporter
 "mas:497799835"  = "latest" # Xcode
 "mas:640199958"  = "latest" # Developer
-
-# MISE tools
-[tools.usage]
-version = "latest"
+"mas:899247664"  = "latest" # TestFlight
 
 # Developer Tools
 [tools.bun]
 version = "latest"
 
 [dotfiles]
-# SSH configuration; identity files are templates rendered from the [vars] in identity.toml
-"~/.ssh/config"          = {}
-"~/.ssh/config.identity" = { mode = "template" }
-
 # dprint & Taplo
 "~/.config/dprint.json" = {}
 "~/.config/taplo.toml"  = {}
-
-# fnox
-"~/.config/fnox/config.toml" = {}
-
-# Ghostty
-"~/.config/ghostty/config" = {}
 
 # Gem
 "~/.gemrc" = {}
@@ -53,31 +31,8 @@ version = "latest"
 # Development tools
 CHROME_EXECUTABLE           = "${HOME}/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 DOTNET_CLI_TELEMETRY_OPTOUT = "true"
-HELM_EXPERIMENTAL_OCI       = "1"
 PRE_COMMIT_HOME             = "${HOME}/.cache/pre-commit"
 RUNTIME_ENV                 = "development"
 
-# Docker
-BUILDKIT_PROGRESS           = "auto"
-COMPOSE_DOCKER_CLI_BUILD    = "1"
-DOCKER_BUILDKIT             = "1"
-DOCKER_DEFAULT_PLATFORM     = "linux/amd64"
-DOCKER_HIDE_LEGACY_COMMANDS = "1"
-
-# GCP related
-CLOUDSDK_ACTIVE_CONFIG_NAME = "default"
-USE_GKE_GCLOUD_AUTH_PLUGIN  = { tools = true, value = "true" }
-
 [shell_alias]
-# Docker Related Aliases
-dclean = "docker system prune --all --volumes --force"
-dlist  = "docker image list"
-dprune = "docker system prune --volumes --force"
-dpull  = "docker image pull --platform='linux/amd64'"
-drun   = "docker run --platform='linux/amd64' --rm --interactive --tty"
-
-# Kubernetes (K8s) Related Aliases
-k        = "kubectl"
-kc-local = "kubectl config use-context orbstack"
-kgc      = "kubectl config current-context"
-kubectx  = "kubectl config get-contexts"
+edit = "subl"

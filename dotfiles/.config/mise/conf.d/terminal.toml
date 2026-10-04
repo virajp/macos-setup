@@ -1,7 +1,21 @@
 [bootstrap.packages]
+# Prompt
+"brew:starship" = "latest" # Cross-shell prompt
+
+# Terminals
+"brew-cask:ghostty" = "latest" # Terminal emulator
+"brew-cask:warp"    = "latest" # Rust-based terminal
+
 # Font family designed for developers, with a high number of glyphs (e.g. icons from popular 'Nerd Fonts' and 'Font Awesome' sets)
 "brew-cask:font-fira-code-nerd-font"    = "latest"
 "brew-cask:font-hack-nerd-font"         = "latest"
 "brew-cask:font-iosevka-nerd-font"      = "latest"
 "brew-cask:font-iosevka-term-nerd-font" = "latest"
 "brew-cask:font-meslo-lg-nerd-font"     = "latest"
+
+[dotfiles]
+# Ghostty
+"~/.config/ghostty/config" = {}
+
+# Starship
+"~/.config/starship.toml" = {}
