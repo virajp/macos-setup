@@ -14,7 +14,6 @@
 "brew:lcov"        = "latest" # Code coverage tool for C/C++
 "brew:prettyping"  = "latest" # Enhanced ping with visual output
 "brew:pstree"      = "latest" # Display process tree
-"brew:ripgrep"     = "latest" # Fast search tool
 "brew:superfile"   = "latest" # File management utility
 "brew:tailscale"   = "latest" # tailscaled runs as a root brew service (tailscale:daemon hook)
 "brew:tree"        = "latest" # Display directory tree

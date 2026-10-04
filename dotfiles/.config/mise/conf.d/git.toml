@@ -10,6 +10,14 @@
 "brew:glab"          = "latest" # GitLab CLI tool
 
 [dotfiles]
+# Git configuration; identity files are templates rendered from the [vars] in identity.toml
+"~/.config/git/allowed_signers" = { mode = "template" }
+"~/.config/git/config"          = {}
+"~/.config/git/github.config"   = { mode = "template" }
+"~/.config/git/gitlab.config"   = { mode = "template" }
+"~/.config/git/identity"        = { mode = "template" }
+"~/.config/git/ignore"          = {}
+
 # GitHub Copilot
 "~/.github/git-commit-guidelines.md" = {}
 

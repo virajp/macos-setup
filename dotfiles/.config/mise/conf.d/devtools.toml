@@ -4,9 +4,8 @@
 "brew:ca-certificates" = "latest" # Common CA certificates
 "brew:coreutils"       = "latest" # GNU core utilities
 "brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
-"brew:fnox"            = "latest" # Version manager for multiple programming languages
+"brew:fnox"            = "latest" # Secret management tool
 "brew:ripgrep"         = "latest" # Fast search tool
-"brew:starship"        = "latest" # Cross-shell prompt
 
 # Casks
 "brew-cask:android-studio"     = "latest" # Tools for building Android applications
@@ -25,9 +24,6 @@
 "mas:640199958"  = "latest" # Developer
 
 # MISE tools
-[tools.fnox]
-version = "latest"
-
 [tools.usage]
 version = "latest"
 
@@ -36,17 +32,9 @@ version = "latest"
 version = "latest"
 
 [dotfiles]
-# Git & SSH. Identity files are templates rendered from the [vars] in
-# identity.toml; listed per file, since a template cannot sit inside a linked
-# directory.
-"~/.config/git/allowed_signers" = { mode = "template" }
-"~/.config/git/config"          = {}
-"~/.config/git/github.config"   = { mode = "template" }
-"~/.config/git/gitlab.config"   = { mode = "template" }
-"~/.config/git/identity"        = { mode = "template" }
-"~/.config/git/ignore"          = {}
-"~/.ssh/config"                 = {}
-"~/.ssh/config.identity"        = { mode = "template" }
+# SSH configuration; identity files are templates rendered from the [vars] in identity.toml
+"~/.ssh/config"          = {}
+"~/.ssh/config.identity" = { mode = "template" }
 
 # dprint & Taplo
 "~/.config/dprint.json" = {}
