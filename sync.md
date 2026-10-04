@@ -175,12 +175,28 @@ it.
 file — on a re-sync the user's structure files carry their own additions:
 
 - A key only the user has (their own alias, env var, `[dotfiles]` entry, a line
-  in a shell config): keep it.
-- A key upstream has and the user's copy doesn't: add it.
-- A key both have with different values: take upstream's if the user's value is
-  upstream's old one; otherwise show both and ask.
-- A key upstream removed that the user's copy still has unchanged: remove it,
-  and list it in the summary.
+  in a shell config): keep it. Upstream may have removed it, but without
+  upstream's history that looks the same as the user's own addition, so list
+  every such key in the summary and let the user drop stale ones.
+- A key upstream has and the user's copy doesn't: add it, unless it belongs to
+  something they opted out of in this run. The user may have deleted it on
+  purpose, so the diff in step 10 shows each addition.
+- A key both have with different values: show both and ask.
+
+**Task scripts are compared file by file.** A task in `.config/mise/tasks/` or
+`dotfiles/.config/mise/tasks/` is a whole script with no keys, so match it by
+path:
+
+- A task only the user has: keep it, and list it in the summary — like a key, it
+  may be one upstream removed.
+- A task only upstream has: add it, unless it belongs to something they opted
+  out of.
+- A task both have, identical: nothing to do.
+- A task both have, different: show the diff and ask — take upstream's, keep
+  theirs, or merge. For a merge, write one version with upstream's changes and
+  the user's additions, and show it before writing.
+- A user task with no upstream counterpart that closely matches an upstream task
+  under another path: ask whether upstream renamed it, and move it if so.
 
 **Follow keys, not file names.** When upstream moves keys to another file (e.g.
 `utils.toml` split into `cli.toml`, `network.toml`, `macos-apps.toml` and
