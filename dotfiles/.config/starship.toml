@@ -39,12 +39,12 @@ right_format = ""
 
 # Custom color palette inspired by gruvbox theme
 continuation_prompt = ' '
-palette             = 'viraj_dark'
+palette             = 'dark'
 # Higher timeout for slow git operations
 add_newline     = true
 command_timeout = 2000
 
-[palettes.viraj_dark]
+[palettes.dark]
 color_aqua   = '#689d6a'
 color_bg3    = '#665c54'
 color_blue   = '#458588'

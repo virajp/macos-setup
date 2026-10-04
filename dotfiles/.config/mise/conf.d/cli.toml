@@ -22,12 +22,16 @@
 # iCloud Drive
 CLOUD_PATH = "${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
 
+# Projects root, from the [vars] in identity.toml (`~` expanded: env values
+# don't expand it)
+PROJECTS_DIR = "{{ vars.projects_dir | replace(from='~', to=env.HOME) }}"
+
 [shell_alias]
 # Generic Aliases
 bat     = "bat --tabs 2"
 cd      = "z"
 cdcd    = "cd '$CLOUD_PATH'"
-cdgh    = "cd '$HOME/Projects/github.com'"
+cdgh    = 'cd "$PROJECTS_DIR/github.com"'
 cls     = "clear"
 findPid = "lsof -t -c"
 finder  = "open -a Finder ./"

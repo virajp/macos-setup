@@ -85,8 +85,8 @@ fi
 # Upgrade macOS
 mise run upgrade:macos:download
 
-# Clean up unnecessary .DS_Store files from ~/Projects folder
-mise run cleanupDS ~/Projects
+# Clean up unnecessary .DS_Store files from the projects folder
+mise run cleanupDS "${PROJECTS_DIR}"
 
 # Start tailscale daemon
 mise run tailscale:daemon

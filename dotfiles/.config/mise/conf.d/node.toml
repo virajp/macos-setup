@@ -18,6 +18,7 @@ _.path = [
 { path = "$PNPM_HOME/bin", tools = true },
 ]
 
+# A template: the exemptions come from the [vars] in identity.toml
 [bootstrap.files."~/Library/Preferences/pnpm/config.yaml"]
 content = """
 # Global pnpm configuration (pnpm v11+).
@@ -26,8 +27,9 @@ content = """
 
 minimumReleaseAge: 600 # 600 = 10h cooldown
 
+{% if vars.pnpm_release_age_exclude -%}
 # Exempt specific versions from the cooldown when an urgent fix is needed:
 minimumReleaseAgeExclude:
-  - "@askviraj/*"
-  - "@virajp.dev/*"
-"""
+{% for pattern in vars.pnpm_release_age_exclude | split(pat=" ") %}  - "{{ pattern }}"
+{% endfor %}{% endif %}"""
+template = true

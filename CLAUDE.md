@@ -30,10 +30,13 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
   templates rendered from them by `mise bootstrap` (`mode = "template"`):
   `.config/git/identity` (`[user]`, included by `.config/git/config`),
   `github.config`, `gitlab.config`, `allowed_signers`, and
-  `.ssh/config.identity` (`User`, included in `Host *`). Their rendered copies
-  in `$HOME` are not symlinks: edit the template or the vars, then
-  `mise bootstrap --only dotfiles`. Keep new personal values in `[vars]`, not in
-  shared files.
+  `.ssh/config.identity` (`User`, included in `Host *`) and
+  `.config/1Password/ssh/agent.toml` (vault). Their rendered copies in `$HOME`
+  are not symlinks: edit the template or the vars, then
+  `mise bootstrap --only dotfiles`. The same vars also feed `PROJECTS_DIR`
+  (`cli.toml` `[env]`) and the pnpm and gh config files (`template = true`,
+  applied by `mise bootstrap --only files`). Keep new personal values in
+  `[vars]`, not in shared files.
 - `dotfiles/.config/mise/tasks/` — global mise tasks: `updateall`, `upgrade:*`
   (incl. `upgrade:power`, the `pmset`/`nvram` profile), `mempalace:*`,
   `tailscale:daemon`, `func:*`, IP helpers.

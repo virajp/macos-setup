@@ -22,7 +22,7 @@
 # GitHub Copilot
 "~/.github/git-commit-guidelines.md" = {}
 
-# GitHub CLI
+# GitHub CLI; a template: the editor comes from the [vars] in identity.toml
 [bootstrap.files."~/.config/gh/config.yml"]
 content = """
 version: "1"
@@ -31,7 +31,7 @@ version: "1"
 git_protocol: ssh
 # WHY: VS Code as default editor for consistency with development environment
 # What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
-editor: code
+editor: {{ vars.editor }}
 # When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
 prompt: enabled
 # A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
@@ -41,6 +41,7 @@ pager: less
 aliases:
   co: pr checkout
 """
+template = true
 
 [shell_alias]
 # Git Related Aliases

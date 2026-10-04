@@ -157,10 +157,13 @@ pulls the qdrant image weekly from `updateall`. See
 ## Git
 
 Personal values live only in `[vars]` of `.config/mise/conf.d/identity.toml`
-(name, GitHub/GitLab emails, signing key, ssh user). The files that carry them
-are Tera templates, rendered into `$HOME` by `mise bootstrap` as plain files,
-not symlinks — edit the template or the vars, then
-`mise bootstrap --only dotfiles`. `.config/git/config` always includes
+(name, GitHub/GitLab emails, signing key, ssh user, projects folder, 1Password
+vault, gh editor, pnpm cooldown exemptions). The files that carry them are Tera
+templates, rendered into `$HOME` by `mise bootstrap` as plain files, not
+symlinks — edit the template or the vars, then `mise bootstrap --only dotfiles`
+(or `--only files` for the pnpm and gh config). `projects_dir` also sets
+`PROJECTS_DIR` (`cli.toml`), which `cdgh`, `cleanupDS-Projects` and `updateall`
+use, and the `gitdir:` rules in `identity`. `.config/git/config` always includes
 `identity`, which holds the `[user]` identity and includes the host-specific
 configs conditionally (`github.config`, `gitlab.config`). The global ignore file
 is `.config/git/ignore`, and commit signatures are verified against

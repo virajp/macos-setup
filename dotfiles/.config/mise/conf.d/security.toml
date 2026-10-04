@@ -9,8 +9,8 @@ version = "latest"
 "mas:1569813296" = "latest" # 1Password for Safari
 
 [dotfiles]
-# 1Password
-"~/.config/1Password/ssh/agent.toml" = {}
+# 1Password; a template rendered from the [vars] in identity.toml
+"~/.config/1Password/ssh/agent.toml" = { mode = "template" }
 
 # fnox
 "~/.config/fnox/config.toml" = {}

@@ -16,12 +16,14 @@
 #   # or bootstrap a fresh machine directly from the public repo:
 #   curl -fsSL https://raw.githubusercontent.com/virajp/macos-setup/main/setup | sh
 #   # a fork: GITHUB_USER=<you> curl ... | sh
+#   # also REPO_NAME=<repo> (default macos-setup) and PROJECTS_DIR=<dir>
+#   # (default ~/Projects)
 #
 # Steps:
 # - Install Homebrew if it is missing (this also installs the Xcode Command
 #   Line Tools, which bring `git`)
-# - Clone the repo to ~/Projects/github.com/${GITHUB_USER}/macos-setup if it
-#   is not there yet
+# - Clone the repo to ${PROJECTS_DIR}/github.com/${GITHUB_USER}/${REPO_NAME} if
+#   it is not there yet
 # - `brew analytics off`, `brew doctor`
 # - Install `mise`
 # - Link ~/.config/mise to dotfiles/.config/mise so the global config exists
@@ -53,8 +55,10 @@ main() {
   local WARNING_EMOJI="⚠️"
 
   local GITHUB_USER="${GITHUB_USER:-virajp}"
-  local REPO_URL="https://github.com/${GITHUB_USER}/macos-setup.git"
-  local REPO_DIR="${HOME}/Projects/github.com/${GITHUB_USER}/macos-setup"
+  local REPO_NAME="${REPO_NAME:-macos-setup}"
+  local PROJECTS_DIR="${PROJECTS_DIR:-${HOME}/Projects}"
+  local REPO_URL="https://github.com/${GITHUB_USER}/${REPO_NAME}.git"
+  local REPO_DIR="${PROJECTS_DIR}/github.com/${GITHUB_USER}/${REPO_NAME}"
   local MISE_CONFIG_DIR="${HOME}/.config/mise"
 
   # When piped (`curl ... | sh`) stdin is the script itself. Everything below is
@@ -77,11 +81,11 @@ main() {
   # Clone the repo if it isn't present yet. Git ships with the Xcode Command
   # Line Tools that the Homebrew installer above pulls in.
   if [[ ! -d "${REPO_DIR}" ]]; then
-    echo "${INSTALL_EMOJI} Cloning macos-setup into ${REPO_DIR}..."
+    echo "${INSTALL_EMOJI} Cloning ${REPO_NAME} into ${REPO_DIR}..."
     mkdir -p "$(dirname "${REPO_DIR}")"
     git clone "${REPO_URL}" "${REPO_DIR}"
   else
-    echo "${SUCCESS_EMOJI} macos-setup repo already present at ${REPO_DIR}."
+    echo "${SUCCESS_EMOJI} ${REPO_NAME} repo already present at ${REPO_DIR}."
   fi
 
   # Turn off homebrew analytics

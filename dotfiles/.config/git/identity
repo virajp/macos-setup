@@ -12,7 +12,7 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
 	path = ~/.config/git/github.config
 
-[includeIf "gitdir:~/Projects/github.com/"]
+[includeIf "gitdir:{{ vars.projects_dir }}/github.com/"]
 	path = ~/.config/git/github.config
 
 # Identity for GitLab
@@ -22,5 +22,5 @@
 [includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
 	path = ~/.config/git/gitlab.config
 
-[includeIf "gitdir:~/Projects/gitlab.com/"]
+[includeIf "gitdir:{{ vars.projects_dir }}/gitlab.com/"]
 	path = ~/.config/git/gitlab.config

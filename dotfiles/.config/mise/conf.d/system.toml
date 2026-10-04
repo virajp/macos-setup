@@ -48,7 +48,7 @@ HOMEBREW_NO_ENV_HINTS               = "1"
 [shell_alias]
 brew               = "fnox exec -P brew -- brew"
 cleanupDS          = "mise run cleanupDS"
-cleanupDS-Projects = "mise run cleanupDS ~/Projects"
+cleanupDS-Projects = 'mise run cleanupDS "$PROJECTS_DIR"'
 osx-upgrade        = "mise run upgrade:macos:upgrade"
 updateall          = "mise run updateall"
 
