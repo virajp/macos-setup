@@ -1,7 +1,7 @@
 [tools."pipx:mempalace"]
 depends = [ "python", "uv" ]
 uvx     = true
-version = "3.10.0"
+version = "latest"
 
 # Docker Compose for qdrant (mempalace dependency)
 [bootstrap.compose.mempalace]
