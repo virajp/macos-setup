@@ -12,11 +12,11 @@ python.compile      = false
 python.uv_venv_auto = "create|source"
 
 [tools]
-dprint     = "0.58.0"
-node       = "26.10.0"
-pnpm       = "12.8.1"
-pre-commit = "4.6.2"
-taplo      = "0.10.0"
+dprint     = "latest"
+node       = "latest"
+pnpm       = "latest"
+pre-commit = "latest"
+taplo      = "latest"
 
 [tasks.init]
 description = "Initialize mise tasks"
