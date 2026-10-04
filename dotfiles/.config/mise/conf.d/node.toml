@@ -3,14 +3,20 @@
 node.compile        = false
 npm.package_manager = "pnpm"
 
-[tools]
-node = "26.10.0"
-pnpm = "12.8.1"
+[tools.node]
+version = "latest"
+
+[tools.pnpm]
+depends = [ "node" ]
+version = "latest"
 
 [env]
-NODE_ENV  = "development"
+NODE_ENV = "development"
 PNPM_HOME = "$HOME/Library/pnpm"
-_.path    = "$PNPM_HOME/bin"
+_.path = [
+{ path = "node_modules/.bin", tools = true },
+{ path = "$PNPM_HOME/bin", tools = true },
+]
 
 [bootstrap.files."~/Library/Preferences/pnpm/config.yaml"]
 content = """
