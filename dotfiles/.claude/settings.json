@@ -110,7 +110,7 @@
     }
   },
   "forceLoginMethod": "claudeai",
-  "outputStyle": "Terse",
+  "outputStyle": "STE100",
   "spinnerTipsEnabled": false,
   "effortLevel": "medium",
   "modelSettings": {
