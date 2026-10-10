@@ -5,6 +5,7 @@
 "brew-cask:notion"        = "latest" # App to write, plan, collaborate, and get organised
 "brew-cask:obsidian"      = "latest" # Knowledge base that works on top Markdown files
 "brew-cask:setapp"        = "latest" # Collection of apps available by subscription
+"brew-cask:vorssaint"     = "latest" # Menu bar toolkit with keep-awake, system monitor and volume mixer
 "brew-cask:whatsapp"      = "latest" # Native desktop client for WhatsApp
 # "brew-cask:slack"         = "latest" # Team communication and collaboration software
 
