@@ -39,7 +39,7 @@ print_subheader "Install MISE tools ..."
 mise install --yes --include-task-tools --jobs 10
 
 print_subheader "Upgrading mise tools ..."
-mise upgrade --yes --jobs 10 --bump
+mise upgrade --yes --jobs 10
 
 # Prune all unused versions of tools
 print_subheader "Pruning unused versions of tools ..."
