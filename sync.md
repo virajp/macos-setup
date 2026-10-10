@@ -288,7 +288,6 @@ plugin, skill or file the user doesn't have:
 | **git**: use the `git-workflow` skill | the `vwf` Claude Code plugin |
 | **libraries**: use Context7 MCP       | a Context7 MCP server        |
 | `## graphify` section                 | `~/.claude/skills/graphify/` |
-| `@RTK.md` include                     | `~/.claude/RTK.md`           |
 
 Check each: `claude plugin list` for plugins, `claude mcp list` for MCP servers,
 the file system for the rest. Show the user what was dropped.
