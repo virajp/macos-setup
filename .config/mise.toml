@@ -6,23 +6,5 @@ gpg_verify = true
 raw = true
 task.output = "interleave"
 
-# Package manager settings
-npm.package_manager = "pnpm"
-python.compile = false
-python.uv_venv_auto = "create|source"
-
-[tools]
-dprint = "latest"
-node = "latest"
-pnpm = "latest"
-pre-commit = "latest"
-taplo = "latest"
-
-[tasks.init]
-description = "Initialize mise tasks"
-hide = true
-run = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
-
 [shell_alias]
 lint = "mise run code:lint"
-setup = "mise run setup:all"

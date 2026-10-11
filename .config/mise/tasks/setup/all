@@ -44,7 +44,7 @@ print_subheader "Setting up MISE ..."
 mise install --yes --jobs 10
 
 print_subheader "Upgrading mise tools ..."
-mise upgrade --local --bump --yes --jobs 10
+mise upgrade --local --yes --jobs 10
 
 mise run setup:precommit
 

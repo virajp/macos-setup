@@ -1,0 +1,7 @@
+[env]
+# Member projects within the repository
+MEMBERS = ""
+# Merge model for branches
+MERGE_MODEL = "direct"
+# Repository name, used for identification within the toolchain
+REPO_NAME = "macos-setup"
