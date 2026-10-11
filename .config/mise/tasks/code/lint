@@ -15,7 +15,7 @@ print_header "Linting files ..."
 [[ "${usage_debug:-false}" == "true" ]] && LOG_LEVEL="--debug" || LOG_LEVEL=""
 [[ "${usage_fix:-false}" == "true" ]] && FIX="--fix" || FIX=""
 
-pnpm dlx @askviraj/linter \
+mise x -- linter \
   ${LOG_LEVEL} \
   ${FIX}
 

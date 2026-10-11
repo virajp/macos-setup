@@ -1,11 +1,4 @@
 {
-  // >>> vscode.d
-  "[dart]": {
-    "editor.defaultFormatter": "Dart-Code.dart-code",
-  },
-  "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
-  },
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "editor.autoIndent": "full",
@@ -45,27 +38,6 @@
   "eslint.lintTask.enable": true,
   "eslint.lintTask.options": "",
   "eslint.useFlatConfig": true,
-  "evenBetterToml.formatter.alignComments": true,
-  "evenBetterToml.formatter.alignEntries": true,
-  "evenBetterToml.formatter.allowedBlankLines": 1,
-  "evenBetterToml.formatter.arrayAutoCollapse": false,
-  "evenBetterToml.formatter.arrayAutoExpand": true,
-  "evenBetterToml.formatter.arrayTrailingComma": true,
-  "evenBetterToml.formatter.columnWidth": 80,
-  "evenBetterToml.formatter.compactArrays": false,
-  "evenBetterToml.formatter.compactEntries": false,
-  "evenBetterToml.formatter.compactInlineTables": false,
-  "evenBetterToml.formatter.crlf": false,
-  "evenBetterToml.formatter.indentEntries": true,
-  "evenBetterToml.formatter.indentString": "",
-  "evenBetterToml.formatter.indentTables": false,
-  "evenBetterToml.formatter.inlineTableExpand": true,
-  "evenBetterToml.formatter.reorderArrays": true,
-  "evenBetterToml.formatter.reorderInlineTables": true,
-  "evenBetterToml.formatter.reorderKeys": true,
-  "evenBetterToml.formatter.trailingNewline": true,
-  "evenBetterToml.taplo.configFile.enabled": true,
-  "evenBetterToml.taplo.configFile.path": ".config/taplo.toml",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
@@ -75,7 +47,7 @@
     "AGENTS.md": "CLAUDE.md",
     "dockerfile.projects": "docker-bake.hcl",
     "firebase.json": "*.rules, .firebaserc, firebase-debug.json, firestore.indexes.json",
-    "linter.yaml": "git-conventional-commits.yaml, gitleaks.toml, grype.yaml, pre-commit-config.yaml, statusline.json, taplo.toml",
+    "linter.yaml": "git-conventional-commits.yaml, gitleaks.toml, grype.yaml, pre-commit-config.yaml, statusline.json",
     "mempalace.yaml": "entities.json",
     "mise.lock": "mise.*.lock",
     "mise.toml": "mise.*.lock, mise.lock, miserc.toml, root.toml",
@@ -134,11 +106,6 @@
     "**/tsconfig.tsbuildinfo": true,
     "**/ui-debug.log": true,
   },
-  "template-string-converter.autoRemoveTemplateString": true,
-  "template-string-converter.convertOutermostQuotes": true,
-  "template-string-converter.convertWithinTemplateString": true,
-  "template-string-converter.quoteType": "both",
-  "template-string-converter.validLanguages": ["javascript", "typescript"],
   "todo-tree.general.tags": [
     "TODO",
     "FIXME",
@@ -156,5 +123,4 @@
   "yaml.completion": true,
   "yaml.format.enable": false,
   "yaml.hover": true,
-  // <<< vscode.d
 }
