@@ -5,6 +5,9 @@ version = "latest"
 # Formulas
 "brew:fnox" = "latest" # Secret management tool
 
+# Cask
+"brew-cask:1password" = { appdir = "~/Applications", version = "latest" }
+
 # Mac App Store
 "mas:1569813296" = "latest" # 1Password for Safari
 
