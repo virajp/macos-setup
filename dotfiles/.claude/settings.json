@@ -93,13 +93,13 @@
     "virajp-plugins": {
       "source": {
         "source": "directory",
-        "path": "/Users/virajpatel/Projects/github.com/virajp/claude-plugins/.dev-marketplace"
+        "path": "${HOME}/Projects/github.com/virajp/claude-plugins/.dev-marketplace"
       }
     },
     "stackgen-lsp": {
       "source": {
         "source": "directory",
-        "path": "/Users/virajpatel/.claude/plugins/local/stackgen-lsp"
+        "path": "${HOME}/.claude/plugins/local/stackgen-lsp"
       }
     },
     "brag": {
@@ -152,7 +152,7 @@
       "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
       "### User-specific",
       "**Primary use of Claude Code**: software development — maintaining the virajp-plugins Claude Code plugin marketplace (vwf, stackgen), its installer CLI, and its documentation site",
-      "**Trusted repo**: /Users/virajpatel/Projects/github.com/virajp/claude-plugins (working directory) and its origin remote github.com:virajp/claude-plugins.git — PUBLIC, so only this repo's own work belongs in commits/pushes here; confidential material (secrets, sensitive data) is never cleared into it by visibility alone",
+      "**Trusted repo**: ${HOME}/Projects/github.com/virajp/claude-plugins (working directory) and its origin remote github.com:virajp/claude-plugins.git — PUBLIC, so only this repo's own work belongs in commits/pushes here; confidential material (secrets, sensitive data) is never cleared into it by visibility alone",
       "**Org-specific CLIs**: None configured — `mise` (225× in-project, 349× in shell history) is a general-purpose toolchain/task runner, not org-specific",
       "routine under virajp/ prefix: none — repo is solo-authored, no org-wide prefix identified"
     ]
