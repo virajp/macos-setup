@@ -15,6 +15,15 @@
 #   which run before mise activates at 51-.
 # =============================================================================
 
+# XDG Base Directory setup
+set --global --export XDG_CONFIG_HOME $HOME/.config
+set --global --export XDG_DATA_HOME   $HOME/.local/share
+set --global --export XDG_STATE_HOME  $HOME/.local/state
+set --global --export XDG_CACHE_HOME  $HOME/.cache
+
+# Create XDG Base Directory structure if it doesn't exist
+mkdir -p $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $XDG_CACHE_HOME
+
 # GPG
 set --global --export GPG_TTY (tty)
 
