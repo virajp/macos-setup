@@ -8,4 +8,10 @@ set -e
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
 
 print_header "Updating dprint plugins ..."
+
+if [[ ! -f "${HOME}/.config/dprint/dprint.jsonc" ]]; then
+  print_error "dprint configuration not found at ~/.config/dprint/dprint.jsonc"
+  exit 1
+fi
+
 dprint config update --global
