@@ -7,7 +7,7 @@ version = "latest"
 # Docker Compose for qdrant (mempalace dependency)
 [bootstrap.compose.mempalace]
 files = [ "docker-compose.yaml" ]
-project_dir = "/Users/virajpatel/.config/mempalace"
+project_dir = "{{ env.HOME }}/.config/mempalace"
 project_name = "mempalace"
 state = "running"
 sudo = false
