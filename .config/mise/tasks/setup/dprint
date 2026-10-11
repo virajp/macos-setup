@@ -5,7 +5,7 @@
 #MISE tools.dprint="latest"
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Updating dprint plugins ..."
 

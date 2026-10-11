@@ -5,7 +5,7 @@
 #MISE depends=["dotfiles:prep"]
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Showing status of dotfiles ..."
 mise bootstrap dotfiles status --missing

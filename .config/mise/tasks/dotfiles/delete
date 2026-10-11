@@ -4,7 +4,7 @@
 #MISE dir="dotfiles"
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Deleting symlinks for dotfiles ..."
 mise bootstrap dotfiles unapply --yes

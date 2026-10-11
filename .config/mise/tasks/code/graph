@@ -4,7 +4,7 @@
 
 set -euo pipefail
 # shellcheck source=/dev/null
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 # Runs from the pre-commit framework's post-commit stage (see
 # .config/pre-commit-config.yaml), replacing graphify's own raw git hook. The

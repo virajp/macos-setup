@@ -5,9 +5,9 @@
 #USAGE flag "--fix" help="Remove forbidden configs from local git-config"
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
-print_header_wait "Validating git-config ... "
+print_wait "Validating git-config ... "
 
 FIXIT=${usage_fix:-false}
 
@@ -24,7 +24,7 @@ if [ ! -z "$LOCAL_CONFIG" ]; then
       key=${line%%=*}
       print_wait "- removing $key ... "
       git config unset --local "$key"
-      print_header "OK"
+      print_success
     done <<< "$LOCAL_CONFIG"
     exit 0
   else
@@ -38,4 +38,4 @@ if [ ! -z "$LOCAL_CONFIG" ]; then
   fi
 fi
 
-print_ok
+print_success

@@ -7,7 +7,7 @@
 #USAGE flag "--root <root>" help="directory to scan (defaults to $HOME)"
 
 set -euo pipefail
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 root="${usage_root:-$HOME}"
 root="${root/#\~/$HOME}"
@@ -49,7 +49,7 @@ progress() {
   "${interactive}" || return 0
   local rel="${1#"${root}"/}"
   ((${#rel} > 50)) && rel="…${rel: -49}"
-  printf '\r\033[K%b' "${CYAN}[${SECONDS}s] ${dirs} dirs, ${broken} broken — ${rel}${NORMAL}"
+  printf '\r\033[K%b' "${COLOR_YELLOW}${STYLE_ITALIC}[${SECONDS}s] ${dirs} dirs, ${broken} broken — ${rel}${STYLE_NORMAL}"
   return 0
 }
 
@@ -85,7 +85,7 @@ clear_line
 
 print_newline
 if ((broken == 0)); then
-  print_green "No broken symlinks found — ${dirs} directories in ${SECONDS}s."
+  print_success "No broken symlinks found — ${dirs} directories in ${SECONDS}s."
   exit 0
 fi
 print_warn "${broken} broken symlink(s) found — ${dirs} directories in ${SECONDS}s."
@@ -110,4 +110,4 @@ for link in "${links[@]}"; do
     print_error "could not delete ${link}"
   fi
 done
-print_green "Deleted ${removed} of ${broken} broken symlink(s)."
+print_success "Deleted ${removed} of ${broken} broken symlink(s)."

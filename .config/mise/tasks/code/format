@@ -5,13 +5,13 @@
 #USAGE flag "--fix" help="apply fixes"
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 
 print_header "Formatting files ..."
 [[ "${usage_debug:-false}" == "true" ]] && LOG_LEVEL="debug" || LOG_LEVEL="warn"
-[[ "${usage_fix:-false}" == "true" ]] && CMD="fmt" || CMD="check"
+[[ "${usage_fix:-false}" == "true" ]] && CMD="fmt ." || CMD="check"
 
 dprint ${CMD} \
   --log-level ${LOG_LEVEL}
 
-print_header "Formatting done"
+print_success "Formatting done"

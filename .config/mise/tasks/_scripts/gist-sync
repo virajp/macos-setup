@@ -46,6 +46,9 @@
 
 _gs_log() { printf '%s\n' "gist-sync: $*" >&2; }
 
+# Show <path> relative to the current directory when it is under it.
+_gs_path() { [[ $1 == "$PWD"/* ]] && printf '%s' "${1#"$PWD"/}" || printf '%s' "$1"; }
+
 # Temp files still on disk; removed if the task is interrupted or exits early.
 _GS_TMPS=()
 _gs_cleanup() { ((${#_GS_TMPS[@]})) && rm -f -- "${_GS_TMPS[@]}"; return 0; }
@@ -151,30 +154,36 @@ gist_sync() {
     esac
   done
 
-  local dir tmp rc=0
+  local dir tmp rc=0 show
   dir=$(dirname -- "$dest")
-  mkdir -p -- "$dir" || { _gs_log "cannot create $dir"; return 1; }
+  show=$(_gs_path "$dest")
+  if ((dry_run)); then
+    # Nothing is written, so don't create the destination directory.
+    dir=${TMPDIR:-/tmp}
+  else
+    mkdir -p -- "$dir" || { _gs_log "cannot create $(_gs_path "$dir")"; return 1; }
+  fi
   # Temp file in the destination directory so the final mv is atomic.
-  tmp=$(mktemp "$dir/.gist-sync.XXXXXX") || { _gs_log "cannot create temp file in $dir"; return 1; }
+  tmp=$(mktemp "${dir%/}/.gist-sync.XXXXXX") || { _gs_log "cannot create temp file in $(_gs_path "$dir")"; return 1; }
   _GS_TMPS+=("$tmp")
 
   gist_fetch "$gist_id" "$file" "$rev" "$tmp" || rc=$?
   if ((rc != 0)); then
     rm -f -- "$tmp"
-    [[ -e $dest ]] && _gs_log "kept existing $dest"
+    [[ -e $dest ]] && _gs_log "kept existing $show"
     return "$rc"
   fi
 
   if [[ -f $dest ]] && cmp -s -- "$tmp" "$dest"; then
     rm -f -- "$tmp"
-    _gs_log "unchanged  $dest"
+    _gs_log "unchanged  $show"
     return 0
   fi
 
   if ((dry_run)); then
-    _gs_log "would update $dest"
+    _gs_log "would update $show"
     if [[ -f $dest ]]; then
-      diff -u --label "$dest (current)" --label "$dest (gist)" -- "$dest" "$tmp" >&2 || true
+      diff -u --label "$show (current)" --label "$show (gist)" -- "$dest" "$tmp" >&2 || true
     fi
     rm -f -- "$tmp"
     return 0
@@ -186,8 +195,8 @@ gist_sync() {
   else
     chmod 0644 "$tmp"
   fi
-  mv -f -- "$tmp" "$dest" || { rm -f -- "$tmp"; _gs_log "cannot write $dest"; return 1; }
-  _gs_log "updated    $dest"
+  mv -f -- "$tmp" "$dest" || { rm -f -- "$tmp"; _gs_log "cannot write $show"; return 1; }
+  _gs_log "updated    $show"
 }
 
 # Sync several files from one gist. Each spec is "<file in gist>" (same path

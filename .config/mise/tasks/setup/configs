@@ -4,7 +4,7 @@
 #MISE hide=true
 
 set -e
-source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers"
 source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/gist-sync"
 
 print_header "Copying configuration files from gist ..."
@@ -12,3 +12,26 @@ print_header "Copying configuration files from gist ..."
 GIST_ID="8daaf549557986068959b4fa7e887a1d"
 
 gist_sync ${GIST_ID} "gitignore" ${MISE_PROJECT_ROOT}/.gitignore
+
+gist_sync ${GIST_ID} "task-init" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_task/mise.dev.toml
+gist_sync ${GIST_ID} "mise-security" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_security/mise.toml
+gist_sync ${GIST_ID} "mise-linter" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_linter/mise.dev.toml
+gist_sync ${GIST_ID} "mise-formatter" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_formatter/mise.dev.toml
+gist_sync ${GIST_ID} "mise-python" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/python/mise.toml
+gist_sync ${GIST_ID} "mise-node" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/node/mise.toml
+gist_sync ${GIST_ID} "mise-claude" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/claude/mise.dev.toml
+gist_sync ${GIST_ID} "mise-precommit" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/pre-commit/mise.dev.toml
+
+gist_sync ${GIST_ID} "task-scripts-gist-sync" ${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/gist-sync
+gist_sync ${GIST_ID} "task-scripts-helpers" ${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/helpers
+gist_sync ${GIST_ID} "task-setup-dprint" ${MISE_PROJECT_ROOT}/.config/mise/tasks/setup/dprint
+gist_sync ${GIST_ID} "task-setup-precommit" ${MISE_PROJECT_ROOT}/.config/mise/tasks/setup/precommit
+gist_sync ${GIST_ID} "task-code-precommit" ${MISE_PROJECT_ROOT}/.config/mise/tasks/code/precommit
+gist_sync ${GIST_ID} "task-code-lint" ${MISE_PROJECT_ROOT}/.config/mise/tasks/code/lint
+gist_sync ${GIST_ID} "task-code-graph" ${MISE_PROJECT_ROOT}/.config/mise/tasks/code/graph
+gist_sync ${GIST_ID} "task-code-git-config" ${MISE_PROJECT_ROOT}/.config/mise/tasks/code/git-config
+gist_sync ${GIST_ID} "task-code-format" ${MISE_PROJECT_ROOT}/.config/mise/tasks/code/format
+
+gist_sync ${GIST_ID} "vscode-settings.json" ${MISE_PROJECT_ROOT}/.vscode/settings.json
+
+# gist_sync ${GIST_ID} "task-setup-configs" ${MISE_PROJECT_ROOT}/.config/mise/tasks/setup/configs
