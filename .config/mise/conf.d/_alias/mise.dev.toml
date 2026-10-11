@@ -1,2 +1,2 @@
 [shell_alias]
-setup = "mise run setup:all"
+setup = "mise run setup"
