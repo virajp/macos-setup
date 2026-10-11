@@ -13,5 +13,9 @@ HOMEBREW_FORCE_BREWED_GIT           = "true"
 HOMEBREW_NO_ANALYTICS               = "true"
 HOMEBREW_NO_ENV_HINTS               = "1"
 
+[dotfiles]
+# # Brewfile (casks + VS Code extensions, applied by brew:casks)
+# "~/.config/brewfile" = {}
+
 [shell_alias]
 brew = "fnox exec -P brew -- brew"

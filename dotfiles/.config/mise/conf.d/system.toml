@@ -27,9 +27,6 @@ version = "latest"
 # Mise (user level)
 "~/.config/mise" = {}
 
-# # Brewfile (casks + VS Code extensions, applied by brew:casks)
-# "~/.config/brewfile" = {}
-
 [env]
 
 [shell_alias]
