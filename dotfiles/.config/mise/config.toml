@@ -2,24 +2,24 @@
 min_version = { soft = "2026.10.1" }
 
 [settings]
-activate_aggressive                = true
-all_compile                        = false
-env_shell_expand                   = true
-gpg_verify                         = true
-lockfile                           = false
-minimum_release_age                = "10h"
-os                                 = "macos"
-paranoid                           = true
-raw                                = true
-status.missing_tools               = "always"
+activate_aggressive = true
+all_compile = false
+env_shell_expand = true
+gpg_verify = true
+lockfile = false
+minimum_release_age = "10h"
+os = "macos"
+paranoid = true
+raw = true
+status.missing_tools = "always"
 task.disable_spec_from_run_scripts = true
-task.output                        = "interleave"
-trusted_config_paths               = [ "~/.config/mise" ]
+task.output = "interleave"
+trusted_config_paths = [ "~/.config/mise" ]
 
 # Setup the dotfiles
-dotfiles.default_mode      = "symlink"
+dotfiles.default_mode = "symlink"
 dotfiles.relative_symlinks = false
-dotfiles.root              = "~/Projects/github.com/virajp/macos-setup/dotfiles"
+dotfiles.root = "~/Projects/github.com/virajp/macos-setup/dotfiles"
 
 [settings.github]
 # credential_command = "fnox get GITHUB_API_TOKEN"
@@ -30,8 +30,8 @@ adopt = true
 
 [tasks."global:init"]
 description = "Initialize mise tasks"
-hide        = true
-run         = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+hide = true
+run = "find $HOME/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [env]
 # Mise

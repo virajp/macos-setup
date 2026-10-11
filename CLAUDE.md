@@ -51,12 +51,12 @@ dotfiles, macOS defaults, login shell, Touch ID), and a `mise` task runner.
 Prefer `mise` for everything (`mise tasks` to list):
 
 ```shell
-mise run dotfiles:install       # (re)link dotfiles only (dotfiles:status shows drift)
-mise bootstrap status           # machine vs declared state (any directory)
-mise bootstrap --dry-run        # preview a full converge
-mise bootstrap packages status  # system vs [bootstrap.packages]
-mise run code:format      # format (dprint/taplo)
-mise run code:lint        # lint
+mise run dotfiles:install      # (re)link dotfiles only (dotfiles:status shows drift)
+mise bootstrap status          # machine vs declared state (any directory)
+mise bootstrap --dry-run       # preview a full converge
+mise bootstrap packages status # system vs [bootstrap.packages]
+mise run code:format           # format (dprint/taplo)
+mise run code:lint             # lint
 ```
 
 ## Conventions

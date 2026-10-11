@@ -1,6 +1,6 @@
 [settings]
 # NodeJS settings
-node.compile        = false
+node.compile = false
 npm.package_manager = "pnpm"
 
 [tools.node]
@@ -13,10 +13,7 @@ version = "latest"
 [env]
 NODE_ENV = "development"
 PNPM_HOME = "$HOME/Library/pnpm"
-_.path = [
-{ path = "node_modules/.bin", tools = true },
-{ path = "$PNPM_HOME/bin", tools = true },
-]
+_.path = [ { path = "node_modules/.bin", tools = true }, { path = "$PNPM_HOME/bin", tools = true } ]
 
 # A template: the exemptions come from the [vars] in identity.toml
 [bootstrap.files."~/Library/Preferences/pnpm/config.yaml"]
@@ -31,5 +28,6 @@ minimumReleaseAge: 600 # 600 = 10h cooldown
 # Exempt specific versions from the cooldown when an urgent fix is needed:
 minimumReleaseAgeExclude:
 {% for pattern in vars.pnpm_release_age_exclude | split(pat=" ") %}  - "{{ pattern }}"
-{% endfor %}{% endif %}"""
+{% endfor %}{% endif %}
+"""
 template = true

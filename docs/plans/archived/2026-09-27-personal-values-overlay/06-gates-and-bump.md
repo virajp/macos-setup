@@ -21,7 +21,8 @@ the post-commit hook, not by this unit).
 - The full wave gate, green:
   - `mise run code:format`
   - `mise run code:lint`
-  - `mise x -- pre-commit run --config .config/pre-commit-config.yaml --all-files`
+  - `mise x -- pre-commit run --config .config/pre-commit-config.yaml
+    --all-files`
 - `git grep -n 'virajpatel' -- dotfiles/mise/config.toml
   dotfiles/mise/conf.d/system.toml dotfiles/mise/conf.d/packages.toml
   dotfiles/git/gitconfig dotfiles/ssh/config dotfiles/fish docs/account.md`

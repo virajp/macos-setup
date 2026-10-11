@@ -21,7 +21,8 @@
 ## Verification
 
 - `fish -n dotfiles/fish/conf.d/02-path.fish` passes (syntax).
-- `HOME=/tmp/x fish -c 'source dotfiles/fish/conf.d/02-path.fish; echo $PNPM_HOME'`
+- `HOME=/tmp/x fish -c 'source dotfiles/fish/conf.d/02-path.fish; echo
+  $PNPM_HOME'`
   prints `/tmp/x/Library/pnpm`.
 - `grep -c virajpatel dotfiles/fish/conf.d/02-path.fish` is `0`.
 - The wave gate lines pass.

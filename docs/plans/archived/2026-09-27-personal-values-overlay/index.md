@@ -60,7 +60,8 @@ or `dotfiles/mise/conf.d/system.toml` on the integration branch has no
 
 - Personal values inside shared files (the only ones this plan moves):
   - `dotfiles/git/gitconfig:1-4` — `[user]` block: `name = Viraj Patel`,
-    `signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo`,
+    `signingkey = ssh-ed25519
+    AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo`,
     `email = 3125954+virajp@users.noreply.github.com`. Lines 6-15 are commented
     `includeIf` stanzas — leave them.
   - `dotfiles/ssh/config:11` — `User virajp` as the first line of the `Host *`

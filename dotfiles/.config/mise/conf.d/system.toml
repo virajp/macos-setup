@@ -3,17 +3,17 @@
 "brew:mas" = "latest" # Mac App Store command-line interface
 
 # Casks
-"brew-cask:easyfind"     = "latest" # Find files, folders, or contents in any file
+"brew-cask:easyfind" = "latest" # Find files, folders, or contents in any file
 "brew-cask:taskexplorer" = "latest" # Explore running tasks (processes)
 
 # Mac App Store (keyed by ADAM id)
 "mas:1120214373" = "latest" # Battery Health 2
-"mas:411643860"  = "latest" # DaisyDisk
-"mas:425424353"  = "latest" # The Unarchiver
-"mas:441258766"  = "latest" # Magnet
-"mas:455970963"  = "latest" # Disk Doctor
-"mas:686428787"  = "latest" # Duplicate Detective
-"mas:715464874"  = "latest" # Disk Map
+"mas:411643860" = "latest" # DaisyDisk
+"mas:425424353" = "latest" # The Unarchiver
+"mas:441258766" = "latest" # Magnet
+"mas:455970963" = "latest" # Disk Doctor
+"mas:686428787" = "latest" # Duplicate Detective
+"mas:715464874" = "latest" # Disk Map
 
 # Required by mise to parse the brew-cask correctly
 [tools.ruby]
@@ -30,12 +30,12 @@ version = "latest"
 [env]
 
 [shell_alias]
-cleanupDS          = "mise run cleanupDS"
+cleanupDS = "mise run cleanupDS"
 cleanupDS-Projects = 'mise run cleanupDS "$PROJECTS_DIR"'
-osx-upgrade        = "mise run upgrade:macos:upgrade"
-updateall          = "mise run updateall"
+osx-upgrade = "mise run upgrade:macos:upgrade"
+updateall = "mise run updateall"
 
 # Startup, Services and Process related shortcuts
-cancelPrintJobs  = "sudo cancel -a -x"
-listServices     = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
+cancelPrintJobs = "sudo cancel -a -x"
+listServices = "launchctl list | grep -v '^-' | sort -n | grep -v 'com.apple'"
 listStartupItems = "mise run func:listStartupItems"

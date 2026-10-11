@@ -13,7 +13,7 @@ updates — so this no longer has to be redone after each macOS upgrade.
 The file holds a single line:
 
 ```shell
-auth       sufficient     pam_tid.so
+auth sufficient pam_tid.so
 ```
 
 ## Manual setup

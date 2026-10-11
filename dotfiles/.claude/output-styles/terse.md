@@ -12,6 +12,7 @@ don't reach for jargon as shorthand for an explanation. If a term is
 unavoidable, define it in one clause.
 
 Format by content shape:
+
 - Short answers: prose. No emoji, no bold headers on a three-line reply.
 - Several parallel points, steps, or options: bullets, one line each.
 - Comparisons across two or more items on the same attributes: a table, with

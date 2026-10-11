@@ -52,13 +52,13 @@ structure. Add `for <app>` to limit it to one piece of software.
 Tasks are run with `mise` (list them with `mise tasks`):
 
 ```shell
-mise bootstrap packages status  # system vs [bootstrap.packages]
-mise bootstrap packages apply   # install what is missing
-mise run dotfiles:install       # (re)symlink dotfiles
-mise run dotfiles:status        # show which dotfile symlinks are missing
-mise run code:format     # format files (dprint/taplo)
-mise run code:lint       # lint files
-mise run system:symlinks # find broken symlinks in $HOME (--deep, --delete)
+mise bootstrap packages status # system vs [bootstrap.packages]
+mise bootstrap packages apply  # install what is missing
+mise run dotfiles:install      # (re)symlink dotfiles
+mise run dotfiles:status       # show which dotfile symlinks are missing
+mise run code:format           # format files (dprint/taplo)
+mise run code:lint             # lint files
+mise run system:symlinks       # find broken symlinks in $HOME (--deep, --delete)
 ```
 
 See [dotfiles/CONFIG_DOCUMENTATION.md](./dotfiles/CONFIG_DOCUMENTATION.md) for
@@ -69,7 +69,7 @@ how the dotfiles are organized.
 ```shell
 # Update everything (the macOS settings / power profile part runs weekly)
 updateall
-updateall --force   # run the weekly part now
+updateall --force # run the weekly part now
 
 # Update macOS (works on zsh & fish only)
 osx-upgrade

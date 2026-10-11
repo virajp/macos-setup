@@ -16,5 +16,5 @@ version = "latest"
 "~/.config/fnox/config.toml" = {}
 
 # SSH configuration; identity files are templates rendered from the [vars] in identity.toml
-"~/.ssh/config"          = {}
+"~/.ssh/config" = {}
 "~/.ssh/config.identity" = { mode = "template" }

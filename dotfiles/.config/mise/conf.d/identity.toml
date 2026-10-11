@@ -4,14 +4,14 @@
 # and the pnpm and gh config files render from these `[vars]` on
 # `mise bootstrap`. An adopter replaces this file wholesale.
 [vars]
-editor       = "code"                                                                             # gh's editor
+editor = "code" # gh's editor
 github_email = "3125954+virajp@users.noreply.github.com"
 gitlab_email = "35455-virajp@users.noreply.gitlab.com"
-name         = "Viraj Patel"
-op_ssh_vault = "Private"                                                                          # 1Password vault holding the SSH keys
-projects_dir = "~/Projects"                                                                       # holds github.com/<user>/<repo>, gitlab.com/…
-signing_key  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo"
-ssh_user     = "virajp"
+name = "Viraj Patel"
+op_ssh_vault = "Private" # 1Password vault holding the SSH keys
+projects_dir = "~/Projects" # holds github.com/<user>/<repo>, gitlab.com/…
+signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPWDmaVfV3kK6TWH8Kd+H4ePlsg8ywwGNRbGPnSICGo"
+ssh_user = "virajp"
 
 # Packages exempt from pnpm's release-age cooldown (your own scopes),
 # space-separated: [vars] values must be strings

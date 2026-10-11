@@ -1,4 +1,4 @@
-#:schema https://fnox.jdx.dev/schema.json
+# :schema https://fnox.jdx.dev/schema.json
 
 # Nothing is exported to the shell
 env = false
@@ -6,30 +6,30 @@ env = false
 if_missing = "error"
 
 [providers.global]
-prefix  = "global/"
+prefix = "global/"
 service = "fnox"
-type    = "keychain"
+type = "keychain"
 
 [secrets.GITHUB_API_TOKEN]
 provider = "global"
-value    = "GITHUB_API_TOKEN"
+value = "GITHUB_API_TOKEN"
 
 [profiles.brew.secrets.GITHUB_API_TOKEN]
-env      = "exec"
+env = "exec"
 provider = "global"
-value    = "GITHUB_API_TOKEN"
+value = "GITHUB_API_TOKEN"
 
 [profiles.brew.secrets.HOMEBREW_GITHUB_API_TOKEN]
-env      = "exec"
+env = "exec"
 provider = "global"
-value    = "GITHUB_API_TOKEN"
+value = "GITHUB_API_TOKEN"
 
 [profiles.context7.secrets.CONTEXT7_API_KEY]
-env      = "exec"
+env = "exec"
 provider = "global"
-value    = "CONTEXT7_API_KEY"
+value = "CONTEXT7_API_KEY"
 
 [profiles.mempalace.secrets.HF_TOKEN]
-env      = "exec"
+env = "exec"
 provider = "global"
-value    = "HF_TOKEN"
+value = "HF_TOKEN"

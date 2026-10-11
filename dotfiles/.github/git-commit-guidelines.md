@@ -79,8 +79,9 @@ wip(worker): prototype notification activity
    checks, etc) and re-stage those changes before the final commit
 8. Run: `git commit -m "<message>"`
 
-<IMPORTANT_NOTE> `git-conventional-commits.yaml` can be found at the root of the
-repository or inside `.config` folder. ` </IMPORTANT_NOTE>
+<IMPORTANT_NOTE> ``git-conventional-commits.yaml`` can be found at the root of
+the
+repository or inside ``.config`` folder. ` </IMPORTANT_NOTE>
 
 ## Pre-commit Hooks
 

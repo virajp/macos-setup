@@ -27,7 +27,7 @@ piped. `GITHUB_USER=<you> curl … | sh` clones a fork instead.
 Afterwards, in a new terminal (fish is the login shell now):
 
 ```shell
-tailscale up            # this node is new to the tailnet
+tailscale up # this node is new to the tailnet
 # launch OrbStack once, then bring up qdrant:
 mise bootstrap --only compose
 ```

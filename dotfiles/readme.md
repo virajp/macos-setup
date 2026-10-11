@@ -17,9 +17,9 @@ directory, together with the rest of the machine declaration (see
 [CONFIG_DOCUMENTATION.md](./CONFIG_DOCUMENTATION.md)).
 
 ```shell
-mise run dotfiles:install   # create the symlinks
-mise run dotfiles:status    # show which symlinks are missing
-mise run dotfiles:delete    # remove the symlinks
+mise run dotfiles:install # create the symlinks
+mise run dotfiles:status  # show which symlinks are missing
+mise run dotfiles:delete  # remove the symlinks
 ```
 
 ## Adding a dotfile

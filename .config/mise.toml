@@ -1,28 +1,28 @@
 [settings]
 activate_aggressive = true
-all_compile         = false
-env_shell_expand    = true
-gpg_verify          = true
-raw                 = true
-task.output         = "interleave"
+all_compile = false
+env_shell_expand = true
+gpg_verify = true
+raw = true
+task.output = "interleave"
 
 # Package manager settings
 npm.package_manager = "pnpm"
-python.compile      = false
+python.compile = false
 python.uv_venv_auto = "create|source"
 
 [tools]
-dprint     = "latest"
-node       = "latest"
-pnpm       = "latest"
+dprint = "latest"
+node = "latest"
+pnpm = "latest"
 pre-commit = "latest"
-taplo      = "latest"
+taplo = "latest"
 
 [tasks.init]
 description = "Initialize mise tasks"
-hide        = true
-run         = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
+hide = true
+run = "find $MISE_ORIGINAL_CWD/.config/mise/tasks/ -name '*' -type f -exec chmod 755 {} \\;"
 
 [shell_alias]
-lint  = "mise run code:lint"
+lint = "mise run code:lint"
 setup = "mise run setup:all"

@@ -36,7 +36,8 @@ su admin
 sudo visudo
 
 # Add the following line under %admin line
-<your-username> ALL=(ALL) ALL
+< your-username > ALL= (ALL)
+ALL
 ```
 
 ### Step 4: Install XCode Command-Line Tools & Rosetta

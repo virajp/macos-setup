@@ -1,22 +1,22 @@
 [bootstrap.packages]
 # Formulas
-"brew:bat"             = "latest" # Alternative to cat
-"brew:btop"            = "latest" # Resource monitor for the terminal
+"brew:bat" = "latest" # Alternative to cat
+"brew:btop" = "latest" # Resource monitor for the terminal
 "brew:ca-certificates" = "latest" # Common CA certificates
-"brew:coreutils"       = "latest" # GNU core utilities
-"brew:curl"            = "latest" # Command line tool and library for transferring data with URLs
-"brew:eza"             = "latest" # Modern replacement for 'ls'
-"brew:fzf"             = "latest" # Command-line fuzzy finder
-"brew:imagemagick"     = "latest" # Image manipulation tool
-"brew:jq"              = "latest" # Command-line JSON processor
-"brew:pstree"          = "latest" # Display process tree
-"brew:ripgrep"         = "latest" # Fast search tool
-"brew:superfile"       = "latest" # File management utility
-"brew:tree"            = "latest" # Display directory tree
-"brew:watch"           = "latest" # Execute a command periodically and show output
-"brew:wget"            = "latest" # Network downloader
-"brew:yq"              = "latest" # YAML processor
-"brew:zoxide"          = "latest" # Fast directory jumper
+"brew:coreutils" = "latest" # GNU core utilities
+"brew:curl" = "latest" # Command line tool and library for transferring data with URLs
+"brew:eza" = "latest" # Modern replacement for 'ls'
+"brew:fzf" = "latest" # Command-line fuzzy finder
+"brew:imagemagick" = "latest" # Image manipulation tool
+"brew:jq" = "latest" # Command-line JSON processor
+"brew:pstree" = "latest" # Display process tree
+"brew:ripgrep" = "latest" # Fast search tool
+"brew:superfile" = "latest" # File management utility
+"brew:tree" = "latest" # Display directory tree
+"brew:watch" = "latest" # Execute a command periodically and show output
+"brew:wget" = "latest" # Network downloader
+"brew:yq" = "latest" # YAML processor
+"brew:zoxide" = "latest" # Fast directory jumper
 
 [env]
 # iCloud Drive
@@ -28,15 +28,15 @@ PROJECTS_DIR = "{{ vars.projects_dir | replace(from='~', to=env.HOME) }}"
 
 [shell_alias]
 # Generic Aliases
-bat     = "bat --tabs 2"
-cd      = "z"
-cdcd    = "cd '$CLOUD_PATH'"
-cdgh    = 'cd "$PROJECTS_DIR/github.com"'
-cls     = "clear"
+bat = "bat --tabs 2"
+cd = "z"
+cdcd = "cd '$CLOUD_PATH'"
+cdgh = 'cd "$PROJECTS_DIR/github.com"'
+cls = "clear"
 findPid = "lsof -t -c"
-finder  = "open -a Finder ./"
-myps    = "mise run func:myps"
-plist   = "plutil -p"
+finder = "open -a Finder ./"
+myps = "mise run func:myps"
+plist = "plutil -p"
 
 # ls & tree related aliases
 la = "ls -a"

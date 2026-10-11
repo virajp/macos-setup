@@ -1,16 +1,16 @@
 [tools."pipx:mempalace"]
-depends  = [ "python", "uv" ]
-uvx      = true
+depends = [ "python", "uv" ]
+uvx = true
 uvx_args = "--python 3.14"
-version  = "latest"
+version = "latest"
 
 # Docker Compose for qdrant (mempalace dependency)
 [bootstrap.compose.mempalace]
-files        = [ "docker-compose.yaml" ]
-project_dir  = "/Users/virajpatel/.config/mempalace"
+files = [ "docker-compose.yaml" ]
+project_dir = "/Users/virajpatel/.config/mempalace"
 project_name = "mempalace"
-state        = "running"
-sudo         = false
+state = "running"
+sudo = false
 
 [bootstrap.directories."~/.config/mempalace"]
 
@@ -48,13 +48,13 @@ networks:
 
 [env]
 # Mempalace Backend
-MEMPALACE_BACKEND               = "qdrant"
-MEMPALACE_EMBEDDING_DEVICE      = "auto"
-MEMPALACE_EMBEDDING_MODEL       = "minilm"
-MEMPALACE_MAX_BACKUPS           = 4
+MEMPALACE_BACKEND = "qdrant"
+MEMPALACE_EMBEDDING_DEVICE = "auto"
+MEMPALACE_EMBEDDING_MODEL = "minilm"
+MEMPALACE_MAX_BACKUPS = 4
 MEMPALACE_MCP_ALLOW_PEER_WRITER = 1
-MEMPALACE_MCP_IDLE_HOURS        = 0
-MEMPALACE_QDRANT_URL            = "http://127.0.0.1:6333"
+MEMPALACE_MCP_IDLE_HOURS = 0
+MEMPALACE_QDRANT_URL = "http://127.0.0.1:6333"
 # MEMPALACE_PALACE_PATH           = "~/.local/share/mempalace"
 
 [shell_alias]
