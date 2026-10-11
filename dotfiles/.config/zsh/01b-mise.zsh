@@ -1,0 +1,16 @@
+# mise activate
+# Setting up mise trusted paths
+export MISE_TRUSTED_CONFIG_PATHS="$HOME/.config/mise:$HOME/Projects"
+# MISE_ENV must be set as "dev"
+export MISE_ENV="dev"
+# Must run after `brew shellenv` and the PATH exports
+if [[ -x "${HOME}/.local/bin/mise" ]]; then
+  # echo "Activating mise ... "
+  if [[ -o interactive ]]; then
+    # Interactive shell
+    eval "$("${HOME}/.local/bin/mise" activate zsh)"
+  else
+    # Non-interactive shell
+    eval "$("${HOME}/.local/bin/mise" activate zsh --shims)"
+  fi
+fi

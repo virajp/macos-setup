@@ -3,22 +3,10 @@
 # scripts. Keep it minimal: only what non-interactive shells need.        #
 ##########################################################################
 
-# mise shims, loaded unconditionally.
-#
-# Two jobs:
-#   1. Non-interactive shells get mise-managed tools on PATH (.zshrc never
-#      runs for them).
-#   2. Interactive shells need it too, and not just for tools: zsh's
-#      `brew shellenv` runs /usr/libexec/path_helper (the fish variant does
-#      not), which rebuilds PATH and leaves mise-managed binaries
-#      unresolvable until .zshrc runs the full activate.
-#
-# .zshrc then runs a full `mise activate` for interactive shells, which
-# supersedes the shims for tool resolution and applies the [env] block.
-#
-# The absolute path is required: path_helper only runs from /etc/zprofile
-# (login shells), and ~/.local/bin is not on PATH yet here.
-if [[ -x "${HOME}/.local/bin/mise" ]]; then
-  export MISE_ENV=dev
-  eval "$("${HOME}/.local/bin/mise" activate zsh --shims)"
-fi
+# echo "Start: $(date)"
+
+# Load all ZSH configuration
+for f in ~/.config/zsh/*.zsh(N); do
+  # echo "$(date): $f"
+  source "$f"
+done

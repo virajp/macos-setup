@@ -5,6 +5,15 @@
 # GPG_TTY must be evaluated per-session against the live terminal, so mise
 # cannot provide it - its [env] is evaluated in a subprocess.
 
+# XDG Base Directory specification
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+# Ensure XDG directories exist before proceeding
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
+
 # GPG
 export GPG_TTY="$(tty)"
 
