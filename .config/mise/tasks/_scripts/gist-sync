@@ -1,0 +1,256 @@
+#!/usr/bin/env bash
+
+#MISE description="Helper functions fetch gist and save them locally"
+#MISE hide=true
+
+# gist-sync.sh — pull shared config files from GitHub gists into a repo.
+# Meant to be *sourced* by a mise task, not executed; keep it non-executable
+# so mise doesn't register it as a task.
+#
+#   source "$(dirname "${BASH_SOURCE[0]}")/../_scripts/gist-sync.sh"
+#
+#   # Many files from one gist; keeps going past bad files, prints a summary:
+#   gist_sync_files <gist_id> [--rev <sha>] [--dry-run] -- <file>[:<dest>] ...
+#
+#   # One file:
+#   gist_sync <gist_id> <gist_file> <dest> [--rev <sha>] [--dry-run]
+#
+# Failure handling
+#   * A destination file is only replaced after a complete, validated
+#     download, so a failure always leaves the existing file as it was.
+#   * curl retries transient errors (timeouts, 408, 429, 5xx) with backoff
+#     and gives up after GIST_SYNC_RETRIES tries / GIST_SYNC_TIMEOUT seconds.
+#   * A 200 response that is an HTML page (GitHub error/outage page) or is
+#     empty is rejected instead of being written as your config.
+#   * gist_sync_files stops early when GitHub itself is down or unreachable,
+#     instead of waiting through the same timeout for every file.
+#
+# Return codes (gist_sync / gist_sync_files)
+#   0  success (or nothing to change)
+#   2  usage error in the calling task
+#   3  not found: wrong gist id, file name or --rev (fix the task)
+#   4  GitHub problem: 5xx, rate limited / denied, or an HTML error page
+#   5  network problem: DNS, connect, TLS, timeout, cut-off transfer
+#   1  anything else (local filesystem errors, ...)
+#
+# Tunables (environment):
+#   GIST_SYNC_RETRIES          retries for transient errors     (default 3)
+#   GIST_SYNC_CONNECT_TIMEOUT  seconds to establish a connection (default 10)
+#   GIST_SYNC_TIMEOUT          seconds per file, incl. retries  (default 60)
+#
+# Freshness: without --rev, gist_sync_files asks the gist's git remote for
+# its current revision (git ls-remote) and fetches every file at that SHA,
+# so you always get the latest content with no CDN lag, all from one
+# revision. Pass --rev <sha> to pin an older revision instead. Plain
+# gist_sync without --rev uses the unpinned URL, which can lag a few minutes.
+
+_gs_log() { printf '%s\n' "gist-sync: $*" >&2; }
+
+# Temp files still on disk; removed if the task is interrupted or exits early.
+_GS_TMPS=()
+_gs_cleanup() { ((${#_GS_TMPS[@]})) && rm -f -- "${_GS_TMPS[@]}"; return 0; }
+trap _gs_cleanup EXIT
+trap '_gs_cleanup; exit 130' INT
+trap '_gs_cleanup; exit 143' TERM
+
+# Download one gist file into <out>. Returns one of the codes above and
+# prints the reason to stderr.
+gist_fetch() {
+  local gist_id=$1 file=$2 rev=$3 out=$4
+  # gist.github.com/<id>/raw/... redirects to the owner's
+  # gist.githubusercontent.com URL; -L follows it.
+  local url="https://gist.githubusercontent.com/virajp/${gist_id}/raw/${rev:+$rev/}${file}"
+  local meta rc=0 status ctype
+
+  # -f: HTTP >= 400 is an error.  -sS: quiet, but still print curl's own
+  # error line.  -w: report status and content type so we can classify.
+  meta=$(curl -fsSL \
+    --connect-timeout "${GIST_SYNC_CONNECT_TIMEOUT:-10}" \
+    --max-time "${GIST_SYNC_TIMEOUT:-60}" \
+    --retry "${GIST_SYNC_RETRIES:-3}" --retry-connrefused \
+    -o "$out" -w '%{http_code} %{content_type}' \
+    "$url") || rc=$?
+  status=${meta%% *}
+  ctype=${meta#* }
+
+  if ((rc == 0)); then
+    if [[ $ctype == *text/html* ]]; then
+      _gs_log "$file: GitHub returned an HTML page instead of the file (outage or error page)"
+      return 4
+    fi
+    if [[ ! -s $out ]]; then
+      _gs_log "$file: downloaded file is empty"
+      return 4
+    fi
+    return 0
+  fi
+
+  echo "URL: $url" >&2
+
+  case $rc in
+    22) # HTTP error after -f
+      case $status in
+        404 | 410) _gs_log "$file: not found (HTTP $status) - check gist id, file name and --rev"; return 3 ;;
+        403 | 429) _gs_log "$file: GitHub refused the request (HTTP $status) - likely rate limited"; return 4 ;;
+        5??) _gs_log "$file: GitHub server error (HTTP $status) after retries"; return 4 ;;
+        *) _gs_log "$file: HTTP $status from $url"; return 3 ;;
+      esac ;;
+    6) _gs_log "$file: could not resolve host (offline or DNS issue)"; return 5 ;;
+    7) _gs_log "$file: could not connect to GitHub"; return 5 ;;
+    28) _gs_log "$file: timed out after retries (GIST_SYNC_TIMEOUT=${GIST_SYNC_TIMEOUT:-60}s)"; return 5 ;;
+    35 | 60) _gs_log "$file: TLS/certificate error talking to GitHub"; return 5 ;;
+    18 | 52 | 56 | 92) _gs_log "$file: connection dropped mid-transfer (curl exit $rc)"; return 5 ;;
+    *) _gs_log "$file: curl failed (exit $rc, HTTP ${status:-none})"; return 1 ;;
+  esac
+}
+
+# Print the gist's latest revision SHA. Asks the gist's git remote directly
+# (no API rate limit, no CDN cache), so the result is always current.
+# Returns 3 for an unknown gist, 4 for a GitHub error, 5 for network trouble.
+gist_latest_rev() {
+  local gist_id=$1 out rc=0 sha
+  # GIT_TERMINAL_PROMPT=0: a missing gist makes git ask for credentials;
+  # fail instead. The LOW_SPEED pair aborts a stalled connection.
+  out=$(GIT_TERMINAL_PROMPT=0 \
+    GIT_HTTP_LOW_SPEED_LIMIT=1 GIT_HTTP_LOW_SPEED_TIME="${GIST_SYNC_CONNECT_TIMEOUT:-10}" \
+    git ls-remote "https://gist.github.com/${gist_id}.git" HEAD 2>&1) || rc=$?
+  sha=${out%%[[:space:]]*}
+  if ((rc == 0)) && [[ $sha =~ ^[0-9a-f]{40}$ ]]; then
+    printf '%s\n' "$sha"
+    return 0
+  fi
+
+  case $out in
+    *"terminal prompts disabled"* | *"not found"* | *"Authentication failed"* | *"returned error: 404"*)
+      _gs_log "gist $gist_id not found - check the gist id"; return 3 ;;
+    *"Could not resolve host"* | *"Failed to connect"* | *"timed out"* | *"too slow"* | *"SSL"* | *"TLS"*)
+      _gs_log "could not reach GitHub to resolve the latest revision: ${out##*$'\n'}"; return 5 ;;
+    *)
+      _gs_log "could not resolve the latest revision of gist $gist_id: ${out##*$'\n'}"; return 4 ;;
+  esac
+}
+
+# Fetch one gist file and overwrite <dest> atomically. Leaves <dest>
+# untouched when the content is identical or on any failure.
+gist_sync() {
+  local gist_id=${1:-} file=${2:-} dest=${3:-}
+  if [[ -z $gist_id || -z $file || -z $dest ]]; then
+    _gs_log "usage: gist_sync <gist_id> <gist_file> <dest> [--rev <sha>] [--dry-run]"
+    return 2
+  fi
+  shift 3
+
+  local rev="" dry_run=0
+  while (($#)); do
+    case $1 in
+      --rev)
+        [[ -n ${2:-} ]] || { _gs_log "--rev needs a value"; return 2; }
+        rev=$2; shift 2 ;;
+      --dry-run) dry_run=1; shift ;;
+      *) _gs_log "unknown option: $1"; return 2 ;;
+    esac
+  done
+
+  local dir tmp rc=0
+  dir=$(dirname -- "$dest")
+  mkdir -p -- "$dir" || { _gs_log "cannot create $dir"; return 1; }
+  # Temp file in the destination directory so the final mv is atomic.
+  tmp=$(mktemp "$dir/.gist-sync.XXXXXX") || { _gs_log "cannot create temp file in $dir"; return 1; }
+  _GS_TMPS+=("$tmp")
+
+  gist_fetch "$gist_id" "$file" "$rev" "$tmp" || rc=$?
+  if ((rc != 0)); then
+    rm -f -- "$tmp"
+    [[ -e $dest ]] && _gs_log "kept existing $dest"
+    return "$rc"
+  fi
+
+  if [[ -f $dest ]] && cmp -s -- "$tmp" "$dest"; then
+    rm -f -- "$tmp"
+    _gs_log "unchanged  $dest"
+    return 0
+  fi
+
+  if ((dry_run)); then
+    _gs_log "would update $dest"
+    if [[ -f $dest ]]; then
+      diff -u --label "$dest (current)" --label "$dest (gist)" -- "$dest" "$tmp" >&2 || true
+    fi
+    rm -f -- "$tmp"
+    return 0
+  fi
+
+  # Keep the existing file's mode; mktemp creates 0600.
+  if [[ -f $dest ]]; then
+    chmod "$(stat -c %a -- "$dest" 2>/dev/null || stat -f %Lp -- "$dest")" "$tmp"
+  else
+    chmod 0644 "$tmp"
+  fi
+  mv -f -- "$tmp" "$dest" || { rm -f -- "$tmp"; _gs_log "cannot write $dest"; return 1; }
+  _gs_log "updated    $dest"
+}
+
+# Sync several files from one gist. Each spec is "<file in gist>" (same path
+# in the repo) or "<file in gist>:<path in repo>". A bad file doesn't stop
+# the others; a GitHub outage or network failure skips the rest, since they
+# would fail the same way. Returns the most severe failure code, or 0.
+gist_sync_files() {
+  local gist_id=${1:-}
+  [[ -n $gist_id ]] || { _gs_log "usage: gist_sync_files <gist_id> [opts] -- <file>[:<dest>] ..."; return 2; }
+  shift
+
+  local opts=() has_rev=0
+  while (($#)) && [[ $1 != -- ]]; do
+    [[ $1 == --rev ]] && has_rev=1
+    opts+=("$1"); shift
+  done
+  [[ ${1:-} == -- ]] || { _gs_log "gist_sync_files: missing -- before the file list"; return 2; }
+  shift
+  (($#)) || { _gs_log "gist_sync_files: no files given"; return 2; }
+
+  # No --rev given: pin this whole run to the gist's current revision, so
+  # every file is fresh (no CDN lag) and all come from the same revision.
+  if ((!has_rev)); then
+    local latest rc=0
+    latest=$(gist_latest_rev "$gist_id") || rc=$?
+    if ((rc != 0)); then
+      _gs_log "nothing synced; existing files were left untouched"
+      return "$rc"
+    fi
+    _gs_log "using latest revision ${latest:0:7}"
+    opts+=(--rev "$latest")
+  fi
+
+  local spec file dest rc worst=0 ok=0 failed=() skipped=()
+  local total=$#
+  while (($#)); do
+    spec=$1; shift
+    file=${spec%%:*}
+    dest=${spec#*:}
+
+    rc=0
+    gist_sync "$gist_id" "$file" "$dest" ${opts[@]+"${opts[@]}"} || rc=$?
+    if ((rc == 0)); then
+      ((ok += 1))
+      continue
+    fi
+    failed+=("$file")
+    ((rc > worst)) && worst=$rc
+    if ((rc == 4 || rc == 5)); then
+      skipped=("$@")
+      break
+    fi
+  done
+
+  if ((${#failed[@]} == 0)); then
+    _gs_log "done: $ok/$total files in sync"
+    return 0
+  fi
+
+  _gs_log "FAILED: ${failed[*]}"
+  if ((${#skipped[@]})); then
+    _gs_log "skipped (GitHub unavailable): ${skipped[*]%%:*}"
+  fi
+  _gs_log "$ok/$total files in sync; existing copies of the rest were left untouched"
+  return "$worst"
+}

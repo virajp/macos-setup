@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#MISE description="Copy configuration files from gist"
+#MISE hide=true
+
+set -e
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/_helpers"
+source "${MISE_PROJECT_ROOT}/.config/mise/tasks/_scripts/gist-sync"
+
+print_header "Copying configuration files from gist ..."
+
+GIST_ID="8daaf549557986068959b4fa7e887a1d"
+
+gist_sync ${GIST_ID} "gitignore" ${MISE_PROJECT_ROOT}/.gitignore
