@@ -39,6 +39,11 @@ login_shell = "/opt/homebrew/bin/fish"
 "/etc/shells/brew-zsh"  = { line = "/opt/homebrew/bin/zsh" }
 "~/.zprofile/mise-path" = { block = "export PATH=\"${HOME}/.local/bin:$PATH\"" }
 
+# BASH
+"~/.config/bash" = {}
+"~/.bash_profile" = {}
+"~/.bashrc"      = {}
+
 # ZSH
 "~/.config/zsh" = {}
 "~/.zshenv"     = {}
