@@ -1,0 +1,6 @@
+[tools.dprint]
+version = "latest"
+
+[dotfiles]
+# dprint
+"~/.config/dprint" = {}

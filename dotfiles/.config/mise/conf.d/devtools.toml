@@ -16,15 +16,10 @@
 "mas:899247664" = "latest" # TestFlight
 
 # Developer Tools
-[tools.bun]
-version = "latest"
 
 [dotfiles]
-# dprint & Taplo
-"~/.config/dprint" = {}
-
-# Gem
-"~/.gemrc" = {}
+# # Gem
+# "~/.gemrc" = {}
 
 [env]
 # Development tools
