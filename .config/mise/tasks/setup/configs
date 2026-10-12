@@ -13,6 +13,7 @@ GIST_ID="8daaf549557986068959b4fa7e887a1d"
 
 gist_sync ${GIST_ID} "gitignore" ${MISE_PROJECT_ROOT}/.gitignore
 
+gist_sync ${GIST_ID} "mise.toml" ${MISE_PROJECT_ROOT}/.config/mise.toml
 gist_sync ${GIST_ID} "task-init" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_task/mise.dev.toml
 gist_sync ${GIST_ID} "mise-security" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_security/mise.toml
 gist_sync ${GIST_ID} "mise-linter" ${MISE_PROJECT_ROOT}/.config/mise/conf.d/_linter/mise.dev.toml
