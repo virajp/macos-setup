@@ -324,3 +324,7 @@ brag-output/work/frames/
 gitleaks-report.*
 grype-report.*
 sbom.*
+
+# ==== Repository-specific ====
+# Local backups of app preferences; personal, never published.
+/backup/
