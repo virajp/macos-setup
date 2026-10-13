@@ -103,6 +103,12 @@
     "lineLength": 120,
   },
   "sh": {
+    // mise task scripts have no file extension, so the sh plugin does not
+    // match them by default. Templates (*.tmpl) are not valid shell.
+    "associations": [
+      "**/.config/mise/tasks/**",
+      "!**/*.tmpl",
+    ],
     "indentWidth": 2,
     "useTabs": false,
     "binaryNextLine": true,
