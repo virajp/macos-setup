@@ -1,9 +1,13 @@
+[bootstrap.brew.taps]
+"saffsanity/sill" = "https://github.com/saffsanity/homebrew-sill.git"
+
 [bootstrap.packages]
 # Casks
 "brew-cask:alfred" = "latest" # Application launcher and productivity software
 "brew-cask:brave-browser" = "latest" # Brave Browser
 "brew-cask:notion" = "latest" # App to write, plan, collaborate, and get organised
 "brew-cask:obsidian" = "latest" # Knowledge base that works on top Markdown files
+"brew-cask:saffsanity/sill/sill" = "latest" # Sill menu bar app
 "brew-cask:setapp" = "latest" # Collection of apps available by subscription
 "brew-cask:vorssaint" = "latest" # Menu bar toolkit with keep-awake, system monitor and volume mixer
 "brew-cask:whatsapp" = "latest" # Native desktop client for WhatsApp
