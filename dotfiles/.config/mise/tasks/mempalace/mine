@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Mine the current folder into mempalace (projects mode)"
+#MISE depends=["mempalace:check"]
+#MISE dir="{{cwd}}"
+
+set -e
+source "${HOME}/.config/mise/tasks/_scripts/helpers"
+
+print_header "Mining ${MISE_ORIGINAL_CWD} into mempalace ..."
+mise x -- fnox exec --profile mempalace -- mempalace mine "${MISE_ORIGINAL_CWD}" --mode projects

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Check that docker is installed and reachable"
+#MISE description="Check that docker is reachable and the mempalace env vars are set"
 #MISE hide=true
 #MISE dir="~"
 
@@ -8,15 +8,30 @@ source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # Check if the docker command line tool even exists
 if ! command -v docker &> /dev/null; then
-    print_error "✗ Error: The 'docker' command-line tool is not installed."
-    exit 1
+  print_error "✗ Error: The 'docker' command-line tool is not installed."
+  exit 1
 fi
 
 # Check if the Docker server/daemon is actively running and reachable
 if docker info &> /dev/null; then
-    print_success "✓ Docker server is up and running!"
+  print_success "✓ Docker server is up and running!"
 else
-    print_error "✗ Error: Cannot connect to the Docker server."
-    print_wait "Please check if the daemon is running locally or if your remote DOCKER_HOST is correct.\n"
-    exit 1
+  print_error "✗ Error: Cannot connect to the Docker server."
+  print_wait "Please check if the daemon is running locally or if your remote DOCKER_HOST is correct.\n"
+  exit 1
 fi
+
+# Check that every mempalace env var is set
+missing=0
+for var in MEMPALACE_BACKEND MEMPALACE_EMBEDDING_DEVICE MEMPALACE_EMBEDDING_MODEL \
+  MEMPALACE_MAX_BACKUPS MEMPALACE_MCP_ALLOW_PEER_WRITER MEMPALACE_MCP_IDLE_HOURS \
+  MEMPALACE_QDRANT_URL MEMPALACE_PALACE_PATH; do
+  if [ -z "${!var}" ]; then
+    print_error "✗ Error: ${var} is not set."
+    missing=1
+  fi
+done
+if [ "${missing}" -ne 0 ]; then
+  exit 1
+fi
+print_success "✓ All mempalace env vars are set!"

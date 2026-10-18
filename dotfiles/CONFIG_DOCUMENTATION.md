@@ -151,7 +151,8 @@ tool; and the `MEMPALACE_*` `[env]` (palace data in `~/.local/share/mempalace`).
 `project_dir` has to be a literal absolute path (mise expands neither `~`,
 `$HOME` nor templates there), so it holds the username. `mempalace:*` mise tasks
 (`.config/mise/tasks/mempalace/`) wrap the compose lifecycle; `mempalace:update`
-pulls the qdrant image weekly from `updateall`. See
+pulls the qdrant image weekly from `updateall`; `mempalace:mine` mines the
+current folder (`--mode projects`, through the `mempalace` fnox profile). See
 [`docs/mempalace.md`](../docs/mempalace.md) for one-time setup.
 
 ## Git
