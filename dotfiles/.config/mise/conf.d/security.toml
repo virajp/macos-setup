@@ -3,6 +3,7 @@ version = "latest"
 
 [bootstrap.packages]
 # Formulas
+"brew:age" = "latest" # Encryption tool
 "brew:fnox" = "latest" # Secret management tool
 
 # Cask
