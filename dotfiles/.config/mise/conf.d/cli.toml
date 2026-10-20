@@ -5,6 +5,7 @@
 "brew:ca-certificates" = "latest" # Common CA certificates
 "brew:coreutils" = "latest" # GNU core utilities
 "brew:curl" = "latest" # Command line tool and library for transferring data with URLs
+"brew:dasel" = "latest" # Command-line tool for querying and modifying data structures like JSON, YAML, TOML, etc.
 "brew:eza" = "latest" # Modern replacement for 'ls'
 "brew:fzf" = "latest" # Command-line fuzzy finder
 "brew:imagemagick" = "latest" # Image manipulation tool
