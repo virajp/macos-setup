@@ -48,7 +48,6 @@
     "stackgen-lsp@stackgen-lsp": true,
     "stackgen@virajp-plugins": true,
     "taste-skill@taste-skill": true,
-    "vwf-monitor@vwf-monitor-dev": true,
     "vwf@virajp-plugins": true,
     "warp@claude-code-warp": true
   },
@@ -89,12 +88,6 @@
     "virajp-plugins": {
       "source": {
         "path": "${HOME}/Projects/github.com/virajp/claude-plugins/.dev-marketplace",
-        "source": "directory"
-      }
-    },
-    "vwf-monitor-dev": {
-      "source": {
-        "path": "${HOME}/.claude/dev-mods/1eed5b1e-4e93-45b7-9d87-9166bb78929f/vwf-monitor",
         "source": "directory"
       }
     }
