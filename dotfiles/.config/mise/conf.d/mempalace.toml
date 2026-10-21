@@ -58,4 +58,4 @@ MEMPALACE_PALACE_PATH = "{{ env.HOME }}/.local/share/mempalace"
 MEMPALACE_QDRANT_URL = "http://127.0.0.1:6333"
 
 [shell_alias]
-mp = "mise x -- fnox exec --profile mempalace -- mempalace"
+mp = "mise x -- mempalace"
