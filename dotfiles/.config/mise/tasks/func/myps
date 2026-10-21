@@ -3,28 +3,46 @@
 #MISE hide=true
 #MISE dir="~"
 
-# Optional: with no argument every process for the user is listed, which is
-# what the shell `myps` alias relies on.
-#USAGE arg "[process]" default="" help="Filter processes by name"
+#USAGE arg "[process]" default="" help="Filter processes by name or PID"
 
-set -e
+set -euo pipefail
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
-if [ -n "$usage_process" ]; then
-  print_header "Listing processes for user $USER filtered by $usage_process ..."
-else
-  print_header "Listing processes for user $USER ..."
-fi
-
-# Create args array
+filter="${usage_process:-}"
 args=(-g 2 -l 7)
 
-# If $usage_process is set and string then add it to the args array
-# If $usage_process is set and numeric then add it to the args array
-if [ -n "$usage_process" ]; then
-  args+=("-s" "$usage_process")
-elif [[ "$usage_process" =~ ^[0-9]+$ ]]; then
-  args+=("-p" "$usage_process")
+if [[ -z "$filter" ]]; then
+  print_header "Listing processes for user $USER ..."
+  exec pstree "${args[@]}" -u "$USER"
 fi
+
+print_header "Listing processes for user $USER filtered by $filter ..."
+
+# Our own ancestry (this script, mise, the shell...) so it never matches itself
+self=" "
+pid=$$
+while [[ "$pid" -gt 1 ]]; do
+  self+="$pid "
+  pid=$(ps -o ppid= -p "$pid" | tr -d ' ')
+done
+
+pids=()
+if [[ "$filter" =~ ^[0-9]+$ ]]; then
+  ps -p "$filter" > /dev/null 2>&1 && pids+=("$filter")
+else
+  # pgrep matches the process name (not argv) and never reports itself
+  while read -r p; do
+    [[ "$self" == *" $p "* ]] || pids+=("$p")
+  done < <(pgrep -U "$USER" -- "$filter" || true)
+fi
+
+if [[ ${#pids[@]} -eq 0 ]]; then
+  echo "No processes found matching '$filter'"
+  exit 1
+fi
+
+for p in "${pids[@]}"; do
+  args+=(-p "$p")
+done
 
 pstree "${args[@]}"
