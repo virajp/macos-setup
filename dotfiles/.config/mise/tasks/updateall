@@ -19,10 +19,10 @@ run_weekly="true"
 if [[ "${usage_force:-false}" == "true" ]]; then
   rm -f "${WEEKLY_STAMP}"
 elif [[ -f "${WEEKLY_STAMP}" ]]; then
-  elapsed=$(( $(date +%s) - $(date -r "${WEEKLY_STAMP}" +%s) ))
-  if (( elapsed < ONE_WEEK_SECONDS )); then
+  elapsed=$(($(date +%s) - $(date -r "${WEEKLY_STAMP}" +%s)))
+  if ((elapsed < ONE_WEEK_SECONDS)); then
     run_weekly="false"
-    print_header "Skipping weekly steps — last run $(( elapsed / 3600 ))h ago; use --force to override."
+    print_header "Skipping weekly steps — last run $((elapsed / 3600))h ago; use --force to override."
   fi
 fi
 
@@ -32,7 +32,7 @@ fi
 # Upgrade mise first to ensure we have the latest features and fixes. mise
 # manages its own formula ([bootstrap.packages]).
 print_header "Upgrading MISE ..."
-mise self-update --yes --minimum-release-age "0h"
+mise self-update --yes
 
 # Install & upgrade mise
 print_subheader "Install MISE tools ..."
