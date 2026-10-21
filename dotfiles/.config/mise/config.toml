@@ -20,7 +20,7 @@ status.show_deps_stale = true
 status.show_env = true
 status.show_tools = true
 task.disable_spec_from_run_scripts = true
-task.output = "replacing"
+task.output = "interleave"
 trusted_config_paths = [ "~/.config/mise" ]
 
 # Setup the dotfiles
