@@ -4,11 +4,11 @@ node.compile = false
 npm.package_manager = "pnpm"
 
 [tools.node]
-version = "26"
+version = "lts"
 
 [tools.pnpm]
 depends = [ "node" ]
-version = "12"
+version = "latest"
 
 [env]
 _.path = { path = "node_modules/.bin", tools = true }
