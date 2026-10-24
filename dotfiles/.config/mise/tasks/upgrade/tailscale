@@ -14,7 +14,7 @@ source "${HOME}/.config/mise/tasks/_scripts/helpers"
 print_header "Tailscale ..."
 
 # Check if tailscale is installed before attempting to upgrade
-if ! brew list --formulae tailscale >/dev/null 2>&1; then
+if ! brew list --formulae tailscale > /dev/null 2>&1; then
   print_error "Tailscale formula is not installed. Skipping."
   exit 0
 fi

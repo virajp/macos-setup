@@ -55,16 +55,16 @@ mise run dotfiles:install      # (re)link dotfiles only (dotfiles:status shows d
 mise bootstrap status          # machine vs declared state (any directory)
 mise bootstrap --dry-run       # preview a full converge
 mise bootstrap packages status # system vs [bootstrap.packages]
-mise run code:format           # format (dprint/taplo)
+mise run code:format           # format (dprint)
 mise run code:lint             # lint
 ```
 
 ## Conventions
 
-- **Commits**: conventional commits, types limited to `spec`, `ops`, `docs`,
-  `merge` (see `.config/git-conventional-commits.yaml`). Most changes are
-  `ops:`.
-- **Formatting**: dprint + taplo; pre-commit hooks run via `mise run code:lint`.
+- **Commits**: conventional commits, with the 10 types of
+  `.config/git-conventional-commits.yaml` (synced from bootstrap). Most changes
+  are `ops:`.
+- **Formatting**: dprint; pre-commit hooks run via `mise run code:lint`.
 - **Secrets**: managed by `fnox` via the macOS Keychain — never commit plaintext
   secrets.
 - **Dotfiles edits**: edit the file under `dotfiles/` at its `$HOME` path; it is

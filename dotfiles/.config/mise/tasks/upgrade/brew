@@ -9,7 +9,7 @@ source "${HOME}/.config/mise/tasks/_scripts/helpers"
 print_header "Homebrew packages ..."
 
 # Check if brew is installed before attempting to update
-if ! command -v brew >/dev/null 2>&1; then
+if ! command -v brew > /dev/null 2>&1; then
   print_error "Homebrew is not installed. Please install Homebrew first."
   exit 1
 fi

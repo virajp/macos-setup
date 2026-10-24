@@ -1,0 +1,13 @@
+# The mise config of this repository for `MISE_ENV=dev`, for example its own
+# [env] values. This repository owns the file: the sync writes it only when it
+# is missing, and the next sync keeps your version. The shared variables are
+# in .config/mise.toml.
+
+# The settings of the old .config/mise.toml that the shared one does not have.
+[settings]
+raw = true
+status.missing_tools = "always"
+task.disable_spec_from_run_scripts = true
+task.output = "interleave"
+
+[env]

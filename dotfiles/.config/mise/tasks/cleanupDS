@@ -10,4 +10,4 @@ source "${HOME}/.config/mise/tasks/_scripts/helpers"
 FOLDER=${1:-$HOME}
 
 print_header "Cleaning up .DS_Store files in $FOLDER ..."
-find "$FOLDER" -type f -name '.DS_Store' -not -path '*/Library/*' -ls -delete 2>/dev/null || true
+find "$FOLDER" -type f -name '.DS_Store' -not -path '*/Library/*' -ls -delete 2> /dev/null || true
