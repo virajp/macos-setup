@@ -1,0 +1,18 @@
+# The bootstrap commit of the last sync. repo-sync writes it.
+bootstrap_commit = "50df5bc12d3604f4e9d472357d412ee8186be98b"
+# The mise environments: dev (necessary) and ci.
+environments = [ "dev" ]
+# The VS Code extensions that no tool has.
+extensions = [ "bmalehorn.vscode-fish", "davidanson.vscode-markdownlint" ]
+repo_name = "macos-setup"
+# The web URL of the repository.
+repo_url = "https://github.com/virajp/macos-setup"
+
+[tools.claude]
+# A feature branch merges into main, with a local merge.
+[branch.main]
+merge_model = "direct"
+
+# The repository's own ignore lines, added at the end of the shared .gitignore.
+[overrides.gitignore]
+add = [ "/backup/" ]
