@@ -7,16 +7,16 @@ set -e
 source "${HOME}/.config/mise/tasks/_scripts/helpers"
 
 # Generate timestamp for unique filename
-local STAMP=$(date "+%Y%m%d-%H%M%S")
+STAMP=$(date "+%Y%m%d-%H%M%S")
 
-# Get absolute path and extract components (zsh-native, no external binary)
-local FOLDER="$MISE_ORIGINAL_CWD/$usage_folder"
-local FULLPATH=${FOLDER:a}
-local BASENAME=${FULLPATH##*/}   # Extract filename/dirname
-local PARENT=${FULLPATH%/*}      # Extract parent directory
+# Get absolute path and extract components
+FOLDER="$MISE_ORIGINAL_CWD/${usage_folder:?}"
+FULLPATH=$(cd "$FOLDER" && pwd -P)
+BASENAME=${FULLPATH##*/} # Extract filename/dirname
+PARENT=${FULLPATH%/*}    # Extract parent directory
 
 # Construct timestamped backup filename
-local FILENAME="$PARENT/$BASENAME-$STAMP.zip"
+FILENAME="$PARENT/$BASENAME-$STAMP.zip"
 
 # Display progress message with colored output
 print_header "Backing up from $FULLPATH to $FILENAME ..."

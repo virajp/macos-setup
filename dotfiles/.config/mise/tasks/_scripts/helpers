@@ -13,10 +13,6 @@ readonly NORMAL='\033[0m'
 # Emojis
 readonly SUCCESS_EMOJI="✅"
 readonly ERROR_EMOJI="🚫"
-readonly SETTING_EMOJI="⚙️"
-readonly INSTALL_EMOJI="🚀"
-readonly PACKAGE_EMOJI="📦"
-readonly CHECK_EMOJI="🩺"
 
 # Print colored section header with new line
 print_header() {
@@ -61,7 +57,7 @@ print_warn() {
 # Print line separator
 line_sep() {
   local COL
-  COL=$(stty size 2>/dev/null | awk '{print $2}')
+  COL=$(stty size 2> /dev/null | awk '{print $2}')
   # Build a string of spaces equal to width, then replace with '='
   local line
   printf -v line '%*s' "${COL:-80}" ''
