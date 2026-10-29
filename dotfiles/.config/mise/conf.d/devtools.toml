@@ -7,6 +7,8 @@
 "brew-cask:android-studio" = "latest" # Tools for building Android applications
 "brew-cask:sublime-text" = "latest" # Text editor for code, markup and prose
 "brew-cask:visual-studio-code" = "latest" # Open-source code editor
+"brew-cask:zed" = "latest" # Multiplayer code editor
+"brew-cask:zed-delta" = "latest" # Multiplayer environment for coding with agents
 # "brew-cask:lm-studio"          = "latest" # Discover, download, and run local LLMs
 
 # Mac App Store (keyed by ADAM id)
