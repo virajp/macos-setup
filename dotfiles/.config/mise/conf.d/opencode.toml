@@ -1,0 +1,15 @@
+# [tools."npm:@mermaid-js/mermaid-cli"]
+# depends = [ "node", "pnpm" ]
+# version = "latest"
+
+# Tracking usage and performance of AI tools
+[bootstrap.packages]
+"brew:opencode" = "latest" # OpenCode
+
+[dotfiles]
+# "~/.claude/CLAUDE.md" = {}
+# "~/.claude/output-styles" = {}
+# "~/.claude/settings.json" = {}
+
+[shell_alias]
+oc = "opencode --auto"
