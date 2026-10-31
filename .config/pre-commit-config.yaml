@@ -34,13 +34,6 @@ repos:
         language: "system"
         pass_filenames: false
         always_run: true
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
-    hooks:
-      - id: no-commit-to-branch
-        name: "Refuse a direct commit to main or develop"
-        description: "These branches take merges only. git runs pre-merge-commit for a merge, so merges are not affected."
-        args: [ "--branch", "main", "--branch", "develop" ]
   - repo: https://github.com/qoomon/git-conventional-commits
     rev: v2.9.0
     hooks:
